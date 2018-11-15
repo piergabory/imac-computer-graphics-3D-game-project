@@ -6,21 +6,25 @@
 # Handles compiling the following project and ensure some OS compatibility.
 
 
+
+
+
+
 ######### PARAMETERS #########
 
 # executable name
 APP_BIN = product
 
-# compile flags
+# compile
+CC = g++
 CPPFLAGS = -Wall -g -Os
-LDFLAGS =
 
 # paths
 # Source files
 SRC_PATH = src
 
 # Header files
-INC_PATH = -I includes
+INC_PATH = -I"includes/"
 
 # .o files
 OBJ_PATH = obj
@@ -30,6 +34,9 @@ BIN_PATH = bin
 
 # librairies path
 LIB_PATH = lib
+
+
+
 
 
 
@@ -45,11 +52,11 @@ OBJ_FILES = $(subst $(SRC_PATH)/%.cpp,$(OBJ_PATH)/%.o, $(SRC_FILES))
 
 
 
+
 ######### OPERATING SYSTEM CHECK #########
 
 # WINDOWS
 ifeq ($(OS),Windows_NT)
-	CC = g++
 	CPPFLAGS += -D Windows
 
 # UNIX
@@ -58,16 +65,19 @@ else
 
 	# LINUX
 	ifeq ($(UNAME_S),Linux)
-		CC = g++
 		CPPFLAGS += -D Linux
+		LDFLAGS = -lSDL2 -lGLU -lGL -lm
 	endif
 
 	# MACINTOSH
 	ifeq ($(UNAME_S),Darwin)
-		CC = g++
 		CPPFLAGS += -D MacOS
+		LDFLAGS = -I/Library/Frameworks/SDL2.framework/Headers -F/Library/Frameworks -framework OpenGL -framework Cocoa
 	endif
 endif
+
+
+
 
 
 
@@ -80,7 +90,7 @@ all: $(APP_BIN)
 # Linking
 $(APP_BIN): $(OBJ_FILES)
 	@mkdir -p $(BIN_PATH)
-	$(CC) -o $(BIN_PATH)/$(APP_BIN) $(OBJ_FILES) $(LDFLAGS)
+	$(CC) -o $(BIN_PATH)/$(APP_BIN) $(OBJ_FILES) $(INC_PATH) $(CPPFLAGS) $(LDFLAGS)
 
 
 # Compiling
@@ -88,6 +98,9 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
 	@mkdir -p "$(@D)"
 	$(CC) -g -c -pthread $< -o $@ $(CPPFLAGS) $(INC_PATH)
 
+# running the app
+run:
+	$(BIN_PATH)/$(APP_BIN)
 
 # cleaning
 clean:

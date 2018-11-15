@@ -8,18 +8,88 @@
 
 /* Begin PBXFileReference section */
 		D485604C219E15360031F8A8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		D485604E219E15850031F8A8 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		D485604F219E16130031F8A8 /* product */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = product; sourceTree = "<group>"; };
+		D485604E219E15850031F8A8 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
+		D4856056219E1B2D0031F8A8 /* product */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = product; path = bin/product; sourceTree = "<group>"; };
+		D4856057219E1E760031F8A8 /* frameworks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = frameworks.h; sourceTree = "<group>"; };
+		D4856059219E1F920031F8A8 /* SDL_manager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SDL_manager.cpp; sourceTree = "<group>"; };
+		D485605A219E1F920031F8A8 /* SDL_manager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SDL_manager.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		D4856041219E14FF0031F8A8 = {
 			isa = PBXGroup;
 			children = (
+				D4856051219E17240031F8A8 /* bin */,
+				D4856055219E19100031F8A8 /* obj */,
+				D4856052219E17290031F8A8 /* includes */,
+				D4856050219E171B0031F8A8 /* src */,
+				D4856054219E17380031F8A8 /* textures */,
+				D4856053219E17320031F8A8 /* shaders */,
 				D485604E219E15850031F8A8 /* Makefile */,
-				D485604C219E15360031F8A8 /* main.cpp */,
-				D485604F219E16130031F8A8 /* product */,
+				D4856056219E1B2D0031F8A8 /* product */,
 			);
+			sourceTree = "<group>";
+		};
+		D4856050219E171B0031F8A8 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				D485605B219E1F9D0031F8A8 /* graphics */,
+				D485604C219E15360031F8A8 /* main.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		D4856051219E17240031F8A8 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		D4856052219E17290031F8A8 /* includes */ = {
+			isa = PBXGroup;
+			children = (
+				D4856058219E1F6C0031F8A8 /* graphics */,
+			);
+			path = includes;
+			sourceTree = "<group>";
+		};
+		D4856053219E17320031F8A8 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
+		D4856054219E17380031F8A8 /* textures */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = textures;
+			sourceTree = "<group>";
+		};
+		D4856055219E19100031F8A8 /* obj */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = obj;
+			sourceTree = "<group>";
+		};
+		D4856058219E1F6C0031F8A8 /* graphics */ = {
+			isa = PBXGroup;
+			children = (
+				D485605A219E1F920031F8A8 /* SDL_manager.hpp */,
+				D4856057219E1E760031F8A8 /* frameworks.h */,
+			);
+			path = graphics;
+			sourceTree = "<group>";
+		};
+		D485605B219E1F9D0031F8A8 /* graphics */ = {
+			isa = PBXGroup;
+			children = (
+				D4856059219E1F920031F8A8 /* SDL_manager.cpp */,
+			);
+			path = graphics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -32,6 +102,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "/Users/piergabory/Developer/IMAC/Project Pasteque/Project Pasteque";
 			dependencies = (
 			);
 			name = "Project Pasteque";

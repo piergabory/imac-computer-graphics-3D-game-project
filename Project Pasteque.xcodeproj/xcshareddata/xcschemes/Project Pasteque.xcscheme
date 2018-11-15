@@ -44,7 +44,7 @@
       allowLocationSimulation = "YES">
       <PathRunnable
          runnableDebuggingMode = "0"
-         FilePath = "/Users/piergabory/Developer/IMAC/Project Pasteque/Project Pasteque/product">
+         FilePath = "/Users/piergabory/Developer/IMAC/Project Pasteque/Project Pasteque/bin/product">
       </PathRunnable>
       <MacroExpansion>
          <BuildableReference
