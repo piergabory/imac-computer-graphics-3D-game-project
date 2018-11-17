@@ -7,7 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D46A4A4521A0CBEC0096F02F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A4421A0CBEC0096F02F /* main.cpp */; };
+		D46A4A7421A0CE220096F02F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A7321A0CE220096F02F /* main.cpp */; };
+		D46A4A7521A0CE860096F02F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A3621A0C5960096F02F /* OpenGL.framework */; };
+		D46A4A7621A0CE940096F02F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A3A21A0C5CA0096F02F /* Cocoa.framework */; };
+		D46A4A7721A0CE9D0096F02F /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A3821A0C5B40096F02F /* SDL2.framework */; };
+		D46A4A7F21A0CFC50096F02F /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A7821A0CEEC0096F02F /* libGLEW.2.1.0.dylib */; };
+		D46A4A8121A0D0B50096F02F /* Exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6521A0CE110096F02F /* Exceptions.cpp */; };
+		D46A4A8221A0D0B50096F02F /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6621A0CE110096F02F /* Window.cpp */; };
+		D46A4A8321A0D0B50096F02F /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6721A0CE110096F02F /* Object.cpp */; };
+		D46A4A8421A0D0B50096F02F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6821A0CE110096F02F /* Shader.cpp */; };
+		D46A4A8521A0D0B50096F02F /* GraphicsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */; };
+		D46A4A8621A0D0B50096F02F /* CommonStructs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */; };
+		D46A4A8721A0D0B50096F02F /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6B21A0CE110096F02F /* ShaderProgram.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,18 +34,34 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D46A496421A0C5130096F02F /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		D46A496521A0C5130096F02F /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		D46A496A21A0C5130096F02F /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D46A496521A0C5130096F02F /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
 		D46A496D21A0C5130096F02F /* product.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = product.dSYM; sourceTree = "<group>"; };
 		D46A496E21A0C5130096F02F /* product */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = product; sourceTree = "<group>"; };
-		D46A497221A0C5130096F02F /* frameworks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = frameworks.h; sourceTree = "<group>"; };
 		D46A4A3021A0C5130096F02F /* main.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = main.o; sourceTree = "<group>"; };
 		D46A4A3621A0C5960096F02F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		D46A4A3821A0C5B40096F02F /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		D46A4A3A21A0C5CA0096F02F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D46A4A4221A0CBEC0096F02F /* xcode target */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "xcode target"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D46A4A4421A0CBEC0096F02F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D46A4A4A21A0CD870096F02F /* GraphicsEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GraphicsEngine.hpp; sourceTree = "<group>"; };
+		D46A4A4B21A0CD870096F02F /* CommonStructs.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CommonStructs.hpp; sourceTree = "<group>"; };
+		D46A4A4C21A0CD870096F02F /* ShaderProgram.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderProgram.hpp; sourceTree = "<group>"; };
+		D46A4A4D21A0CD870096F02F /* Frameworks.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Frameworks.hpp; sourceTree = "<group>"; };
+		D46A4A4E21A0CD870096F02F /* Window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
+		D46A4A4F21A0CD870096F02F /* Object.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Object.hpp; sourceTree = "<group>"; };
+		D46A4A5021A0CD870096F02F /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
+		D46A4A5121A0CD870096F02F /* Exceptions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Exceptions.hpp; sourceTree = "<group>"; };
+		D46A4A6521A0CE110096F02F /* Exceptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exceptions.cpp; sourceTree = "<group>"; };
+		D46A4A6621A0CE110096F02F /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
+		D46A4A6721A0CE110096F02F /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
+		D46A4A6821A0CE110096F02F /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsEngine.cpp; sourceTree = "<group>"; };
+		D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CommonStructs.cpp; path = src/GraphicsEngine/CommonStructs.cpp; sourceTree = SOURCE_ROOT; };
+		D46A4A6B21A0CE110096F02F /* ShaderProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderProgram.cpp; path = src/GraphicsEngine/ShaderProgram.cpp; sourceTree = SOURCE_ROOT; };
+		D46A4A7321A0CE220096F02F /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D46A4A7821A0CEEC0096F02F /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../../../usr/local/Cellar/glew/2.1.0/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
+		D46A4A7C21A0CF120096F02F /* glxew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glxew.h; sourceTree = "<group>"; };
+		D46A4A7D21A0CF120096F02F /* wglew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wglew.h; sourceTree = "<group>"; };
+		D46A4A7E21A0CF120096F02F /* glew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glew.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +69,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D46A4A7F21A0CFC50096F02F /* libGLEW.2.1.0.dylib in Frameworks */,
+				D46A4A7721A0CE9D0096F02F /* SDL2.framework in Frameworks */,
+				D46A4A7621A0CE940096F02F /* Cocoa.framework in Frameworks */,
+				D46A4A7521A0CE860096F02F /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,14 +83,13 @@
 			isa = PBXGroup;
 			children = (
 				D46A496521A0C5130096F02F /* Makefile */,
+				D46A4A5221A0CDAF0096F02F /* lib */,
 				D46A496C21A0C5130096F02F /* bin */,
 				D46A496F21A0C5130096F02F /* includes */,
 				D46A496621A0C5130096F02F /* src */,
 				D46A4A2F21A0C5130096F02F /* obj */,
-				D46A496321A0C5130096F02F /* project */,
 				D46A496B21A0C5130096F02F /* shaders */,
 				D46A4A2E21A0C5130096F02F /* textures */,
-				D46A4A4321A0CBEC0096F02F /* xcode target */,
 				D46A488621A0C3F10096F02F /* Products */,
 				D46A4A3521A0C5960096F02F /* Frameworks */,
 			);
@@ -73,36 +103,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D46A496321A0C5130096F02F /* project */ = {
-			isa = PBXGroup;
-			children = (
-				D46A496421A0C5130096F02F /* .gitignore */,
-			);
-			path = project;
-			sourceTree = "<group>";
-		};
 		D46A496621A0C5130096F02F /* src */ = {
 			isa = PBXGroup;
 			children = (
-				D46A496721A0C5130096F02F /* GraphicsEngine */,
-				D46A496821A0C5130096F02F /* graphics */,
-				D46A496A21A0C5130096F02F /* main.cpp */,
+				D46A4A7321A0CE220096F02F /* main.cpp */,
+				D46A4A6421A0CE110096F02F /* GraphicsEngine */,
 			);
 			path = src;
-			sourceTree = "<group>";
-		};
-		D46A496721A0C5130096F02F /* GraphicsEngine */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = GraphicsEngine;
-			sourceTree = "<group>";
-		};
-		D46A496821A0C5130096F02F /* graphics */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = graphics;
 			sourceTree = "<group>";
 		};
 		D46A496B21A0C5130096F02F /* shaders */ = {
@@ -124,18 +131,9 @@
 		D46A496F21A0C5130096F02F /* includes */ = {
 			isa = PBXGroup;
 			children = (
-				D46A497021A0C5130096F02F /* graphics */,
-				D46A497321A0C5130096F02F /* glm */,
+				D46A4A4921A0CD870096F02F /* GraphicsEngine */,
 			);
 			path = includes;
-			sourceTree = "<group>";
-		};
-		D46A497021A0C5130096F02F /* graphics */ = {
-			isa = PBXGroup;
-			children = (
-				D46A497221A0C5130096F02F /* frameworks.h */,
-			);
-			path = graphics;
 			sourceTree = "<group>";
 		};
 		D46A497321A0C5130096F02F /* glm */ = {
@@ -1651,6 +1649,8 @@
 		D46A4A3521A0C5960096F02F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D46A4A7A21A0CF120096F02F /* include */,
+				D46A4A7821A0CEEC0096F02F /* libGLEW.2.1.0.dylib */,
 				D46A4A3A21A0C5CA0096F02F /* Cocoa.framework */,
 				D46A4A3821A0C5B40096F02F /* SDL2.framework */,
 				D46A4A3621A0C5960096F02F /* OpenGL.framework */,
@@ -1658,12 +1658,60 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D46A4A4321A0CBEC0096F02F /* xcode target */ = {
+		D46A4A4921A0CD870096F02F /* GraphicsEngine */ = {
 			isa = PBXGroup;
 			children = (
-				D46A4A4421A0CBEC0096F02F /* main.cpp */,
+				D46A4A4A21A0CD870096F02F /* GraphicsEngine.hpp */,
+				D46A4A4B21A0CD870096F02F /* CommonStructs.hpp */,
+				D46A4A4C21A0CD870096F02F /* ShaderProgram.hpp */,
+				D46A4A4D21A0CD870096F02F /* Frameworks.hpp */,
+				D46A4A4E21A0CD870096F02F /* Window.hpp */,
+				D46A4A4F21A0CD870096F02F /* Object.hpp */,
+				D46A4A5021A0CD870096F02F /* Shader.hpp */,
+				D46A4A5121A0CD870096F02F /* Exceptions.hpp */,
 			);
-			path = "xcode target";
+			path = GraphicsEngine;
+			sourceTree = "<group>";
+		};
+		D46A4A5221A0CDAF0096F02F /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				D46A497321A0C5130096F02F /* glm */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		D46A4A6421A0CE110096F02F /* GraphicsEngine */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A6521A0CE110096F02F /* Exceptions.cpp */,
+				D46A4A6621A0CE110096F02F /* Window.cpp */,
+				D46A4A6721A0CE110096F02F /* Object.cpp */,
+				D46A4A6821A0CE110096F02F /* Shader.cpp */,
+				D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */,
+				D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */,
+				D46A4A6B21A0CE110096F02F /* ShaderProgram.cpp */,
+			);
+			path = GraphicsEngine;
+			sourceTree = "<group>";
+		};
+		D46A4A7A21A0CF120096F02F /* include */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A7B21A0CF120096F02F /* GL */,
+			);
+			name = include;
+			path = ../../../../../usr/local/Cellar/glew/2.1.0/include;
+			sourceTree = "<group>";
+		};
+		D46A4A7B21A0CF120096F02F /* GL */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A7C21A0CF120096F02F /* glxew.h */,
+				D46A4A7D21A0CF120096F02F /* wglew.h */,
+				D46A4A7E21A0CF120096F02F /* glew.h */,
+			);
+			path = GL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1676,7 +1724,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = /Users/piergabory/Developer/IMAC/Projet_S2_CG_CPP;
+			buildWorkingDirectory = "$(SRCROOT)";
 			dependencies = (
 			);
 			name = make;
@@ -1743,7 +1791,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D46A4A4521A0CBEC0096F02F /* main.cpp in Sources */,
+				D46A4A8521A0D0B50096F02F /* GraphicsEngine.cpp in Sources */,
+				D46A4A8721A0D0B50096F02F /* ShaderProgram.cpp in Sources */,
+				D46A4A7421A0CE220096F02F /* main.cpp in Sources */,
+				D46A4A8221A0D0B50096F02F /* Window.cpp in Sources */,
+				D46A4A8621A0D0B50096F02F /* CommonStructs.cpp in Sources */,
+				D46A4A8321A0D0B50096F02F /* Object.cpp in Sources */,
+				D46A4A8121A0D0B50096F02F /* Exceptions.cpp in Sources */,
+				D46A4A8421A0D0B50096F02F /* Shader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1891,16 +1946,42 @@
 		D46A4A4721A0CBEC0096F02F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/glew/2.1.0/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glew/2.1.0/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USE_HEADERMAP = YES;
 			};
 			name = Debug;
 		};
 		D46A4A4821A0CBEC0096F02F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/glew/2.1.0/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glew/2.1.0/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USE_HEADERMAP = YES;
 			};
 			name = Release;
 		};

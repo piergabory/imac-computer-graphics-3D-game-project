@@ -17,14 +17,14 @@ APP_BIN = product
 
 # compile
 CC = g++
-CPPFLAGS = -Wall -g -Os
+CPPFLAGS = -std=c++11 -Wall -g -Os
 
 # paths
 # Source files
 SRC_PATH = src
 
 # Header files
-INC_PATH = -I"includes/"
+INC_PATH := $(addprefix -I,$(shell find ./includes -type d -print))
 
 # .o files
 OBJ_PATH = obj
@@ -57,7 +57,7 @@ OBJ_FILES = $(subst $(SRC_PATH)/%.cpp,$(OBJ_PATH)/%.o, $(SRC_FILES))
 
 # WINDOWS
 ifeq ($(OS),Windows_NT)
-	CPPFLAGS += -D Windows
+	CPPFLAGS += -D __MICROSOFT__
 
 # UNIX
 else
@@ -65,14 +65,19 @@ else
 
 	# LINUX
 	ifeq ($(UNAME_S),Linux)
-		CPPFLAGS += -D Linux
-		LDFLAGS = -lSDL2 -lGLU -lGL -lm
+		CPPFLAGS += -D __LINUX__
+		LDFLAGS = -lGL -lGLU -lGLEW -lSDL2 -lm 
 	endif
 
 	# MACINTOSH
 	ifeq ($(UNAME_S),Darwin)
-		CPPFLAGS += -D MacOS
-		LDFLAGS = -I/Library/Frameworks/SDL2.framework/Headers -F/Library/Frameworks -framework OpenGL -framework Cocoa
+		CPPFLAGS += -D __APPLE__
+
+		# Apple included frameworks
+		LDFLAGS =  -framework OpenGL -framework Cocoa
+
+		# Imported frameworks
+		LDFLAGS =  -F/Library/Frameworks -framework SDL2
 	endif
 endif
 

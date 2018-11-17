@@ -1,0 +1,41 @@
+//
+//  Exceptions.cpp
+//  product
+//
+//  Created by Pierre Gabory on 16/11/2018.
+//
+
+#include "Exceptions.hpp"
+
+namespace GraphicsEngine
+{
+    Exception::Exception(const char* message, const char* info) :
+        m_message(message), m_info(info)
+    {}
+    
+    
+    
+    Exception::Exception(const char* message, GLuint identifier) :
+        m_message(message)
+    {
+        GLint logCharacterLength;
+        glGetProgramiv(identifier, GL_INFO_LOG_LENGTH, &logCharacterLength);
+        char* text = new char[logCharacterLength];
+        glGetProgramInfoLog(identifier, logCharacterLength, 0, text);
+        
+        m_info = text;
+        delete [] text;
+    }
+    
+    
+    
+    const char* Exception::what() const throw()
+    {
+        std::string ret;
+        ret += "GRAPHICS ENGINE EXCEPTION :";
+        ret += m_message;
+        ret += " > ";
+        ret += m_info;
+        return ret.c_str();
+    }
+}

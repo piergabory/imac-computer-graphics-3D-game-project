@@ -6,10 +6,10 @@
 //  Copyright © 2018 Pierre Gabory. All rights reserved.
 //
 
-#include <iostream>
+#include "GraphicsEngine.hpp"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, Earth!\n";
+    GraphicsEngine::setup();
+    while (true);
     return 0;
 }
