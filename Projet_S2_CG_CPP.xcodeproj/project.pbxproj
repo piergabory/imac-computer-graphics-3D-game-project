@@ -1,0 +1,1940 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D46A4A4521A0CBEC0096F02F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A4421A0CBEC0096F02F /* main.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D46A4A4021A0CBEC0096F02F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D46A496421A0C5130096F02F /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		D46A496521A0C5130096F02F /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		D46A496A21A0C5130096F02F /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D46A496D21A0C5130096F02F /* product.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = product.dSYM; sourceTree = "<group>"; };
+		D46A496E21A0C5130096F02F /* product */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = product; sourceTree = "<group>"; };
+		D46A497221A0C5130096F02F /* frameworks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = frameworks.h; sourceTree = "<group>"; };
+		D46A4A3021A0C5130096F02F /* main.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = main.o; sourceTree = "<group>"; };
+		D46A4A3621A0C5960096F02F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		D46A4A3821A0C5B40096F02F /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		D46A4A3A21A0C5CA0096F02F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		D46A4A4221A0CBEC0096F02F /* xcode target */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "xcode target"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D46A4A4421A0CBEC0096F02F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D46A4A3F21A0CBEC0096F02F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D46A487C21A0C3F10096F02F = {
+			isa = PBXGroup;
+			children = (
+				D46A496521A0C5130096F02F /* Makefile */,
+				D46A496C21A0C5130096F02F /* bin */,
+				D46A496F21A0C5130096F02F /* includes */,
+				D46A496621A0C5130096F02F /* src */,
+				D46A4A2F21A0C5130096F02F /* obj */,
+				D46A496321A0C5130096F02F /* project */,
+				D46A496B21A0C5130096F02F /* shaders */,
+				D46A4A2E21A0C5130096F02F /* textures */,
+				D46A4A4321A0CBEC0096F02F /* xcode target */,
+				D46A488621A0C3F10096F02F /* Products */,
+				D46A4A3521A0C5960096F02F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D46A488621A0C3F10096F02F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A4221A0CBEC0096F02F /* xcode target */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D46A496321A0C5130096F02F /* project */ = {
+			isa = PBXGroup;
+			children = (
+				D46A496421A0C5130096F02F /* .gitignore */,
+			);
+			path = project;
+			sourceTree = "<group>";
+		};
+		D46A496621A0C5130096F02F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				D46A496721A0C5130096F02F /* GraphicsEngine */,
+				D46A496821A0C5130096F02F /* graphics */,
+				D46A496A21A0C5130096F02F /* main.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		D46A496721A0C5130096F02F /* GraphicsEngine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GraphicsEngine;
+			sourceTree = "<group>";
+		};
+		D46A496821A0C5130096F02F /* graphics */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = graphics;
+			sourceTree = "<group>";
+		};
+		D46A496B21A0C5130096F02F /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
+		D46A496C21A0C5130096F02F /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				D46A496D21A0C5130096F02F /* product.dSYM */,
+				D46A496E21A0C5130096F02F /* product */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		D46A496F21A0C5130096F02F /* includes */ = {
+			isa = PBXGroup;
+			children = (
+				D46A497021A0C5130096F02F /* graphics */,
+				D46A497321A0C5130096F02F /* glm */,
+			);
+			path = includes;
+			sourceTree = "<group>";
+		};
+		D46A497021A0C5130096F02F /* graphics */ = {
+			isa = PBXGroup;
+			children = (
+				D46A497221A0C5130096F02F /* frameworks.h */,
+			);
+			path = graphics;
+			sourceTree = "<group>";
+		};
+		D46A497321A0C5130096F02F /* glm */ = {
+			isa = PBXGroup;
+			children = (
+				D46A497421A0C5130096F02F /* test */,
+				D46A4A1A21A0C5130096F02F /* cmake */,
+				D46A4A1B21A0C5130096F02F /* CMakeFiles */,
+				D46A4A2521A0C5130096F02F /* lib */,
+				D46A4A2821A0C5130096F02F /* glm */,
+			);
+			path = glm;
+			sourceTree = "<group>";
+		};
+		D46A497421A0C5130096F02F /* test */ = {
+			isa = PBXGroup;
+			children = (
+				D46A497521A0C5130096F02F /* core */,
+				D46A49A421A0C5130096F02F /* CMakeFiles */,
+				D46A49A521A0C5130096F02F /* ext */,
+				D46A49BD21A0C5130096F02F /* bug */,
+				D46A49C021A0C5130096F02F /* gtc */,
+				D46A49D621A0C5130096F02F /* gtx */,
+				D46A4A1221A0C5130096F02F /* perf */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		D46A497521A0C5130096F02F /* core */ = {
+			isa = PBXGroup;
+			children = (
+				D46A497621A0C5130096F02F /* CMakeFiles */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		D46A497621A0C5130096F02F /* CMakeFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D46A497721A0C5130096F02F /* test-core_type_vec3.dir */,
+				D46A497821A0C5130096F02F /* test-core_type_mat3x4.dir */,
+				D46A497921A0C5130096F02F /* test-core_type_vec2.dir */,
+				D46A497A21A0C5130096F02F /* test-core_func_swizzle.dir */,
+				D46A497B21A0C5130096F02F /* test-core_func_matrix.dir */,
+				D46A497C21A0C5130096F02F /* test-core_type_vec1.dir */,
+				D46A497D21A0C5130096F02F /* test-core_type_mat3x2.dir */,
+				D46A497E21A0C5130096F02F /* test-core_type_cast.dir */,
+				D46A497F21A0C5130096F02F /* test-core_type_mat3x3.dir */,
+				D46A498021A0C5130096F02F /* test-core_type_vec4.dir */,
+				D46A498121A0C5130096F02F /* test-core_func_exponential.dir */,
+				D46A498221A0C5130096F02F /* test-core_force_aligned_gentypes.dir */,
+				D46A498321A0C5130096F02F /* test-core_type_mat2x4.dir */,
+				D46A498421A0C5130096F02F /* test-core_type_mat4x2.dir */,
+				D46A498521A0C5130096F02F /* test-core_type_ctor.dir */,
+				D46A498621A0C5130096F02F /* test-core_type_mat4x3.dir */,
+				D46A498721A0C5130096F02F /* test-core_type_aligned.dir */,
+				D46A498821A0C5130096F02F /* test-core_setup_platform_unknown.dir */,
+				D46A498921A0C5130096F02F /* test-core_type_mat2x2.dir */,
+				D46A498A21A0C5130096F02F /* test-core_cpp_defaulted_ctor.dir */,
+				D46A498B21A0C5130096F02F /* test-core_func_vector_relational.dir */,
+				D46A498C21A0C5130096F02F /* test-core_type_mat4x4.dir */,
+				D46A498D21A0C5130096F02F /* test-core_type_mat2x3.dir */,
+				D46A498E21A0C5130096F02F /* test-core_force_unrestricted_gentype.dir */,
+				D46A498F21A0C5130096F02F /* test-core_force_inline.dir */,
+				D46A499021A0C5130096F02F /* test-core_func_trigonometric.dir */,
+				D46A499121A0C5130096F02F /* test-core_func_integer_find_lsb.dir */,
+				D46A499221A0C5130096F02F /* test-core_force_explicit_ctor.dir */,
+				D46A499321A0C5130096F02F /* test-core_func_common.dir */,
+				D46A499421A0C5130096F02F /* test-core_func_integer.dir */,
+				D46A499521A0C5130096F02F /* test-core_cpp_constexpr.dir */,
+				D46A499621A0C5130096F02F /* test-core_force_xyzw_only.dir */,
+				D46A499721A0C5130096F02F /* test-core_type_length.dir */,
+				D46A499821A0C5130096F02F /* test-core_func_noise.dir */,
+				D46A499921A0C5130096F02F /* test-core_setup_force_cxx98.dir */,
+				D46A499A21A0C5130096F02F /* test-core_func_integer_bit_count.dir */,
+				D46A499B21A0C5130096F02F /* test-core_force_pure.dir */,
+				D46A499C21A0C5130096F02F /* test-core_setup_force_size_t_length.dir */,
+				D46A499D21A0C5130096F02F /* test-core_func_packing.dir */,
+				D46A499E21A0C5130096F02F /* test-core_setup_message.dir */,
+				D46A499F21A0C5130096F02F /* test-core_setup_precision.dir */,
+				D46A49A021A0C5130096F02F /* test-core_func_geometric.dir */,
+				D46A49A121A0C5130096F02F /* test-core_type_int.dir */,
+				D46A49A221A0C5130096F02F /* test-core_func_integer_find_msb.dir */,
+				D46A49A321A0C5130096F02F /* test-core_force_ctor_init.dir */,
+			);
+			path = CMakeFiles;
+			sourceTree = "<group>";
+		};
+		D46A497721A0C5130096F02F /* test-core_type_vec3.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_vec3.dir";
+			sourceTree = "<group>";
+		};
+		D46A497821A0C5130096F02F /* test-core_type_mat3x4.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_mat3x4.dir";
+			sourceTree = "<group>";
+		};
+		D46A497921A0C5130096F02F /* test-core_type_vec2.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_vec2.dir";
+			sourceTree = "<group>";
+		};
+		D46A497A21A0C5130096F02F /* test-core_func_swizzle.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_func_swizzle.dir";
+			sourceTree = "<group>";
+		};
+		D46A497B21A0C5130096F02F /* test-core_func_matrix.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_func_matrix.dir";
+			sourceTree = "<group>";
+		};
+		D46A497C21A0C5130096F02F /* test-core_type_vec1.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_vec1.dir";
+			sourceTree = "<group>";
+		};
+		D46A497D21A0C5130096F02F /* test-core_type_mat3x2.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_mat3x2.dir";
+			sourceTree = "<group>";
+		};
+		D46A497E21A0C5130096F02F /* test-core_type_cast.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_cast.dir";
+			sourceTree = "<group>";
+		};
+		D46A497F21A0C5130096F02F /* test-core_type_mat3x3.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_mat3x3.dir";
+			sourceTree = "<group>";
+		};
+		D46A498021A0C5130096F02F /* test-core_type_vec4.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_vec4.dir";
+			sourceTree = "<group>";
+		};
+		D46A498121A0C5130096F02F /* test-core_func_exponential.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_func_exponential.dir";
+			sourceTree = "<group>";
+		};
+		D46A498221A0C5130096F02F /* test-core_force_aligned_gentypes.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_force_aligned_gentypes.dir";
+			sourceTree = "<group>";
+		};
+		D46A498321A0C5130096F02F /* test-core_type_mat2x4.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_mat2x4.dir";
+			sourceTree = "<group>";
+		};
+		D46A498421A0C5130096F02F /* test-core_type_mat4x2.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_mat4x2.dir";
+			sourceTree = "<group>";
+		};
+		D46A498521A0C5130096F02F /* test-core_type_ctor.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_ctor.dir";
+			sourceTree = "<group>";
+		};
+		D46A498621A0C5130096F02F /* test-core_type_mat4x3.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_mat4x3.dir";
+			sourceTree = "<group>";
+		};
+		D46A498721A0C5130096F02F /* test-core_type_aligned.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_aligned.dir";
+			sourceTree = "<group>";
+		};
+		D46A498821A0C5130096F02F /* test-core_setup_platform_unknown.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_setup_platform_unknown.dir";
+			sourceTree = "<group>";
+		};
+		D46A498921A0C5130096F02F /* test-core_type_mat2x2.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_mat2x2.dir";
+			sourceTree = "<group>";
+		};
+		D46A498A21A0C5130096F02F /* test-core_cpp_defaulted_ctor.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_cpp_defaulted_ctor.dir";
+			sourceTree = "<group>";
+		};
+		D46A498B21A0C5130096F02F /* test-core_func_vector_relational.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_func_vector_relational.dir";
+			sourceTree = "<group>";
+		};
+		D46A498C21A0C5130096F02F /* test-core_type_mat4x4.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_mat4x4.dir";
+			sourceTree = "<group>";
+		};
+		D46A498D21A0C5130096F02F /* test-core_type_mat2x3.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_mat2x3.dir";
+			sourceTree = "<group>";
+		};
+		D46A498E21A0C5130096F02F /* test-core_force_unrestricted_gentype.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_force_unrestricted_gentype.dir";
+			sourceTree = "<group>";
+		};
+		D46A498F21A0C5130096F02F /* test-core_force_inline.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_force_inline.dir";
+			sourceTree = "<group>";
+		};
+		D46A499021A0C5130096F02F /* test-core_func_trigonometric.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_func_trigonometric.dir";
+			sourceTree = "<group>";
+		};
+		D46A499121A0C5130096F02F /* test-core_func_integer_find_lsb.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_func_integer_find_lsb.dir";
+			sourceTree = "<group>";
+		};
+		D46A499221A0C5130096F02F /* test-core_force_explicit_ctor.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_force_explicit_ctor.dir";
+			sourceTree = "<group>";
+		};
+		D46A499321A0C5130096F02F /* test-core_func_common.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_func_common.dir";
+			sourceTree = "<group>";
+		};
+		D46A499421A0C5130096F02F /* test-core_func_integer.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_func_integer.dir";
+			sourceTree = "<group>";
+		};
+		D46A499521A0C5130096F02F /* test-core_cpp_constexpr.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_cpp_constexpr.dir";
+			sourceTree = "<group>";
+		};
+		D46A499621A0C5130096F02F /* test-core_force_xyzw_only.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_force_xyzw_only.dir";
+			sourceTree = "<group>";
+		};
+		D46A499721A0C5130096F02F /* test-core_type_length.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_length.dir";
+			sourceTree = "<group>";
+		};
+		D46A499821A0C5130096F02F /* test-core_func_noise.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_func_noise.dir";
+			sourceTree = "<group>";
+		};
+		D46A499921A0C5130096F02F /* test-core_setup_force_cxx98.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_setup_force_cxx98.dir";
+			sourceTree = "<group>";
+		};
+		D46A499A21A0C5130096F02F /* test-core_func_integer_bit_count.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_func_integer_bit_count.dir";
+			sourceTree = "<group>";
+		};
+		D46A499B21A0C5130096F02F /* test-core_force_pure.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_force_pure.dir";
+			sourceTree = "<group>";
+		};
+		D46A499C21A0C5130096F02F /* test-core_setup_force_size_t_length.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_setup_force_size_t_length.dir";
+			sourceTree = "<group>";
+		};
+		D46A499D21A0C5130096F02F /* test-core_func_packing.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_func_packing.dir";
+			sourceTree = "<group>";
+		};
+		D46A499E21A0C5130096F02F /* test-core_setup_message.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_setup_message.dir";
+			sourceTree = "<group>";
+		};
+		D46A499F21A0C5130096F02F /* test-core_setup_precision.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_setup_precision.dir";
+			sourceTree = "<group>";
+		};
+		D46A49A021A0C5130096F02F /* test-core_func_geometric.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_func_geometric.dir";
+			sourceTree = "<group>";
+		};
+		D46A49A121A0C5130096F02F /* test-core_type_int.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_type_int.dir";
+			sourceTree = "<group>";
+		};
+		D46A49A221A0C5130096F02F /* test-core_func_integer_find_msb.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_func_integer_find_msb.dir";
+			sourceTree = "<group>";
+		};
+		D46A49A321A0C5130096F02F /* test-core_force_ctor_init.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-core_force_ctor_init.dir";
+			sourceTree = "<group>";
+		};
+		D46A49A421A0C5130096F02F /* CMakeFiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CMakeFiles;
+			sourceTree = "<group>";
+		};
+		D46A49A521A0C5130096F02F /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				D46A49A621A0C5130096F02F /* CMakeFiles */,
+			);
+			path = ext;
+			sourceTree = "<group>";
+		};
+		D46A49A621A0C5130096F02F /* CMakeFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D46A49A721A0C5130096F02F /* test-ext_scalar_ulp.dir */,
+				D46A49A821A0C5130096F02F /* test-ext_matrix_relational.dir */,
+				D46A49A921A0C5130096F02F /* test-ext_quaternion_type.dir */,
+				D46A49AA21A0C5130096F02F /* test-ext_scalar_relational.dir */,
+				D46A49AB21A0C5130096F02F /* test-ext_quaternion_relational.dir */,
+				D46A49AC21A0C5130096F02F /* test-ext_vec1.dir */,
+				D46A49AD21A0C5130096F02F /* test-ext_scalar_uint_sized.dir */,
+				D46A49AE21A0C5130096F02F /* test-ext_vector_ulp.dir */,
+				D46A49AF21A0C5130096F02F /* test-ext_scalar_int_sized.dir */,
+				D46A49B021A0C5130096F02F /* test-ext_quaternion_transform.dir */,
+				D46A49B121A0C5130096F02F /* test-ext_vector_iec559.dir */,
+				D46A49B221A0C5130096F02F /* test-ext_vector_bool1.dir */,
+				D46A49B321A0C5130096F02F /* test-ext_matrix_transform.dir */,
+				D46A49B421A0C5130096F02F /* test-ext_vector_common.dir */,
+				D46A49B521A0C5130096F02F /* test-ext_quaternion_geometric.dir */,
+				D46A49B621A0C5130096F02F /* test-ext_scalar_common.dir */,
+				D46A49B721A0C5130096F02F /* test-ext_vector_integer.dir */,
+				D46A49B821A0C5130096F02F /* test-ext_vector_relational.dir */,
+				D46A49B921A0C5130096F02F /* test-ext_quaternion_exponential.dir */,
+				D46A49BA21A0C5130096F02F /* test-ext_quaternion_common.dir */,
+				D46A49BB21A0C5130096F02F /* test-ext_scalar_constants.dir */,
+				D46A49BC21A0C5130096F02F /* test-ext_quaternion_trigonometric.dir */,
+			);
+			path = CMakeFiles;
+			sourceTree = "<group>";
+		};
+		D46A49A721A0C5130096F02F /* test-ext_scalar_ulp.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_scalar_ulp.dir";
+			sourceTree = "<group>";
+		};
+		D46A49A821A0C5130096F02F /* test-ext_matrix_relational.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_matrix_relational.dir";
+			sourceTree = "<group>";
+		};
+		D46A49A921A0C5130096F02F /* test-ext_quaternion_type.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_quaternion_type.dir";
+			sourceTree = "<group>";
+		};
+		D46A49AA21A0C5130096F02F /* test-ext_scalar_relational.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_scalar_relational.dir";
+			sourceTree = "<group>";
+		};
+		D46A49AB21A0C5130096F02F /* test-ext_quaternion_relational.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_quaternion_relational.dir";
+			sourceTree = "<group>";
+		};
+		D46A49AC21A0C5130096F02F /* test-ext_vec1.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_vec1.dir";
+			sourceTree = "<group>";
+		};
+		D46A49AD21A0C5130096F02F /* test-ext_scalar_uint_sized.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_scalar_uint_sized.dir";
+			sourceTree = "<group>";
+		};
+		D46A49AE21A0C5130096F02F /* test-ext_vector_ulp.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_vector_ulp.dir";
+			sourceTree = "<group>";
+		};
+		D46A49AF21A0C5130096F02F /* test-ext_scalar_int_sized.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_scalar_int_sized.dir";
+			sourceTree = "<group>";
+		};
+		D46A49B021A0C5130096F02F /* test-ext_quaternion_transform.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_quaternion_transform.dir";
+			sourceTree = "<group>";
+		};
+		D46A49B121A0C5130096F02F /* test-ext_vector_iec559.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_vector_iec559.dir";
+			sourceTree = "<group>";
+		};
+		D46A49B221A0C5130096F02F /* test-ext_vector_bool1.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_vector_bool1.dir";
+			sourceTree = "<group>";
+		};
+		D46A49B321A0C5130096F02F /* test-ext_matrix_transform.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_matrix_transform.dir";
+			sourceTree = "<group>";
+		};
+		D46A49B421A0C5130096F02F /* test-ext_vector_common.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_vector_common.dir";
+			sourceTree = "<group>";
+		};
+		D46A49B521A0C5130096F02F /* test-ext_quaternion_geometric.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_quaternion_geometric.dir";
+			sourceTree = "<group>";
+		};
+		D46A49B621A0C5130096F02F /* test-ext_scalar_common.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_scalar_common.dir";
+			sourceTree = "<group>";
+		};
+		D46A49B721A0C5130096F02F /* test-ext_vector_integer.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_vector_integer.dir";
+			sourceTree = "<group>";
+		};
+		D46A49B821A0C5130096F02F /* test-ext_vector_relational.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_vector_relational.dir";
+			sourceTree = "<group>";
+		};
+		D46A49B921A0C5130096F02F /* test-ext_quaternion_exponential.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_quaternion_exponential.dir";
+			sourceTree = "<group>";
+		};
+		D46A49BA21A0C5130096F02F /* test-ext_quaternion_common.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_quaternion_common.dir";
+			sourceTree = "<group>";
+		};
+		D46A49BB21A0C5130096F02F /* test-ext_scalar_constants.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_scalar_constants.dir";
+			sourceTree = "<group>";
+		};
+		D46A49BC21A0C5130096F02F /* test-ext_quaternion_trigonometric.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-ext_quaternion_trigonometric.dir";
+			sourceTree = "<group>";
+		};
+		D46A49BD21A0C5130096F02F /* bug */ = {
+			isa = PBXGroup;
+			children = (
+				D46A49BE21A0C5130096F02F /* CMakeFiles */,
+			);
+			path = bug;
+			sourceTree = "<group>";
+		};
+		D46A49BE21A0C5130096F02F /* CMakeFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D46A49BF21A0C5130096F02F /* test-bug_ms_vec_static.dir */,
+			);
+			path = CMakeFiles;
+			sourceTree = "<group>";
+		};
+		D46A49BF21A0C5130096F02F /* test-bug_ms_vec_static.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-bug_ms_vec_static.dir";
+			sourceTree = "<group>";
+		};
+		D46A49C021A0C5130096F02F /* gtc */ = {
+			isa = PBXGroup;
+			children = (
+				D46A49C121A0C5130096F02F /* CMakeFiles */,
+			);
+			path = gtc;
+			sourceTree = "<group>";
+		};
+		D46A49C121A0C5130096F02F /* CMakeFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D46A49C221A0C5130096F02F /* test-gtc_integer.dir */,
+				D46A49C321A0C5130096F02F /* test-gtc_packing.dir */,
+				D46A49C421A0C5130096F02F /* test-gtc_ulp.dir */,
+				D46A49C521A0C5130096F02F /* test-gtc_type_ptr.dir */,
+				D46A49C621A0C5130096F02F /* test-gtc_round.dir */,
+				D46A49C721A0C5130096F02F /* test-gtc_constants.dir */,
+				D46A49C821A0C5130096F02F /* test-gtc_matrix_access.dir */,
+				D46A49C921A0C5130096F02F /* test-gtc_random.dir */,
+				D46A49CA21A0C5130096F02F /* test-gtc_quaternion.dir */,
+				D46A49CB21A0C5130096F02F /* test-gtc_color_space.dir */,
+				D46A49CC21A0C5130096F02F /* test-gtc_type_aligned.dir */,
+				D46A49CD21A0C5130096F02F /* test-gtc_type_precision.dir */,
+				D46A49CE21A0C5130096F02F /* test-gtc_vec1.dir */,
+				D46A49CF21A0C5130096F02F /* test-gtc_bitfield.dir */,
+				D46A49D021A0C5130096F02F /* test-gtc_matrix_transform.dir */,
+				D46A49D121A0C5130096F02F /* test-gtc_noise.dir */,
+				D46A49D221A0C5130096F02F /* test-gtc_matrix_inverse.dir */,
+				D46A49D321A0C5130096F02F /* test-gtc_matrix_integer.dir */,
+				D46A49D421A0C5130096F02F /* test-gtc_reciprocal.dir */,
+				D46A49D521A0C5130096F02F /* test-gtc_epsilon.dir */,
+			);
+			path = CMakeFiles;
+			sourceTree = "<group>";
+		};
+		D46A49C221A0C5130096F02F /* test-gtc_integer.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_integer.dir";
+			sourceTree = "<group>";
+		};
+		D46A49C321A0C5130096F02F /* test-gtc_packing.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_packing.dir";
+			sourceTree = "<group>";
+		};
+		D46A49C421A0C5130096F02F /* test-gtc_ulp.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_ulp.dir";
+			sourceTree = "<group>";
+		};
+		D46A49C521A0C5130096F02F /* test-gtc_type_ptr.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_type_ptr.dir";
+			sourceTree = "<group>";
+		};
+		D46A49C621A0C5130096F02F /* test-gtc_round.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_round.dir";
+			sourceTree = "<group>";
+		};
+		D46A49C721A0C5130096F02F /* test-gtc_constants.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_constants.dir";
+			sourceTree = "<group>";
+		};
+		D46A49C821A0C5130096F02F /* test-gtc_matrix_access.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_matrix_access.dir";
+			sourceTree = "<group>";
+		};
+		D46A49C921A0C5130096F02F /* test-gtc_random.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_random.dir";
+			sourceTree = "<group>";
+		};
+		D46A49CA21A0C5130096F02F /* test-gtc_quaternion.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_quaternion.dir";
+			sourceTree = "<group>";
+		};
+		D46A49CB21A0C5130096F02F /* test-gtc_color_space.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_color_space.dir";
+			sourceTree = "<group>";
+		};
+		D46A49CC21A0C5130096F02F /* test-gtc_type_aligned.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_type_aligned.dir";
+			sourceTree = "<group>";
+		};
+		D46A49CD21A0C5130096F02F /* test-gtc_type_precision.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_type_precision.dir";
+			sourceTree = "<group>";
+		};
+		D46A49CE21A0C5130096F02F /* test-gtc_vec1.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_vec1.dir";
+			sourceTree = "<group>";
+		};
+		D46A49CF21A0C5130096F02F /* test-gtc_bitfield.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_bitfield.dir";
+			sourceTree = "<group>";
+		};
+		D46A49D021A0C5130096F02F /* test-gtc_matrix_transform.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_matrix_transform.dir";
+			sourceTree = "<group>";
+		};
+		D46A49D121A0C5130096F02F /* test-gtc_noise.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_noise.dir";
+			sourceTree = "<group>";
+		};
+		D46A49D221A0C5130096F02F /* test-gtc_matrix_inverse.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_matrix_inverse.dir";
+			sourceTree = "<group>";
+		};
+		D46A49D321A0C5130096F02F /* test-gtc_matrix_integer.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_matrix_integer.dir";
+			sourceTree = "<group>";
+		};
+		D46A49D421A0C5130096F02F /* test-gtc_reciprocal.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_reciprocal.dir";
+			sourceTree = "<group>";
+		};
+		D46A49D521A0C5130096F02F /* test-gtc_epsilon.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtc_epsilon.dir";
+			sourceTree = "<group>";
+		};
+		D46A49D621A0C5130096F02F /* gtx */ = {
+			isa = PBXGroup;
+			children = (
+				D46A49D721A0C5130096F02F /* CMakeFiles */,
+			);
+			path = gtx;
+			sourceTree = "<group>";
+		};
+		D46A49D721A0C5130096F02F /* CMakeFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D46A49D821A0C5130096F02F /* test-gtx_associated_min_max.dir */,
+				D46A49D921A0C5130096F02F /* test-gtx_range.dir */,
+				D46A49DA21A0C5130096F02F /* test-gtx_matrix_cross_product.dir */,
+				D46A49DB21A0C5130096F02F /* test-gtx_color_space.dir */,
+				D46A49DC21A0C5130096F02F /* test-gtx_matrix_operation.dir */,
+				D46A49DD21A0C5130096F02F /* test-gtx_rotate_normalized_axis.dir */,
+				D46A49DE21A0C5130096F02F /* test-gtx_texture.dir */,
+				D46A49DF21A0C5130096F02F /* test-gtx_vec_swizzle.dir */,
+				D46A49E021A0C5130096F02F /* test-gtx_io.dir */,
+				D46A49E121A0C5130096F02F /* test-gtx_common.dir */,
+				D46A49E221A0C5130096F02F /* test-gtx_type_aligned.dir */,
+				D46A49E321A0C5130096F02F /* test-gtx_normalize_dot.dir */,
+				D46A49E421A0C5130096F02F /* test-gtx_easing.dir */,
+				D46A49E521A0C5130096F02F /* test-gtx_normal.dir */,
+				D46A49E621A0C5130096F02F /* test-gtx_handed_coordinate_space.dir */,
+				D46A49E721A0C5130096F02F /* test-gtx_load.dir */,
+				D46A49E821A0C5130096F02F /* test-gtx_matrix_interpolation.dir */,
+				D46A49E921A0C5130096F02F /* test-gtx_euler_angle.dir */,
+				D46A49EA21A0C5130096F02F /* test-gtx_vector_query.dir */,
+				D46A49EB21A0C5130096F02F /* test-gtx_gradient_paint.dir */,
+				D46A49EC21A0C5130096F02F /* test-gtx_color_space_YCoCg.dir */,
+				D46A49ED21A0C5130096F02F /* test-gtx_compatibility.dir */,
+				D46A49EE21A0C5130096F02F /* test-gtx_fast_trigonometry.dir */,
+				D46A49EF21A0C5130096F02F /* test-gtx_scalar_multiplication.dir */,
+				D46A49F021A0C5130096F02F /* test-gtx_perpendicular.dir */,
+				D46A49F121A0C5130096F02F /* test-gtx_fast_exponential.dir */,
+				D46A49F221A0C5130096F02F /* test-gtx_projection.dir */,
+				D46A49F321A0C5130096F02F /* test-gtx_matrix_decompose.dir */,
+				D46A49F421A0C5130096F02F /* test-gtx_intersect.dir */,
+				D46A49F521A0C5130096F02F /* test-gtx_dual_quaternion.dir */,
+				D46A49F621A0C5130096F02F /* test-gtx_log_base.dir */,
+				D46A49F721A0C5130096F02F /* test-gtx_extend.dir */,
+				D46A49F821A0C5130096F02F /* test-gtx_number_precision.dir */,
+				D46A49F921A0C5130096F02F /* test-gtx_integer.dir */,
+				D46A49FA21A0C5130096F02F /* test-gtx_quaternion.dir */,
+				D46A49FB21A0C5130096F02F /* test-gtx_closest_point.dir */,
+				D46A49FC21A0C5130096F02F /* test-gtx_matrix_major_storage.dir */,
+				D46A49FD21A0C5130096F02F /* test-gtx_string_cast.dir */,
+				D46A49FE21A0C5130096F02F /* test-gtx_exterior_product.dir */,
+				D46A49FF21A0C5130096F02F /* test-gtx_type_trait.dir */,
+				D46A4A0021A0C5130096F02F /* test-gtx_functions.dir */,
+				D46A4A0121A0C5130096F02F /* test-gtx_rotate_vector.dir */,
+				D46A4A0221A0C5130096F02F /* test-gtx_matrix_factorisation.dir */,
+				D46A4A0321A0C5130096F02F /* test-gtx_vector_angle.dir */,
+				D46A4A0421A0C5130096F02F /* test-gtx_orthonormalize.dir */,
+				D46A4A0521A0C5130096F02F /* test-gtx_component_wise.dir */,
+				D46A4A0621A0C5130096F02F /* test-gtx_spline.dir */,
+				D46A4A0721A0C5130096F02F /* test-gtx_matrix_query.dir */,
+				D46A4A0821A0C5130096F02F /* test-gtx.dir */,
+				D46A4A0921A0C5130096F02F /* test-gtx_matrix_transform_2d.dir */,
+				D46A4A0A21A0C5130096F02F /* test-gtx_wrap.dir */,
+				D46A4A0B21A0C5130096F02F /* test-gtx_norm.dir */,
+				D46A4A0C21A0C5130096F02F /* test-gtx_color_encoding.dir */,
+				D46A4A0D21A0C5130096F02F /* test-gtx_scalar_relational.dir */,
+				D46A4A0E21A0C5130096F02F /* test-gtx_polar_coordinates.dir */,
+				D46A4A0F21A0C5130096F02F /* test-gtx_fast_square_root.dir */,
+				D46A4A1021A0C5130096F02F /* test-gtx_extended_min_max.dir */,
+				D46A4A1121A0C5130096F02F /* test-gtx_optimum_pow.dir */,
+			);
+			path = CMakeFiles;
+			sourceTree = "<group>";
+		};
+		D46A49D821A0C5130096F02F /* test-gtx_associated_min_max.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_associated_min_max.dir";
+			sourceTree = "<group>";
+		};
+		D46A49D921A0C5130096F02F /* test-gtx_range.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_range.dir";
+			sourceTree = "<group>";
+		};
+		D46A49DA21A0C5130096F02F /* test-gtx_matrix_cross_product.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_matrix_cross_product.dir";
+			sourceTree = "<group>";
+		};
+		D46A49DB21A0C5130096F02F /* test-gtx_color_space.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_color_space.dir";
+			sourceTree = "<group>";
+		};
+		D46A49DC21A0C5130096F02F /* test-gtx_matrix_operation.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_matrix_operation.dir";
+			sourceTree = "<group>";
+		};
+		D46A49DD21A0C5130096F02F /* test-gtx_rotate_normalized_axis.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_rotate_normalized_axis.dir";
+			sourceTree = "<group>";
+		};
+		D46A49DE21A0C5130096F02F /* test-gtx_texture.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_texture.dir";
+			sourceTree = "<group>";
+		};
+		D46A49DF21A0C5130096F02F /* test-gtx_vec_swizzle.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_vec_swizzle.dir";
+			sourceTree = "<group>";
+		};
+		D46A49E021A0C5130096F02F /* test-gtx_io.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_io.dir";
+			sourceTree = "<group>";
+		};
+		D46A49E121A0C5130096F02F /* test-gtx_common.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_common.dir";
+			sourceTree = "<group>";
+		};
+		D46A49E221A0C5130096F02F /* test-gtx_type_aligned.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_type_aligned.dir";
+			sourceTree = "<group>";
+		};
+		D46A49E321A0C5130096F02F /* test-gtx_normalize_dot.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_normalize_dot.dir";
+			sourceTree = "<group>";
+		};
+		D46A49E421A0C5130096F02F /* test-gtx_easing.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_easing.dir";
+			sourceTree = "<group>";
+		};
+		D46A49E521A0C5130096F02F /* test-gtx_normal.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_normal.dir";
+			sourceTree = "<group>";
+		};
+		D46A49E621A0C5130096F02F /* test-gtx_handed_coordinate_space.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_handed_coordinate_space.dir";
+			sourceTree = "<group>";
+		};
+		D46A49E721A0C5130096F02F /* test-gtx_load.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_load.dir";
+			sourceTree = "<group>";
+		};
+		D46A49E821A0C5130096F02F /* test-gtx_matrix_interpolation.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_matrix_interpolation.dir";
+			sourceTree = "<group>";
+		};
+		D46A49E921A0C5130096F02F /* test-gtx_euler_angle.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_euler_angle.dir";
+			sourceTree = "<group>";
+		};
+		D46A49EA21A0C5130096F02F /* test-gtx_vector_query.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_vector_query.dir";
+			sourceTree = "<group>";
+		};
+		D46A49EB21A0C5130096F02F /* test-gtx_gradient_paint.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_gradient_paint.dir";
+			sourceTree = "<group>";
+		};
+		D46A49EC21A0C5130096F02F /* test-gtx_color_space_YCoCg.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_color_space_YCoCg.dir";
+			sourceTree = "<group>";
+		};
+		D46A49ED21A0C5130096F02F /* test-gtx_compatibility.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_compatibility.dir";
+			sourceTree = "<group>";
+		};
+		D46A49EE21A0C5130096F02F /* test-gtx_fast_trigonometry.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_fast_trigonometry.dir";
+			sourceTree = "<group>";
+		};
+		D46A49EF21A0C5130096F02F /* test-gtx_scalar_multiplication.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_scalar_multiplication.dir";
+			sourceTree = "<group>";
+		};
+		D46A49F021A0C5130096F02F /* test-gtx_perpendicular.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_perpendicular.dir";
+			sourceTree = "<group>";
+		};
+		D46A49F121A0C5130096F02F /* test-gtx_fast_exponential.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_fast_exponential.dir";
+			sourceTree = "<group>";
+		};
+		D46A49F221A0C5130096F02F /* test-gtx_projection.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_projection.dir";
+			sourceTree = "<group>";
+		};
+		D46A49F321A0C5130096F02F /* test-gtx_matrix_decompose.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_matrix_decompose.dir";
+			sourceTree = "<group>";
+		};
+		D46A49F421A0C5130096F02F /* test-gtx_intersect.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_intersect.dir";
+			sourceTree = "<group>";
+		};
+		D46A49F521A0C5130096F02F /* test-gtx_dual_quaternion.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_dual_quaternion.dir";
+			sourceTree = "<group>";
+		};
+		D46A49F621A0C5130096F02F /* test-gtx_log_base.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_log_base.dir";
+			sourceTree = "<group>";
+		};
+		D46A49F721A0C5130096F02F /* test-gtx_extend.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_extend.dir";
+			sourceTree = "<group>";
+		};
+		D46A49F821A0C5130096F02F /* test-gtx_number_precision.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_number_precision.dir";
+			sourceTree = "<group>";
+		};
+		D46A49F921A0C5130096F02F /* test-gtx_integer.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_integer.dir";
+			sourceTree = "<group>";
+		};
+		D46A49FA21A0C5130096F02F /* test-gtx_quaternion.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_quaternion.dir";
+			sourceTree = "<group>";
+		};
+		D46A49FB21A0C5130096F02F /* test-gtx_closest_point.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_closest_point.dir";
+			sourceTree = "<group>";
+		};
+		D46A49FC21A0C5130096F02F /* test-gtx_matrix_major_storage.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_matrix_major_storage.dir";
+			sourceTree = "<group>";
+		};
+		D46A49FD21A0C5130096F02F /* test-gtx_string_cast.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_string_cast.dir";
+			sourceTree = "<group>";
+		};
+		D46A49FE21A0C5130096F02F /* test-gtx_exterior_product.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_exterior_product.dir";
+			sourceTree = "<group>";
+		};
+		D46A49FF21A0C5130096F02F /* test-gtx_type_trait.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_type_trait.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0021A0C5130096F02F /* test-gtx_functions.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_functions.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0121A0C5130096F02F /* test-gtx_rotate_vector.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_rotate_vector.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0221A0C5130096F02F /* test-gtx_matrix_factorisation.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_matrix_factorisation.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0321A0C5130096F02F /* test-gtx_vector_angle.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_vector_angle.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0421A0C5130096F02F /* test-gtx_orthonormalize.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_orthonormalize.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0521A0C5130096F02F /* test-gtx_component_wise.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_component_wise.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0621A0C5130096F02F /* test-gtx_spline.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_spline.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0721A0C5130096F02F /* test-gtx_matrix_query.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_matrix_query.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0821A0C5130096F02F /* test-gtx.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0921A0C5130096F02F /* test-gtx_matrix_transform_2d.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_matrix_transform_2d.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0A21A0C5130096F02F /* test-gtx_wrap.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_wrap.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0B21A0C5130096F02F /* test-gtx_norm.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_norm.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0C21A0C5130096F02F /* test-gtx_color_encoding.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_color_encoding.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0D21A0C5130096F02F /* test-gtx_scalar_relational.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_scalar_relational.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0E21A0C5130096F02F /* test-gtx_polar_coordinates.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_polar_coordinates.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A0F21A0C5130096F02F /* test-gtx_fast_square_root.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_fast_square_root.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A1021A0C5130096F02F /* test-gtx_extended_min_max.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_extended_min_max.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A1121A0C5130096F02F /* test-gtx_optimum_pow.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-gtx_optimum_pow.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A1221A0C5130096F02F /* perf */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A1321A0C5130096F02F /* CMakeFiles */,
+			);
+			path = perf;
+			sourceTree = "<group>";
+		};
+		D46A4A1321A0C5130096F02F /* CMakeFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A1421A0C5130096F02F /* test-perf_matrix_mul_vector.dir */,
+				D46A4A1521A0C5130096F02F /* test-perf_matrix_div.dir */,
+				D46A4A1621A0C5130096F02F /* test-perf_matrix_inverse.dir */,
+				D46A4A1721A0C5130096F02F /* test-perf_matrix_transpose.dir */,
+				D46A4A1821A0C5130096F02F /* test-perf_vector_mul_matrix.dir */,
+				D46A4A1921A0C5130096F02F /* test-perf_matrix_mul.dir */,
+			);
+			path = CMakeFiles;
+			sourceTree = "<group>";
+		};
+		D46A4A1421A0C5130096F02F /* test-perf_matrix_mul_vector.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-perf_matrix_mul_vector.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A1521A0C5130096F02F /* test-perf_matrix_div.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-perf_matrix_div.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A1621A0C5130096F02F /* test-perf_matrix_inverse.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-perf_matrix_inverse.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A1721A0C5130096F02F /* test-perf_matrix_transpose.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-perf_matrix_transpose.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A1821A0C5130096F02F /* test-perf_vector_mul_matrix.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-perf_vector_mul_matrix.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A1921A0C5130096F02F /* test-perf_matrix_mul.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "test-perf_matrix_mul.dir";
+			sourceTree = "<group>";
+		};
+		D46A4A1A21A0C5130096F02F /* cmake */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = cmake;
+			sourceTree = "<group>";
+		};
+		D46A4A1B21A0C5130096F02F /* CMakeFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A1C21A0C5130096F02F /* uninstall.dir */,
+				D46A4A1D21A0C5130096F02F /* 3.12.0 */,
+				D46A4A2021A0C5130096F02F /* CMakeTmp */,
+				D46A4A2121A0C5130096F02F /* Export */,
+			);
+			path = CMakeFiles;
+			sourceTree = "<group>";
+		};
+		D46A4A1C21A0C5130096F02F /* uninstall.dir */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = uninstall.dir;
+			sourceTree = "<group>";
+		};
+		D46A4A1D21A0C5130096F02F /* 3.12.0 */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A1E21A0C5130096F02F /* CompilerIdCXX */,
+			);
+			path = 3.12.0;
+			sourceTree = "<group>";
+		};
+		D46A4A1E21A0C5130096F02F /* CompilerIdCXX */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A1F21A0C5130096F02F /* tmp */,
+			);
+			path = CompilerIdCXX;
+			sourceTree = "<group>";
+		};
+		D46A4A1F21A0C5130096F02F /* tmp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = tmp;
+			sourceTree = "<group>";
+		};
+		D46A4A2021A0C5130096F02F /* CMakeTmp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CMakeTmp;
+			sourceTree = "<group>";
+		};
+		D46A4A2121A0C5130096F02F /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A2221A0C5130096F02F /* lib */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
+		D46A4A2221A0C5130096F02F /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A2321A0C5130096F02F /* cmake */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		D46A4A2321A0C5130096F02F /* cmake */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A2421A0C5130096F02F /* glm */,
+			);
+			path = cmake;
+			sourceTree = "<group>";
+		};
+		D46A4A2421A0C5130096F02F /* glm */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = glm;
+			sourceTree = "<group>";
+		};
+		D46A4A2521A0C5130096F02F /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A2621A0C5130096F02F /* cmake */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		D46A4A2621A0C5130096F02F /* cmake */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A2721A0C5130096F02F /* glm */,
+			);
+			path = cmake;
+			sourceTree = "<group>";
+		};
+		D46A4A2721A0C5130096F02F /* glm */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = glm;
+			sourceTree = "<group>";
+		};
+		D46A4A2821A0C5130096F02F /* glm */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A2921A0C5130096F02F /* CMakeFiles */,
+			);
+			path = glm;
+			sourceTree = "<group>";
+		};
+		D46A4A2921A0C5130096F02F /* CMakeFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A2A21A0C5130096F02F /* glm_shared.dir */,
+				D46A4A2C21A0C5130096F02F /* glm_static.dir */,
+			);
+			path = CMakeFiles;
+			sourceTree = "<group>";
+		};
+		D46A4A2A21A0C5130096F02F /* glm_shared.dir */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A2B21A0C5130096F02F /* detail */,
+			);
+			path = glm_shared.dir;
+			sourceTree = "<group>";
+		};
+		D46A4A2B21A0C5130096F02F /* detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = detail;
+			sourceTree = "<group>";
+		};
+		D46A4A2C21A0C5130096F02F /* glm_static.dir */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A2D21A0C5130096F02F /* detail */,
+			);
+			path = glm_static.dir;
+			sourceTree = "<group>";
+		};
+		D46A4A2D21A0C5130096F02F /* detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = detail;
+			sourceTree = "<group>";
+		};
+		D46A4A2E21A0C5130096F02F /* textures */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = textures;
+			sourceTree = "<group>";
+		};
+		D46A4A2F21A0C5130096F02F /* obj */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A3021A0C5130096F02F /* main.o */,
+			);
+			path = obj;
+			sourceTree = "<group>";
+		};
+		D46A4A3521A0C5960096F02F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A3A21A0C5CA0096F02F /* Cocoa.framework */,
+				D46A4A3821A0C5B40096F02F /* SDL2.framework */,
+				D46A4A3621A0C5960096F02F /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D46A4A4321A0CBEC0096F02F /* xcode target */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A4421A0CBEC0096F02F /* main.cpp */,
+			);
+			path = "xcode target";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		D46A495E21A0C4270096F02F /* make */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = D46A495F21A0C4270096F02F /* Build configuration list for PBXLegacyTarget "make" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = /Users/piergabory/Developer/IMAC/Projet_S2_CG_CPP;
+			dependencies = (
+			);
+			name = make;
+			passBuildSettingsInEnvironment = 1;
+			productName = make;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		D46A4A4121A0CBEC0096F02F /* xcode target */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D46A4A4621A0CBEC0096F02F /* Build configuration list for PBXNativeTarget "xcode target" */;
+			buildPhases = (
+				D46A4A3E21A0CBEC0096F02F /* Sources */,
+				D46A4A3F21A0CBEC0096F02F /* Frameworks */,
+				D46A4A4021A0CBEC0096F02F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "xcode target";
+			productName = "xcode target";
+			productReference = D46A4A4221A0CBEC0096F02F /* xcode target */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D46A487D21A0C3F10096F02F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Pierre Gabory";
+				TargetAttributes = {
+					D46A495E21A0C4270096F02F = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					D46A4A4121A0CBEC0096F02F = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = D46A488021A0C3F10096F02F /* Build configuration list for PBXProject "Projet_S2_CG_CPP" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D46A487C21A0C3F10096F02F;
+			productRefGroup = D46A488621A0C3F10096F02F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D46A495E21A0C4270096F02F /* make */,
+				D46A4A4121A0CBEC0096F02F /* xcode target */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D46A4A3E21A0CBEC0096F02F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D46A4A4521A0CBEC0096F02F /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D46A488A21A0C3F10096F02F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DSTROOT = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D46A488B21A0C3F10096F02F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D46A496021A0C4270096F02F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D46A496121A0C4270096F02F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D46A4A4721A0CBEC0096F02F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D46A4A4821A0CBEC0096F02F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D46A488021A0C3F10096F02F /* Build configuration list for PBXProject "Projet_S2_CG_CPP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D46A488A21A0C3F10096F02F /* Debug */,
+				D46A488B21A0C3F10096F02F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D46A495F21A0C4270096F02F /* Build configuration list for PBXLegacyTarget "make" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D46A496021A0C4270096F02F /* Debug */,
+				D46A496121A0C4270096F02F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D46A4A4621A0CBEC0096F02F /* Build configuration list for PBXNativeTarget "xcode target" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D46A4A4721A0CBEC0096F02F /* Debug */,
+				D46A4A4821A0CBEC0096F02F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D46A487D21A0C3F10096F02F /* Project object */;
+}

@@ -9,7 +9,7 @@
 #define frameworks_h
 
 // Mac OS
-#ifdef MacOS
+#if defined(MacOS) || defined(__APPLE__)
     #include <SDL2/SDL.h>
     #include <OpenGL/gl.h>
     #include <OpenGL/glu.h>
