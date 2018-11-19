@@ -19,9 +19,8 @@ namespace GraphicsEngine
     class Object
     {
     private:
-        GLuint vertexBufferObject;
-        GLuint vertexArrayObject;
-        
+        GLuint m_vertexBufferObject;
+        GLuint m_vertexArrayObject;
         int m_vertexCount;
         
         enum VertexAttributesIndices
@@ -32,11 +31,12 @@ namespace GraphicsEngine
         };
         
     public:
+        Object(): m_vertexBufferObject(0), m_vertexArrayObject(0), m_vertexCount(0) {};
         Object(std::vector<Vertex> vertices);
         ~Object();
         
         inline GLuint vertexArrayIdentifier() const {
-            return vertexArrayObject;
+            return m_vertexArrayObject;
         }
         
         inline int vertexCount() const  {

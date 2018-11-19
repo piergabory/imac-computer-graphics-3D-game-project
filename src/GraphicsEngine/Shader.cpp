@@ -27,7 +27,7 @@ namespace GraphicsEngine {
         std::stringstream buffer;
         const char* sourceCode;
         
-        if (! file.is_open()) throw Exception("Failed to open Shader file.", path);
+        if (! file.is_open()) throw InitialisationException("Failed to open Shader file.", path);
         buffer << file.rdbuf();
         sourceCode = buffer.str().c_str();
         
@@ -39,6 +39,6 @@ namespace GraphicsEngine {
         glCompileShader(m_glShaderIdentifier);
         GLint status;
         glGetShaderiv(m_glShaderIdentifier, GL_COMPILE_STATUS, &status);
-        if (status != GL_TRUE) throw Exception("Shader Compilation failed", m_glShaderIdentifier);
+        if (status != GL_TRUE) throw InitialisationException("Shader Compilation failed", m_glShaderIdentifier);
     }
 }

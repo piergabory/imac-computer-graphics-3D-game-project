@@ -17,12 +17,12 @@ namespace GraphicsEngine
             loadShader(vertexShaderSourcePath, GL_VERTEX_SHADER);
             loadShader(fragmentShaderSourcePath, GL_FRAGMENT_SHADER);
         }
-        catch (Exception error) { throw error; }
+        catch (InitialisationException error) { throw error; }
         
         glLinkProgram(m_glProgramIdentifier);
         GLint status;
         glGetProgramiv(m_glProgramIdentifier, GL_LINK_STATUS, &status);
-        if (status != GL_TRUE) throw Exception("Shader program link failed", m_glProgramIdentifier);
+        if (status != GL_TRUE) throw InitialisationException("Shader program link failed", m_glProgramIdentifier);
     }
     
     

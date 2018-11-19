@@ -17,7 +17,7 @@ namespace GraphicsEngine
         
         if (m_sdlWindow == nullptr)
         {
-            throw Exception("Failed to create SDL window", SDL_GetError());
+            throw InitialisationException("Failed to create SDL window", SDL_GetError());
         }
         
         m_glContext = SDL_GL_CreateContext(m_sdlWindow);

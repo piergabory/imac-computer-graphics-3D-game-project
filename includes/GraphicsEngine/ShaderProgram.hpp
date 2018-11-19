@@ -27,11 +27,11 @@ namespace GraphicsEngine
         std::string log() const;
         
     public:
-        inline const GLuint identifier() const noexcept{
+        inline const GLuint identifier() const {
             return m_glProgramIdentifier;
         }
         
-        inline void use() const noexcept{
+        inline void use() const {
             glUseProgram(m_glProgramIdentifier);
         }
         

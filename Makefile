@@ -109,5 +109,5 @@ run:
 
 # cleaning
 clean:
-	rm $(OBJ_FILES) $(BIN_PATH)/$(APP_BIN)
+	rm ./obj/*
 

@@ -10,6 +10,7 @@
 
 #include <fstream>
 #include <sstream>
+#include <string>
 
 #include "Frameworks.hpp"
 #include "Exceptions.hpp"

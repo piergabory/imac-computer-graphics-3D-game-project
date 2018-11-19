@@ -50,6 +50,7 @@ dependencies: \
   /Library/Frameworks/SDL2.framework/Headers/SDL_version.h \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Exceptions.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Window.hpp \
+  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Scene.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Object.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/CommonStructs.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/glm.hpp \

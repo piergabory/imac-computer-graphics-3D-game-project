@@ -9,13 +9,13 @@
 
 namespace GraphicsEngine
 {
-    Exception::Exception(const char* message, const char* info) :
+    InitialisationException::InitialisationException(const char* message, const char* info) :
         m_message(message), m_info(info)
     {}
     
     
     
-    Exception::Exception(const char* message, GLuint identifier) :
+    InitialisationException::InitialisationException(const char* message, GLuint identifier) :
         m_message(message)
     {
         GLint logCharacterLength;
@@ -29,7 +29,7 @@ namespace GraphicsEngine
     
     
     
-    const char* Exception::what() const throw()
+    const char* InitialisationException::what() const throw()
     {
         std::string ret;
         ret += "\n/!\\ GRAPHICS ENGINE EXCEPTION :";

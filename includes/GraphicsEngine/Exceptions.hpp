@@ -17,7 +17,7 @@
 namespace GraphicsEngine
 {
     
-    class Exception : std::exception
+    class InitialisationException : public std::exception
     {
         
     private:
@@ -25,13 +25,16 @@ namespace GraphicsEngine
         std::string m_info;
         
     public:
+        
         const char* what() const throw() override;
         
-        Exception(const char* message, const char* info);
+        InitialisationException(const char* message, const char* info);
         
-        Exception(const char* message, GLuint identifier);
+        InitialisationException(const char* message, GLuint identifier);
         
-        ~Exception() override {}
+        InitialisationException() {}
+        
+        ~InitialisationException() throw() {}
     };
 }
 

@@ -12,11 +12,11 @@ namespace GraphicsEngine
     Object::Object(std::vector<Vertex> vertices):
     m_vertexCount((int) vertices.size())
     {
-        glGenBuffers(1, &vertexBufferObject);
-        glGenVertexArrays(1, &vertexArrayObject);
+        glGenBuffers(1, &m_vertexBufferObject);
+        glGenVertexArrays(1, &m_vertexArrayObject);
         
-        glBindVertexArray(vertexArrayObject);
-        glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObject);
+        glBindVertexArray(m_vertexArrayObject);
+        glBindBuffer(GL_ARRAY_BUFFER, m_vertexBufferObject);
         
         glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), vertices.data(), GL_STATIC_DRAW);
         glVertexAttribPointer(Object::VERTEX_ATTR_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(vertices.size()), 0);
@@ -28,8 +28,8 @@ namespace GraphicsEngine
     }
     
     Object::~Object() {
-        glDeleteBuffers(1, &vertexBufferObject);
-        glDeleteVertexArrays(1, &vertexArrayObject);
+        glDeleteBuffers(1, &m_vertexBufferObject);
+        glDeleteVertexArrays(1, &m_vertexArrayObject);
     }
     
 }

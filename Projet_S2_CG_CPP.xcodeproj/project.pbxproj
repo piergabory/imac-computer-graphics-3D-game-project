@@ -19,6 +19,7 @@
 		D46A4A8521A0D0B50096F02F /* GraphicsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */; };
 		D46A4A8621A0D0B50096F02F /* CommonStructs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */; };
 		D46A4A8721A0D0B50096F02F /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6B21A0CE110096F02F /* ShaderProgram.cpp */; };
+		D46A4B9021A318F40096F02F /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4B8E21A318F40096F02F /* Scene.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +52,7 @@
 		D46A4A3621A0C5960096F02F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		D46A4A3821A0C5B40096F02F /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		D46A4A3A21A0C5CA0096F02F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		D46A4A4221A0CBEC0096F02F /* xcode target */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.executable"; path = "xcode target"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D46A4A4221A0CBEC0096F02F /* xcode target */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "xcode target"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46A4A4A21A0CD870096F02F /* GraphicsEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GraphicsEngine.hpp; sourceTree = "<group>"; };
 		D46A4A4B21A0CD870096F02F /* CommonStructs.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CommonStructs.hpp; sourceTree = "<group>"; };
 		D46A4A4C21A0CD870096F02F /* ShaderProgram.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderProgram.hpp; sourceTree = "<group>"; };
@@ -72,8 +73,10 @@
 		D46A4A7C21A0CF120096F02F /* glxew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glxew.h; sourceTree = "<group>"; };
 		D46A4A7D21A0CF120096F02F /* wglew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wglew.h; sourceTree = "<group>"; };
 		D46A4A7E21A0CF120096F02F /* glew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glew.h; sourceTree = "<group>"; };
-		D46A4B8C21A2FDF90096F02F /* triangle.vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = triangle.vs.glsl; sourceTree = "<group>"; };
-		D46A4B8D21A2FE020096F02F /* triangle.fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = triangle.fs.glsl; sourceTree = "<group>"; };
+		D46A4B8C21A2FDF90096F02F /* triangle.vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = triangle.vs.glsl; sourceTree = "<group>"; };
+		D46A4B8D21A2FE020096F02F /* triangle.fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = triangle.fs.glsl; sourceTree = "<group>"; };
+		D46A4B8E21A318F40096F02F /* Scene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
+		D46A4B8F21A318F40096F02F /* Scene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Scene.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +190,7 @@
 				D46A4A4F21A0CD870096F02F /* Object.hpp */,
 				D46A4A5021A0CD870096F02F /* Shader.hpp */,
 				D46A4A5121A0CD870096F02F /* Exceptions.hpp */,
+				D46A4B8F21A318F40096F02F /* Scene.hpp */,
 			);
 			path = GraphicsEngine;
 			sourceTree = "<group>";
@@ -198,6 +202,7 @@
 				D46A4A6621A0CE110096F02F /* Window.cpp */,
 				D46A4A6721A0CE110096F02F /* Object.cpp */,
 				D46A4A6821A0CE110096F02F /* Shader.cpp */,
+				D46A4B8E21A318F40096F02F /* Scene.cpp */,
 				D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */,
 				D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */,
 				D46A4A6B21A0CE110096F02F /* ShaderProgram.cpp */,
@@ -308,6 +313,7 @@
 				D46A4A8221A0D0B50096F02F /* Window.cpp in Sources */,
 				D46A4A8621A0D0B50096F02F /* CommonStructs.cpp in Sources */,
 				D46A4A8321A0D0B50096F02F /* Object.cpp in Sources */,
+				D46A4B9021A318F40096F02F /* Scene.cpp in Sources */,
 				D46A4A8121A0D0B50096F02F /* Exceptions.cpp in Sources */,
 				D46A4A8421A0D0B50096F02F /* Shader.cpp in Sources */,
 			);
@@ -467,8 +473,8 @@
 		D46A4A4721A0CBEC0096F02F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -492,8 +498,8 @@
 		D46A4A4821A0CBEC0096F02F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = (
