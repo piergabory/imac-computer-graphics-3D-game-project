@@ -13,9 +13,11 @@ namespace GraphicsEngine
     ShaderProgram::ShaderProgram(const char* vertexShaderSourcePath, const char* fragmentShaderSourcePath)
     : m_glProgramIdentifier(glCreateProgram())
     {
-        loadShader(vertexShaderSourcePath, GL_VERTEX_SHADER);
-        loadShader(fragmentShaderSourcePath, GL_FRAGMENT_SHADER);
-        
+        try {
+            loadShader(vertexShaderSourcePath, GL_VERTEX_SHADER);
+            loadShader(fragmentShaderSourcePath, GL_FRAGMENT_SHADER);
+        }
+        catch (Exception error) { throw error; }
         
         glLinkProgram(m_glProgramIdentifier);
         GLint status;
@@ -30,25 +32,9 @@ namespace GraphicsEngine
         glDeleteProgram(m_glProgramIdentifier);
     }
     
-    
-    
-    void ShaderProgram::use() const
-    {
-        glUseProgram(m_glProgramIdentifier);
-    }
-    
-    
-    
     void ShaderProgram::loadShader(const char* sourcePath, GLenum shaderType) const
     {
         Shader shader(sourcePath, shaderType);
         glAttachShader(m_glProgramIdentifier, shader.identifier());
-    }
-    
-    
-    
-    const GLuint ShaderProgram::identifier() const
-    {
-        return m_glProgramIdentifier;
     }
 }

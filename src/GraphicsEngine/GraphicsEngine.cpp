@@ -44,6 +44,7 @@ namespace GraphicsEngine {
     void draw()
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        
         while (!objectsToBeDrawn.empty()) {
             Object* toDraw = &objectsToBeDrawn.top();
             

@@ -32,10 +32,11 @@ namespace GraphicsEngine
     const char* Exception::what() const throw()
     {
         std::string ret;
-        ret += "GRAPHICS ENGINE EXCEPTION :";
+        ret += "\n/!\\ GRAPHICS ENGINE EXCEPTION :";
         ret += m_message;
-        ret += " > ";
+        ret += "\n";
         ret += m_info;
+        ret += "\n";
         return ret.c_str();
     }
 }

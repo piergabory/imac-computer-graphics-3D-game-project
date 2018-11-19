@@ -27,9 +27,13 @@ namespace GraphicsEngine
         std::string log() const;
         
     public:
-        inline const GLuint identifier() const;
-    
-        inline void use() const;
+        inline const GLuint identifier() const noexcept{
+            return m_glProgramIdentifier;
+        }
+        
+        inline void use() const noexcept{
+            glUseProgram(m_glProgramIdentifier);
+        }
         
         ShaderProgram(const char* vertexShaderSourcePath, const char* fragmentShaderSourcePath);
         

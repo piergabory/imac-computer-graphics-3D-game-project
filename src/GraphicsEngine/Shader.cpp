@@ -27,7 +27,7 @@ namespace GraphicsEngine {
         std::stringstream buffer;
         const char* sourceCode;
         
-        if (!file) throw Exception("Failed to open Shader file.", path);
+        if (! file.is_open()) throw Exception("Failed to open Shader file.", path);
         buffer << file.rdbuf();
         sourceCode = buffer.str().c_str();
         

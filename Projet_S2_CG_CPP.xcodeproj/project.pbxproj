@@ -51,7 +51,7 @@
 		D46A4A3621A0C5960096F02F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		D46A4A3821A0C5B40096F02F /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		D46A4A3A21A0C5CA0096F02F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		D46A4A4221A0CBEC0096F02F /* xcode target */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "xcode target"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D46A4A4221A0CBEC0096F02F /* xcode target */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.executable"; path = "xcode target"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46A4A4A21A0CD870096F02F /* GraphicsEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GraphicsEngine.hpp; sourceTree = "<group>"; };
 		D46A4A4B21A0CD870096F02F /* CommonStructs.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CommonStructs.hpp; sourceTree = "<group>"; };
 		D46A4A4C21A0CD870096F02F /* ShaderProgram.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderProgram.hpp; sourceTree = "<group>"; };
@@ -72,6 +72,8 @@
 		D46A4A7C21A0CF120096F02F /* glxew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glxew.h; sourceTree = "<group>"; };
 		D46A4A7D21A0CF120096F02F /* wglew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wglew.h; sourceTree = "<group>"; };
 		D46A4A7E21A0CF120096F02F /* glew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glew.h; sourceTree = "<group>"; };
+		D46A4B8C21A2FDF90096F02F /* triangle.vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = triangle.vs.glsl; sourceTree = "<group>"; };
+		D46A4B8D21A2FE020096F02F /* triangle.fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = triangle.fs.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,8 @@
 		D46A496B21A0C5130096F02F /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				D46A4B8C21A2FDF90096F02F /* triangle.vs.glsl */,
+				D46A4B8D21A2FE020096F02F /* triangle.fs.glsl */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -377,6 +381,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SYMROOT = build;
 			};
 			name = Debug;
 		};
@@ -430,6 +435,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				SYMROOT = build;
 			};
 			name = Release;
 		};
@@ -478,6 +484,7 @@
 					/usr/local/Cellar/glew/2.1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = build;
 				USE_HEADERMAP = YES;
 			};
 			name = Debug;
@@ -502,6 +509,7 @@
 					/usr/local/Cellar/glew/2.1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = build;
 				USE_HEADERMAP = YES;
 			};
 			name = Release;

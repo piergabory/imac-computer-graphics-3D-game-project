@@ -142,4 +142,6 @@ dependencies: \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/vector_relational.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/integer.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/detail/func_integer.hpp \
-  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/detail/func_integer.inl
+  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/detail/func_integer.inl \
+  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/ShaderProgram.hpp \
+  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Shader.hpp
