@@ -32,9 +32,8 @@ OBJ_PATH = obj
 # executable path
 BIN_PATH = bin
 
-# librairies path
-LIB_PATH = lib
-
+# local librairies 
+LDFLAGS = -I./lib
 
 
 
@@ -66,7 +65,7 @@ else
 	# LINUX
 	ifeq ($(UNAME_S),Linux)
 		CPPFLAGS += -D __LINUX__
-		LDFLAGS = -lGL -lGLU -lGLEW -lSDL2 -lm 
+		LDFLAGS += -lGL -lGLU -lGLEW -lSDL2 -lm
 	endif
 
 	# MACINTOSH
@@ -74,10 +73,11 @@ else
 		CPPFLAGS += -D __APPLE__
 
 		# Apple included frameworks
-		LDFLAGS =  -framework OpenGL -framework Cocoa
+		LDFLAGS +=  -framework OpenGL -framework GLUT -framework Cocoa
 
-		# Imported frameworks
-		LDFLAGS =  -F/Library/Frameworks -framework SDL2
+		# Imported frameworks and librairies
+		LDFLAGS +=  -F/Library/Frameworks -framework SDL2
+
 	endif
 endif
 

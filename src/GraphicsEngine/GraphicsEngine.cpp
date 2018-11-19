@@ -43,12 +43,22 @@ namespace GraphicsEngine {
     
     void draw()
     {
-        //
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        while (!objectsToBeDrawn.empty()) {
+            Object* toDraw = &objectsToBeDrawn.top();
+            
+            glBindVertexArray(toDraw->vertexArrayIdentifier());
+            glDrawArrays(GL_TRIANGLES, 0, toDraw->vertexCount());
+            
+            objectsToBeDrawn.pop();
+        }
+        
+        GraphicsEngine::window->swapBuffer();
     }
     
     void pollEvents()
     {
-        //
+        
     }
     
     void printInfos()

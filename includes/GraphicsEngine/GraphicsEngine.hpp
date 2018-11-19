@@ -9,14 +9,17 @@
 #define SDL_manager_hpp
 
 #include <iostream>
+#include <stack>
 
 #include "Frameworks.hpp"
 #include "Exceptions.hpp"
 #include "Window.hpp"
+#include "Object.hpp"
 
 namespace GraphicsEngine {
     
     static Window *window;
+    static std::stack<Object> objectsToBeDrawn;
     
     void setup();
     

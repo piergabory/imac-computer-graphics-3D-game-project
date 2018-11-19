@@ -7,10 +7,11 @@
     #include <SDL2/SDL.h>
     #include <OpenGL/gl.h>
     #include <OpenGL/glu.h>
-    #include <GLKit/GLKMatrix4.h>
+    #define glGenVertexArrays glGenVertexArraysAPPLE
+    #define glBindVertexArray glBindVertexArrayAPPLE
+    #define glDeleteVertexArrays glDeleteVertexArraysAPPLE
 #else
-    // Linux
-    #include <GL/glew.h>
+    // Linux#include <GL/glew.h>
     #include <SDL2/SDL.h>
     #include <GL/gl.h>
     #include <GL/glu.h>

@@ -43,6 +43,8 @@ namespace GraphicsEngine
         inline const uint height() const { return m_pixelHeight; }
         
         inline const float aspect() const { return m_pixelWidth / (float)m_pixelHeight; }
+        
+        inline const void swapBuffer() const { SDL_GL_SwapWindow(m_sdlWindow); }
     };
 
 }

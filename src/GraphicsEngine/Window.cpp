@@ -36,14 +36,7 @@ namespace GraphicsEngine
         glViewport(0, 0, m_pixelWidth, m_pixelHeight);
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
-        
-            // reset view matrix
-        #ifdef __APPLE__
-            GLKMatrix4 orthoMat = GLKMatrix4MakeOrtho(0.f, aspect(), 1.f, 0.f, -1.f, 1.f);
-            glLoadMatrixf(orthoMat.m);
-        #else
-            gluOrtho2D(0.f, aspect(), 1.f, 0.f);
-        #endif
+        gluOrtho2D(0.f, aspect(), 1.f, 0.f);
     }
 
 }
