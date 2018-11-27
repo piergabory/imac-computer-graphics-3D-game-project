@@ -2,52 +2,48 @@ dependencies: \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/src/main.cpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/GraphicsEngine.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Frameworks.hpp \
-  /Library/Frameworks/SDL2.framework/Headers/SDL.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_main.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_config.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_platform.h \
-  /Library/Frameworks/SDL2.framework/Headers/begin_code.h \
-  /Library/Frameworks/SDL2.framework/Headers/close_code.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_config_macosx.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_assert.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_atomic.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_audio.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_error.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_endian.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_mutex.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_thread.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_rwops.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_clipboard.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_cpuinfo.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_events.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_video.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_pixels.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_rect.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_surface.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_blendmode.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_keyboard.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_keycode.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_scancode.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_mouse.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_joystick.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_gamecontroller.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_quit.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_gesture.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_touch.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_filesystem.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_haptic.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_hints.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_loadso.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_log.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_messagebox.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_power.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_render.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_sensor.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_shape.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_system.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_timer.h \
-  /Library/Frameworks/SDL2.framework/Headers/SDL_version.h \
+  /usr/local/include/SDL2/SDL.h /usr/local/include/SDL2/SDL_main.h \
+  /usr/local/include/SDL2/SDL_stdinc.h \
+  /usr/local/include/SDL2/SDL_config.h \
+  /usr/local/include/SDL2/SDL_platform.h \
+  /usr/local/include/SDL2/begin_code.h \
+  /usr/local/include/SDL2/close_code.h \
+  /usr/local/include/SDL2/SDL_assert.h \
+  /usr/local/include/SDL2/SDL_atomic.h \
+  /usr/local/include/SDL2/SDL_audio.h \
+  /usr/local/include/SDL2/SDL_error.h \
+  /usr/local/include/SDL2/SDL_endian.h \
+  /usr/local/include/SDL2/SDL_mutex.h \
+  /usr/local/include/SDL2/SDL_thread.h \
+  /usr/local/include/SDL2/SDL_rwops.h \
+  /usr/local/include/SDL2/SDL_clipboard.h \
+  /usr/local/include/SDL2/SDL_cpuinfo.h \
+  /usr/local/include/SDL2/SDL_events.h \
+  /usr/local/include/SDL2/SDL_video.h \
+  /usr/local/include/SDL2/SDL_pixels.h \
+  /usr/local/include/SDL2/SDL_rect.h \
+  /usr/local/include/SDL2/SDL_surface.h \
+  /usr/local/include/SDL2/SDL_blendmode.h \
+  /usr/local/include/SDL2/SDL_keyboard.h \
+  /usr/local/include/SDL2/SDL_keycode.h \
+  /usr/local/include/SDL2/SDL_scancode.h \
+  /usr/local/include/SDL2/SDL_mouse.h \
+  /usr/local/include/SDL2/SDL_joystick.h \
+  /usr/local/include/SDL2/SDL_gamecontroller.h \
+  /usr/local/include/SDL2/SDL_quit.h \
+  /usr/local/include/SDL2/SDL_gesture.h \
+  /usr/local/include/SDL2/SDL_touch.h \
+  /usr/local/include/SDL2/SDL_filesystem.h \
+  /usr/local/include/SDL2/SDL_haptic.h \
+  /usr/local/include/SDL2/SDL_hints.h \
+  /usr/local/include/SDL2/SDL_loadso.h /usr/local/include/SDL2/SDL_log.h \
+  /usr/local/include/SDL2/SDL_messagebox.h \
+  /usr/local/include/SDL2/SDL_power.h \
+  /usr/local/include/SDL2/SDL_render.h \
+  /usr/local/include/SDL2/SDL_shape.h \
+  /usr/local/include/SDL2/SDL_system.h \
+  /usr/local/include/SDL2/SDL_timer.h \
+  /usr/local/include/SDL2/SDL_version.h /usr/local/include/GL/glew.h \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Exceptions.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Window.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Scene.hpp \

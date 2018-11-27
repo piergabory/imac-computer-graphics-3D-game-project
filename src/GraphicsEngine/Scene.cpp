@@ -10,6 +10,9 @@
 
 namespace GraphicsEngine
 {
+    Scene::Scene() { }
+    
+    
     Scene::~Scene()
     {
         for(size_t index = 0; index < m_objects.size(); ++index)
@@ -30,5 +33,6 @@ namespace GraphicsEngine
             glBindVertexArray(m_objects[index]->vertexArrayIdentifier());
             glDrawArrays(GL_TRIANGLES, 0, m_objects[index]->vertexCount());
         }
+        glBindVertexArray(0);
     }
 }

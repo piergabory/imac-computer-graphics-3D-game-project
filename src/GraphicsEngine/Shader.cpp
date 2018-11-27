@@ -9,7 +9,7 @@
 
 namespace GraphicsEngine {
     
-    Shader::Shader(const char* path, GLenum shaderType):
+    Shader::Shader(const char* path, const GLenum shaderType):
         m_glShaderIdentifier(glCreateShader(shaderType))
         {
             loadSourceCode(path, shaderType);
@@ -21,15 +21,22 @@ namespace GraphicsEngine {
         glDeleteShader(m_glShaderIdentifier);
     }
     
-    void Shader::loadSourceCode(const char* path, GLenum shaderType)
+    void Shader::loadSourceCode(const char* path, const GLenum shaderType)
     {
-        std::ifstream file(path);
+        std::ifstream file;
+        file.open(path, std::ios::in);
         std::stringstream buffer;
+        std::string secondBuffer;
         const char* sourceCode;
         
-        if (! file.is_open()) throw InitialisationException("Failed to open Shader file.", path);
+        if (!file.is_open())
+            throw InitialisationException("Failed to open Shader file.", path);
+        
         buffer << file.rdbuf();
-        sourceCode = buffer.str().c_str();
+        buffer << "\0";
+        secondBuffer = buffer.str();
+        sourceCode = secondBuffer.c_str();
+        file.close();
         
         glShaderSource(m_glShaderIdentifier, 1, &sourceCode, 0);
     }
@@ -39,6 +46,7 @@ namespace GraphicsEngine {
         glCompileShader(m_glShaderIdentifier);
         GLint status;
         glGetShaderiv(m_glShaderIdentifier, GL_COMPILE_STATUS, &status);
-        if (status != GL_TRUE) throw InitialisationException("Shader Compilation failed", m_glShaderIdentifier);
+        if (status != GL_TRUE)
+            throw InitialisationException("Shader Compilation failed", m_glShaderIdentifier);
     }
 }

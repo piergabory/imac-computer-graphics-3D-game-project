@@ -15,31 +15,28 @@
 
 namespace GraphicsEngine
 {
-
+    
     class Object
     {
     private:
         GLuint m_vertexBufferObject;
         GLuint m_vertexArrayObject;
-        int m_vertexCount;
+        const int m_vertexCount;
         
-        enum VertexAttributesIndices
-        {
-            VERTEX_ATTR_POSITION,
-            VERTEX_ATTR_NORMAL,
-            VERTEX_ATTR_TEXTURE
-        };
+        void setVertexArray(const std::vector<Vertex> &vertices) const;
+        
+        void setVertexBuffer(const std::vector<Vertex> &vertices) const;
         
     public:
         Object(): m_vertexBufferObject(0), m_vertexArrayObject(0), m_vertexCount(0) {};
-        Object(std::vector<Vertex> vertices);
+        Object(const std::vector<Vertex> &vertices);
         ~Object();
         
         inline GLuint vertexArrayIdentifier() const {
             return m_vertexArrayObject;
         }
         
-        inline int vertexCount() const  {
+        inline const int vertexCount() const  {
             return m_vertexCount;
         }
     };

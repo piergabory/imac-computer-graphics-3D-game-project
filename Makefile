@@ -73,10 +73,11 @@ else
 		CPPFLAGS += -D __APPLE__
 
 		# Apple included frameworks
-		LDFLAGS +=  -framework OpenGL -framework GLUT -framework Cocoa
+		LDFLAGS += -framework OpenGL -framework GLUT -framework Cocoa
 
 		# Imported frameworks and librairies
-		LDFLAGS +=  -F/Library/Frameworks -framework SDL2
+		LDFLAGS += -F/Library/Frameworks -framework SDL2
+		LDFLAGS += -I/usr/local/include -L/usr/local/lib -lglew
 
 	endif
 endif

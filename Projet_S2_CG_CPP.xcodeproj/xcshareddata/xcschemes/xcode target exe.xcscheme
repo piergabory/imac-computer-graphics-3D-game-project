@@ -45,11 +45,14 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      enableASanStackUseAfterReturn = "YES"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
       customWorkingDirectory = "/Users/piergabory/Developer/IMAC/Projet CG CPP/IMAC2_CG_CPP_Game_Project"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      stopOnEveryUBSanitizerIssue = "YES"
+      stopOnEveryMainThreadCheckerIssue = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable

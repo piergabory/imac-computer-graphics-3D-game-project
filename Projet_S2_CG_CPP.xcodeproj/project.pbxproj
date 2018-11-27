@@ -382,6 +382,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -437,6 +438,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -482,12 +484,12 @@
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = (
-					/usr/local/Cellar/glew/2.1.0/include,
 					"${SRCROOT}/lib",
+					/usr/local/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/glew/2.1.0/lib,
+					/usr/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = build;
@@ -507,12 +509,12 @@
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = (
-					/usr/local/Cellar/glew/2.1.0/include,
 					"${SRCROOT}/lib",
+					/usr/local/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/glew/2.1.0/lib,
+					/usr/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = build;

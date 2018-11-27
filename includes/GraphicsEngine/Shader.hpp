@@ -22,11 +22,11 @@ namespace GraphicsEngine {
     private:
         GLuint m_glShaderIdentifier;
         
-        void loadSourceCode(const char* path, GLenum shaderType);
+        void loadSourceCode(const char* path, const GLenum shaderType);
         void compile();
         
     public:
-        Shader(const char* path, GLenum shaderType);
+        Shader(const char* path, const GLenum shaderType);
         ~Shader();
         
         inline const GLuint identifier() const { return m_glShaderIdentifier; }

@@ -25,7 +25,7 @@ namespace GraphicsEngine
         
         void draw() const;
         
-        Scene() {}
+        Scene();
         ~Scene();
     };
 }
