@@ -99,6 +99,7 @@
 		D4F56EE721AF25F300767ECA /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		D4F56EE921AF321F00767ECA /* PerspectiveShaderProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PerspectiveShaderProgram.cpp; sourceTree = "<group>"; };
 		D4F56EF521AF34FE00767ECA /* ShaderProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderProgram.cpp; sourceTree = "<group>"; };
+		D4F56EF721AF37BF00767ECA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +121,7 @@
 		D46A487C21A0C3F10096F02F = {
 			isa = PBXGroup;
 			children = (
+				D4F56EF721AF37BF00767ECA /* README.md */,
 				D46A496521A0C5130096F02F /* Makefile */,
 				D46A496C21A0C5130096F02F /* bin */,
 				D46A496F21A0C5130096F02F /* includes */,
