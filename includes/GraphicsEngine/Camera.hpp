@@ -30,6 +30,9 @@ namespace GraphicsEngine {
         
         inline void updateProjectionMatrix() {
             m_projectionMatrix = glm::perspective(glm::radians(m_fieldOfView), m_aspectRatio, m_minRenderingDistance, m_maxRenderingDistance);
+            
+            m_projectionMatrix = glm::translate(glm::mat4(1), m_position) * m_projectionMatrix;
+            m_projectionMatrix = glm::rotate(glm::mat4(1), m_angle, m_orientation) * m_projectionMatrix;
         }
         
     public:

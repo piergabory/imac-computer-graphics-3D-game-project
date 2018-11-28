@@ -22,8 +22,7 @@ int main(int argc, const char * argv[]) {
     // load shaders
     GraphicsEngine::Material *material;
     try {
-         material = new GraphicsEngine::Material(new GraphicsEngine::Texture("../textures/test.png"), new GraphicsEngine::ShaderProgram("../shaders/triangle.vs.glsl", "../shaders/triangle.fs.glsl"));
-        
+         material = new GraphicsEngine::Material(new GraphicsEngine::Texture("../textures/test.png"), new GraphicsEngine::PerspectiveShaderProgram("../shaders/triangle.vs.glsl", "../shaders/triangle.fs.glsl"));
     } catch(GraphicsEngine::InitialisationException error) {
         std::cerr << error.what();
     }
@@ -31,13 +30,11 @@ int main(int argc, const char * argv[]) {
     
     graphicsEngineController.printInfos();
     
-    
-    
     // Hello triangle
     std::vector<GraphicsEngine::Vertex> helloTriangle;
-    helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(-1.f,0.f,0.f), glm::vec3(1.f,0.f,0.f), glm::vec2(1.f,1.f)));
-    helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(1.f,0.f,0.f), glm::vec3(0.f,1.f,0.f), glm::vec2(1.f,1.f)));
-    helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(0.f,1.f,0.f), glm::vec3(0.f,0.f,1.f), glm::vec2(1.f,1.f)));
+    helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(-1.f,0.f,0.f), glm::vec3(1.f,0.f,0.f), glm::vec2(0.f,0.f)));
+    helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(1.f,0.f,0.f), glm::vec3(0.f,1.f,0.f), glm::vec2(0.5f,0.f)));
+    helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(0.f,1.f,0.f), glm::vec3(0.f,0.f,1.f), glm::vec2(0.f,1.0f)));
     
     GraphicsEngine::Object *object = new GraphicsEngine::Object(new GraphicsEngine::Mesh(helloTriangle), material);
     

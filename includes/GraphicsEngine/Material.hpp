@@ -10,21 +10,24 @@
 #define Material_hpp
 
 #include "Texture.hpp"
-#include "ShaderProgram.hpp"
+#include "PerspectiveShaderProgram.hpp"
 
 namespace GraphicsEngine {
     class Material {
     private:
         Texture* m_texture;
-        ShaderProgram* m_shader;
+        PerspectiveShaderProgram* m_shader;
         
     public:
-        Material(Texture *texture, ShaderProgram *shader):
+        Material(Texture *texture, PerspectiveShaderProgram *shader):
         m_texture(texture), m_shader(shader) {
             texture->linkTo(*shader);
         };
         
         ~Material() {};
+        
+        inline PerspectiveShaderProgram* shader() { return m_shader; }
+        inline Texture* texture() { return m_texture; }
         
         void apply() const;
     };

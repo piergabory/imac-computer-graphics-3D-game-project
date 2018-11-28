@@ -9,14 +9,11 @@
 #ifndef Object_hpp
 #define Object_hpp
 
-#define GLM_FORCE_RADIANS
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
 #include "Frameworks.hpp"
 #include "CommonStructs.hpp"
 #include "Mesh.hpp"
 #include "Material.hpp"
+
 
 namespace GraphicsEngine {
     class Object {
@@ -25,19 +22,17 @@ namespace GraphicsEngine {
         Material *m_material;
         
         glm::mat4 m_modelViewMatrix;
-        glm::mat4 m_normalMatrix;
         
         void applyTransformations();
         
     public:
-        inline void* modelViewMatrixPointer() { return glm::value_ptr(m_modelViewMatrix); }
-        inline void* normalMatrixPointer() { return glm::value_ptr(m_normalMatrix); }
+        void translate(const glm::vec3 &translationVector);
         
-        void translate(const glm::vec3 translationVector);
+        void rotate(const float angle, const glm::vec3 &direction);
         
-        void rotate(const float angle, const glm::vec3 direction);
+        void scale(const glm::vec3 &scalingVector);
         
-        void scale(const glm::vec3 scalingVector);
+        void project(const glm::mat4 &projectionMatrix);
         
         void draw() const;
         

@@ -10,7 +10,6 @@
 		D46A4A7421A0CE220096F02F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A7321A0CE220096F02F /* main.cpp */; };
 		D46A4A7521A0CE860096F02F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A3621A0C5960096F02F /* OpenGL.framework */; };
 		D46A4A7621A0CE940096F02F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A3A21A0C5CA0096F02F /* Cocoa.framework */; };
-		D46A4A7721A0CE9D0096F02F /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A3821A0C5B40096F02F /* SDL2.framework */; };
 		D46A4A7F21A0CFC50096F02F /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A7821A0CEEC0096F02F /* libGLEW.2.1.0.dylib */; };
 		D46A4A8121A0D0B50096F02F /* Exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6521A0CE110096F02F /* Exceptions.cpp */; };
 		D46A4A8221A0D0B50096F02F /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6621A0CE110096F02F /* Window.cpp */; };
@@ -26,6 +25,8 @@
 		D4F56EC921AEC28500767ECA /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4F56EC721AEC28500767ECA /* Object.cpp */; };
 		D4F56ECE21AED12100767ECA /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4F56ECC21AED12100767ECA /* Camera.cpp */; };
 		D4F56ED121AEDFB700767ECA /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4F56ECF21AEDFB700767ECA /* Material.cpp */; };
+		D4F56EE821AF25F300767ECA /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F56EE721AF25F300767ECA /* SDL2.framework */; };
+		D4F56EEA21AF321F00767ECA /* PerspectiveShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4F56EE921AF321F00767ECA /* PerspectiveShaderProgram.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,9 @@
 		D4F56ECF21AEDFB700767ECA /* Material.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Material.cpp; sourceTree = "<group>"; };
 		D4F56ED021AEDFB700767ECA /* Material.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Material.hpp; sourceTree = "<group>"; };
 		D4F56ED221AEE46500767ECA /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		D4F56EE521AEEB0800767ECA /* PerspectiveShaderProgram.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PerspectiveShaderProgram.hpp; sourceTree = "<group>"; };
+		D4F56EE721AF25F300767ECA /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		D4F56EE921AF321F00767ECA /* PerspectiveShaderProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PerspectiveShaderProgram.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +106,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4F56EE821AF25F300767ECA /* SDL2.framework in Frameworks */,
 				D46A4A7F21A0CFC50096F02F /* libGLEW.2.1.0.dylib in Frameworks */,
-				D46A4A7721A0CE9D0096F02F /* SDL2.framework in Frameworks */,
 				D4F56EC621AEB29400767ECA /* SDL2_image.framework in Frameworks */,
 				D46A4A7621A0CE940096F02F /* Cocoa.framework in Frameworks */,
 				D46A4A7521A0CE860096F02F /* OpenGL.framework in Frameworks */,
@@ -190,6 +194,7 @@
 		D46A4A3521A0C5960096F02F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4F56EE721AF25F300767ECA /* SDL2.framework */,
 				D4F56EC521AEB29400767ECA /* SDL2_image.framework */,
 				D46A4A7A21A0CF120096F02F /* include */,
 				D46A4A7821A0CEEC0096F02F /* libGLEW.2.1.0.dylib */,
@@ -300,6 +305,7 @@
 		D4F56ED921AEE65600767ECA /* Shader */ = {
 			isa = PBXGroup;
 			children = (
+				D4F56EE921AF321F00767ECA /* PerspectiveShaderProgram.cpp */,
 				D46A4A6B21A0CE110096F02F /* ShaderProgram.cpp */,
 				D46A4A6821A0CE110096F02F /* Shader.cpp */,
 			);
@@ -320,6 +326,7 @@
 			children = (
 				D46A4A4C21A0CD870096F02F /* ShaderProgram.hpp */,
 				D46A4A5021A0CD870096F02F /* Shader.hpp */,
+				D4F56EE521AEEB0800767ECA /* PerspectiveShaderProgram.hpp */,
 			);
 			name = Shader;
 			sourceTree = "<group>";
@@ -329,7 +336,7 @@
 /* Begin PBXLegacyTarget section */
 		D46A495E21A0C4270096F02F /* make */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
+			buildArgumentsString = "-j 5 $(ACTION)";
 			buildConfigurationList = D46A495F21A0C4270096F02F /* Build configuration list for PBXLegacyTarget "make" */;
 			buildPhases = (
 			);
@@ -403,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4F56ECE21AED12100767ECA /* Camera.cpp in Sources */,
+				D4F56EEA21AF321F00767ECA /* PerspectiveShaderProgram.cpp in Sources */,
 				D46A4A8521A0D0B50096F02F /* GraphicsEngine.cpp in Sources */,
 				D46A4A8721A0D0B50096F02F /* ShaderProgram.cpp in Sources */,
 				D4F56EC921AEC28500767ECA /* Object.cpp in Sources */,

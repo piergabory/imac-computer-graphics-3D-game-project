@@ -10,8 +10,7 @@
 
 namespace GraphicsEngine {
     
-    Texture::Texture(const char* imagePath): m_image(imagePath)
-    {
+    Texture::Texture(const char* imagePath): m_image(imagePath) {
         glGenTextures(1, &m_glTextureIdentifier);
         glBindTexture(GL_TEXTURE_2D, m_glTextureIdentifier);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -22,7 +21,7 @@ namespace GraphicsEngine {
         glDeleteTextures(1, &m_glTextureIdentifier);
     }
     
-    void Texture::linkTo(const ShaderProgram program, const char* uniformName) const {
+    void Texture::linkTo(const ShaderProgram &program, const char* uniformName) const {
         glActiveTexture(GL_TEXTURE0);
         GLuint uniform = glGetUniformLocation(program.identifier(), uniformName);
         glUniform1i(uniform, 0);

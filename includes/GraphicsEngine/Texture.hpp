@@ -23,7 +23,7 @@ namespace GraphicsEngine {
         Texture(const char* imagePath);
         ~Texture();
         
-        void linkTo(const ShaderProgram program, const char* uniformName = "uMainTextureSampler") const;
+        void linkTo(const ShaderProgram &program, const char* uniformName = "uMainTextureSampler") const;
         
         inline GLuint identifier() const { return m_glTextureIdentifier; }
         

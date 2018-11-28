@@ -20,11 +20,12 @@ namespace GraphicsEngine
     {
         
     private:
-        GLuint m_glProgramIdentifier;
-        
         void loadShader(const char* sourcePath, GLenum shaderType) const;
         
         std::string log() const;
+        
+    protected:
+        GLuint m_glProgramIdentifier;
         
     public:
         inline const GLuint identifier() const {
