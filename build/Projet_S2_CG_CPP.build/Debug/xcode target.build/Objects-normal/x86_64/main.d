@@ -49,7 +49,7 @@ dependencies: \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Exceptions.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Window.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Scene.hpp \
-  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Object.hpp \
+  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Object/Object.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/CommonStructs.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/glm.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/detail/_fixes.hpp \
@@ -142,13 +142,13 @@ dependencies: \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/integer.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/detail/func_integer.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/detail/func_integer.inl \
-  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Mesh.hpp \
-  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Material.hpp \
-  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Texture.hpp \
-  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/ImageData.hpp \
-  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/ShaderProgram.hpp \
-  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Shader.hpp \
-  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/PerspectiveShaderProgram.hpp \
+  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Object/Mesh.hpp \
+  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Object/Material/Material.hpp \
+  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Object/Material/Texture/Texture.hpp \
+  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Object/Material/Texture/ImageData.hpp \
+  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Object/Material/Shader/ShaderProgram.hpp \
+  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Object/Material/Shader/Shader.hpp \
+  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Object/Material/Shader/PerspectiveShaderProgram.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/gtc/matrix_transform.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/gtc/../mat4x4.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/gtc/../vec2.hpp \
