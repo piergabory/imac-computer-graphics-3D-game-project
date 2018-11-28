@@ -27,9 +27,11 @@ namespace GraphicsEngine
     
     class Scene {
     
+        
     private:
         /// Camera
         Camera camera;
+        
         
         /**
          * Object list in scene. Vector of object pointers.
@@ -38,6 +40,7 @@ namespace GraphicsEngine
          * Scene handle their relation with the camera's (aka, the projection matrix) for each of them on draw().
          */
         std::vector<Object*> m_objects;
+        
         
         
     public:
@@ -53,10 +56,12 @@ namespace GraphicsEngine
         // initialize camera
         Scene();
         
+        
         // destructor
         // deletes memory allocated on each pointer in the object vector.
         ~Scene();
     };
+    
 }
 
 #endif /* Scene_hpp */
