@@ -15,8 +15,8 @@ namespace GraphicsEngine
     
     Scene::~Scene()
     {
-        for(size_t index = 0; index < m_objects.size(); ++index)
-            delete m_objects[index];
+        for(std::vector<Object*>::const_iterator object = m_objects.begin(); object != m_objects.end(); ++object)
+            delete *object;
     }
     
     
@@ -28,10 +28,9 @@ namespace GraphicsEngine
     
     void Scene::draw() const
     {
-        for(size_t index = 0; index < m_objects.size(); ++index)
-        {
-            glBindVertexArray(m_objects[index]->vertexArrayIdentifier());
-            glDrawArrays(GL_TRIANGLES, 0, m_objects[index]->vertexCount());
+        for(std::vector<Object*>::const_iterator objectPtr = m_objects.begin(); objectPtr != m_objects.end(); ++objectPtr) {
+            glBindVertexArray((*objectPtr)->vertexArrayIdentifier());
+            glDrawArrays(GL_TRIANGLES, 0, (*objectPtr)->vertexCount());
         }
         glBindVertexArray(0);
     }

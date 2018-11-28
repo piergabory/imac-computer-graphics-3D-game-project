@@ -31,6 +31,10 @@ namespace GraphicsEngine
             return m_glProgramIdentifier;
         }
         
+        inline GLuint& identifier() {
+            return m_glProgramIdentifier;
+        }
+        
         inline void use() const {
             glUseProgram(m_glProgramIdentifier);
         }

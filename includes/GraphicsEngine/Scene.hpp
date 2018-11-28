@@ -10,6 +10,7 @@
 #define Scene_hpp
 
 #include <vector>
+#include <iterator>
 
 #include "Object.hpp"
 

@@ -32,6 +32,10 @@ namespace GraphicsEngine
         Object(const std::vector<Vertex> &vertices);
         ~Object();
         
+        inline GLuint& vertexArrayIdentifier() {
+            return m_vertexArrayObject;
+        }
+        
         inline GLuint vertexArrayIdentifier() const {
             return m_vertexArrayObject;
         }

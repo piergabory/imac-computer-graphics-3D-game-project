@@ -22,13 +22,13 @@ namespace GraphicsEngine {
     }
     
     void Controller::initializeGlew(Window window) {
-//        #ifndef __APPLE__
+        // #ifndef __APPLE__
         glewExperimental = GL_TRUE;
         GLenum glewInitError = glewInit();
         if(glewInitError != GLEW_OK) {
             throw InitialisationException("Glew Initialisation failed.", reinterpret_cast<const char*>(glewGetErrorString(glewInitError)));
         }
-//        #endif
+        // #endif
     }
     
     void Controller::setup() {
@@ -45,22 +45,22 @@ namespace GraphicsEngine {
     
     void Controller::draw()
     {
-//        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         currentScene->draw();
         window->swapBuffer();
     }
     
     void Controller::pollEvents()
     {
-        
+        SDL_PumpEvents();
     }
     
     void Controller::printInfos()
     {
         std::cout << "OpenGL Version : " << glGetString(GL_VERSION) << std::endl;
-//        #ifndef __APPLE__
+        // #ifndef __APPLE__
         std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl;
-//        #endif
+        // #endif
     }
     
     void Controller::close()

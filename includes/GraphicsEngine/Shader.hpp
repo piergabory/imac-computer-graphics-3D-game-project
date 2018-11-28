@@ -29,7 +29,8 @@ namespace GraphicsEngine {
         Shader(const char* path, const GLenum shaderType);
         ~Shader();
         
-        inline const GLuint identifier() const { return m_glShaderIdentifier; }
+        inline GLuint identifier() const { return m_glShaderIdentifier; }
+        inline GLuint& identifier() { return m_glShaderIdentifier; }
     };
     
 }

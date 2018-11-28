@@ -16,8 +16,9 @@ namespace GraphicsEngine
         try {
             loadShader(vertexShaderSourcePath, GL_VERTEX_SHADER);
             loadShader(fragmentShaderSourcePath, GL_FRAGMENT_SHADER);
+        } catch (InitialisationException error) {
+            throw error;
         }
-        catch (InitialisationException error) { throw error; }
         
         glLinkProgram(m_glProgramIdentifier);
         GLint status;
