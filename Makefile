@@ -76,7 +76,7 @@ else
 		LDFLAGS += -framework OpenGL -framework GLUT -framework Cocoa
 
 		# Imported frameworks and librairies
-		LDFLAGS += -F/Library/Frameworks -framework SDL2
+		LDFLAGS += -F/Library/Frameworks -framework SDL2 -framework SDL2_Image
 		LDFLAGS += -I/usr/local/include -L/usr/local/lib -lglew
 
 	endif

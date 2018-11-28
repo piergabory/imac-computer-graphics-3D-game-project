@@ -10,7 +10,7 @@
 #include <iostream>
 
 #include "GraphicsEngine.hpp"
-#include "ShaderProgram.hpp"
+#include "Material.hpp"
 #include "Exceptions.hpp"
 
 #include "CommonStructs.hpp"
@@ -20,13 +20,17 @@ int main(int argc, const char * argv[]) {
     graphicsEngineController.setup();
     
     // load shaders
+    GraphicsEngine::Material *material;
     try {
-        GraphicsEngine::ShaderProgram shaderProgram("../shaders/triangle.vs.glsl", "../shaders/triangle.fs.glsl");
-        shaderProgram.use();
+         material = new GraphicsEngine::Material(new GraphicsEngine::Texture("../textures/test.png"), new GraphicsEngine::ShaderProgram("../shaders/triangle.vs.glsl", "../shaders/triangle.fs.glsl"));
+        
     } catch(GraphicsEngine::InitialisationException error) {
         std::cerr << error.what();
     }
+    
+    
     graphicsEngineController.printInfos();
+    
     
     
     // Hello triangle
@@ -34,7 +38,10 @@ int main(int argc, const char * argv[]) {
     helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(-1.f,0.f,0.f), glm::vec3(1.f,0.f,0.f), glm::vec2(1.f,1.f)));
     helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(1.f,0.f,0.f), glm::vec3(0.f,1.f,0.f), glm::vec2(1.f,1.f)));
     helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(0.f,1.f,0.f), glm::vec3(0.f,0.f,1.f), glm::vec2(1.f,1.f)));
-    graphicsEngineController.addObjectToCurrentScene(new GraphicsEngine::Object(helloTriangle));
+    
+    GraphicsEngine::Object *object = new GraphicsEngine::Object(new GraphicsEngine::Mesh(helloTriangle), material);
+    
+    graphicsEngineController.addObjectToCurrentScene(object);
     
     
     while (true) {
@@ -48,6 +55,10 @@ int main(int argc, const char * argv[]) {
             SDL_Delay(50 - elapsedTime);
         }
     }
+    
+    
+    delete object;
+    delete material;
     
     return 0;
 }

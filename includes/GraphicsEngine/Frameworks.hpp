@@ -6,6 +6,7 @@
 #ifdef __APPLE__
     // Mac OS
     #include <SDL2/SDL.h>
+    #include <SDL2_image/SDL_image.h>
     #include <GL/glew.h>
     #include <OpenGL/gl.h>
     #include <OpenGL/glu.h>

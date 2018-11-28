@@ -13,6 +13,7 @@
 #include <iterator>
 
 #include "Object.hpp"
+#include "Camera.hpp"
 
 namespace GraphicsEngine
 {
@@ -20,6 +21,7 @@ namespace GraphicsEngine
     {
     private:
         std::vector<Object*> m_objects;
+        Camera camera;
         
     public:
         void add(Object *newObject);

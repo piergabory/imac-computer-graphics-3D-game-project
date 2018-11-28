@@ -1,49 +1,56 @@
 //
 //  Object.hpp
-//  product
+//  xcode target
 //
-//  Created by Pierre Gabory on 17/11/2018.
+//  Created by Pierre Gabory on 28/11/2018.
+//  Copyright © 2018 Pierre Gabory. All rights reserved.
 //
 
 #ifndef Object_hpp
 #define Object_hpp
 
-#include <vector>
+#define GLM_FORCE_RADIANS
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
-#include "CommonStructs.hpp"
 #include "Frameworks.hpp"
+#include "CommonStructs.hpp"
+#include "Mesh.hpp"
+#include "Material.hpp"
 
-namespace GraphicsEngine
-{
-    
-    class Object
-    {
+namespace GraphicsEngine {
+    class Object {
     private:
-        GLuint m_vertexBufferObject;
-        GLuint m_vertexArrayObject;
-        const int m_vertexCount;
+        Mesh *m_mesh;
+        Material *m_material;
         
-        void setVertexArray(const std::vector<Vertex> &vertices) const;
+        glm::mat4 m_modelViewMatrix;
+        glm::mat4 m_normalMatrix;
         
-        void setVertexBuffer(const std::vector<Vertex> &vertices) const;
+        void applyTransformations();
         
     public:
-        Object(): m_vertexBufferObject(0), m_vertexArrayObject(0), m_vertexCount(0) {};
-        Object(const std::vector<Vertex> &vertices);
-        ~Object();
+        inline void* modelViewMatrixPointer() { return glm::value_ptr(m_modelViewMatrix); }
+        inline void* normalMatrixPointer() { return glm::value_ptr(m_normalMatrix); }
         
-        inline GLuint& vertexArrayIdentifier() {
-            return m_vertexArrayObject;
+        void translate(const glm::vec3 translationVector);
+        
+        void rotate(const float angle, const glm::vec3 direction);
+        
+        void scale(const glm::vec3 scalingVector);
+        
+        void draw() const;
+        
+        Object(Mesh *mesh, Material *material) : m_mesh(mesh), m_material(material) {
+            assert(mesh != nullptr);
+            assert(material != nullptr);
         }
         
-        inline GLuint vertexArrayIdentifier() const {
-            return m_vertexArrayObject;
-        }
+        Object(Mesh &mesh, Material &material) : m_mesh(&mesh), m_material(&material) {}
         
-        inline const int vertexCount() const  {
-            return m_vertexCount;
-        }
+        ~Object() {}
     };
 }
+
 
 #endif /* Object_hpp */

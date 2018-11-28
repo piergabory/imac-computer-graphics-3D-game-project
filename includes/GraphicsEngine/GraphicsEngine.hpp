@@ -15,6 +15,7 @@
 #include "Exceptions.hpp"
 #include "Window.hpp"
 #include "Scene.hpp"
+#include "Object.hpp"
 
 namespace GraphicsEngine {
     class Controller {
