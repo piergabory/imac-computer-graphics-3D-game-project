@@ -33,6 +33,5 @@ namespace GraphicsEngine
             (*objectPtr)->project(camera.projectionMatrix());
             (*objectPtr)->draw();
         }
-        glBindVertexArray(0);
     }
 }

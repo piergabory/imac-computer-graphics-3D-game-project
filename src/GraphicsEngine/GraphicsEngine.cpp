@@ -8,6 +8,14 @@
 #include "GraphicsEngine.hpp"
 
 namespace GraphicsEngine {
+
+    Controller* Controller::m_controllerInstance = nullptr;
+    
+    Controller* Controller::instance() {
+        if (Controller::m_controllerInstance == NULL)
+            Controller::m_controllerInstance = new Controller();
+        return Controller::m_controllerInstance;
+    }
     
     void Controller::initialize() {
         // initialisation de SDL
@@ -39,7 +47,9 @@ namespace GraphicsEngine {
             initializeGlew(*window);
         }
         
-        delete currentScene;
+        if (!currentScene) {
+            delete currentScene;
+        }
         currentScene = new Scene();
     }
     
@@ -52,7 +62,7 @@ namespace GraphicsEngine {
     
     void Controller::pollEvents()
     {
-        SDL_PumpEvents();
+        EventManager::instance()->pollEvents();
     }
     
     void Controller::printInfos()
@@ -66,7 +76,7 @@ namespace GraphicsEngine {
     void Controller::close()
     {
         SDL_Quit();
-        delete window;
+        //delete window;
     }
     
     void Controller::addObjectToCurrentScene(Object *newObject)

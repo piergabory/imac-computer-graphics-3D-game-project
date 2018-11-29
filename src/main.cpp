@@ -9,15 +9,29 @@
 #include <exception>
 #include <iostream>
 
+#include "EventObservers.hpp"
 #include "GraphicsEngine.hpp"
 #include "Material.hpp"
 #include "Exceptions.hpp"
 
 #include "CommonStructs.hpp"
 
+
+struct testQuit : QuitEventObserver {
+    bool status;
+    
+    testQuit() { status = true; }
+    
+    void quitEventHandler() override {
+        status = false;
+        GraphicsEngine::Controller::instance()->close();
+    }
+};
+
 int main(int argc, const char * argv[]) {
-    GraphicsEngine::Controller graphicsEngineController;
-    graphicsEngineController.setup();
+    GraphicsEngine::Controller::instance()->setup();
+    
+    
     
     // load shaders
     GraphicsEngine::Material *material;
@@ -28,7 +42,7 @@ int main(int argc, const char * argv[]) {
     }
     
     
-    graphicsEngineController.printInfos();
+    GraphicsEngine::Controller::instance()->printInfos();
     
     // Hello triangle
     std::vector<GraphicsEngine::Vertex> helloTriangle;
@@ -38,14 +52,16 @@ int main(int argc, const char * argv[]) {
     
     GraphicsEngine::Object *object = new GraphicsEngine::Object(new GraphicsEngine::Mesh(helloTriangle), material);
     
-    graphicsEngineController.addObjectToCurrentScene(object);
+    GraphicsEngine::Controller::instance()->addObjectToCurrentScene(object);
     
+    testQuit shouldKeepRunning;
+    GraphicsEngine::EventManager::instance()->subscribe(&shouldKeepRunning);
     
-    while (true) {
+    while (shouldKeepRunning.status) {
         Uint32 startTime = SDL_GetTicks();
 
-        graphicsEngineController.draw();
-        graphicsEngineController.pollEvents();
+        GraphicsEngine::Controller::instance()->draw();
+        GraphicsEngine::Controller::instance()->pollEvents();
         
         Uint32 elapsedTime = SDL_GetTicks() - startTime;
         if(elapsedTime < 50) {

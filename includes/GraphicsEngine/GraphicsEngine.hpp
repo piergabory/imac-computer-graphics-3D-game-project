@@ -16,17 +16,24 @@
 #include "Window.hpp"
 #include "Scene.hpp"
 #include "Object.hpp"
+#include "EventManager.hpp"
 
 namespace GraphicsEngine {
     class Controller {
     private:
+        static Controller* m_controllerInstance;
+        
         Window *window;
         Scene *currentScene;
         
         void initialize();
         void initializeGlew(Window window);
         
+        Controller() {}
+        
     public:
+        static Controller* instance();
+        
         void setup();
         
         void draw();

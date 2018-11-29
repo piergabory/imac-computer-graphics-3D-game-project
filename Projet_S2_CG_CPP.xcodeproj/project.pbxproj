@@ -27,6 +27,7 @@
 		D4F56EE821AF25F300767ECA /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F56EE721AF25F300767ECA /* SDL2.framework */; };
 		D4F56EEA21AF321F00767ECA /* PerspectiveShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4F56EE921AF321F00767ECA /* PerspectiveShaderProgram.cpp */; };
 		D4F56EF621AF34FE00767ECA /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4F56EF521AF34FE00767ECA /* ShaderProgram.cpp */; };
+		D4F56EFC21AFE84A00767ECA /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4F56EFA21AFE84A00767ECA /* EventManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D40AFE5A21B05E530019E461 /* EventObservers.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EventObservers.hpp; sourceTree = "<group>"; };
 		D46A496521A0C5130096F02F /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
 		D46A496D21A0C5130096F02F /* product.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = product.dSYM; sourceTree = "<group>"; };
 		D46A496E21A0C5130096F02F /* product */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = product; sourceTree = "<group>"; };
@@ -99,6 +101,9 @@
 		D4F56EE721AF25F300767ECA /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		D4F56EE921AF321F00767ECA /* PerspectiveShaderProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PerspectiveShaderProgram.cpp; sourceTree = "<group>"; };
 		D4F56EF521AF34FE00767ECA /* ShaderProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderProgram.cpp; sourceTree = "<group>"; };
+		D4F56EF721AF37BF00767ECA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D4F56EFA21AFE84A00767ECA /* EventManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EventManager.cpp; sourceTree = "<group>"; };
+		D4F56EFB21AFE84A00767ECA /* EventManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EventManager.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +125,7 @@
 		D46A487C21A0C3F10096F02F = {
 			isa = PBXGroup;
 			children = (
+				D4F56EF721AF37BF00767ECA /* README.md */,
 				D46A496521A0C5130096F02F /* Makefile */,
 				D46A496C21A0C5130096F02F /* bin */,
 				D46A496F21A0C5130096F02F /* includes */,
@@ -208,6 +214,7 @@
 		D46A4A4921A0CD870096F02F /* GraphicsEngine */ = {
 			isa = PBXGroup;
 			children = (
+				D4F56EF821AFE83000767ECA /* Events */,
 				D4F56EF021AF345500767ECA /* Object */,
 				D46A4A4A21A0CD870096F02F /* GraphicsEngine.hpp */,
 				D46A4B8F21A318F40096F02F /* Scene.hpp */,
@@ -223,6 +230,7 @@
 		D46A4A6421A0CE110096F02F /* GraphicsEngine */ = {
 			isa = PBXGroup;
 			children = (
+				D4F56EF921AFE83700767ECA /* Events */,
 				D4F56EF121AF348C00767ECA /* Object */,
 				D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */,
 				D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */,
@@ -331,6 +339,23 @@
 			path = Material;
 			sourceTree = "<group>";
 		};
+		D4F56EF821AFE83000767ECA /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				D4F56EFB21AFE84A00767ECA /* EventManager.hpp */,
+				D40AFE5A21B05E530019E461 /* EventObservers.hpp */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		D4F56EF921AFE83700767ECA /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				D4F56EFA21AFE84A00767ECA /* EventManager.cpp */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
@@ -423,6 +448,7 @@
 				D46A4A8321A0D0B50096F02F /* Mesh.cpp in Sources */,
 				D46A4B9021A318F40096F02F /* Scene.cpp in Sources */,
 				D46A4A8121A0D0B50096F02F /* Exceptions.cpp in Sources */,
+				D4F56EFC21AFE84A00767ECA /* EventManager.cpp in Sources */,
 				D46A4A8421A0D0B50096F02F /* Shader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
