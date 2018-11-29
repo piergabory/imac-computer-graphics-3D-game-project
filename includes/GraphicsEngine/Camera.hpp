@@ -28,18 +28,13 @@ namespace GraphicsEngine {
         
         glm::mat4 m_projectionMatrix;
         
-        inline void updateProjectionMatrix() {
-            m_projectionMatrix = glm::perspective(glm::radians(m_fieldOfView), m_aspectRatio, m_minRenderingDistance, m_maxRenderingDistance);
-            
-            m_projectionMatrix = glm::translate(glm::mat4(1), m_position) * m_projectionMatrix;
-            m_projectionMatrix = glm::rotate(glm::mat4(1), m_angle, m_orientation) * m_projectionMatrix;
-        }
+        void updateProjectionMatrix();
         
     public:
-        Camera(const float fieldOfView = 90, const float aspect = 4/3, const float min = 0.1f, const float max = 100.f):
-            m_angle(0), m_fieldOfView(fieldOfView), m_aspectRatio(aspect), m_minRenderingDistance(min), m_maxRenderingDistance(max) {
-                updateProjectionMatrix();
-            };
+        Camera(const float fieldOfView = 90,
+               const float aspect = 4/3,
+               const float min = 0.1f,
+               const float max = 100.f);
         
         ~Camera() {}
         

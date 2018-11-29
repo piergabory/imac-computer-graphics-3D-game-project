@@ -1,9 +1,9 @@
-//
-//  mesh.hpp
-//  product
-//
-//  Created by Pierre Gabory on 17/11/2018.
-//
+/**
+ * Mesh.hpp
+ *
+ * IMAC 2 Project CG CPP
+ *
+ */
 
 #ifndef Mesh_hpp
 #define Mesh_hpp
@@ -13,25 +13,40 @@
 #include "CommonStructs.hpp"
 #include "Frameworks.hpp"
 
-namespace GraphicsEngine
-{
+/**
+ * MESH CLASS
+ *
+ * Manages and Loads in GPU, Vertices of objects.
+ */
+
+namespace GraphicsEngine {
     
     class Mesh {
+        
     private:
+        // gl objects
         GLuint m_vertexBufferObject;
         GLuint m_vertexArrayObject;
+        
+        // mesh vertices count
         const int m_vertexCount;
         
-        void setVertexArray(const std::vector<Vertex> &vertices) const;
-        
+        // create vertex buffer
         void setVertexBuffer(const std::vector<Vertex> &vertices) const;
         
+        // construct vertex Array from vertex Buffer
+        void setVertexArray(const std::vector<Vertex> &vertices) const;
+        
+        
     public:
-        Mesh(): m_vertexBufferObject(0), m_vertexArrayObject(0), m_vertexCount(0) {};
+        // constructor
         Mesh(const std::vector<Vertex> &vertices);
+        
+        // destrucor
         ~Mesh();
         
         
+        // getters
         inline GLuint& vertexArrayIdentifier() {
             return m_vertexArrayObject;
         }

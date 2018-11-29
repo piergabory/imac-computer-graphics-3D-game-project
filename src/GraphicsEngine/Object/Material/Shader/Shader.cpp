@@ -20,6 +20,7 @@ namespace GraphicsEngine {
         std::ifstream file;
         file.open(path, std::ios::in);
         std::stringstream buffer;
+        std::string tmpstring;
         const char* sourceCode;
         
         // check if the shader file was open successfully
@@ -34,7 +35,8 @@ namespace GraphicsEngine {
         file.close();
         
         // convert buffer into c string
-        sourceCode = buffer.str().c_str();
+        tmpstring = buffer.str();
+        sourceCode = tmpstring.c_str();
         
         // load code
         glShaderSource(m_glShaderIdentifier, 1, &sourceCode, 0);
