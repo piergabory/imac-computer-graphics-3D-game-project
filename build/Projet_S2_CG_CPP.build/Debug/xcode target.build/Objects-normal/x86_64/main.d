@@ -1,5 +1,6 @@
 dependencies: \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/src/main.cpp \
+  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Events/EventObservers.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/GraphicsEngine.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Frameworks.hpp \
   /usr/local/include/SDL2/SDL.h /usr/local/include/SDL2/SDL_main.h \
@@ -174,4 +175,5 @@ dependencies: \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/gtc/../mat4x2.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/gtc/../mat4x3.hpp \
   /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/lib/glm/gtc/type_ptr.inl \
-  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Camera.hpp
+  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Camera.hpp \
+  /Users/piergabory/Developer/IMAC/Projet\ CG\ CPP/IMAC2_CG_CPP_Game_Project/includes/GraphicsEngine/Events/EventManager.hpp
