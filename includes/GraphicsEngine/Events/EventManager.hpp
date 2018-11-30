@@ -7,6 +7,7 @@
 #ifndef EventManager_hpp
 #define EventManager_hpp
 
+
 #include "Frameworks.hpp"
 #include "EventObservers.hpp"
 

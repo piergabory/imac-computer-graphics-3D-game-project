@@ -1,9 +1,9 @@
-//
-//  Texture.hpp
-//  xcode target
-//
-//  Created by Pierre Gabory on 28/11/2018.
-//
+/**
+ * Texture.hpp
+ *
+ * IMAC 2 Project CG CPP
+ *
+ */
 
 #ifndef Texture_hpp
 #define Texture_hpp
@@ -12,19 +12,32 @@
 #include "ImageData.hpp"
 #include "ShaderProgram.hpp"
 
-
+/**
+ * TEXTURE CLASS
+ *
+ * Creates SDL textures and loads them in a shader sampler
+ */
 namespace GraphicsEngine {
     class Texture {
     private:
+        // texture openGL identifier
         GLuint m_glTextureIdentifier;
+        
+        // image loaded from disk
         ImageData m_image;
         
     public:
+        // constructor
+        // load image from disk, initialize the openGL texture
         Texture(const char* imagePath);
+        
+        // destructor, free the openGL texture memory
         ~Texture();
         
-        void linkTo(const ShaderProgram &program, const char* uniformName = "uMainTextureSampler") const;
+        // links the texture instance in a shader program's texture sampler
+        void linkTo(const ShaderProgram &program, const char* shaderSamplerUniform = "uMainTextureSampler") const;
         
+        // getter
         inline GLuint identifier() const { return m_glTextureIdentifier; }
         
     };
