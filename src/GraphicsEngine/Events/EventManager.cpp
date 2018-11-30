@@ -1,3 +1,7 @@
+/**
+ * EventManager.hpp
+ */
+
 #include "EventManager.hpp"
 
 namespace GraphicsEngine {
