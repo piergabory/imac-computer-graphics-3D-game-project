@@ -1,24 +1,26 @@
-//
-//  SDL_manager.cpp
-//  Project Pasteque
-//
-//  Created by Pierre Gabory on 15/11/2018.
-//
+/**
+ * Object.cpp
+ */
 
 #include "GraphicsEngine.hpp"
 
 namespace GraphicsEngine {
-
+    // singleton instance definition
     Controller* Controller::m_controllerInstance = nullptr;
-    
+
+    // singleton instance getter
     Controller* Controller::instance() {
+        // create if non-existent
         if (Controller::m_controllerInstance == NULL)
             Controller::m_controllerInstance = new Controller();
+
         return Controller::m_controllerInstance;
     }
-    
-    void Controller::initialize() {
-        // initialisation de SDL
+
+
+    // SDL Framework
+    void Controller::initializeSDL() {
+        // init and check
         if(-1 == SDL_Init(SDL_INIT_VIDEO)) {
             throw InitialisationException("Failed to initialize SDL.", SDL_GetError());
         }
@@ -28,8 +30,12 @@ namespace GraphicsEngine {
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
     }
-    
-    void Controller::initializeGlew(Window window) {
+
+
+
+    // GLEW Library
+    // glew should not be necessary on macOs, but it works like that.
+    void Controller::initializeGlew() {
         // #ifndef __APPLE__
         glewExperimental = GL_TRUE;
         GLenum glewInitError = glewInit();
@@ -38,32 +44,62 @@ namespace GraphicsEngine {
         }
         // #endif
     }
-    
-    void Controller::setup() {
-        initialize();
-        
-        if (!window) {
-            window = new Window();
-            initializeGlew(*window);
-        }
-        
-        if (!currentScene) {
-            delete currentScene;
-        }
-        currentScene = new Scene();
+
+
+    // SDL Window init
+    void Controller::initializeWindow(const char* windowTitle, const uint viewportWidth, const uint viewportHeight) {
+        // open a window wherever the OS wants.
+        // the window is resizable (=/= fullscreen) and uses opengl
+        m_sdlWindow = SDL_CreateWindow(windowTitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, viewportWidth, viewportHeight, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+
+        // check for success
+        if (m_sdlWindow == nullptr)
+            throw InitialisationException("Failed to create SDL window", SDL_GetError());
+
+        // initialize OpenGL
+        SDL_GL_CreateContext(m_sdlWindow);
     }
-    
-    void Controller::draw()
+
+
+    // setup
+    void Controller::setup(const char* windowTitle, const uint viewportWidth, const uint viewportHeight) {
+
+        initializeSDL();
+
+        // create if windows doesn't exists
+        if (!m_sdlWindow) {
+            initializeWindow(windowTitle, viewportWidth, viewportHeight);
+            initializeGlew();
+        }
+
+        // destroy scene if already exists
+        if (!m_activeScene)
+            delete m_activeScene;
+        m_activeScene = new Scene();
+    }
+
+
+
+    void Controller::render()
     {
+        // clears buffer
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        currentScene->draw();
-        window->swapBuffer();
+
+        // render the scene
+        m_activeScene->render();
+
+        // swap buffer width visible
+        SDL_GL_SwapWindow(m_sdlWindow);
     }
+
+
     
     void Controller::pollEvents()
     {
         EventManager::instance()->pollEvents();
     }
+
+
     
     void Controller::printInfos()
     {
@@ -72,15 +108,13 @@ namespace GraphicsEngine {
         std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl;
         // #endif
     }
+
+
     
     void Controller::close()
     {
         SDL_Quit();
         //delete window;
     }
-    
-    void Controller::addObjectToCurrentScene(Object *newObject)
-    {
-        currentScene->add(newObject);
-    }
+
 }

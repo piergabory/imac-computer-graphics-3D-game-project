@@ -25,7 +25,7 @@ namespace GraphicsEngine
     }
     
     
-    void Scene::draw() const
+    void Scene::render() const
     {
         for(std::vector<Object*>::const_iterator objectPtr = m_objects.begin(); objectPtr != m_objects.end(); ++objectPtr) {
             // update the shader's matrices

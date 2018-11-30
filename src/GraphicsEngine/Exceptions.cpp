@@ -10,14 +10,13 @@
 namespace GraphicsEngine
 {
     InitialisationException::InitialisationException(const char* message, const char* info) :
-        m_message(message), m_info(info)
+    m_message(message), m_info(info)
     {}
     
     
     
     InitialisationException::InitialisationException(const char* message, GLuint identifier) :
-        m_message(message)
-    {
+    m_message(message) {
         GLint logCharacterLength;
         glGetProgramiv(identifier, GL_INFO_LOG_LENGTH, &logCharacterLength);
         char* text = new char[logCharacterLength];
@@ -29,8 +28,7 @@ namespace GraphicsEngine
     
     
     
-    const char* InitialisationException::what() const throw()
-    {
+    const char* InitialisationException::what() const throw() {
         std::string ret;
         ret += "\n/!\\ GRAPHICS ENGINE EXCEPTION :";
         ret += m_message;
