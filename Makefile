@@ -65,7 +65,7 @@ else
 	# LINUX
 	ifeq ($(UNAME_S),Linux)
 		CPPFLAGS += -D __LINUX__
-		LDFLAGS += -lGL -lGLU -lGLEW -lSDL2 -lm
+		LDFLAGS += -lGL -lGLU -lGLEW -lSDL2 -lSDL2_image -lm
 	endif
 
 	# MACINTOSH
