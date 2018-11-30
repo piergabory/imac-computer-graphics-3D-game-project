@@ -51,15 +51,19 @@ namespace GraphicsEngine {
         // apply a 3D scale on the object
         void scale(const glm::vec3 &scalingVector);
         
-        // ask the material to update the MVP Matrix and Normal Matrix in the shader.
-        // takes the projectionMatrix from the scene.
+        /**
+        * ask the material to update the MVP Matrix and Normal Matrix in the shader.
+        * takes the projectionMatrix from the scene.
+        */
         void project(const glm::mat4 &projectionMatrix);
         
         // apply material and push the mesh vertices in the graphic pipeline
         void draw() const;
         
-        // constructor
-        // initialise mesh and material. Assumes that both are not NULL pointers
+        /**
+         * constructor
+         * initialise mesh and material. Assumes that both are not NULL pointers
+         */
         Object(Mesh *mesh, Material *material) : m_mesh(mesh), m_material(material) {
             assert(mesh != nullptr);
             assert(material != nullptr);

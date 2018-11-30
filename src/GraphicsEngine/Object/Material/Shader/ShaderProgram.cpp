@@ -1,29 +1,34 @@
-//
-//  ShaderProgram.cpp
-//  product
-//
-//  Created by Pierre Gabory on 16/11/2018.
-//
-
+/**
+ * ShaderProgram.hpp
+ */
 #include "ShaderProgram.hpp"
 
-namespace GraphicsEngine
-{
+namespace GraphicsEngine {
     
-    ShaderProgram::ShaderProgram(const char* vertexShaderSourcePath, const char* fragmentShaderSourcePath)
-    : m_glProgramIdentifier(glCreateProgram())
+    ShaderProgram::ShaderProgram(const char* vertexShaderSourcePath, const char* fragmentShaderSourcePath) :
+    // init program
+    m_glProgramIdentifier(glCreateProgram())
     {
+        // load shaders
         try {
             loadShader(vertexShaderSourcePath, GL_VERTEX_SHADER);
             loadShader(fragmentShaderSourcePath, GL_FRAGMENT_SHADER);
-        } catch (InitialisationException error) {
+        }
+        
+        // check for compile success
+        catch (InitialisationException error) {
             throw error;
         }
         
+        // link
         glLinkProgram(m_glProgramIdentifier);
+        
+        // check for linking success
         GLint status;
         glGetProgramiv(m_glProgramIdentifier, GL_LINK_STATUS, &status);
-        if (status != GL_TRUE) throw InitialisationException("Shader program link failed", m_glProgramIdentifier);
+        if (status != GL_TRUE) {
+            throw InitialisationException("Shader program link failed", m_glProgramIdentifier);
+        }
     }
     
     
@@ -33,8 +38,11 @@ namespace GraphicsEngine
         glDeleteProgram(m_glProgramIdentifier);
     }
     
+    
+    
     void ShaderProgram::loadShader(const char* sourcePath, GLenum shaderType) const
     {
+        // create shader
         Shader shader(sourcePath, shaderType);
         glAttachShader(m_glProgramIdentifier, shader.identifier());
     }
