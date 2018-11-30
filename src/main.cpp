@@ -52,7 +52,7 @@ int main(int argc, const char * argv[]) {
     
     GraphicsEngine::Object *object = new GraphicsEngine::Object(new GraphicsEngine::Mesh(helloTriangle), material);
     
-    GraphicsEngine::Controller::instance()->addObjectToCurrentScene(object);
+    GraphicsEngine::Controller::instance()->activeScene()->add(object);
     
     testQuit shouldKeepRunning;
     GraphicsEngine::EventManager::instance()->subscribe(&shouldKeepRunning);
@@ -60,7 +60,7 @@ int main(int argc, const char * argv[]) {
     while (shouldKeepRunning.status) {
         Uint32 startTime = SDL_GetTicks();
 
-        GraphicsEngine::Controller::instance()->draw();
+        GraphicsEngine::Controller::instance()->render();
         GraphicsEngine::Controller::instance()->pollEvents();
         
         Uint32 elapsedTime = SDL_GetTicks() - startTime;

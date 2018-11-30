@@ -49,7 +49,7 @@ namespace GraphicsEngine
         
         
         // Draws the scene: Span through each element in the scene, projects them on the camera.
-        void draw() const;
+        void render() const;
         
         
         // constructor

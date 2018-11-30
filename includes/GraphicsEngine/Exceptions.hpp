@@ -1,9 +1,3 @@
-//
-//  Exceptions.hpp
-//  Project_Pasteque
-//
-//  Created by Pierre Gabory on 16/11/2018.
-//
 
 #ifndef Exceptions_h
 #define Exceptions_h
@@ -32,7 +26,7 @@ namespace GraphicsEngine
         
         InitialisationException(const char* message, GLuint identifier);
         
-        InitialisationException() {}
+        InitialisationException() = default;
         
         ~InitialisationException() throw() {}
     };

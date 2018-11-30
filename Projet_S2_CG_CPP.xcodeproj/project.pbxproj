@@ -12,7 +12,6 @@
 		D46A4A7621A0CE940096F02F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A3A21A0C5CA0096F02F /* Cocoa.framework */; };
 		D46A4A7F21A0CFC50096F02F /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A7821A0CEEC0096F02F /* libGLEW.2.1.0.dylib */; };
 		D46A4A8121A0D0B50096F02F /* Exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6521A0CE110096F02F /* Exceptions.cpp */; };
-		D46A4A8221A0D0B50096F02F /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6621A0CE110096F02F /* Window.cpp */; };
 		D46A4A8321A0D0B50096F02F /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6721A0CE110096F02F /* Mesh.cpp */; };
 		D46A4A8421A0D0B50096F02F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6821A0CE110096F02F /* Shader.cpp */; };
 		D46A4A8521A0D0B50096F02F /* GraphicsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */; };
@@ -66,12 +65,10 @@
 		D46A4A4B21A0CD870096F02F /* CommonStructs.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CommonStructs.hpp; sourceTree = "<group>"; };
 		D46A4A4C21A0CD870096F02F /* ShaderProgram.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderProgram.hpp; sourceTree = "<group>"; };
 		D46A4A4D21A0CD870096F02F /* Frameworks.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Frameworks.hpp; sourceTree = "<group>"; };
-		D46A4A4E21A0CD870096F02F /* Window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
 		D46A4A4F21A0CD870096F02F /* Mesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mesh.hpp; sourceTree = "<group>"; };
 		D46A4A5021A0CD870096F02F /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
 		D46A4A5121A0CD870096F02F /* Exceptions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Exceptions.hpp; sourceTree = "<group>"; };
 		D46A4A6521A0CE110096F02F /* Exceptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exceptions.cpp; sourceTree = "<group>"; };
-		D46A4A6621A0CE110096F02F /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
 		D46A4A6721A0CE110096F02F /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		D46A4A6821A0CE110096F02F /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsEngine.cpp; sourceTree = "<group>"; };
@@ -221,7 +218,6 @@
 				D4F56ECD21AED12100767ECA /* Camera.hpp */,
 				D46A4A4B21A0CD870096F02F /* CommonStructs.hpp */,
 				D46A4A4D21A0CD870096F02F /* Frameworks.hpp */,
-				D46A4A4E21A0CD870096F02F /* Window.hpp */,
 				D46A4A5121A0CD870096F02F /* Exceptions.hpp */,
 			);
 			path = GraphicsEngine;
@@ -235,7 +231,6 @@
 				D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */,
 				D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */,
 				D46A4A6521A0CE110096F02F /* Exceptions.cpp */,
-				D46A4A6621A0CE110096F02F /* Window.cpp */,
 				D46A4B8E21A318F40096F02F /* Scene.cpp */,
 				D4F56ECC21AED12100767ECA /* Camera.cpp */,
 			);
@@ -440,7 +435,6 @@
 				D46A4A8521A0D0B50096F02F /* GraphicsEngine.cpp in Sources */,
 				D4F56EC921AEC28500767ECA /* Object.cpp in Sources */,
 				D46A4A7421A0CE220096F02F /* main.cpp in Sources */,
-				D46A4A8221A0D0B50096F02F /* Window.cpp in Sources */,
 				D4F56EC421AEAC8300767ECA /* ImageData.cpp in Sources */,
 				D46A4A8621A0D0B50096F02F /* CommonStructs.cpp in Sources */,
 				D4F56ED121AEDFB700767ECA /* Material.cpp in Sources */,
