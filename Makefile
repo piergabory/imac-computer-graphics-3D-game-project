@@ -17,7 +17,7 @@ APP_BIN = product
 
 # compile
 CC = g++
-CPPFLAGS = -std=c++11 -Wall -g
+CPPFLAGS = -std=c++11 -Wall -g -Os
 
 # paths
 # Source files

@@ -18,7 +18,11 @@ namespace GraphicsEngine {
     void Mesh::setVertexArray(const std::vector<Vertex> &vertices) const {
         
         // layer ids (0,1,2..)
-        enum { VERTEX_ATTR_POSITION, VERTEX_ATTR_NORMAL, VERTEX_ATTR_TEXTURE };
+        enum {
+            VERTEX_ATTR_POSITION,
+            VERTEX_ATTR_NORMAL,
+            VERTEX_ATTR_TEXTURE
+        };
         
         // select vao
         glBindVertexArray(m_vertexArrayObject);
