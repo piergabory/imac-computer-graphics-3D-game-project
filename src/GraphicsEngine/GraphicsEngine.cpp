@@ -37,7 +37,7 @@ namespace GraphicsEngine {
     // glew should not be necessary on macOs, but it works like that.
     void Controller::initializeGlew() {
         // #ifndef __APPLE__
-        glewExperimental = GL_TRUE;
+        // glewExperimental = GL_TRUE;
         GLenum glewInitError = glewInit();
         if(glewInitError != GLEW_OK) {
             throw InitialisationException("Glew Initialisation failed.", reinterpret_cast<const char*>(glewGetErrorString(glewInitError)));
