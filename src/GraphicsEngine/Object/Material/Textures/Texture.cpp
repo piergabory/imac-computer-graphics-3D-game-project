@@ -34,6 +34,11 @@ namespace GraphicsEngine {
         
         // bind texture to the uniform sampler
         glBindTexture(GL_TEXTURE_2D, m_glTextureIdentifier);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_image.width(), m_image.height(), 0, GL_BGRA, GL_UNSIGNED_BYTE, m_image.pixels());
+
+        #if __APPLE__
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_image.width(), m_image.height(), 0, GL_BGRA, GL_UNSIGNED_BYTE, m_image.pixels());
+        #else
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_image.width(), m_image.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, m_image.pixels());
+        #endif
     }
 }
