@@ -12,7 +12,7 @@
 #include <iterator>
 
 #include "Object.hpp"
-#include "Camera.hpp"
+#include "Camera.hpp" 
 
 /**
  * SCENE CLASS
@@ -30,7 +30,7 @@ namespace GraphicsEngine
         
     private:
         /// Camera
-        Camera camera;
+        Camera *m_camera;
         
         
         /**
@@ -55,6 +55,8 @@ namespace GraphicsEngine
         // constructor
         // initialize camera
         Scene();
+        // takes an existing camera
+        Scene(Camera* cameraPtr);
         
         
         // destructor

@@ -35,7 +35,12 @@ namespace GraphicsEngine {
         
     public:
         // constructor
-        PerspectiveShaderProgram(const char* vertexShaderSourcePath, const char* fragmentShaderSourcePath);
+        PerspectiveShaderProgram(
+            const char* vertexShaderSourcePath,
+            const char* fragmentShaderSourcePath,
+            const char* uniformMVPName = "uMVPMatrix",
+            const char* uniformMVName = "uMVMatrix",
+            const char* uniformNormName = "uNormalMatrix");
         
         // destructor
         ~PerspectiveShaderProgram() {};

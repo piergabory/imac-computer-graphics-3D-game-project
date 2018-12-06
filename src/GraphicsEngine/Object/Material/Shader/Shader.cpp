@@ -17,11 +17,12 @@ namespace GraphicsEngine {
     
     
     void Shader::loadSourceCode(const char* path, const GLenum shaderType) {
-        std::ifstream file;
-        file.open(path, std::ios::in);
+        std::fstream file;
         std::stringstream buffer;
         std::string tmpstring;
         const char* sourceCode;
+        
+        file.open(path, std::ios::in);
         
         // check if the shader file was open successfully
         if (!file.is_open())

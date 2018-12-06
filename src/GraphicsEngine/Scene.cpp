@@ -7,9 +7,11 @@
 namespace GraphicsEngine
 {
     // set camera to fov 70,  4:3 aspect,  and x1000 zbuffer sampling
-    Scene::Scene(): camera(70.f, 800.f/600.f, 0.1f, 100.f) {
+    Scene::Scene(): m_camera(new Camera(70.f, 800.f/600.f, 0.1f, 100.f)) {
     }
-    
+
+    Scene::Scene(Camera* cameraPtr): m_camera(cameraPtr) {
+    }
     
     Scene::~Scene()
     {
@@ -27,12 +29,12 @@ namespace GraphicsEngine
     
     void Scene::render() const
     {
-        for(std::vector<Object*>::const_iterator objectPtr = m_objects.begin(); objectPtr != m_objects.end(); ++objectPtr) {
+        for(Object* object : m_objects) {
             // update the shader's matrices
-            (*objectPtr)->project(camera.projectionMatrix());
+            object->project(m_camera->projectionMatrix());
             
             // push the vertices in the pipeline
-            (*objectPtr)->draw();
+            object->draw();
         }
     }
 }

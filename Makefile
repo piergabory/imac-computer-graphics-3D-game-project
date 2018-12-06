@@ -17,7 +17,7 @@ APP_BIN = product
 
 # compile
 CC = g++
-CPPFLAGS = -std=c++11 -Wall -g -Os
+CPPFLAGS = -std=c++11 -Wall -g 
 
 # paths
 # Source files
@@ -110,5 +110,5 @@ run:
 
 # cleaning
 clean:
-	rm ./obj/*
+	rm -rf ./obj/*.o
 

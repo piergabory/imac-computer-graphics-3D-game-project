@@ -71,14 +71,15 @@ namespace GraphicsEngine {
             initializeWindow(windowTitle, viewportWidth, viewportHeight);
             initializeGlew();
         }
+    }
 
+    void Controller::loadScene(Scene* newScene) {
+        assert(newScene);
         // destroy scene if already exists
         if (!m_activeScene)
             delete m_activeScene;
-        m_activeScene = new Scene();
+        m_activeScene = newScene;
     }
-
-
 
     void Controller::render()
     {

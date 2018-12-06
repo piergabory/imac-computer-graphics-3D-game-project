@@ -26,11 +26,6 @@ namespace GraphicsEngine {
     class Camera {
         
     private:
-        // Spatial properties of the simulated camera
-        glm::vec3 m_position;
-        glm::vec3 m_orientation;
-        float m_angle;
-        
         // camera lense properties
         float m_fieldOfView;
         float m_aspectRatio;
@@ -43,6 +38,9 @@ namespace GraphicsEngine {
         // keeps the matrix around so we only have to
         // compute it when the camera moves
         glm::mat4 m_projectionMatrix;
+
+        // Spatial properties of the simulated camera
+        glm::mat4 m_cameraTransform;
         
         // updates the above matrix
         void updateProjectionMatrix();
@@ -56,6 +54,11 @@ namespace GraphicsEngine {
         
         // destructor
         ~Camera() {}
+
+        // isometric transformations
+        // changes the projection matrix and saves the modifications
+        void translate(const glm::vec3 &to);
+        void rotate(const glm::vec3 &orientation, const float angle);
         
         // getter
         inline const glm::mat4 projectionMatrix() const { return m_projectionMatrix; }

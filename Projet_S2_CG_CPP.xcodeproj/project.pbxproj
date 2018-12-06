@@ -361,7 +361,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = "$(SRCROOT)";
+			buildWorkingDirectory = "";
 			dependencies = (
 			);
 			name = make;

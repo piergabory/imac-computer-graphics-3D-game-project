@@ -4,10 +4,11 @@
  * IMAC 2 Project CG CPP
  *
  */
- #ifndef CommonStructs_hpp
- #define CommonStructs_hpp
+#ifndef CommonStructs_hpp
+#define CommonStructs_hpp
 
-  #include <glm/glm.hpp>
+#include <string>
+#include <glm/glm.hpp>
 
  namespace GraphicsEngine {
     
@@ -25,7 +26,20 @@
          Vertex(glm::vec3 position, glm::vec3 normal, glm::vec2 texture):
             m_position(position), m_normal(normal), m_textureCoordinates(texture) {}
      };
-    
+
+     /**
+      * LocalFilePath
+      * Subclass to std::string allowing easy creation of absolutes paths relatives to the executable
+      */
+     class LocalFilePath : public std::string {
+     private:
+         static std::string m_absolutePathToExecutable;
+
+     public:
+         static void setLocation(std::string executablePath);
+
+         LocalFilePath(std::string localPath) : std::string(m_absolutePathToExecutable + localPath) {}
+     };
  }
 
  #endif /* CommonStructs_hpp */

@@ -46,13 +46,8 @@ namespace GraphicsEngine {
         ~Mesh();
         
         
-        // getters
-        inline GLuint& vertexArrayIdentifier() {
-            return m_vertexArrayObject;
-        }
-        
-        
-        inline GLuint vertexArrayIdentifier() const {
+        // getters        
+        inline const GLuint &vertexArrayIdentifier() const {
             return m_vertexArrayObject;
         }
         

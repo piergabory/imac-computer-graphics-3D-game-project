@@ -39,7 +39,10 @@ namespace GraphicsEngine {
         
         // getters
         inline PerspectiveShaderProgram* shader() { return m_shader; }
+        inline const PerspectiveShaderProgram* shader() const { return m_shader; }
+
         inline Texture* texture() { return m_texture; }
+        inline const Texture* texture() const { return m_texture; }
         
         // activate the shader program and select the textures
         void apply() const;

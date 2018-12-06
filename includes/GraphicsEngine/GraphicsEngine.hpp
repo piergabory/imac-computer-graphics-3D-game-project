@@ -52,10 +52,12 @@ namespace GraphicsEngine {
 
 
     public:
-        // instance getter
-
+        
         // calls initializers for uninitialized frameworks
         void setup(const char* windowTitle = "", const uint viewportWidth = 800, const uint viewportHeight = 600);
+
+        // replace existing scene with a given one
+        void loadScene(Scene* newScene);
 
         // starts a render cycle
         void render();

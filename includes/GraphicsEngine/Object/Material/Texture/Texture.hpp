@@ -38,7 +38,7 @@ namespace GraphicsEngine {
         void linkTo(const ShaderProgram &program, const char* shaderSamplerUniform = "uMainTextureSampler") const;
         
         // getter
-        inline GLuint identifier() const { return m_glTextureIdentifier; }
+        inline const GLuint identifier() const { return m_glTextureIdentifier; }
         
     };
 }
