@@ -11,6 +11,8 @@
 #include "Frameworks.hpp"
 #include "ShaderProgram.hpp"
 
+#include <memory>
+
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -26,6 +28,9 @@ namespace GraphicsEngine {
     class PerspectiveShaderProgram : public ShaderProgram {
         
     private:
+        std::shared_ptr<glm::mat4> m_projectionMatrix;
+        std::shared_ptr<glm::mat4> m_sceneModelViewMatrix;
+
         // perspective matrices
         GLuint m_uniformModelViewMatrix;
         GLuint m_uniformNormalMatrix;
@@ -44,10 +49,11 @@ namespace GraphicsEngine {
         
         // destructor
         ~PerspectiveShaderProgram() {};
-        
-        // matrices setter
-        // takes the object's modelview and the camera's projection, computes the rest
-        void setUniformMatrices(const glm::mat4 &modelView, const glm::mat4 &projection);
+
+        // TODO: documentation
+        void setUniformMatrices(const glm::mat4 &objectModel) const;
+
+        void setViewMatrices(const std::shared_ptr<glm::mat4> &projection,  const std::shared_ptr<glm::mat4> &sceneModel);
     };
     
 }

@@ -8,6 +8,8 @@
 #ifndef Camera_hpp
 #define Camera_hpp
 
+#include <memory>
+
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -37,20 +39,17 @@ namespace GraphicsEngine {
         
         // keeps the matrix around so we only have to
         // compute it when the camera moves
-        glm::mat4 m_projectionMatrix;
+        std::shared_ptr<glm::mat4> m_projectionMatrix;
 
         // Spatial properties of the simulated camera
-        glm::mat4 m_cameraTransform;
+        std::shared_ptr<glm::mat4> m_cameraTransform;
         
         // updates the above matrix
         void updateProjectionMatrix();
         
     public:
         // constructor
-        Camera(const float fieldOfView = 90,
-               const float aspect = 4/3,
-               const float min = 0.1f,
-               const float max = 100.f);
+        Camera(const float fieldOfView = 70.f, const float aspect = 800.f/600.f, const float min = 0.1f, const float max = 100.f);
         
         // destructor
         ~Camera() {}
@@ -61,7 +60,13 @@ namespace GraphicsEngine {
         void rotate(const glm::vec3 &orientation, const float angle);
         
         // getter
-        inline const glm::mat4 projectionMatrix() const { return m_projectionMatrix; }
+        inline const std::shared_ptr<glm::mat4> projectionMatrix() const {
+            return m_projectionMatrix;
+        }
+
+        inline const std::shared_ptr<glm::mat4> modelMatrix() const {
+            return m_cameraTransform;
+        }
     };
 }
 

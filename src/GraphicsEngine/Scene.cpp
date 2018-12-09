@@ -16,14 +16,15 @@ namespace GraphicsEngine
     Scene::~Scene()
     {
         // iterates through each object pointer
-        for(std::vector<Object*>::const_iterator object = m_objects.begin(); object != m_objects.end(); ++object)
-            delete *object;
+        for(Object* object : m_objects)
+            delete object;
     }
     
     
     void Scene::add(Object *newObject)
     {
         m_objects.push_back(newObject);
+        newObject->setProjection(m_camera->projectionMatrix(), m_camera->modelMatrix());
     }
     
     
@@ -31,7 +32,7 @@ namespace GraphicsEngine
     {
         for(Object* object : m_objects) {
             // update the shader's matrices
-            object->project(m_camera->projectionMatrix());
+            object->project();
             
             // push the vertices in the pipeline
             object->draw();

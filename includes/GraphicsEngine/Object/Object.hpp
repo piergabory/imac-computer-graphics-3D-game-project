@@ -42,6 +42,8 @@ namespace GraphicsEngine {
         
         
     public:
+        void setProjection(const std::shared_ptr<glm::mat4> &projectionMatrix, const std::shared_ptr<glm::mat4> &sceneModel);
+
         // apply a 3D translation on the object
         void translate(const glm::vec3 &translationVector);
         
@@ -53,9 +55,8 @@ namespace GraphicsEngine {
         
         /**
         * ask the material to update the MVP Matrix and Normal Matrix in the shader.
-        * takes the projectionMatrix from the scene.
         */
-        void project(const glm::mat4 &projectionMatrix);
+        void project();
         
         // apply material and push the mesh vertices in the graphic pipeline
         void draw() const;
