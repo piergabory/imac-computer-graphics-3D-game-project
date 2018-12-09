@@ -1,16 +1,11 @@
 #include "GameController.hpp"
 
-GameController* GameController::m_controllerInstance = nullptr;
-GameController* GameController::instance() {
-    if (m_controllerInstance == nullptr)
-        m_controllerInstance = new GameController();
-    return m_controllerInstance;
-}
-
 void GameController::linkEventObserver() {
     GraphicsEngine::EventManager::instance()->subscribe((QuitEventObserver*) m_controllerInstance);
     GraphicsEngine::EventManager::instance()->subscribe((KeyboardEventObserver*) m_controllerInstance);
 }
+
+
 
 void GameController::initializeScene() {
     GraphicsEngine::Camera camera;
@@ -25,9 +20,9 @@ void GameController::initializeScene() {
     try {
         tex = new GraphicsEngine::Texture(GraphicsEngine::LocalFilePath("textures/test.png").c_str());
         shader = new GraphicsEngine::PerspectiveShaderProgram(
-                                                              GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl").c_str(),
-                                                              GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl").c_str(),
-                                                              "uMVPMatrix", "uMVMatrix", "uNormalMatrix");
+          GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl").c_str(),
+          GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl").c_str(),
+          "uMVPMatrix", "uMVMatrix", "uNormalMatrix");
         material = new GraphicsEngine::Material(tex , shader);
     } catch(GraphicsEngine::InitialisationException error) {
         std::cout << error.what();
@@ -47,12 +42,15 @@ void GameController::initializeScene() {
 }
 
 
+
 void GameController::setup() {
     GraphicsEngine::Controller::instance()->setup();
     GraphicsEngine::Controller::instance()->printInfos();
+
     initializeScene();
     linkEventObserver();
 }
+
 
 
 bool GameController::loop() {
@@ -71,9 +69,30 @@ bool GameController::loop() {
 }
 
 
+
 void GameController::quitEventHandler() {
     m_isRunning = false;
     GraphicsEngine::Controller::instance()->close();
 }
 
 
+
+void GameController::keyRealeaseHandler(unsigned char keycode) {
+    m_pressedKeys.erase(keycode);
+};
+
+
+
+void GameController::keyDownHandler(unsigned char keycode) {
+    m_pressedKeys.insert(keycode);
+};
+
+
+
+GameController* GameController::m_controllerInstance = nullptr;
+
+GameController* GameController::instance() {
+    if (m_controllerInstance == nullptr)
+        m_controllerInstance = new GameController();
+    return m_controllerInstance;
+}
