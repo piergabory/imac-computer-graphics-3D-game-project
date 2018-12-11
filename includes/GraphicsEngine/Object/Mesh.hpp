@@ -28,6 +28,10 @@ namespace GraphicsEngine {
         GLuint m_vertexBufferObject;
         GLuint m_vertexArrayObject;
         
+        // TODO: DOC
+        GLenum m_glArrayDrawMode;
+        
+        
         // mesh vertices count
         const int m_vertexCount;
         
@@ -40,7 +44,7 @@ namespace GraphicsEngine {
         
     public:
         // constructor
-        Mesh(const std::vector<Vertex> &vertices);
+        Mesh(const std::vector<Vertex> &vertices, GLenum drawMode = GL_TRIANGLES);
         
         // destrucor
         ~Mesh();
@@ -54,6 +58,10 @@ namespace GraphicsEngine {
         
         inline const int vertexCount() const  {
             return m_vertexCount;
+        }
+
+        inline const GLenum mode() const {
+            return m_glArrayDrawMode;
         }
     };
 }

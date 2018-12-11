@@ -32,7 +32,7 @@ namespace GraphicsEngine {
         
     public:
         // constructor
-        Material(Texture *texture, PerspectiveShaderProgram *shader);
+        Material(PerspectiveShaderProgram *shader, Texture *texture = nullptr);
         
         // destructor
         ~Material() {};

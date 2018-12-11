@@ -6,10 +6,12 @@
 
 namespace GraphicsEngine {
     
-    Material::Material(Texture *texture, PerspectiveShaderProgram *shader) :
+    Material::Material(PerspectiveShaderProgram *shader, Texture *texture) :
     m_texture(texture), m_shader(shader) {
-        // sends the texture(s) to the shader texture sampler
-        texture->linkTo(*shader);
+        if (m_texture) {
+            // sends the texture(s) to the shader texture sampler
+            texture->linkTo(*shader);
+        }
     };
     
     
@@ -18,7 +20,9 @@ namespace GraphicsEngine {
         m_shader->use();
         
         // select the texture
-        glBindTexture(GL_TEXTURE_2D, m_texture->identifier());
+        if (m_texture) {
+            glBindTexture(GL_TEXTURE_2D, m_texture->identifier());
+        }
     }
     
 }

@@ -54,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		D40AFE5A21B05E530019E461 /* EventObservers.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EventObservers.hpp; sourceTree = "<group>"; };
+		D44D288721C081E400492876 /* wireframe.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = wireframe.fs.glsl; sourceTree = "<group>"; };
+		D44D288821C081E400492876 /* wireframe.vs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = wireframe.vs.glsl; sourceTree = "<group>"; };
 		D460750B21BD883E00BAF7D0 /* GameController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameController.cpp; sourceTree = "<group>"; };
 		D460750C21BD883E00BAF7D0 /* GameController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameController.hpp; sourceTree = "<group>"; };
 		D46A496521A0C5130096F02F /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
@@ -159,6 +161,8 @@
 		D46A496B21A0C5130096F02F /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				D44D288721C081E400492876 /* wireframe.fs.glsl */,
+				D44D288821C081E400492876 /* wireframe.vs.glsl */,
 				D46A4B8C21A2FDF90096F02F /* triangle.vs.glsl */,
 				D46A4B8D21A2FE020096F02F /* triangle.fs.glsl */,
 			);

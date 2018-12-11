@@ -23,7 +23,7 @@ void GameController::initializeScene() {
           GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl").c_str(),
           GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl").c_str(),
           "uMVPMatrix", "uMVMatrix", "uNormalMatrix");
-        material = new GraphicsEngine::Material(tex , shader);
+        material = new GraphicsEngine::Material(shader, tex);
     } catch(GraphicsEngine::InitialisationException error) {
         std::cout << error.what();
     }
@@ -38,6 +38,32 @@ void GameController::initializeScene() {
     object->scale(glm::vec3(0.3));
 
     GraphicsEngine::Controller::instance()->activeScene()->add(object);
+
+    try {
+        tex = new GraphicsEngine::Texture(GraphicsEngine::LocalFilePath("textures/test.png").c_str());
+        shader = new GraphicsEngine::PerspectiveShaderProgram(
+                                                              GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl").c_str(),
+                                                              GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl").c_str(),
+                                                              "uMVPMatrix", "uMVMatrix", "uNormalMatrix");
+        material = new GraphicsEngine::Material(shader, tex);
+    } catch(GraphicsEngine::InitialisationException error) {
+        std::cout << error.what();
+    }
+
+    std::vector<GraphicsEngine::Vertex> grid;
+    float gridScale = 5;
+    uint gridsize = 30;
+    for (uint i = 0; i < gridsize; ++i) {
+        float position = i * 2.f / gridsize - 1;
+        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(position,0.f,1.f), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(position,0.f,-1.f), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(-1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
+    }
+    GraphicsEngine::Material *wireframe = new GraphicsEngine::Material(new GraphicsEngine::PerspectiveShaderProgram(GraphicsEngine::LocalFilePath("shaders/wireframe.vs.glsl").c_str(), GraphicsEngine::LocalFilePath("shaders/wireframe.fs.glsl").c_str(), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"));
+    GraphicsEngine::Object *gridobj = new GraphicsEngine::Object(new GraphicsEngine::Mesh(grid, GL_LINES), wireframe);
+
+    GraphicsEngine::Controller::instance()->activeScene()->add(gridobj);
 }
 
 
@@ -92,77 +118,96 @@ void GameController::keyDownHandler(unsigned char keycode) {
 void GameController::handlePressedKey() {
     const float KEYBOARD_CAMERA_CONTROL_SPEED = 0.1;
 
-    for (unsigned char key : m_pressedKeys) {
-        switch (key) {
+    // check if debug shortcuts is activated (CTRL-SHIFT):
+    if (m_pressedKeys.find(225) != m_pressedKeys.end() && m_pressedKeys.find(224) != m_pressedKeys.end()) {
+        for (unsigned char key : m_pressedKeys) {
+            switch (key) {
+                // we ignore Shift and Ctrl
+                case 224: case 225: break;
 
-            // Forward
-            case 'z':
-                m_playerPointOfView.move(glm::vec3(0,0,-KEYBOARD_CAMERA_CONTROL_SPEED));
-                break;
+                case 'g':
+                    std::cout << "Toggling Grid" << std::endl;
+                    break;
 
-            // Left
-            case 'q':
-                m_playerPointOfView.move(glm::vec3(KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
-                break;
+                default:
+                    std::cout << "DEBUG! ";
+                    std::cout << "char: " << key << " int: " << (int) key << std::endl;
+                    break;
+            }
+        }
+    } else {
+        for (unsigned char key : m_pressedKeys) {
+            switch (key) {
 
-            // Backward
-            case 's':
-                m_playerPointOfView.move(glm::vec3(0,0,KEYBOARD_CAMERA_CONTROL_SPEED));
-                break;
+                // Forward
+                case 'z':
+                    m_playerPointOfView.move(glm::vec3(0,0,-KEYBOARD_CAMERA_CONTROL_SPEED));
+                    break;
 
-            // Right
-            case 'd':
-                m_playerPointOfView.move(glm::vec3(-KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
-                break;
+                // Left
+                case 'q':
+                    m_playerPointOfView.move(glm::vec3(KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
+                    break;
 
-            // Up
-            case 'w':
-                m_playerPointOfView.move(glm::vec3(0,-KEYBOARD_CAMERA_CONTROL_SPEED,0));
-                break;
+                // Backward
+                case 's':
+                    m_playerPointOfView.move(glm::vec3(0,0,KEYBOARD_CAMERA_CONTROL_SPEED));
+                    break;
 
-            // Down
-            case 'x':
-                m_playerPointOfView.move(glm::vec3(0,KEYBOARD_CAMERA_CONTROL_SPEED,0));
-                break;
+                // Right
+                case 'd':
+                    m_playerPointOfView.move(glm::vec3(-KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
+                    break;
 
-            // Rotate right
-            case 'e':
-                m_playerPointOfView.pan(glm::vec3(0,1,0), KEYBOARD_CAMERA_CONTROL_SPEED);
-                break;
+                // Up
+                case 'w':
+                    m_playerPointOfView.move(glm::vec3(0,-KEYBOARD_CAMERA_CONTROL_SPEED,0));
+                    break;
 
-            // Rotate left
-            case 'a':
-                m_playerPointOfView.pan(glm::vec3(0,-1,0), KEYBOARD_CAMERA_CONTROL_SPEED);
-                break;
+                // Down
+                case 'x':
+                    m_playerPointOfView.move(glm::vec3(0,KEYBOARD_CAMERA_CONTROL_SPEED,0));
+                    break;
 
-            // Rotate up
-            case 'r':
-                m_playerPointOfView.pan(glm::vec3(1,0,0), KEYBOARD_CAMERA_CONTROL_SPEED);
-                break;
+                // Rotate right
+                case 'e':
+                    m_playerPointOfView.pan(glm::vec3(0,1,0), KEYBOARD_CAMERA_CONTROL_SPEED);
+                    break;
 
-            // rotate down
-            case 'f':
-                m_playerPointOfView.pan(glm::vec3(-1,0,0), KEYBOARD_CAMERA_CONTROL_SPEED);
-                break;
+                // Rotate left
+                case 'a':
+                    m_playerPointOfView.pan(glm::vec3(0,-1,0), KEYBOARD_CAMERA_CONTROL_SPEED);
+                    break;
 
-            // '0/à' key (not the numpad)
-            case '0':
-                m_playerPointOfView.resetPosition();
-                break;
+                // Rotate up
+                case 'r':
+                    m_playerPointOfView.pan(glm::vec3(1,0,0), KEYBOARD_CAMERA_CONTROL_SPEED);
+                    break;
 
-            // escape key
-            case 27:
-                SDL_CaptureMouse(SDL_FALSE);
-                break;
+                // rotate down
+                case 'f':
+                    m_playerPointOfView.pan(glm::vec3(-1,0,0), KEYBOARD_CAMERA_CONTROL_SPEED);
+                    break;
 
-            default: std::cout << "char: " << key << " int: " << (int) key << std::endl; break;
+                // '0/à' key (not the numpad)
+                case '0':
+                    m_playerPointOfView.resetPosition();
+                    break;
+
+                // escape key
+                case 27:
+                    SDL_CaptureMouse(SDL_FALSE);
+                    break;
+
+                default: std::cout << "char: " << key << " int: " << (int) key << std::endl; break;
+            }
         }
     }
 }
 
 
 void GameController::mouseMoveHandler(float relativeXMovement,float relativeYMovement) {
-    const float MOUSEMOVE_SCALING = 0.003;
+    const float MOUSEMOVE_SCALING = 0.006;
     m_playerPointOfView.pan(glm::vec3(0,-1,0), relativeXMovement * MOUSEMOVE_SCALING);
     m_playerPointOfView.pan(glm::vec3(1,0,0), relativeYMovement * MOUSEMOVE_SCALING);
 }

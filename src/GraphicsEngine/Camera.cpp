@@ -45,4 +45,7 @@ namespace GraphicsEngine {
         m_cameraDirection = glm::vec3(0,0,-1);
         updateCameraTransformMatrix();
     }
+
+
+    
 }

@@ -39,7 +39,7 @@ namespace GraphicsEngine {
         // Model-View Matrix, represents the position/rotation/scale of the object in the scene.
         glm::mat4 m_modelViewMatrix;
 
-        
+      
         
     public:
         void setProjection(const std::shared_ptr<glm::mat4> &projectionMatrix, const std::shared_ptr<glm::mat4> &sceneModel);

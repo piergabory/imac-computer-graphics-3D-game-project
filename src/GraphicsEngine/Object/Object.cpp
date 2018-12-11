@@ -34,7 +34,7 @@ namespace GraphicsEngine {
         glBindVertexArray(m_mesh->vertexArrayIdentifier());
         m_material->apply();
         
-        glDrawArrays(GL_TRIANGLES, 0, m_mesh->vertexCount());
+        glDrawArrays(m_mesh->mode(), 0, m_mesh->vertexCount());
     }
     
 }
