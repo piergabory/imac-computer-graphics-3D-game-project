@@ -7,7 +7,7 @@
 namespace GraphicsEngine
 {
     // set camera to fov 70,  4:3 aspect,  and x1000 zbuffer sampling
-    Scene::Scene(): m_camera(new Camera(70.f, 800.f/600.f, 0.1f, 100.f)) {
+    Scene::Scene(): m_camera(new Camera()) {
     }
 
     Scene::Scene(Camera* cameraPtr): m_camera(cameraPtr) {

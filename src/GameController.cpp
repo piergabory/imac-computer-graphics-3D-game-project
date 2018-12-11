@@ -36,7 +36,6 @@ void GameController::initializeScene() {
 
     GraphicsEngine::Object *object = new GraphicsEngine::Object(new GraphicsEngine::Mesh(helloTriangle), material);
     object->scale(glm::vec3(0.3));
-    object->translate(glm::vec3(0,0,-2));
 
     GraphicsEngine::Controller::instance()->activeScene()->add(object);
 }
@@ -88,31 +87,75 @@ void GameController::keyDownHandler(unsigned char keycode) {
     m_pressedKeys.insert(keycode);
 };
 
+
+
 void GameController::handlePressedKey() {
     for (unsigned char key : m_pressedKeys) {
         switch (key) {
-            case 'z': m_playerPointOfView.translate(glm::vec3(0,0,0.1)); break;
-            case 'q': m_playerPointOfView.translate(glm::vec3(0.1,0,0)); break;
-            case 's': m_playerPointOfView.translate(glm::vec3(0,0,-0.1)); break;
-            case 'd': m_playerPointOfView.translate(glm::vec3(-0.1,0,0)); break;
-            case 'w': m_playerPointOfView.translate(glm::vec3(0,0.1,0)); break;
-            case 'x': m_playerPointOfView.translate(glm::vec3(0,-0.1,0)); break;
-            case 'e': m_playerPointOfView.rotate(glm::vec3(0,1,0), 0.1); break;
-            case 'a': m_playerPointOfView.rotate(glm::vec3(0,-1,0), 0.1); break;
-            case 'r': m_playerPointOfView.rotate(glm::vec3(1,0,0), 0.1); break;
-            case 'f': m_playerPointOfView.rotate(glm::vec3(-1,0,0), 0.1); break;
-            default:
-                std::cout << key << " ";
+
+            // Forward
+            case 'z':
+                m_playerPointOfView.move(glm::vec3(0,0,0.1));
                 break;
+
+            // Left
+            case 'q':
+                m_playerPointOfView.move(glm::vec3(0.1,0,0));
+                break;
+
+            // Backward
+            case 's':
+                m_playerPointOfView.move(glm::vec3(0,0,-0.1));
+                break;
+
+            // Right
+            case 'd':
+                m_playerPointOfView.move(glm::vec3(-0.1,0,0));
+                break;
+
+            // Up
+            case 'w':
+                m_playerPointOfView.move(glm::vec3(0,0.1,0));
+                break;
+
+            // Down
+            case 'x':
+                m_playerPointOfView.move(glm::vec3(0,-0.1,0));
+                break;
+
+            // Rotate right
+            case 'e':
+                m_playerPointOfView.pan(glm::vec3(0,1,0), 0.1);
+                break;
+
+            // Rotate left
+            case 'a':
+                m_playerPointOfView.pan(glm::vec3(0,-1,0), 0.1);
+                break;
+
+            // Rotate up
+            case 'r':
+                m_playerPointOfView.pan(glm::vec3(1,0,0), 0.1);
+                break;
+
+            // rotate down
+            case 'f':
+                m_playerPointOfView.pan(glm::vec3(-1,0,0), 0.1);
+                break;
+
+            case '0':
+                m_playerPointOfView.resetPosition();
+                break;
+
+            default: std::cout << key << std::endl; break;
         }
     }
-    std::cout << std::endl;
 }
 
 
 void GameController::mouseMoveHandler(float relativeXMovement,float relativeYMovement) {
-    m_playerPointOfView.rotate(glm::vec3(0,1,0), relativeXMovement * 0.01);
-    m_playerPointOfView.rotate(glm::vec3(1,0,0), relativeYMovement * 0.01);
+    m_playerPointOfView.pan(glm::vec3(0,1,0), relativeXMovement * 0.01);
+    m_playerPointOfView.pan(glm::vec3(1,0,0), relativeYMovement * 0.01);
 }
 
 

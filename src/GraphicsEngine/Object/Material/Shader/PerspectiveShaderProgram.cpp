@@ -16,9 +16,9 @@ namespace GraphicsEngine {
         ShaderProgram(vertexShaderSourcePath, fragmentShaderSourcePath),
 
     // members init
-        m_uniformModelViewMatrix(glGetUniformLocation(m_glProgramIdentifier, uniformMVPName)),
-        m_uniformNormalMatrix(glGetUniformLocation(m_glProgramIdentifier, uniformMVName)),
-        m_uniformModelViewProjectionMatrix(glGetUniformLocation(m_glProgramIdentifier, uniformNormName))
+        m_uniformModelViewMatrix(glGetUniformLocation(m_glProgramIdentifier, uniformMVName)),
+        m_uniformNormalMatrix(glGetUniformLocation(m_glProgramIdentifier, uniformNormName)),
+        m_uniformModelViewProjectionMatrix(glGetUniformLocation(m_glProgramIdentifier, uniformMVPName))
 
     // nothing
     {}
@@ -26,8 +26,11 @@ namespace GraphicsEngine {
     
     void PerspectiveShaderProgram::setUniformMatrices(const glm::mat4 &objectModel) const {
         // move the object modelView in the camera referenceframe
-        glm::mat4 modelView = glm::inverse(*m_sceneModelViewMatrix) * objectModel;
-        glm::mat4 modelViewProjection = *m_projectionMatrix * modelView;
+        glm::mat4 modelView, modelViewProjection;
+
+        modelView = objectModel;
+        modelView *= *m_sceneModelViewMatrix;
+        modelViewProjection = *m_projectionMatrix * modelView;
 
         // modelview = modelview
         glUniformMatrix4fv(m_uniformModelViewMatrix, 1, false, glm::value_ptr(modelView));
