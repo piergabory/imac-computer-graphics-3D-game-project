@@ -26,7 +26,7 @@ namespace GraphicsEngine {
     }
 
     void Camera::rotate(const glm::vec3 &orientation, const float angle) {
-        *m_cameraTransform = glm::rotate(*m_cameraTransform, angle, orientation);
+        *m_cameraTransform = *m_cameraTransform * glm::rotate(glm::mat4(1), angle, orientation);
     }
     
 }

@@ -26,7 +26,8 @@ namespace GraphicsEngine {
     
     void PerspectiveShaderProgram::setUniformMatrices(const glm::mat4 &objectModel) const {
         // move the object modelView in the camera referenceframe
-        glm::mat4 modelView = objectModel * *m_sceneModelViewMatrix;
+        glm::mat4 modelView = glm::inverse(*m_sceneModelViewMatrix) * objectModel;
+        glm::mat4 modelViewProjection = *m_projectionMatrix * modelView;
 
         // modelview = modelview
         glUniformMatrix4fv(m_uniformModelViewMatrix, 1, false, glm::value_ptr(modelView));
@@ -36,7 +37,7 @@ namespace GraphicsEngine {
         glUniformMatrix4fv(m_uniformNormalMatrix, 1, true, glm::value_ptr(glm::inverse(modelView)));
         
         // modelviewProjection = modelview * projection
-        glUniformMatrix4fv(m_uniformModelViewProjectionMatrix, 1, false, glm::value_ptr(modelView * *m_projectionMatrix));
+        glUniformMatrix4fv(m_uniformModelViewProjectionMatrix, 1, false, glm::value_ptr(modelViewProjection));
     }
 
     void PerspectiveShaderProgram::setViewMatrices(const std::shared_ptr<glm::mat4> &projection,  const std::shared_ptr<glm::mat4> &sceneModel) {

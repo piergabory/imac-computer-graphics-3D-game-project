@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <set>
+#include <memory>
 
 #include "GraphicsEngine.hpp"
 #include "EventObservers.hpp"
@@ -16,6 +17,10 @@ private:
     // contains all keycodes of currently pressed keyboard keys
     std::set<unsigned char> m_pressedKeys;
 
+    // player point of view, scene camera.
+    GraphicsEngine::Camera m_playerPointOfView;
+
+    void handlePressedKey();
 
     void linkEventObserver();
 
@@ -38,6 +43,8 @@ public:
     void keyRealeaseHandler(unsigned char keycode) override;
 
     void keyDownHandler(unsigned char keycode) override;
+
+    void mouseMoveHandler(float relativeXMovement,float relativeYMovement) override;
 
 
     // singleton getter
