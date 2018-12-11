@@ -90,72 +90,91 @@ void GameController::keyDownHandler(unsigned char keycode) {
 
 
 void GameController::handlePressedKey() {
+    const float KEYBOARD_CAMERA_CONTROL_SPEED = 0.1;
+
     for (unsigned char key : m_pressedKeys) {
         switch (key) {
 
             // Forward
             case 'z':
-                m_playerPointOfView.move(glm::vec3(0,0,-0.1));
+                m_playerPointOfView.move(glm::vec3(0,0,-KEYBOARD_CAMERA_CONTROL_SPEED));
                 break;
 
             // Left
             case 'q':
-                m_playerPointOfView.move(glm::vec3(0.1,0,0));
+                m_playerPointOfView.move(glm::vec3(KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
                 break;
 
             // Backward
             case 's':
-                m_playerPointOfView.move(glm::vec3(0,0,0.1));
+                m_playerPointOfView.move(glm::vec3(0,0,KEYBOARD_CAMERA_CONTROL_SPEED));
                 break;
 
             // Right
             case 'd':
-                m_playerPointOfView.move(glm::vec3(-0.1,0,0));
+                m_playerPointOfView.move(glm::vec3(-KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
                 break;
 
             // Up
             case 'w':
-                m_playerPointOfView.move(glm::vec3(0,-0.1,0));
+                m_playerPointOfView.move(glm::vec3(0,-KEYBOARD_CAMERA_CONTROL_SPEED,0));
                 break;
 
             // Down
             case 'x':
-                m_playerPointOfView.move(glm::vec3(0,0.1,0));
+                m_playerPointOfView.move(glm::vec3(0,KEYBOARD_CAMERA_CONTROL_SPEED,0));
                 break;
 
             // Rotate right
             case 'e':
-                m_playerPointOfView.pan(glm::vec3(0,1,0), 0.1);
+                m_playerPointOfView.pan(glm::vec3(0,1,0), KEYBOARD_CAMERA_CONTROL_SPEED);
                 break;
 
             // Rotate left
             case 'a':
-                m_playerPointOfView.pan(glm::vec3(0,-1,0), 0.1);
+                m_playerPointOfView.pan(glm::vec3(0,-1,0), KEYBOARD_CAMERA_CONTROL_SPEED);
                 break;
 
             // Rotate up
             case 'r':
-                m_playerPointOfView.pan(glm::vec3(1,0,0), 0.1);
+                m_playerPointOfView.pan(glm::vec3(1,0,0), KEYBOARD_CAMERA_CONTROL_SPEED);
                 break;
 
             // rotate down
             case 'f':
-                m_playerPointOfView.pan(glm::vec3(-1,0,0), 0.1);
+                m_playerPointOfView.pan(glm::vec3(-1,0,0), KEYBOARD_CAMERA_CONTROL_SPEED);
                 break;
 
+            // '0/à' key (not the numpad)
             case '0':
                 m_playerPointOfView.resetPosition();
                 break;
 
-            default: std::cout << key << std::endl; break;
+            // escape key
+            case 27:
+                SDL_CaptureMouse(SDL_FALSE);
+                break;
+
+            default: std::cout << "char: " << key << " int: " << (int) key << std::endl; break;
         }
     }
 }
 
 
 void GameController::mouseMoveHandler(float relativeXMovement,float relativeYMovement) {
-    m_playerPointOfView.pan(glm::vec3(0,1,0), relativeXMovement * 0.01);
-    m_playerPointOfView.pan(glm::vec3(1,0,0), relativeYMovement * 0.01);
+    const float MOUSEMOVE_SCALING = 0.003;
+    m_playerPointOfView.pan(glm::vec3(0,-1,0), relativeXMovement * MOUSEMOVE_SCALING);
+    m_playerPointOfView.pan(glm::vec3(1,0,0), relativeYMovement * MOUSEMOVE_SCALING);
+}
+
+
+void GameController::mouseWheelHandler(float deltaX, float deltaY) {
+    const float MOUSEWHEEL_SCALING = 0.1;
+    m_playerPointOfView.move(glm::vec3(MOUSEWHEEL_SCALING * deltaX, 0, MOUSEWHEEL_SCALING * deltaY));
+}
+
+void GameController::mouseReleaseHandler(unsigned char button) {
+    SDL_CaptureMouse(SDL_TRUE);
 }
 
 

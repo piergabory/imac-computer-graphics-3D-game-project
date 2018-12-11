@@ -8,7 +8,7 @@ namespace GraphicsEngine {
     
     void Camera::updateProjectionMatrix() {
         // compute camera projection
-        glm::mat4 perspectiveMatrix = glm::perspectiveFov(glm::radians(120.f), 800.f, 600.f, 0.01f, 100.f);
+        glm::mat4 perspectiveMatrix = glm::perspective(glm::radians(m_fieldOfView), m_aspectRatio, m_minRenderingDistance, m_maxRenderingDistance);
         m_projectionMatrix = std::make_shared<glm::mat4>(perspectiveMatrix);
     }
 

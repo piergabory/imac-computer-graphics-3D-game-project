@@ -45,7 +45,8 @@ public:
     void keyDownHandler(unsigned char keycode) override;
 
     void mouseMoveHandler(float relativeXMovement,float relativeYMovement) override;
-
+    void mouseWheelHandler(float deltaX, float deltaY) override;
+    void mouseReleaseHandler(unsigned char button) override;
 
     // singleton getter
     static GameController* instance();

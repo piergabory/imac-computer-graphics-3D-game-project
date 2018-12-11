@@ -56,6 +56,9 @@ struct MouseEventObserver {
     
     // handles a mouse movement from the user
     virtual void mouseMoveHandler(float relativeXMovement,float relativeYMovement) {};
+
+    // handles scrollwheel
+    virtual void mouseWheelHandler(float deltaX, float deltaY) {};
 };
 
 #endif /* EventObservers_hpp */
