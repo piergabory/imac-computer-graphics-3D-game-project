@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D460750D21BD883E00BAF7D0 /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D460750B21BD883E00BAF7D0 /* GameController.cpp */; };
 		D46A4A7421A0CE220096F02F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A7321A0CE220096F02F /* main.cpp */; };
 		D46A4A7521A0CE860096F02F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A3621A0C5960096F02F /* OpenGL.framework */; };
 		D46A4A7621A0CE940096F02F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A3A21A0C5CA0096F02F /* Cocoa.framework */; };
@@ -53,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		D40AFE5A21B05E530019E461 /* EventObservers.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EventObservers.hpp; sourceTree = "<group>"; };
+		D460750B21BD883E00BAF7D0 /* GameController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameController.cpp; sourceTree = "<group>"; };
+		D460750C21BD883E00BAF7D0 /* GameController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameController.hpp; sourceTree = "<group>"; };
 		D46A496521A0C5130096F02F /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
 		D46A496D21A0C5130096F02F /* product.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = product.dSYM; sourceTree = "<group>"; };
 		D46A496E21A0C5130096F02F /* product */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = product; sourceTree = "<group>"; };
@@ -146,6 +149,7 @@
 		D46A496621A0C5130096F02F /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D460750B21BD883E00BAF7D0 /* GameController.cpp */,
 				D46A4A7321A0CE220096F02F /* main.cpp */,
 				D46A4A6421A0CE110096F02F /* GraphicsEngine */,
 			);
@@ -173,6 +177,7 @@
 		D46A496F21A0C5130096F02F /* includes */ = {
 			isa = PBXGroup;
 			children = (
+				D460750C21BD883E00BAF7D0 /* GameController.hpp */,
 				D46A4A4921A0CD870096F02F /* GraphicsEngine */,
 			);
 			path = includes;
@@ -430,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4F56ECE21AED12100767ECA /* Camera.cpp in Sources */,
+				D460750D21BD883E00BAF7D0 /* GameController.cpp in Sources */,
 				D4F56EF621AF34FE00767ECA /* ShaderProgram.cpp in Sources */,
 				D4F56EEA21AF321F00767ECA /* PerspectiveShaderProgram.cpp in Sources */,
 				D46A4A8521A0D0B50096F02F /* GraphicsEngine.cpp in Sources */,

@@ -5,6 +5,10 @@
 
 
 namespace GraphicsEngine {
+
+    void Object::setProjection(const std::shared_ptr<glm::mat4> &projectionMatrix, const std::shared_ptr<glm::mat4> &sceneModel) {
+        m_material->shader()->setViewMatrices(projectionMatrix, sceneModel);
+    }
     
     void Object::translate(const glm::vec3 &translationVector) {
         m_modelViewMatrix = glm::translate(m_modelViewMatrix, translationVector);
@@ -21,8 +25,8 @@ namespace GraphicsEngine {
     }
     
     
-    void Object::project(const glm::mat4 &projectionMatrix) {
-        m_material->shader()->setUniformMatrices(m_modelViewMatrix, projectionMatrix);
+    void Object::project() {
+        m_material->shader()->setUniformMatrices(m_modelViewMatrix);
     }
     
     

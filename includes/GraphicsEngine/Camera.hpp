@@ -8,6 +8,9 @@
 #ifndef Camera_hpp
 #define Camera_hpp
 
+#include <memory>
+#include <iostream>
+
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -37,31 +40,47 @@ namespace GraphicsEngine {
         
         // keeps the matrix around so we only have to
         // compute it when the camera moves
-        glm::mat4 m_projectionMatrix;
+        std::shared_ptr<glm::mat4> m_projectionMatrix;
 
         // Spatial properties of the simulated camera
-        glm::mat4 m_cameraTransform;
+        std::shared_ptr<glm::mat4> m_cameraTransform;
+
+        // point used to place the camera with glm::lookAt
+        glm::vec3 m_cameraPosition;
+
+        // vector used to point the camera with glm::lookAt
+        glm::vec3 m_cameraDirection;
         
         // updates the above matrix
         void updateProjectionMatrix();
+
+        // recalculates the lookAt matrix
+        void updateCameraTransformMatrix();
+
         
     public:
         // constructor
-        Camera(const float fieldOfView = 90,
-               const float aspect = 4/3,
-               const float min = 0.1f,
-               const float max = 100.f);
+        Camera(const float fieldOfView = 60.f, const float aspect = 800.f/600.f, const float min = 0.1f, const float max = 100.f);
         
         // destructor
         ~Camera() {}
 
         // isometric transformations
         // changes the projection matrix and saves the modifications
-        void translate(const glm::vec3 &to);
-        void rotate(const glm::vec3 &orientation, const float angle);
+        void move(const glm::vec3 &to);
+        void pan(const glm::vec3 &orientation, const float angle);
+
+        // reset camera to the world center.
+        void resetPosition();
         
         // getter
-        inline const glm::mat4 projectionMatrix() const { return m_projectionMatrix; }
+        inline const std::shared_ptr<glm::mat4> projectionMatrix() const {
+            return m_projectionMatrix;
+        }
+
+        inline const std::shared_ptr<glm::mat4> modelMatrix() const {
+            return m_cameraTransform;
+        }
     };
 }
 

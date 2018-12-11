@@ -58,6 +58,13 @@ namespace GraphicsEngine {
 
         // initialize OpenGL
         SDL_GL_CreateContext(m_sdlWindow);
+
+        // todo: check for bullshit
+//        glEnable(GL_CULL_FACE);
+//        glEnable(GL_DEPTH_TEST);
+//        glDepthFunc(GL_LESS);
+//        glFrontFace(GL_CCW);
+//        glCullFace(GL_BACK);
     }
 
 

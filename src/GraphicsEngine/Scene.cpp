@@ -7,7 +7,7 @@
 namespace GraphicsEngine
 {
     // set camera to fov 70,  4:3 aspect,  and x1000 zbuffer sampling
-    Scene::Scene(): m_camera(new Camera(70.f, 800.f/600.f, 0.1f, 100.f)) {
+    Scene::Scene(): m_camera(new Camera()) {
     }
 
     Scene::Scene(Camera* cameraPtr): m_camera(cameraPtr) {
@@ -16,14 +16,15 @@ namespace GraphicsEngine
     Scene::~Scene()
     {
         // iterates through each object pointer
-        for(std::vector<Object*>::const_iterator object = m_objects.begin(); object != m_objects.end(); ++object)
-            delete *object;
+        for(Object* object : m_objects)
+            delete object;
     }
     
     
     void Scene::add(Object *newObject)
     {
         m_objects.push_back(newObject);
+        newObject->setProjection(m_camera->projectionMatrix(), m_camera->modelMatrix());
     }
     
     
@@ -31,7 +32,7 @@ namespace GraphicsEngine
     {
         for(Object* object : m_objects) {
             // update the shader's matrices
-            object->project(m_camera->projectionMatrix());
+            object->project();
             
             // push the vertices in the pipeline
             object->draw();

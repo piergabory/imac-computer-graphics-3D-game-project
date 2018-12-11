@@ -40,6 +40,7 @@ namespace GraphicsEngine {
                     case SDL_MOUSEMOTION: m_pMouseEventsObserver->mouseMoveHandler(event.motion.xrel,event.motion.yrel); break;
                     case SDL_MOUSEBUTTONDOWN: m_pMouseEventsObserver->mouseDownHandler(event.button.button); break;
                     case SDL_MOUSEBUTTONUP: m_pMouseEventsObserver->mouseReleaseHandler(event.button.button); break;
+                    case SDL_MOUSEWHEEL: m_pMouseEventsObserver->mouseWheelHandler(event.wheel.x, event.wheel.y); break;
                     default: break;
                 }
             }
