@@ -45,8 +45,10 @@ namespace GraphicsEngine {
         // Spatial properties of the simulated camera
         std::shared_ptr<glm::mat4> m_cameraTransform;
 
+        // point used to place the camera with glm::lookAt
         glm::vec3 m_cameraPosition;
 
+        // vector used to point the camera with glm::lookAt
         glm::vec3 m_cameraDirection;
         
         // updates the above matrix

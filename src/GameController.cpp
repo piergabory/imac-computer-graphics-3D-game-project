@@ -95,7 +95,7 @@ void GameController::handlePressedKey() {
 
             // Forward
             case 'z':
-                m_playerPointOfView.move(glm::vec3(0,0,0.1));
+                m_playerPointOfView.move(glm::vec3(0,0,-0.1));
                 break;
 
             // Left
@@ -105,7 +105,7 @@ void GameController::handlePressedKey() {
 
             // Backward
             case 's':
-                m_playerPointOfView.move(glm::vec3(0,0,-0.1));
+                m_playerPointOfView.move(glm::vec3(0,0,0.1));
                 break;
 
             // Right
@@ -115,12 +115,12 @@ void GameController::handlePressedKey() {
 
             // Up
             case 'w':
-                m_playerPointOfView.move(glm::vec3(0,0.1,0));
+                m_playerPointOfView.move(glm::vec3(0,-0.1,0));
                 break;
 
             // Down
             case 'x':
-                m_playerPointOfView.move(glm::vec3(0,-0.1,0));
+                m_playerPointOfView.move(glm::vec3(0,0.1,0));
                 break;
 
             // Rotate right
