@@ -22,7 +22,6 @@ namespace GraphicsEngine {
         
     private:
         // texture pointer
-        // TODO: Allow multiple textures
         Texture* m_texture;
         
         // shader pointer
@@ -32,7 +31,7 @@ namespace GraphicsEngine {
         
     public:
         // constructor
-        Material(Texture *texture, PerspectiveShaderProgram *shader);
+        Material(PerspectiveShaderProgram *shader, Texture *texture = nullptr);
         
         // destructor
         ~Material() {};

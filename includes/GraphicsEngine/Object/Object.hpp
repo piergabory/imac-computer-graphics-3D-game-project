@@ -8,6 +8,8 @@
 #ifndef Object_hpp
 #define Object_hpp
 
+#include <memory>
+
 #include "Frameworks.hpp"
 #include "CommonStructs.hpp"
 #include "Mesh.hpp"
@@ -30,18 +32,18 @@ namespace GraphicsEngine {
     private:
         // Mesh, represent the group of vertices making the shape of the object.
         // (Vertex Array Object)
-        Mesh *m_mesh;
+        std::shared_ptr<Mesh> m_mesh;
         
         // Material, represent the object behavior with light (Shaders and textures)
-        // TODO: Allow multiple materials
-        Material *m_material;
+        std::shared_ptr<Material> m_material;
         
         // Model-View Matrix, represents the position/rotation/scale of the object in the scene.
         glm::mat4 m_modelViewMatrix;
 
-        
+      
         
     public:
+        // link the scene camera's matrices to the perspectie shader.
         void setProjection(const std::shared_ptr<glm::mat4> &projectionMatrix, const std::shared_ptr<glm::mat4> &sceneModel);
 
         // apply a 3D translation on the object
@@ -65,14 +67,11 @@ namespace GraphicsEngine {
          * constructor
          * initialise mesh and material. Assumes that both are not NULL pointers
          */
-        Object(Mesh *mesh, Material *material) : m_mesh(mesh), m_material(material) {
+        Object(std::shared_ptr<Mesh> mesh, std::shared_ptr<Material> material) : m_mesh(mesh), m_material(material) {
             assert(mesh != nullptr);
             assert(material != nullptr);
         }
-        
-        // alternate pointer free constructor
-        Object(Mesh &mesh, Material &material) : m_mesh(&mesh), m_material(&material) {}
-        
+
         // destructor
         ~Object() {}
     };

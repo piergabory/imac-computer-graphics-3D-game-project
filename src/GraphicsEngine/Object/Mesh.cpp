@@ -64,8 +64,9 @@ namespace GraphicsEngine {
     
     
     // constructor
-    Mesh::Mesh(const std::vector<Vertex> &vertices):
-    m_vertexCount((int) vertices.size())
+    Mesh::Mesh(const std::vector<Vertex> &vertices, const GLenum drawMode):
+    m_vertexCount((int) vertices.size()),
+    m_glArrayDrawMode(drawMode)
     {
         glGenBuffers(1, &m_vertexBufferObject);
         setVertexBuffer(vertices);
