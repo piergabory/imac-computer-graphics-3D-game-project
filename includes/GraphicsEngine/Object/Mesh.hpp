@@ -32,8 +32,9 @@ namespace GraphicsEngine {
         // mesh vertices count
         const int m_vertexCount;
 
-        // TODO: DOC
-        GLenum m_glArrayDrawMode;
+        // Indicates the drawing mode
+        // TRIANGLE, LINE, POINT, TRIANGLE_FAN
+        const GLenum m_glArrayDrawMode;
         
         // create vertex buffer
         void setVertexBuffer(const std::vector<Vertex> &vertices) const;
@@ -44,7 +45,7 @@ namespace GraphicsEngine {
         
     public:
         // constructor
-        Mesh(const std::vector<Vertex> &vertices, GLenum drawMode = GL_TRIANGLES);
+        Mesh(const std::vector<Vertex> &vertices, const GLenum drawMode = GL_TRIANGLES);
         
         // destrucor
         ~Mesh();

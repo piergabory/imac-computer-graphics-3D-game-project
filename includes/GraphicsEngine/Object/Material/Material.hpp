@@ -22,7 +22,6 @@ namespace GraphicsEngine {
         
     private:
         // texture pointer
-        // TODO: Allow multiple textures
         Texture* m_texture;
         
         // shader pointer

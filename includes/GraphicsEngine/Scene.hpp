@@ -31,7 +31,7 @@ namespace GraphicsEngine
         
     private:
         /// Camera
-        Camera *m_camera;
+        std::shared_ptr<Camera> m_camera;
         
         
         /**
@@ -47,8 +47,11 @@ namespace GraphicsEngine
     public:
         // adds an object in the scene.
         void add(std::shared_ptr<Object> &newObject);
-        
-        
+
+        // remove an object from the scenes.
+        void remove(std::shared_ptr<Object> &object);
+
+
         // Draws the scene: Span through each element in the scene, projects them on the camera.
         void render();
         
@@ -57,7 +60,7 @@ namespace GraphicsEngine
         // initialize camera
         Scene();
         // takes an existing camera
-        Scene(Camera* cameraPtr);
+        Scene(Camera &cameraPtr);
         
         
         // destructor

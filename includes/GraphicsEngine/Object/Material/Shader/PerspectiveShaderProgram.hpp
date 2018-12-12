@@ -50,9 +50,10 @@ namespace GraphicsEngine {
         // destructor
         ~PerspectiveShaderProgram() {};
 
-        // TODO: documentation
+        // computes the Model View Projection Matrix and applys it to the shader uniforms;
         void setUniformMatrices(const glm::mat4 &objectModel) const;
 
+        // link the desired camera matrices (projection and world->view)
         void setViewMatrices(const std::shared_ptr<glm::mat4> &projection,  const std::shared_ptr<glm::mat4> &sceneModel);
     };
     
