@@ -14,28 +14,36 @@ namespace GraphicsEngine
     }
     
     Scene::~Scene()
-    {
-        // iterates through each object pointer
-        for(Object* object : m_objects)
-            delete object;
-    }
+    {}
     
     
-    void Scene::add(Object *newObject)
+    void Scene::add(std::shared_ptr<Object> &newObject)
     {
         m_objects.push_back(newObject);
         newObject->setProjection(m_camera->projectionMatrix(), m_camera->modelMatrix());
+        // shared pointer is destroyed.
+        // Value is own in the scope of Scene::add() call, and linked here by a weak pointer in m_objects
     }
     
     
-    void Scene::render() const
+    void Scene::render()
     {
-        for(Object* object : m_objects) {
+        for(std::vector< std::weak_ptr<Object> >::iterator objectIterator = m_objects.begin(); objectIterator != m_objects.end(); ++objectIterator) {
+            if (objectIterator->expired()) {
+                //m_objects.erase(objectIterator);
+                continue;
+            }
+
+            std::shared_ptr<Object> object = objectIterator->lock();
+
             // update the shader's matrices
             object->project();
             
             // push the vertices in the pipeline
             object->draw();
+
         }
+
+        // shared pointer object is destroyed.
     }
 }

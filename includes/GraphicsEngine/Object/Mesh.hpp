@@ -28,12 +28,12 @@ namespace GraphicsEngine {
         GLuint m_vertexBufferObject;
         GLuint m_vertexArrayObject;
         
-        // TODO: DOC
-        GLenum m_glArrayDrawMode;
-        
         
         // mesh vertices count
         const int m_vertexCount;
+
+        // TODO: DOC
+        GLenum m_glArrayDrawMode;
         
         // create vertex buffer
         void setVertexBuffer(const std::vector<Vertex> &vertices) const;

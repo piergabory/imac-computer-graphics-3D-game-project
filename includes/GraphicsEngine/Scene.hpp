@@ -10,6 +10,7 @@
 
 #include <vector>
 #include <iterator>
+#include <memory>
 
 #include "Object.hpp"
 #include "Camera.hpp" 
@@ -39,17 +40,17 @@ namespace GraphicsEngine
          * An object may appear twice, Objects know how to draw themselves.
          * Scene handle their relation with the camera's (aka, the projection matrix) for each of them on draw().
          */
-        std::vector<Object*> m_objects;
+        std::vector< std::weak_ptr<Object> > m_objects;
         
         
         
     public:
         // adds an object in the scene.
-        void add(Object *newObject);
+        void add(std::shared_ptr<Object> &newObject);
         
         
         // Draws the scene: Span through each element in the scene, projects them on the camera.
-        void render() const;
+        void render();
         
         
         // constructor

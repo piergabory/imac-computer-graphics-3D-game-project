@@ -72,7 +72,7 @@ namespace GraphicsEngine {
         
         // alternate pointer free constructor
         Object(Mesh &mesh, Material &material) : m_mesh(&mesh), m_material(&material) {}
-        
+
         // destructor
         ~Object() {}
     };

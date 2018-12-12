@@ -9,61 +9,10 @@ void GameController::linkEventObserver() {
 
 
 void GameController::initializeScene() {
-    GraphicsEngine::Material *material;
-    GraphicsEngine::Texture *tex;
-    GraphicsEngine::PerspectiveShaderProgram *shader;
+    createObjects();
     GraphicsEngine::Scene *scene = new GraphicsEngine::Scene(&m_playerPointOfView);
-
     GraphicsEngine::Controller::instance()->loadScene(scene);
-
-    // load shaders
-    try {
-        tex = new GraphicsEngine::Texture(GraphicsEngine::LocalFilePath("textures/test.png").c_str());
-        shader = new GraphicsEngine::PerspectiveShaderProgram(
-          GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl").c_str(),
-          GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl").c_str(),
-          "uMVPMatrix", "uMVMatrix", "uNormalMatrix");
-        material = new GraphicsEngine::Material(shader, tex);
-    } catch(GraphicsEngine::InitialisationException error) {
-        std::cout << error.what();
-    }
-
-    // Hello triangle
-    std::vector<GraphicsEngine::Vertex> helloTriangle;
-    helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(-0.5f,0.f,0.f), glm::vec3(1.f,0.f,0.f), glm::vec2(0.f,0.f)));
-    helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(0.5f,0.f,0.f), glm::vec3(0.f,1.f,0.f), glm::vec2(0.5f,0.f)));
-    helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(0.f,1.f,0.f), glm::vec3(0.f,0.f,1.f), glm::vec2(0.f,1.0f)));
-
-    GraphicsEngine::Object *object = new GraphicsEngine::Object(new GraphicsEngine::Mesh(helloTriangle), material);
-    object->scale(glm::vec3(0.3));
-
-    GraphicsEngine::Controller::instance()->activeScene()->add(object);
-
-    try {
-        tex = new GraphicsEngine::Texture(GraphicsEngine::LocalFilePath("textures/test.png").c_str());
-        shader = new GraphicsEngine::PerspectiveShaderProgram(
-                                                              GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl").c_str(),
-                                                              GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl").c_str(),
-                                                              "uMVPMatrix", "uMVMatrix", "uNormalMatrix");
-        material = new GraphicsEngine::Material(shader, tex);
-    } catch(GraphicsEngine::InitialisationException error) {
-        std::cout << error.what();
-    }
-
-    std::vector<GraphicsEngine::Vertex> grid;
-    float gridScale = 5;
-    uint gridsize = 30;
-    for (uint i = 0; i < gridsize; ++i) {
-        float position = i * 2.f / gridsize - 1;
-        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(position,0.f,1.f), glm::vec3(0), glm::vec2(0)));
-        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(position,0.f,-1.f), glm::vec3(0), glm::vec2(0)));
-        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
-        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(-1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
-    }
-    GraphicsEngine::Material *wireframe = new GraphicsEngine::Material(new GraphicsEngine::PerspectiveShaderProgram(GraphicsEngine::LocalFilePath("shaders/wireframe.vs.glsl").c_str(), GraphicsEngine::LocalFilePath("shaders/wireframe.fs.glsl").c_str(), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"));
-    GraphicsEngine::Object *gridobj = new GraphicsEngine::Object(new GraphicsEngine::Mesh(grid, GL_LINES), wireframe);
-
-    GraphicsEngine::Controller::instance()->activeScene()->add(gridobj);
+    GraphicsEngine::Controller::instance()->activeScene()->add(m_helloTriangle);
 }
 
 
@@ -127,6 +76,7 @@ void GameController::handlePressedKey() {
 
                 case 'g':
                     std::cout << "Toggling Grid" << std::endl;
+                    GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
                     break;
 
                 default:
@@ -206,6 +156,50 @@ void GameController::handlePressedKey() {
     }
 }
 
+void GameController::createObjects() {
+    // Hello triangle
+    GraphicsEngine::Material *material;
+    GraphicsEngine::Texture *tex;
+    GraphicsEngine::PerspectiveShaderProgram *shader;
+
+    try {
+        tex = new GraphicsEngine::Texture(GraphicsEngine::LocalFilePath("textures/test.png").c_str());
+        shader = new GraphicsEngine::PerspectiveShaderProgram( GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl").c_str(), GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl").c_str(), "uMVPMatrix", "uMVMatrix", "uNormalMatrix");
+        material = new GraphicsEngine::Material(shader, tex);
+    } catch(GraphicsEngine::InitialisationException error) {
+        std::cout << error.what();
+    }
+
+
+    std::vector<GraphicsEngine::Vertex> helloTriangle;
+    helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(-0.5f,0.f,0.f), glm::vec3(1.f,0.f,0.f), glm::vec2(0.f,0.f)));
+    helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(0.5f,0.f,0.f), glm::vec3(0.f,1.f,0.f), glm::vec2(0.5f,0.f)));
+    helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(0.f,1.f,0.f), glm::vec3(0.f,0.f,1.f), glm::vec2(0.f,1.0f)));
+
+    GraphicsEngine::Mesh* mesh = new GraphicsEngine::Mesh(helloTriangle);
+    m_helloTriangle = std::make_shared<GraphicsEngine::Object>(mesh, material);
+
+
+
+    // CREATE GRID
+    std::vector<GraphicsEngine::Vertex> grid;
+
+    float gridScale = 5;
+    uint gridsize = 30;
+    for (uint i = 0; i < gridsize; ++i) {
+        float position = i * 2.f / gridsize - 1;
+        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(position,0.f,1.f), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(position,0.f,-1.f), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(-1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
+    }
+
+    GraphicsEngine::Mesh *gridMesh = new GraphicsEngine::Mesh(grid, GL_LINES);
+    GraphicsEngine::Material *wireframe = new GraphicsEngine::Material(new GraphicsEngine::PerspectiveShaderProgram(GraphicsEngine::LocalFilePath("shaders/wireframe.vs.glsl").c_str(), GraphicsEngine::LocalFilePath("shaders/wireframe.fs.glsl").c_str(), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"));
+
+    m_debugGrid = std::make_shared<GraphicsEngine::Object>(gridMesh, wireframe);
+}
+
 
 void GameController::mouseMoveHandler(float relativeXMovement,float relativeYMovement) {
     const float MOUSEMOVE_SCALING = 0.006;
@@ -232,3 +226,5 @@ GameController* GameController::instance() {
         m_controllerInstance = new GameController();
     return m_controllerInstance;
 }
+
+GameController::GameController() { }

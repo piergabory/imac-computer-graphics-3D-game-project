@@ -38,7 +38,9 @@
      public:
          static void setLocation(std::string executablePath);
 
-         LocalFilePath(std::string localPath) : std::string(m_absolutePathToExecutable + localPath) {}
+         LocalFilePath(std::string localPath) : std::string(m_absolutePathToExecutable + localPath) {
+             assert(!m_absolutePathToExecutable.empty());
+         }
      };
  }
 
