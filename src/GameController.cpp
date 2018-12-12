@@ -146,7 +146,7 @@ void GameController::handlePressedKey() {
 
                 // Left
                 case 'q':
-                    m_playerPointOfView.move(glm::vec3(KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
+                    m_playerPointOfView.move(glm::vec3(-KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
                     break;
 
                 // Backward
@@ -156,7 +156,7 @@ void GameController::handlePressedKey() {
 
                 // Right
                 case 'd':
-                    m_playerPointOfView.move(glm::vec3(-KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
+                    m_playerPointOfView.move(glm::vec3(KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
                     break;
 
                 // Up
@@ -197,6 +197,7 @@ void GameController::handlePressedKey() {
                 // escape key
                 case 27:
                     SDL_CaptureMouse(SDL_FALSE);
+                    SDL_ShowCursor(SDL_ENABLE);
                     break;
 
                 default: std::cout << "char: " << key << " int: " << (int) key << std::endl; break;
@@ -220,6 +221,7 @@ void GameController::mouseWheelHandler(float deltaX, float deltaY) {
 
 void GameController::mouseReleaseHandler(unsigned char button) {
     SDL_CaptureMouse(SDL_TRUE);
+    SDL_ShowCursor(SDL_DISABLE);
 }
 
 

@@ -31,7 +31,7 @@ namespace GraphicsEngine {
     }
 
     void Camera::move(const glm::vec3 &to) {
-        m_cameraPosition += glm::vec3(*m_cameraTransform * glm::vec4(to,0));
+        m_cameraPosition += glm::vec3(glm::inverse(*m_cameraTransform) * glm::vec4(to,0));
         updateCameraTransformMatrix();
     }
 
