@@ -1,0 +1,356 @@
+.TH "gtx_compatibility" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+gtx_compatibility \- Provide functions to increase the compatibility with Cg and HLSL languages\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef bool \fBglm::bool1\fP"
+.br
+.RI "boolean type with 1 component\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< bool, highp > \fBglm::bool2\fP"
+.br
+.RI "boolean type with 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< bool, highp > \fBglm::bool3\fP"
+.br
+.RI "boolean type with 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< bool, highp > \fBglm::bool4\fP"
+.br
+.RI "boolean type with 4 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef bool \fBglm::bool1x1\fP"
+.br
+.RI "boolean matrix with 1 x 1 component\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< bool, highp > \fBglm::bool2x2\fP"
+.br
+.RI "boolean matrix with 2 x 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat2x3\fP< bool, highp > \fBglm::bool2x3\fP"
+.br
+.RI "boolean matrix with 2 x 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat2x4\fP< bool, highp > \fBglm::bool2x4\fP"
+.br
+.RI "boolean matrix with 2 x 4 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat3x2\fP< bool, highp > \fBglm::bool3x2\fP"
+.br
+.RI "boolean matrix with 3 x 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< bool, highp > \fBglm::bool3x3\fP"
+.br
+.RI "boolean matrix with 3 x 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat3x4\fP< bool, highp > \fBglm::bool3x4\fP"
+.br
+.RI "boolean matrix with 3 x 4 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat4x2\fP< bool, highp > \fBglm::bool4x2\fP"
+.br
+.RI "boolean matrix with 4 x 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat4x3\fP< bool, highp > \fBglm::bool4x3\fP"
+.br
+.RI "boolean matrix with 4 x 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< bool, highp > \fBglm::bool4x4\fP"
+.br
+.RI "boolean matrix with 4 x 4 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef int \fBglm::int1\fP"
+.br
+.RI "integer vector with 1 component\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< int, highp > \fBglm::int2\fP"
+.br
+.RI "integer vector with 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< int, highp > \fBglm::int3\fP"
+.br
+.RI "integer vector with 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< int, highp > \fBglm::int4\fP"
+.br
+.RI "integer vector with 4 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef int \fBglm::int1x1\fP"
+.br
+.RI "integer matrix with 1 component\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< int, highp > \fBglm::int2x2\fP"
+.br
+.RI "integer matrix with 2 x 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat2x3\fP< int, highp > \fBglm::int2x3\fP"
+.br
+.RI "integer matrix with 2 x 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat2x4\fP< int, highp > \fBglm::int2x4\fP"
+.br
+.RI "integer matrix with 2 x 4 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat3x2\fP< int, highp > \fBglm::int3x2\fP"
+.br
+.RI "integer matrix with 3 x 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< int, highp > \fBglm::int3x3\fP"
+.br
+.RI "integer matrix with 3 x 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat3x4\fP< int, highp > \fBglm::int3x4\fP"
+.br
+.RI "integer matrix with 3 x 4 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat4x2\fP< int, highp > \fBglm::int4x2\fP"
+.br
+.RI "integer matrix with 4 x 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat4x3\fP< int, highp > \fBglm::int4x3\fP"
+.br
+.RI "integer matrix with 4 x 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< int, highp > \fBglm::int4x4\fP"
+.br
+.RI "integer matrix with 4 x 4 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef float \fBglm::float1\fP"
+.br
+.RI "single-precision floating-point vector with 1 component\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< float, highp > \fBglm::float2\fP"
+.br
+.RI "single-precision floating-point vector with 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< float, highp > \fBglm::float3\fP"
+.br
+.RI "single-precision floating-point vector with 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< float, highp > \fBglm::float4\fP"
+.br
+.RI "single-precision floating-point vector with 4 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef float \fBglm::float1x1\fP"
+.br
+.RI "single-precision floating-point matrix with 1 component\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< float, highp > \fBglm::float2x2\fP"
+.br
+.RI "single-precision floating-point matrix with 2 x 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat2x3\fP< float, highp > \fBglm::float2x3\fP"
+.br
+.RI "single-precision floating-point matrix with 2 x 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat2x4\fP< float, highp > \fBglm::float2x4\fP"
+.br
+.RI "single-precision floating-point matrix with 2 x 4 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat3x2\fP< float, highp > \fBglm::float3x2\fP"
+.br
+.RI "single-precision floating-point matrix with 3 x 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< float, highp > \fBglm::float3x3\fP"
+.br
+.RI "single-precision floating-point matrix with 3 x 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat3x4\fP< float, highp > \fBglm::float3x4\fP"
+.br
+.RI "single-precision floating-point matrix with 3 x 4 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat4x2\fP< float, highp > \fBglm::float4x2\fP"
+.br
+.RI "single-precision floating-point matrix with 4 x 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat4x3\fP< float, highp > \fBglm::float4x3\fP"
+.br
+.RI "single-precision floating-point matrix with 4 x 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< float, highp > \fBglm::float4x4\fP"
+.br
+.RI "single-precision floating-point matrix with 4 x 4 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef double \fBglm::double1\fP"
+.br
+.RI "double-precision floating-point vector with 1 component\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< double, highp > \fBglm::double2\fP"
+.br
+.RI "double-precision floating-point vector with 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< double, highp > \fBglm::double3\fP"
+.br
+.RI "double-precision floating-point vector with 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< double, highp > \fBglm::double4\fP"
+.br
+.RI "double-precision floating-point vector with 4 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef double \fBglm::double1x1\fP"
+.br
+.RI "double-precision floating-point matrix with 1 component\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< double, highp > \fBglm::double2x2\fP"
+.br
+.RI "double-precision floating-point matrix with 2 x 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat2x3\fP< double, highp > \fBglm::double2x3\fP"
+.br
+.RI "double-precision floating-point matrix with 2 x 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat2x4\fP< double, highp > \fBglm::double2x4\fP"
+.br
+.RI "double-precision floating-point matrix with 2 x 4 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat3x2\fP< double, highp > \fBglm::double3x2\fP"
+.br
+.RI "double-precision floating-point matrix with 3 x 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< double, highp > \fBglm::double3x3\fP"
+.br
+.RI "double-precision floating-point matrix with 3 x 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat3x4\fP< double, highp > \fBglm::double3x4\fP"
+.br
+.RI "double-precision floating-point matrix with 3 x 4 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat4x2\fP< double, highp > \fBglm::double4x2\fP"
+.br
+.RI "double-precision floating-point matrix with 4 x 2 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat4x3\fP< double, highp > \fBglm::double4x3\fP"
+.br
+.RI "double-precision floating-point matrix with 4 x 3 components\&. (From GLM_GTX_compatibility extension) "
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< double, highp > \fBglm::double4x4\fP"
+.br
+.RI "double-precision floating-point matrix with 4 x 4 components\&. (From GLM_GTX_compatibility extension) "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T > GLM_FUNC_QUALIFIER T \fBglm::lerp\fP (T x, T y, T a)"
+.br
+.RI "Returns x * (1\&.0 - a) + y * a, i\&.e\&., the linear blend of x and y using the floating-point value a\&. The value for a is not restricted to the range [0, 1]\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER \fBdetail::tvec2\fP< T, P > \fBglm::lerp\fP (const \fBdetail::tvec2\fP< T, P > &x, const \fBdetail::tvec2\fP< T, P > &y, T a)"
+.br
+.RI "Returns x * (1\&.0 - a) + y * a, i\&.e\&., the linear blend of x and y using the floating-point value a\&. The value for a is not restricted to the range [0, 1]\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER \fBdetail::tvec3\fP< T, P > \fBglm::lerp\fP (const \fBdetail::tvec3\fP< T, P > &x, const \fBdetail::tvec3\fP< T, P > &y, T a)"
+.br
+.RI "Returns x * (1\&.0 - a) + y * a, i\&.e\&., the linear blend of x and y using the floating-point value a\&. The value for a is not restricted to the range [0, 1]\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER \fBdetail::tvec4\fP< T, P > \fBglm::lerp\fP (const \fBdetail::tvec4\fP< T, P > &x, const \fBdetail::tvec4\fP< T, P > &y, T a)"
+.br
+.RI "Returns x * (1\&.0 - a) + y * a, i\&.e\&., the linear blend of x and y using the floating-point value a\&. The value for a is not restricted to the range [0, 1]\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER \fBdetail::tvec2\fP< T, P > \fBglm::lerp\fP (const \fBdetail::tvec2\fP< T, P > &x, const \fBdetail::tvec2\fP< T, P > &y, const \fBdetail::tvec2\fP< T, P > &a)"
+.br
+.RI "Returns the component-wise result of x * (1\&.0 - a) + y * a, i\&.e\&., the linear blend of x and y using vector a\&. The value for a is not restricted to the range [0, 1]\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER \fBdetail::tvec3\fP< T, P > \fBglm::lerp\fP (const \fBdetail::tvec3\fP< T, P > &x, const \fBdetail::tvec3\fP< T, P > &y, const \fBdetail::tvec3\fP< T, P > &a)"
+.br
+.RI "Returns the component-wise result of x * (1\&.0 - a) + y * a, i\&.e\&., the linear blend of x and y using vector a\&. The value for a is not restricted to the range [0, 1]\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER \fBdetail::tvec4\fP< T, P > \fBglm::lerp\fP (const \fBdetail::tvec4\fP< T, P > &x, const \fBdetail::tvec4\fP< T, P > &y, const \fBdetail::tvec4\fP< T, P > &a)"
+.br
+.RI "Returns the component-wise result of x * (1\&.0 - a) + y * a, i\&.e\&., the linear blend of x and y using vector a\&. The value for a is not restricted to the range [0, 1]\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER T \fBglm::slerp\fP (\fBdetail::tquat\fP< T, P > const &x, \fBdetail::tquat\fP< T, P > const &y, T const &a)"
+.br
+.RI "Returns the slurp interpolation between two quaternions\&. "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER T \fBglm::saturate\fP (T x)"
+.br
+.RI "Returns clamp(x, 0, 1) for each component in x\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER \fBdetail::tvec2\fP< T, P > \fBglm::saturate\fP (const \fBdetail::tvec2\fP< T, P > &x)"
+.br
+.RI "Returns clamp(x, 0, 1) for each component in x\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER \fBdetail::tvec3\fP< T, P > \fBglm::saturate\fP (const \fBdetail::tvec3\fP< T, P > &x)"
+.br
+.RI "Returns clamp(x, 0, 1) for each component in x\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER \fBdetail::tvec4\fP< T, P > \fBglm::saturate\fP (const \fBdetail::tvec4\fP< T, P > &x)"
+.br
+.RI "Returns clamp(x, 0, 1) for each component in x\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER T \fBglm::atan2\fP (T x, T y)"
+.br
+.RI "Arc tangent\&. Returns an angle whose tangent is y/x\&. The signs of x and y are used to determine what quadrant the angle is in\&. The range of values returned by this function is [-PI, PI]\&. Results are undefined if x and y are both 0\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER \fBdetail::tvec2\fP< T, P > \fBglm::atan2\fP (const \fBdetail::tvec2\fP< T, P > &x, const \fBdetail::tvec2\fP< T, P > &y)"
+.br
+.RI "Arc tangent\&. Returns an angle whose tangent is y/x\&. The signs of x and y are used to determine what quadrant the angle is in\&. The range of values returned by this function is [-PI, PI]\&. Results are undefined if x and y are both 0\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER \fBdetail::tvec3\fP< T, P > \fBglm::atan2\fP (const \fBdetail::tvec3\fP< T, P > &x, const \fBdetail::tvec3\fP< T, P > &y)"
+.br
+.RI "Arc tangent\&. Returns an angle whose tangent is y/x\&. The signs of x and y are used to determine what quadrant the angle is in\&. The range of values returned by this function is [-PI, PI]\&. Results are undefined if x and y are both 0\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER \fBdetail::tvec4\fP< T, P > \fBglm::atan2\fP (const \fBdetail::tvec4\fP< T, P > &x, const \fBdetail::tvec4\fP< T, P > &y)"
+.br
+.RI "Arc tangent\&. Returns an angle whose tangent is y/x\&. The signs of x and y are used to determine what quadrant the angle is in\&. The range of values returned by this function is [-PI, PI]\&. Results are undefined if x and y are both 0\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL bool \fBglm::isfinite\fP (genType const &x)"
+.br
+.RI "Test whether or not a scalar or each vector component is a finite value\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tvec2\fP< bool, P > \fBglm::isfinite\fP (const \fBdetail::tvec2\fP< T, P > &x)"
+.br
+.RI "Test whether or not a scalar or each vector component is a finite value\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tvec3\fP< bool, P > \fBglm::isfinite\fP (const \fBdetail::tvec3\fP< T, P > &x)"
+.br
+.RI "Test whether or not a scalar or each vector component is a finite value\&. (From GLM_GTX_compatibility) "
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tvec4\fP< bool, P > \fBglm::isfinite\fP (const \fBdetail::tvec4\fP< T, P > &x)"
+.br
+.RI "Test whether or not a scalar or each vector component is a finite value\&. (From GLM_GTX_compatibility) "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Provide functions to increase the compatibility with Cg and HLSL languages\&. 
+
+<\fBglm/gtx/compatibility\&.hpp\fP> need to be included to use these functionalities\&. 
+.SH "Function Documentation"
+.PP 
+.SS "template<typename T , precision P> GLM_FUNC_QUALIFIER T glm::slerp (\fBdetail::tquat\fP< T, P > const & x, \fBdetail::tquat\fP< T, P > const & y, T const & a)"
+
+.PP
+Returns the slurp interpolation between two quaternions\&. Spherical linear interpolation of two quaternions\&. The interpolation always take the short path and the rotation is performed at constant speed\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP A quaternion 
+.br
+\fIy\fP A quaternion 
+.br
+\fIa\fP Interpolation factor\&. The interpolation is defined beyond the range [0, 1]\&. 
+.RE
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP Value type used to build the quaternion\&. Supported: half, float or double\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTC_quaternion\fP 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

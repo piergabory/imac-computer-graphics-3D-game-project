@@ -1,0 +1,226 @@
+.TH "gtx" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+gtx \- Functions and types that the GLSL specification doesn't define, but useful to have for a C++ program\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Modules"
+
+.in +1c
+.ti -1c
+.RI "\fBGLM_GTX_associated_min_max\fP"
+.br
+.RI "Min and max functions that return associated values not the compared onces\&. <\fBglm/gtx/associated_min_max\&.hpp\fP> need to be included to use these functionalities\&. "
+.ti -1c
+.RI "\fBGLM_GTX_bit\fP"
+.br
+.RI "Allow to perform bit operations on integer values\&. "
+.ti -1c
+.RI "\fBGLM_GTX_closest_point\fP"
+.br
+.RI "Find the point on a straight line which is the closet of a point\&. "
+.ti -1c
+.RI "\fBGLM_GTX_color_space\fP"
+.br
+.RI "Related to RGB to HSV conversions and operations\&. "
+.ti -1c
+.RI "\fBGLM_GTX_color_space_YCoCg\fP"
+.br
+.RI "RGB to YCoCg conversions and operations\&. "
+.ti -1c
+.RI "\fBGLM_GTX_compatibility\fP"
+.br
+.RI "Provide functions to increase the compatibility with Cg and HLSL languages\&. "
+.ti -1c
+.RI "\fBGLM_GTX_component_wise\fP"
+.br
+.RI "Operations between components of a type\&. "
+.ti -1c
+.RI "\fBGLM_GTX_euler_angles\fP"
+.br
+.RI "Build matrices from Euler angles\&. "
+.ti -1c
+.RI "\fBGLM_GTX_extend\fP"
+.br
+.RI "Extend a position from a source to a position at a defined length\&. "
+.ti -1c
+.RI "\fBGLM_GTX_extented_min_max\fP"
+.br
+.ti -1c
+.RI "\fBGLM_GTX_fast_exponential\fP"
+.br
+.RI "Fast but less accurate implementations of exponential based functions\&. "
+.ti -1c
+.RI "\fBGLM_GTX_fast_square_root\fP"
+.br
+.RI "Fast but less accurate implementations of square root based functions\&. "
+.ti -1c
+.RI "\fBGLM_GTX_fast_trigonometry\fP"
+.br
+.RI "Fast but less accurate implementations of trigonometric functions\&. "
+.ti -1c
+.RI "\fBGLM_GTX_gradient_paint\fP"
+.br
+.RI "Functions that return the color of procedural gradient for specific coordinates\&. <\fBglm/gtx/gradient_paint\&.hpp\fP> need to be included to use these functionalities\&. "
+.ti -1c
+.RI "\fBGLM_GTX_handed_coordinate_space\fP"
+.br
+.RI "To know if a set of three basis vectors defines a right or left-handed coordinate system\&. "
+.ti -1c
+.RI "\fBGLM_GTX_inertia\fP"
+.br
+.RI "Create inertia matrices\&. "
+.ti -1c
+.RI "\fBGLM_GTX_integer\fP"
+.br
+.RI "Add support for integer for core functions\&. "
+.ti -1c
+.RI "\fBGLM_GTX_intersect\fP"
+.br
+.RI "Add intersection functions\&. "
+.ti -1c
+.RI "\fBGLM_GTX_io\fP"
+.br
+.RI "std::[w]ostream support for glm types "
+.ti -1c
+.RI "\fBGLM_GTX_log_base\fP"
+.br
+.RI "Logarithm for any base\&. base can be a vector or a scalar\&. "
+.ti -1c
+.RI "\fBGLM_GTX_matrix_cross_product\fP"
+.br
+.RI "Build cross product matrices\&. "
+.ti -1c
+.RI "\fBGLM_GTX_matrix_interpolation\fP"
+.br
+.RI "Allows to directly interpolate two exiciting matrices\&. "
+.ti -1c
+.RI "\fBGLM_GTX_matrix_major_storage\fP"
+.br
+.RI "Build matrices with specific matrix order, row or column\&. "
+.ti -1c
+.RI "\fBGLM_GTX_matrix_operation\fP"
+.br
+.RI "Build diagonal matrices from vectors\&. "
+.ti -1c
+.RI "\fBGLM_GTX_matrix_query\fP"
+.br
+.RI "Query to evaluate matrix properties\&. "
+.ti -1c
+.RI "\fBGLM_GTX_matrix_transform_2d\fP"
+.br
+.RI "Defines functions that generate common 2d transformation matrices\&. "
+.ti -1c
+.RI "\fBGLM_GTX_mixed_producte\fP"
+.br
+.RI "Mixed product of 3 vectors\&. "
+.ti -1c
+.RI "\fBGLM_GTX_multiple\fP"
+.br
+.RI "Find the closest number of a number multiple of other number\&. "
+.ti -1c
+.RI "\fBGLM_GTX_norm\fP"
+.br
+.RI "Various ways to compute vector norms\&. "
+.ti -1c
+.RI "\fBGLM_GTX_normal\fP"
+.br
+.RI "Compute the normal of a triangle\&. "
+.ti -1c
+.RI "\fBGLM_GTX_normalize_dot\fP"
+.br
+.RI "Dot product of vectors that need to be normalize with a single square root\&. "
+.ti -1c
+.RI "\fBGLM_GTX_number_precision\fP"
+.br
+.RI "Defined size types\&. "
+.ti -1c
+.RI "\fBGLM_GTX_optimum_pow\fP"
+.br
+.RI "Integer exponentiation of power functions\&. "
+.ti -1c
+.RI "\fBGLM_GTX_orthonormalize\fP"
+.br
+.RI "Orthonormalize matrices\&. "
+.ti -1c
+.RI "\fBGLM_GTX_perpendicular\fP"
+.br
+.RI "Perpendicular of a vector from other one\&. "
+.ti -1c
+.RI "\fBGLM_GTX_polar_coordinates\fP"
+.br
+.RI "Conversion from Euclidean space to polar space and revert\&. "
+.ti -1c
+.RI "\fBGLM_GTX_projection\fP"
+.br
+.RI "Projection of a vector to other one\&. "
+.ti -1c
+.RI "\fBGLM_GTX_quaternion\fP"
+.br
+.RI "Extented quaternion types and functions\&. "
+.ti -1c
+.RI "\fBGLM_GTX_raw_data\fP"
+.br
+.RI "Projection of a vector to other one\&. "
+.ti -1c
+.RI "\fBGLM_GTX_rotate_vector\fP"
+.br
+.RI "Function to directly rotate a vector\&. "
+.ti -1c
+.RI "\fBGLM_GTX_simd_mat4\fP"
+.br
+.RI "SIMD implementation of mat4 type\&. "
+.ti -1c
+.RI "\fBGLM_GTX_simd_quat\fP"
+.br
+.RI "SIMD implementation of quat type\&. "
+.ti -1c
+.RI "\fBGLM_GTX_spline\fP"
+.br
+.RI "Spline functions\&. "
+.ti -1c
+.RI "\fBGLM_GTX_std_based_type\fP"
+.br
+.RI "Adds vector types based on STL value types\&. <\fBglm/gtx/std_based_type\&.hpp\fP> need to be included to use these functionalities\&. "
+.ti -1c
+.RI "\fBGLM_GTX_string_cast\fP"
+.br
+.RI "Setup strings for GLM type values\&. "
+.ti -1c
+.RI "\fBGLM_GTX_transform\fP"
+.br
+.RI "Add transformation matrices\&. "
+.ti -1c
+.RI "\fBGLM_GTX_transform2\fP"
+.br
+.RI "Add extra transformation matrices\&. "
+.ti -1c
+.RI "\fBGLM_GTX_vec1\fP"
+.br
+.RI "Add vec1, ivec1, uvec1 and bvec1 types\&. <\fBglm/gtx/vec1\&.hpp\fP> need to be included to use these functionalities\&. "
+.ti -1c
+.RI "\fBGLM_GTX_vector_angle\fP"
+.br
+.RI "Compute angle between vectors\&. "
+.ti -1c
+.RI "\fBGLM_GTX_vector_query\fP"
+.br
+.RI "Query informations of vector types\&. "
+.ti -1c
+.RI "\fBGLM_GTX_wrap\fP"
+.br
+.RI "Wrapping mode of texture coordinates\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Functions and types that the GLSL specification doesn't define, but useful to have for a C++ program\&. 
+
+Experimental extensions are useful functions and types, but the development of their API and functionality is not necessarily stable\&. They can change substantially between versions\&. Backwards compatibility is not much of an issue for them\&.
+.PP
+Even if it's highly unrecommended, it's possible to include all the extensions at once by including <\fBglm/ext\&.hpp\fP>\&. Otherwise, each extension needs to be included a specific file\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

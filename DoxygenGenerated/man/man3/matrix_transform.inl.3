@@ -1,0 +1,103 @@
+.TH "lib/glm/gtc/matrix_transform.inl" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+lib/glm/gtc/matrix_transform.inl
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&./geometric\&.hpp'\fP
+.br
+\fC#include '\&.\&./trigonometric\&.hpp'\fP
+.br
+\fC#include '\&.\&./matrix\&.hpp'\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBglm\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER detail::tmat4x4< T, P > \fBglm::translate\fP (detail::tmat4x4< T, P > const &m, detail::tvec3< T, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER detail::tmat4x4< T, P > \fBglm::rotate\fP (detail::tmat4x4< T, P > const &m, T const &angle, detail::tvec3< T, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER detail::tmat4x4< T, P > \fBglm::rotate_slow\fP (detail::tmat4x4< T, P > const &m, T const &angle, detail::tvec3< T, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER detail::tmat4x4< T, P > \fBglm::scale\fP (detail::tmat4x4< T, P > const &m, detail::tvec3< T, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER detail::tmat4x4< T, P > \fBglm::scale_slow\fP (detail::tmat4x4< T, P > const &m, detail::tvec3< T, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_QUALIFIER detail::tmat4x4< T, defaultp > \fBglm::ortho\fP (T const &left, T const &right, T const &bottom, T const &top, T const &zNear, T const &zFar)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_QUALIFIER detail::tmat4x4< T, defaultp > \fBglm::ortho\fP (T const &left, T const &right, T const &bottom, T const &top)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_QUALIFIER detail::tmat4x4< T, defaultp > \fBglm::frustum\fP (T const &left, T const &right, T const &bottom, T const &top, T const &nearVal, T const &farVal)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_QUALIFIER detail::tmat4x4< T, defaultp > \fBglm::perspective\fP (T const &fovy, T const &aspect, T const &zNear, T const &zFar)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_QUALIFIER detail::tmat4x4< T, defaultp > \fBglm::perspectiveFov\fP (T const &fov, T const &width, T const &height, T const &zNear, T const &zFar)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_QUALIFIER detail::tmat4x4< T, defaultp > \fBglm::infinitePerspective\fP (T fovy, T aspect, T zNear)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_QUALIFIER detail::tmat4x4< T, defaultp > \fBglm::tweakedInfinitePerspective\fP (T fovy, T aspect, T zNear, T ep)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_QUALIFIER detail::tmat4x4< T, defaultp > \fBglm::tweakedInfinitePerspective\fP (T fovy, T aspect, T zNear)"
+.br
+.ti -1c
+.RI "template<typename T , typename U , precision P> GLM_FUNC_QUALIFIER detail::tvec3< T, P > \fBglm::project\fP (detail::tvec3< T, P > const &obj, detail::tmat4x4< T, P > const &model, detail::tmat4x4< T, P > const &proj, detail::tvec4< U, P > const &viewport)"
+.br
+.ti -1c
+.RI "template<typename T , typename U , precision P> GLM_FUNC_QUALIFIER detail::tvec3< T, P > \fBglm::unProject\fP (detail::tvec3< T, P > const &win, detail::tmat4x4< T, P > const &model, detail::tmat4x4< T, P > const &proj, detail::tvec4< U, P > const &viewport)"
+.br
+.ti -1c
+.RI "template<typename T , precision P, typename U > GLM_FUNC_QUALIFIER detail::tmat4x4< T, P > \fBglm::pickMatrix\fP (detail::tvec2< T, P > const &center, detail::tvec2< T, P > const &delta, detail::tvec4< U, P > const &viewport)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_QUALIFIER detail::tmat4x4< T, P > \fBglm::lookAt\fP (detail::tvec3< T, P > const &eye, detail::tvec3< T, P > const &center, detail::tvec3< T, P > const &up)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+OpenGL Mathematics (glm\&.g-truc\&.net)
+.PP
+Copyright (c) 2005 - 2014 G-Truc Creation (www\&.g-truc\&.net) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+.PP
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software\&.
+.PP
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\&. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE\&.
+.PP
+\fBGLM_GTC_matrix_transform\fP
+.PP
+\fBDate:\fP
+.RS 4
+2009-04-29 / 2011-06-15 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Christophe Riccio 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

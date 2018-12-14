@@ -1,0 +1,1875 @@
+.TH "core_precision" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+core_precision \- Non-GLSL types that are used to define precision-based types\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef lowp_float_t \fBglm::lowp_float\fP"
+.br
+.ti -1c
+.RI "typedef mediump_float_t \fBglm::mediump_float\fP"
+.br
+.ti -1c
+.RI "typedef highp_float_t \fBglm::highp_float\fP"
+.br
+.ti -1c
+.RI "typedef \fBmediump_float\fP \fBglm::float_t\fP"
+.br
+.ti -1c
+.RI "typedef detail::lowp_int_t \fBglm::lowp_int\fP"
+.br
+.ti -1c
+.RI "typedef detail::mediump_int_t \fBglm::mediump_int\fP"
+.br
+.ti -1c
+.RI "typedef detail::highp_int_t \fBglm::highp_int\fP"
+.br
+.ti -1c
+.RI "typedef detail::lowp_uint_t \fBglm::lowp_uint\fP"
+.br
+.ti -1c
+.RI "typedef detail::mediump_uint_t \fBglm::mediump_uint\fP"
+.br
+.ti -1c
+.RI "typedef detail::highp_uint_t \fBglm::highp_uint\fP"
+.br
+.ti -1c
+.RI "typedef \fBmediump_int\fP \fBglm::int_t\fP"
+.br
+.ti -1c
+.RI "typedef \fBmediump_uint\fP \fBglm::uint_t\fP"
+.br
+.ti -1c
+.RI "typedef unsigned int \fBglm::uint\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< float, lowp > \fBglm::lowp_mat2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< float, mediump > \fBglm::mediump_mat2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< float, highp > \fBglm::highp_mat2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< float, lowp > \fBglm::lowp_mat2x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< float, mediump > \fBglm::mediump_mat2x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< float, highp > \fBglm::highp_mat2x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x3\fP< float, lowp > \fBglm::lowp_mat2x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x3\fP< float, mediump > \fBglm::mediump_mat2x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x3\fP< float, highp > \fBglm::highp_mat2x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x4\fP< float, lowp > \fBglm::lowp_mat2x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x4\fP< float, mediump > \fBglm::mediump_mat2x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x4\fP< float, highp > \fBglm::highp_mat2x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x2\fP< float, lowp > \fBglm::lowp_mat3x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x2\fP< float, mediump > \fBglm::mediump_mat3x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x2\fP< float, highp > \fBglm::highp_mat3x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< float, lowp > \fBglm::lowp_mat3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< float, mediump > \fBglm::mediump_mat3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< float, highp > \fBglm::highp_mat3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< float, lowp > \fBglm::lowp_mat3x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< float, mediump > \fBglm::mediump_mat3x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< float, highp > \fBglm::highp_mat3x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x4\fP< float, lowp > \fBglm::lowp_mat3x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x4\fP< float, mediump > \fBglm::mediump_mat3x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x4\fP< float, highp > \fBglm::highp_mat3x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x2\fP< float, lowp > \fBglm::lowp_mat4x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x2\fP< float, mediump > \fBglm::mediump_mat4x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x2\fP< float, highp > \fBglm::highp_mat4x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x3\fP< float, lowp > \fBglm::lowp_mat4x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x3\fP< float, mediump > \fBglm::mediump_mat4x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x3\fP< float, highp > \fBglm::highp_mat4x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< float, lowp > \fBglm::lowp_mat4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< float, mediump > \fBglm::mediump_mat4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< float, highp > \fBglm::highp_mat4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< float, lowp > \fBglm::lowp_mat4x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< float, mediump > \fBglm::mediump_mat4x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< float, highp > \fBglm::highp_mat4x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< double, lowp > \fBglm::lowp_dmat2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< double, mediump > \fBglm::mediump_dmat2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< double, highp > \fBglm::highp_dmat2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< double, lowp > \fBglm::lowp_dmat2x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< double, mediump > \fBglm::mediump_dmat2x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x2\fP< double, highp > \fBglm::highp_dmat2x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x3\fP< double, lowp > \fBglm::lowp_dmat2x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x3\fP< double, mediump > \fBglm::mediump_dmat2x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x3\fP< double, highp > \fBglm::highp_dmat2x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x4\fP< double, lowp > \fBglm::lowp_dmat2x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x4\fP< double, mediump > \fBglm::mediump_dmat2x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat2x4\fP< double, highp > \fBglm::highp_dmat2x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x2\fP< double, lowp > \fBglm::lowp_dmat3x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x2\fP< double, mediump > \fBglm::mediump_dmat3x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x2\fP< double, highp > \fBglm::highp_dmat3x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< float, lowp > \fBglm::lowp_dmat3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< double, mediump > \fBglm::mediump_dmat3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< double, highp > \fBglm::highp_dmat3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< double, lowp > \fBglm::lowp_dmat3x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< double, mediump > \fBglm::mediump_dmat3x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x3\fP< double, highp > \fBglm::highp_dmat3x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x4\fP< double, lowp > \fBglm::lowp_dmat3x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x4\fP< double, mediump > \fBglm::mediump_dmat3x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat3x4\fP< double, highp > \fBglm::highp_dmat3x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x2\fP< double, lowp > \fBglm::lowp_dmat4x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x2\fP< double, mediump > \fBglm::mediump_dmat4x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x2\fP< double, highp > \fBglm::highp_dmat4x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x3\fP< double, lowp > \fBglm::lowp_dmat4x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x3\fP< double, mediump > \fBglm::mediump_dmat4x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x3\fP< double, highp > \fBglm::highp_dmat4x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< double, lowp > \fBglm::lowp_dmat4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< double, mediump > \fBglm::mediump_dmat4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< double, highp > \fBglm::highp_dmat4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< double, lowp > \fBglm::lowp_dmat4x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< double, mediump > \fBglm::mediump_dmat4x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tmat4x4\fP< double, highp > \fBglm::highp_dmat4x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< float, highp > \fBglm::highp_vec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< float, mediump > \fBglm::mediump_vec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< float, lowp > \fBglm::lowp_vec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< double, highp > \fBglm::highp_dvec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< double, mediump > \fBglm::mediump_dvec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< double, lowp > \fBglm::lowp_dvec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< int, highp > \fBglm::highp_ivec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< int, mediump > \fBglm::mediump_ivec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< int, lowp > \fBglm::lowp_ivec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< \fBuint\fP, highp > \fBglm::highp_uvec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< \fBuint\fP, mediump > \fBglm::mediump_uvec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< \fBuint\fP, lowp > \fBglm::lowp_uvec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< bool, highp > \fBglm::highp_bvec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< bool, mediump > \fBglm::mediump_bvec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec2\fP< bool, lowp > \fBglm::lowp_bvec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< float, highp > \fBglm::highp_vec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< float, mediump > \fBglm::mediump_vec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< float, lowp > \fBglm::lowp_vec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< double, highp > \fBglm::highp_dvec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< double, mediump > \fBglm::mediump_dvec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< double, lowp > \fBglm::lowp_dvec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< int, highp > \fBglm::highp_ivec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< int, mediump > \fBglm::mediump_ivec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< int, lowp > \fBglm::lowp_ivec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< \fBuint\fP, highp > \fBglm::highp_uvec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< \fBuint\fP, mediump > \fBglm::mediump_uvec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< \fBuint\fP, lowp > \fBglm::lowp_uvec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< bool, highp > \fBglm::highp_bvec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< bool, mediump > \fBglm::mediump_bvec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec3\fP< bool, lowp > \fBglm::lowp_bvec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< float, highp > \fBglm::highp_vec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< float, mediump > \fBglm::mediump_vec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< float, lowp > \fBglm::lowp_vec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< double, highp > \fBglm::highp_dvec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< double, mediump > \fBglm::mediump_dvec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< double, lowp > \fBglm::lowp_dvec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< int, highp > \fBglm::highp_ivec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< int, mediump > \fBglm::mediump_ivec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< int, lowp > \fBglm::lowp_ivec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< \fBuint\fP, highp > \fBglm::highp_uvec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< \fBuint\fP, mediump > \fBglm::mediump_uvec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< \fBuint\fP, lowp > \fBglm::lowp_uvec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< bool, highp > \fBglm::highp_bvec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< bool, mediump > \fBglm::mediump_bvec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBdetail::tvec4\fP< bool, lowp > \fBglm::lowp_bvec4\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Non-GLSL types that are used to define precision-based types\&. 
+
+The GLSL language allows the user to define the precision of a particular variable\&. In OpenGL's GLSL, these precision qualifiers have no effect; they are there for compatibility with OpenGL ES's precision qualifiers, where they \fIdo\fP have an effect\&.
+.PP
+C++ has no language equivalent to precision qualifiers\&. So GLM provides the next-best thing: a number of typedefs of the \fBTemplate types\fP that use a particular precision\&.
+.PP
+None of these types make any guarantees about the actual precision used\&. 
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef \fBdetail::tvec2\fP<bool, highp> \fBglm::highp_bvec2\fP"
+2 components vector of high precision bool numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec3\fP<bool, highp> \fBglm::highp_bvec3\fP"
+3 components vector of high precision bool numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec4\fP<bool, highp> \fBglm::highp_bvec4\fP"
+4 components vector of high precision bool numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x2\fP<double, highp> \fBglm::highp_dmat2\fP"
+2 columns of 2 components matrix of high precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x2\fP<double, highp> \fBglm::highp_dmat2x2\fP"
+2 columns of 2 components matrix of high precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x3\fP<double, highp> \fBglm::highp_dmat2x3\fP"
+2 columns of 3 components matrix of high precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x4\fP<double, highp> \fBglm::highp_dmat2x4\fP"
+2 columns of 4 components matrix of high precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x3\fP<double, highp> \fBglm::highp_dmat3\fP"
+3 columns of 3 components matrix of high precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x2\fP<double, highp> \fBglm::highp_dmat3x2\fP"
+3 columns of 2 components matrix of high precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x3\fP<double, highp> \fBglm::highp_dmat3x3\fP"
+3 columns of 3 components matrix of high precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x4\fP<double, highp> \fBglm::highp_dmat3x4\fP"
+3 columns of 4 components matrix of high precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x4\fP<double, highp> \fBglm::highp_dmat4\fP"
+4 columns of 4 components matrix of high precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x2\fP<double, highp> \fBglm::highp_dmat4x2\fP"
+4 columns of 2 components matrix of high precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x3\fP<double, highp> \fBglm::highp_dmat4x3\fP"
+4 columns of 3 components matrix of high precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x4\fP<double, highp> \fBglm::highp_dmat4x4\fP"
+4 columns of 4 components matrix of high precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec2\fP<double, highp> \fBglm::highp_dvec2\fP"
+2 components vector of high double-precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec3\fP<double, highp> \fBglm::highp_dvec3\fP"
+3 components vector of high double-precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec4\fP<double, highp> \fBglm::highp_dvec4\fP"
+4 components vector of high double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef highp_float_t \fBglm::highp_float\fP"
+High precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.4 Floats\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef detail::highp_int_t \fBglm::highp_int\fP"
+High precision signed integer\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.3 Integers\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec2\fP<int, highp> \fBglm::highp_ivec2\fP"
+2 components vector of high precision signed integer numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec3\fP<int, highp> \fBglm::highp_ivec3\fP"
+3 components vector of high precision signed integer numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec4\fP<int, highp> \fBglm::highp_ivec4\fP"
+4 components vector of high precision signed integer numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x2\fP< float, highp > \fBglm::highp_mat2\fP"
+2 columns of 2 components matrix of high precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x2\fP< float, highp > \fBglm::highp_mat2x2\fP"
+2 columns of 2 components matrix of high precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x3\fP< float, highp > \fBglm::highp_mat2x3\fP"
+2 columns of 3 components matrix of high precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x4\fP< float, highp > \fBglm::highp_mat2x4\fP"
+2 columns of 4 components matrix of high precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x3\fP< float, highp > \fBglm::highp_mat3\fP"
+3 columns of 3 components matrix of high precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x2\fP< float, highp > \fBglm::highp_mat3x2\fP"
+3 columns of 2 components matrix of high precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x3\fP< float, highp > \fBglm::highp_mat3x3\fP"
+3 columns of 3 components matrix of high precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x4\fP< float, highp > \fBglm::highp_mat3x4\fP"
+3 columns of 4 components matrix of high precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x4\fP< float, highp > \fBglm::highp_mat4\fP"
+4 columns of 4 components matrix of high precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x2\fP< float, highp > \fBglm::highp_mat4x2\fP"
+4 columns of 2 components matrix of high precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x3\fP< float, highp > \fBglm::highp_mat4x3\fP"
+4 columns of 3 components matrix of high precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x4\fP< float, highp > \fBglm::highp_mat4x4\fP"
+4 columns of 4 components matrix of high precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef detail::highp_uint_t \fBglm::highp_uint\fP"
+High precision unsigned integer\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.3 Integers\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec2\fP<\fBuint\fP, highp> \fBglm::highp_uvec2\fP"
+2 components vector of high precision unsigned integer numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec3\fP<\fBuint\fP, highp> \fBglm::highp_uvec3\fP"
+3 components vector of high precision unsigned integer numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec4\fP<\fBuint\fP, highp> \fBglm::highp_uvec4\fP"
+4 components vector of high precision unsigned integer numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec2\fP< float, highp > \fBglm::highp_vec2\fP"
+2 components vector of high single-precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP
+.RE
+.PP
+High Single-precision floating-point vector of 2 components\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTC_type_precision\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec3\fP< float, highp > \fBglm::highp_vec3\fP"
+3 components vector of high single-precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP
+.RE
+.PP
+High Single-precision floating-point vector of 3 components\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTC_type_precision\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec4\fP< float, highp > \fBglm::highp_vec4\fP"
+4 components vector of high single-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP
+.RE
+.PP
+High Single-precision floating-point vector of 4 components\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTC_type_precision\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec2\fP<bool, lowp> \fBglm::lowp_bvec2\fP"
+2 components vector of low precision bool numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec3\fP<bool, lowp> \fBglm::lowp_bvec3\fP"
+3 components vector of low precision bool numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec4\fP<bool, lowp> \fBglm::lowp_bvec4\fP"
+4 components vector of low precision bool numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x2\fP<double, lowp> \fBglm::lowp_dmat2\fP"
+2 columns of 2 components matrix of low precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x2\fP<double, lowp> \fBglm::lowp_dmat2x2\fP"
+2 columns of 2 components matrix of low precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x3\fP<double, lowp> \fBglm::lowp_dmat2x3\fP"
+2 columns of 3 components matrix of low precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x4\fP<double, lowp> \fBglm::lowp_dmat2x4\fP"
+2 columns of 4 components matrix of low precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x3\fP<float, lowp> \fBglm::lowp_dmat3\fP"
+3 columns of 3 components matrix of low precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x2\fP<double, lowp> \fBglm::lowp_dmat3x2\fP"
+3 columns of 2 components matrix of low precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x3\fP<double, lowp> \fBglm::lowp_dmat3x3\fP"
+3 columns of 3 components matrix of low precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x4\fP<double, lowp> \fBglm::lowp_dmat3x4\fP"
+3 columns of 4 components matrix of low precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x4\fP<double, lowp> \fBglm::lowp_dmat4\fP"
+4 columns of 4 components matrix of low precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x2\fP<double, lowp> \fBglm::lowp_dmat4x2\fP"
+4 columns of 2 components matrix of low precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x3\fP<double, lowp> \fBglm::lowp_dmat4x3\fP"
+4 columns of 3 components matrix of low precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x4\fP<double, lowp> \fBglm::lowp_dmat4x4\fP"
+4 columns of 4 components matrix of low precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec2\fP<double, lowp> \fBglm::lowp_dvec2\fP"
+2 components vector of low double-precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec3\fP<double, lowp> \fBglm::lowp_dvec3\fP"
+3 components vector of low double-precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec4\fP<double, lowp> \fBglm::lowp_dvec4\fP"
+4 components vector of low double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef lowp_float_t \fBglm::lowp_float\fP"
+Low precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.4 Floats\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef detail::lowp_int_t \fBglm::lowp_int\fP"
+Low precision signed integer\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.3 Integers\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec2\fP<int, lowp> \fBglm::lowp_ivec2\fP"
+2 components vector of low precision signed integer numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec3\fP<int, lowp> \fBglm::lowp_ivec3\fP"
+3 components vector of low precision signed integer numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec4\fP<int, lowp> \fBglm::lowp_ivec4\fP"
+4 components vector of low precision signed integer numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x2\fP< float, lowp > \fBglm::lowp_mat2\fP"
+2 columns of 2 components matrix of low precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x2\fP< float, lowp > \fBglm::lowp_mat2x2\fP"
+2 columns of 2 components matrix of low precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x3\fP< float, lowp > \fBglm::lowp_mat2x3\fP"
+2 columns of 3 components matrix of low precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x4\fP< float, lowp > \fBglm::lowp_mat2x4\fP"
+2 columns of 4 components matrix of low precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x3\fP< float, lowp > \fBglm::lowp_mat3\fP"
+3 columns of 3 components matrix of low precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x2\fP< float, lowp > \fBglm::lowp_mat3x2\fP"
+3 columns of 2 components matrix of low precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x3\fP< float, lowp > \fBglm::lowp_mat3x3\fP"
+3 columns of 3 components matrix of low precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x4\fP< float, lowp > \fBglm::lowp_mat3x4\fP"
+3 columns of 4 components matrix of low precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x4\fP< float, lowp > \fBglm::lowp_mat4\fP"
+4 columns of 4 components matrix of low precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x2\fP< float, lowp > \fBglm::lowp_mat4x2\fP"
+4 columns of 2 components matrix of low precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x3\fP< float, lowp > \fBglm::lowp_mat4x3\fP"
+4 columns of 3 components matrix of low precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x4\fP< float, lowp > \fBglm::lowp_mat4x4\fP"
+4 columns of 4 components matrix of low precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef detail::lowp_uint_t \fBglm::lowp_uint\fP"
+Low precision unsigned integer\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.3 Integers\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec2\fP<\fBuint\fP, lowp> \fBglm::lowp_uvec2\fP"
+2 components vector of low precision unsigned integer numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec3\fP<\fBuint\fP, lowp> \fBglm::lowp_uvec3\fP"
+3 components vector of low precision unsigned integer numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec4\fP<\fBuint\fP, lowp> \fBglm::lowp_uvec4\fP"
+4 components vector of low precision unsigned integer numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec2\fP< float, lowp > \fBglm::lowp_vec2\fP"
+2 components vector of low single-precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP
+.RE
+.PP
+Low single-precision floating-point vector of 2 components\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTC_type_precision\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec3\fP< float, lowp > \fBglm::lowp_vec3\fP"
+3 components vector of low single-precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP
+.RE
+.PP
+Low single-precision floating-point vector of 3 components\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTC_type_precision\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec4\fP< float, lowp > \fBglm::lowp_vec4\fP"
+4 components vector of low single-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP
+.RE
+.PP
+Low single-precision floating-point vector of 4 components\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTC_type_precision\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec2\fP<bool, mediump> \fBglm::mediump_bvec2\fP"
+2 components vector of medium precision bool numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec3\fP<bool, mediump> \fBglm::mediump_bvec3\fP"
+3 components vector of medium precision bool numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec4\fP<bool, mediump> \fBglm::mediump_bvec4\fP"
+4 components vector of medium precision bool numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x2\fP<double, mediump> \fBglm::mediump_dmat2\fP"
+2 columns of 2 components matrix of medium precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x2\fP<double, mediump> \fBglm::mediump_dmat2x2\fP"
+2 columns of 2 components matrix of medium precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x3\fP<double, mediump> \fBglm::mediump_dmat2x3\fP"
+2 columns of 3 components matrix of medium precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x4\fP<double, mediump> \fBglm::mediump_dmat2x4\fP"
+2 columns of 4 components matrix of medium precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x3\fP<double, mediump> \fBglm::mediump_dmat3\fP"
+3 columns of 3 components matrix of medium precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x2\fP<double, mediump> \fBglm::mediump_dmat3x2\fP"
+3 columns of 2 components matrix of medium precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x3\fP<double, mediump> \fBglm::mediump_dmat3x3\fP"
+3 columns of 3 components matrix of medium precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x4\fP<double, mediump> \fBglm::mediump_dmat3x4\fP"
+3 columns of 4 components matrix of medium precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x4\fP<double, mediump> \fBglm::mediump_dmat4\fP"
+4 columns of 4 components matrix of medium precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x2\fP<double, mediump> \fBglm::mediump_dmat4x2\fP"
+4 columns of 2 components matrix of medium precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x3\fP<double, mediump> \fBglm::mediump_dmat4x3\fP"
+4 columns of 3 components matrix of medium precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x4\fP<double, mediump> \fBglm::mediump_dmat4x4\fP"
+4 columns of 4 components matrix of medium precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec2\fP<double, mediump> \fBglm::mediump_dvec2\fP"
+2 components vector of medium double-precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec3\fP<double, mediump> \fBglm::mediump_dvec3\fP"
+3 components vector of medium double-precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec4\fP<double, mediump> \fBglm::mediump_dvec4\fP"
+4 components vector of medium double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef mediump_float_t \fBglm::mediump_float\fP"
+Medium precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.4 Floats\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef detail::mediump_int_t \fBglm::mediump_int\fP"
+Medium precision signed integer\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.3 Integers\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec2\fP<int, mediump> \fBglm::mediump_ivec2\fP"
+2 components vector of medium precision signed integer numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec3\fP<int, mediump> \fBglm::mediump_ivec3\fP"
+3 components vector of medium precision signed integer numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec4\fP<int, mediump> \fBglm::mediump_ivec4\fP"
+4 components vector of medium precision signed integer numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x2\fP< float, mediump > \fBglm::mediump_mat2\fP"
+2 columns of 2 components matrix of medium precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x2\fP< float, mediump > \fBglm::mediump_mat2x2\fP"
+2 columns of 2 components matrix of medium precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x3\fP< float, mediump > \fBglm::mediump_mat2x3\fP"
+2 columns of 3 components matrix of medium precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat2x4\fP< float, mediump > \fBglm::mediump_mat2x4\fP"
+2 columns of 4 components matrix of medium precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x3\fP< float, mediump > \fBglm::mediump_mat3\fP"
+3 columns of 3 components matrix of medium precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x2\fP< float, mediump > \fBglm::mediump_mat3x2\fP"
+3 columns of 2 components matrix of medium precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x3\fP< float, mediump > \fBglm::mediump_mat3x3\fP"
+3 columns of 3 components matrix of medium precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat3x4\fP< float, mediump > \fBglm::mediump_mat3x4\fP"
+3 columns of 4 components matrix of medium precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x4\fP< float, mediump > \fBglm::mediump_mat4\fP"
+4 columns of 4 components matrix of medium precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x2\fP< float, mediump > \fBglm::mediump_mat4x2\fP"
+4 columns of 2 components matrix of medium precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x3\fP< float, mediump > \fBglm::mediump_mat4x3\fP"
+4 columns of 3 components matrix of medium precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tmat4x4\fP< float, mediump > \fBglm::mediump_mat4x4\fP"
+4 columns of 4 components matrix of medium precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef detail::mediump_uint_t \fBglm::mediump_uint\fP"
+Medium precision unsigned integer\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.3 Integers\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec2\fP<\fBuint\fP, mediump> \fBglm::mediump_uvec2\fP"
+2 components vector of medium precision unsigned integer numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec3\fP<\fBuint\fP, mediump> \fBglm::mediump_uvec3\fP"
+3 components vector of medium precision unsigned integer numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec4\fP<\fBuint\fP, mediump> \fBglm::mediump_uvec4\fP"
+4 components vector of medium precision unsigned integer numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec2\fP< float, mediump > \fBglm::mediump_vec2\fP"
+2 components vector of medium single-precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP
+.RE
+.PP
+Medium Single-precision floating-point vector of 2 components\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTC_type_precision\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec3\fP< float, mediump > \fBglm::mediump_vec3\fP"
+3 components vector of medium single-precision floating-point numbers\&. There is no guarantee on the actual precision\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP
+.RE
+.PP
+Medium Single-precision floating-point vector of 3 components\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTC_type_precision\fP 
+.RE
+.PP
+
+.SS "typedef \fBdetail::tvec4\fP< float, mediump > \fBglm::mediump_vec4\fP"
+4 components vector of medium single-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 4\&.7\&.2 Precision Qualifier\fP
+.RE
+.PP
+Medium Single-precision floating-point vector of 4 components\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTC_type_precision\fP 
+.RE
+.PP
+
+.SS "typedef unsigned int \fBglm::uint\fP"
+Unsigned integer type\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.3 Integers\fP 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

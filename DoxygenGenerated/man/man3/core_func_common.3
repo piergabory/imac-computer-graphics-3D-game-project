@@ -1,0 +1,615 @@
+.TH "core_func_common" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+core_func_common
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::abs\fP (genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::sign\fP (genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::floor\fP (genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::trunc\fP (genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::round\fP (genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::roundEven\fP (genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::ceil\fP (genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::fract\fP (genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::mod\fP (genType const &x, genType const &y)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::mod\fP (genType const &x, typename genType::value_type const &y)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::modf\fP (genType const &x, genType &i)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::min\fP (genType const &x, genType const &y)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::min\fP (genType const &x, typename genType::value_type const &y)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::max\fP (genType const &x, genType const &y)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::max\fP (genType const &x, typename genType::value_type const &y)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::clamp\fP (genType const &x, genType const &minVal, genType const &maxVal)"
+.br
+.ti -1c
+.RI "template<typename genType , precision P> GLM_FUNC_DECL genType \fBglm::clamp\fP (genType const &x, typename genType::value_type const &minVal, typename genType::value_type const &maxVal)"
+.br
+.ti -1c
+.RI "template<typename T , typename U , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType< T, P > \fBglm::mix\fP (vecType< T, P > const &x, vecType< T, P > const &y, vecType< U, P > const &a)"
+.br
+.ti -1c
+.RI "template<typename T , typename U , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType< T, P > \fBglm::mix\fP (vecType< T, P > const &x, vecType< T, P > const &y, U const &a)"
+.br
+.ti -1c
+.RI "template<typename genTypeT , typename genTypeU > GLM_FUNC_DECL genTypeT \fBglm::mix\fP (genTypeT const &x, genTypeT const &y, genTypeU const &a)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::step\fP (genType const &edge, genType const &x)"
+.br
+.ti -1c
+.RI "template<template< typename, precision > class vecType, typename T , precision P> GLM_FUNC_DECL vecType< T, P > \fBglm::step\fP (T const &edge, vecType< T, P > const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::smoothstep\fP (genType const &edge0, genType const &edge1, genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::smoothstep\fP (typename genType::value_type const &edge0, typename genType::value_type const &edge1, genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType::bool_type \fBglm::isnan\fP (genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType::bool_type \fBglm::isinf\fP (genType const &x)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL int \fBglm::floatBitsToInt\fP (float const &v)"
+.br
+.ti -1c
+.RI "template<template< typename, precision > class vecType, precision P> GLM_FUNC_DECL vecType< int, P > \fBglm::floatBitsToInt\fP (vecType< float, P > const &v)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBuint\fP \fBglm::floatBitsToUint\fP (float const &v)"
+.br
+.ti -1c
+.RI "template<template< typename, precision > class vecType, precision P> GLM_FUNC_DECL vecType< \fBuint\fP, P > \fBglm::floatBitsToUint\fP (vecType< float, P > const &v)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL float \fBglm::intBitsToFloat\fP (int const &v)"
+.br
+.ti -1c
+.RI "template<template< typename, precision > class vecType, precision P> GLM_FUNC_DECL vecType< float, P > \fBglm::intBitsToFloat\fP (vecType< int, P > const &v)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL float \fBglm::uintBitsToFloat\fP (\fBuint\fP const &v)"
+.br
+.ti -1c
+.RI "template<template< typename, precision > class vecType, precision P> GLM_FUNC_DECL vecType< float, P > \fBglm::uintBitsToFloat\fP (vecType< \fBuint\fP, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::fma\fP (genType const &a, genType const &b, genType const &c)"
+.br
+.ti -1c
+.RI "template<typename genType , typename genIType > GLM_FUNC_DECL genType \fBglm::frexp\fP (genType const &x, genIType &\fBexp\fP)"
+.br
+.ti -1c
+.RI "template<typename genType , typename genIType > GLM_FUNC_DECL genType \fBglm::ldexp\fP (genType const &x, genIType const &\fBexp\fP)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+These all operate component-wise\&. The description is per component\&. 
+.SH "Function Documentation"
+.PP 
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::abs (genType const & x)"
+Returns x if x >= 0; otherwise, it returns -x\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP floating-point or signed integer; scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL abs man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::ceil (genType const & x)"
+Returns a value equal to the nearest integer that is greater than or equal to x\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL ceil man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::clamp (genType const & x, genType const & minVal, genType const & maxVal)"
+Returns min(max(x, minVal), maxVal) for each component in x using the floating-point values minVal and maxVal\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point or integer; scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL clamp man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "GLM_FUNC_QUALIFIER int glm::floatBitsToInt (float const & v)"
+Returns a signed integer value representing the encoding of a floating-point value\&. The floating-point value's bit-level representation is preserved\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL floatBitsToInt man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<template< typename, precision > class vecType, precision P> GLM_FUNC_DECL vecType<int, P> glm::floatBitsToInt (vecType< float, P > const & v)"
+Returns a signed integer value representing the encoding of a floating-point value\&. The floatingpoint value's bit-level representation is preserved\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL floatBitsToInt man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "GLM_FUNC_QUALIFIER \fBuint\fP glm::floatBitsToUint (float const & v)"
+Returns a unsigned integer value representing the encoding of a floating-point value\&. The floatingpoint value's bit-level representation is preserved\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL floatBitsToUint man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<template< typename, precision > class vecType, precision P> GLM_FUNC_DECL vecType<\fBuint\fP, P> glm::floatBitsToUint (vecType< float, P > const & v)"
+Returns a unsigned integer value representing the encoding of a floating-point value\&. The floatingpoint value's bit-level representation is preserved\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL floatBitsToUint man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::floor (genType const & x)"
+Returns a value equal to the nearest integer that is less then or equal to x\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL floor man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::fma (genType const & a, genType const & b, genType const & c)"
+Computes and returns a * b + c\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL fma man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::fract (genType const & x)"
+Return x - floor(x)\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL fract man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType , typename genIType > GLM_FUNC_DECL genType glm::frexp (genType const & x, genIType & exp)"
+Splits x into a floating-point significand in the range [0\&.5, 1\&.0) and an integral exponent of two, such that: x = significand * exp(2, exponent)
+.PP
+The significand is returned by the function and the exponent is returned in the parameter exp\&. For a floating-point value of zero, the significant and exponent are both zero\&. For a floating-point value that is an infinity or is not a number, the results are undefined\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL frexp man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "GLM_FUNC_QUALIFIER float glm::intBitsToFloat (int const & v)"
+Returns a floating-point value corresponding to a signed integer encoding of a floating-point value\&. If an inf or NaN is passed in, it will not signal, and the resulting floating point value is unspecified\&. Otherwise, the bit-level representation is preserved\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL intBitsToFloat man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<template< typename, precision > class vecType, precision P> GLM_FUNC_DECL vecType<float, P> glm::intBitsToFloat (vecType< int, P > const & v)"
+Returns a floating-point value corresponding to a signed integer encoding of a floating-point value\&. If an inf or NaN is passed in, it will not signal, and the resulting floating point value is unspecified\&. Otherwise, the bit-level representation is preserved\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL intBitsToFloat man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType::bool_type glm::isinf (genType const & x)"
+Returns true if x holds a positive infinity or negative infinity representation in the underlying implementation's set of floating point representations\&. Returns false otherwise, including for implementations with no infinity representations\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL isinf man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType::bool_type glm::isnan (genType const & x)"
+Returns true if x holds a NaN (not a number) representation in the underlying implementation's set of floating point representations\&. Returns false otherwise, including for implementations with no NaN representations\&.
+.PP
+/!\\ When using compiler fast math, this function may fail\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL isnan man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType , typename genIType > GLM_FUNC_DECL genType glm::ldexp (genType const & x, genIType const & exp)"
+Builds a floating-point number from x and the corresponding integral exponent of two in exp, returning: significand * exp(2, exponent)
+.PP
+If this product is too large to be represented in the floating-point type, the result is undefined\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL ldexp man page\fP; 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::max (genType const & x, genType const & y)"
+Returns y if x < y; otherwise, it returns x\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point or integer; scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL max man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::min (genType const & x, genType const & y)"
+Returns y if y < x; otherwise, it returns x\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point or integer; scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL min man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP<<<<<<< HEAD 
+.RE
+.PP
+
+.SS "template<typename T , typename U , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType<T, P> glm::mix (vecType< T, P > const & x, vecType< T, P > const & y, vecType< U, P > const & a)"
+If genTypeU is a floating scalar or vector: Returns x * (1\&.0 - a) + y * a, i\&.e\&., the linear blend of x and y using the floating-point value a\&. The value for a is not restricted to the range [0, 1]\&.
+.PP
+If genTypeU is a boolean scalar or vector: Selects which vector each returned component comes from\&. For a component of  that is false, the corresponding component of x is returned\&. For a component of a that is true, the corresponding component of y is returned\&. Components of x and y that are not selected are allowed to be invalid floating point values and will have no effect on the results\&. Thus, this provides different functionality than genType mix(genType x, genType y, genType(a)) where a is a Boolean vector\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL mix man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP Value to interpolate\&. 
+.br
+\fIy\fP Value to interpolate\&. 
+.br
+\fIa\fP Interpolant\&.
+.RE
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenTypeT\fP Floating point scalar or vector\&. 
+.br
+\fIgenTypeU\fP Floating point or boolean scalar or vector\&. It can't be a vector if it is the length of genTypeT\&.
+.RE
+.PP
+.PP
+.nf
+#include <glm/glm\&.hpp>
+\&.\&.\&.
+float a;
+bool b;
+glm::dvec3 e;
+glm::dvec3 f;
+glm::vec4 g;
+glm::vec4 h;
+\&.\&.\&.
+glm::vec4 r = glm::mix(g, h, a); // Interpolate with a floating-point scalar two vectors\&. 
+glm::vec4 s = glm::mix(g, h, b); // Teturns g or h;
+glm::dvec3 t = glm::mix(e, f, a); // Types of the third parameter is not required to match with the first and the second\&.
+glm::vec4 u = glm::mix(g, h, r); // Interpolations can be perform per component with a vector for the last parameter\&.
+.fi
+.PP
+ 
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::mod (genType const & x, genType const & y)"
+Modulus\&. Returns x - y * floor(x / y) for each component in x using the floating point value y\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL mod man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::mod (genType const & x, typename genType::value_type const & y)"
+Modulus\&. Returns x - y * floor(x / y) for each component in x using the floating point value y\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL mod man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::modf (genType const & x, genType & i)"
+Returns the fractional part of x and sets i to the integer part (as a whole number floating point value)\&. Both the return value and the output parameter will have the same sign as x\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL modf man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::round (genType const & x)"
+Returns a value equal to the nearest integer to x\&. The fraction 0\&.5 will round in a direction chosen by the implementation, presumably the direction that is fastest\&. This includes the possibility that round(x) returns the same value as roundEven(x) for all values of x\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL round man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::roundEven (genType const & x)"
+Returns a value equal to the nearest integer to x\&. A fractional part of 0\&.5 will round toward the nearest even integer\&. (Both 3\&.5 and 4\&.5 for x will return 4\&.0\&.)
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL roundEven man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.PP
+\fCNew round to even technique\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::sign (genType const & x)"
+Returns 1\&.0 if x > 0, 0\&.0 if x == 0, or -1\&.0 if x < 0\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point or signed integer; scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL sign man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::smoothstep (genType const & edge0, genType const & edge1, genType const & x)"
+Returns 0\&.0 if x <= edge0 and 1\&.0 if x >= edge1 and performs smooth Hermite interpolation between 0 and 1 when edge0 < x < edge1\&. This is useful in cases where you would want a threshold function with a smooth transition\&. This is equivalent to: genType t; t = clamp ((x - edge0) / (edge1 - edge0), 0, 1); return t * t * (3 - 2 * t); Results are undefined if edge0 >= edge1\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL smoothstep man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::step (genType const & edge, genType const & x)"
+Returns 0\&.0 if x < edge, otherwise it returns 1\&.0 for each component of a genType\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL step man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<template< typename, precision > class vecType, typename T , precision P> GLM_FUNC_DECL vecType<T, P> glm::step (T const & edge, vecType< T, P > const & x)"
+Returns 0\&.0 if x < edge, otherwise it returns 1\&.0\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL step man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::trunc (genType const & x)"
+Returns a value equal to the nearest integer to x whose absolute value is not larger than the absolute value of x\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL trunc man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "GLM_FUNC_QUALIFIER float glm::uintBitsToFloat (\fBuint\fP const & v)"
+Returns a floating-point value corresponding to a unsigned integer encoding of a floating-point value\&. If an inf or NaN is passed in, it will not signal, and the resulting floating point value is unspecified\&. Otherwise, the bit-level representation is preserved\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL uintBitsToFloat man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SS "template<template< typename, precision > class vecType, precision P> GLM_FUNC_DECL vecType<float, P> glm::uintBitsToFloat (vecType< \fBuint\fP, P > const & v)"
+Returns a floating-point value corresponding to a unsigned integer encoding of a floating-point value\&. If an inf or NaN is passed in, it will not signal, and the resulting floating point value is unspecified\&. Otherwise, the bit-level representation is preserved\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL uintBitsToFloat man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.3 Common Functions\fP 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

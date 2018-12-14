@@ -1,0 +1,71 @@
+.TH "gtc_epsilon" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+gtc_epsilon \- Comparison functions for a user defined epsilon values\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType< bool, P > \fBglm::epsilonEqual\fP (vecType< T, P > const &x, vecType< T, P > const &y, T const &\fBepsilon\fP)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL bool \fBglm::epsilonEqual\fP (genType const &x, genType const &y, genType const &\fBepsilon\fP)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType::boolType \fBglm::epsilonNotEqual\fP (genType const &x, genType const &y, typename genType::value_type const &\fBepsilon\fP)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL bool \fBglm::epsilonNotEqual\fP (genType const &x, genType const &y, genType const &\fBepsilon\fP)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Comparison functions for a user defined epsilon values\&. 
+
+<\fBglm/gtc/epsilon\&.hpp\fP> need to be included to use these functionalities\&. 
+.SH "Function Documentation"
+.PP 
+.SS "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType<bool, P> glm::epsilonEqual (vecType< T, P > const & x, vecType< T, P > const & y, T const & epsilon)"
+Returns the component-wise comparison of |x - y| < epsilon\&. True if this expression is satisfied\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTC_epsilon\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL bool glm::epsilonEqual (genType const & x, genType const & y, genType const & epsilon)"
+Returns the component-wise comparison of |x - y| < epsilon\&. True if this expression is satisfied\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTC_epsilon\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType::boolType glm::epsilonNotEqual (genType const & x, genType const & y, typename genType::value_type const & epsilon)"
+Returns the component-wise comparison of |x - y| < epsilon\&. True if this expression is not satisfied\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTC_epsilon\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL bool glm::epsilonNotEqual (genType const & x, genType const & y, genType const & epsilon)"
+Returns the component-wise comparison of |x - y| >= epsilon\&. True if this expression is not satisfied\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTC_epsilon\fP 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

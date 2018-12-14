@@ -1,0 +1,68 @@
+.TH "gtx_transform2" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+gtx_transform2 \- Add extra transformation matrices\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat3x3\fP< T, P > \fBglm::shearX2D\fP (\fBdetail::tmat3x3\fP< T, P > const &m, T y)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat3x3\fP< T, P > \fBglm::shearY2D\fP (\fBdetail::tmat3x3\fP< T, P > const &m, T x)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, P > \fBglm::shearX3D\fP (const \fBdetail::tmat4x4\fP< T, P > &m, T y, T z)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, P > \fBglm::shearY3D\fP (const \fBdetail::tmat4x4\fP< T, P > &m, T x, T z)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, P > \fBglm::shearZ3D\fP (const \fBdetail::tmat4x4\fP< T, P > &m, T x, T y)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat3x3\fP< T, P > \fBglm::proj2D\fP (const \fBdetail::tmat3x3\fP< T, P > &m, const \fBdetail::tvec3\fP< T, P > &normal)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, P > \fBglm::proj3D\fP (const \fBdetail::tmat4x4\fP< T, P > &m, const \fBdetail::tvec3\fP< T, P > &normal)"
+.br
+.ti -1c
+.RI "template<typename valType , precision P> GLM_FUNC_DECL \fBdetail::tmat4x4\fP< valType, P > \fBglm::scaleBias\fP (valType \fBscale\fP, valType bias)"
+.br
+.ti -1c
+.RI "template<typename valType , precision P> GLM_FUNC_DECL \fBdetail::tmat4x4\fP< valType, P > \fBglm::scaleBias\fP (\fBdetail::tmat4x4\fP< valType, P > const &m, valType \fBscale\fP, valType bias)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Add extra transformation matrices\&. 
+
+<\fBglm/gtx/transform2\&.hpp\fP> need to be included to use these functionalities\&. 
+.SH "Function Documentation"
+.PP 
+.SS "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat3x3\fP<T, P> glm::proj2D (const \fBdetail::tmat3x3\fP< T, P > & m, const \fBdetail::tvec3\fP< T, P > & normal)"
+Build planar projection matrix along normal axis\&. From GLM_GTX_transform2 extension\&. 
+.SS "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, P> glm::proj3D (const \fBdetail::tmat4x4\fP< T, P > & m, const \fBdetail::tvec3\fP< T, P > & normal)"
+Build planar projection matrix along normal axis\&. From GLM_GTX_transform2 extension\&. 
+.SS "template<typename valType , precision P> GLM_FUNC_DECL \fBdetail::tmat4x4\fP<valType, P> glm::scaleBias (valType scale, valType bias)"
+Build a scale bias matrix\&. From GLM_GTX_transform2 extension\&. 
+.SS "template<typename valType , precision P> GLM_FUNC_DECL \fBdetail::tmat4x4\fP<valType, P> glm::scaleBias (\fBdetail::tmat4x4\fP< valType, P > const & m, valType scale, valType bias)"
+Build a scale bias matrix\&. From GLM_GTX_transform2 extension\&. 
+.SS "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat3x3\fP<T, P> glm::shearX2D (\fBdetail::tmat3x3\fP< T, P > const & m, T y)"
+Transforms a matrix with a shearing on X axis\&. From GLM_GTX_transform2 extension\&. 
+.SS "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, P> glm::shearX3D (const \fBdetail::tmat4x4\fP< T, P > & m, T y, T z)"
+Transforms a matrix with a shearing on X axis From GLM_GTX_transform2 extension\&. 
+.SS "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat3x3\fP<T, P> glm::shearY2D (\fBdetail::tmat3x3\fP< T, P > const & m, T x)"
+Transforms a matrix with a shearing on Y axis\&. From GLM_GTX_transform2 extension\&. 
+.SS "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, P> glm::shearY3D (const \fBdetail::tmat4x4\fP< T, P > & m, T x, T z)"
+Transforms a matrix with a shearing on Y axis\&. From GLM_GTX_transform2 extension\&. 
+.SS "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, P> glm::shearZ3D (const \fBdetail::tmat4x4\fP< T, P > & m, T x, T y)"
+Transforms a matrix with a shearing on Z axis\&. From GLM_GTX_transform2 extension\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

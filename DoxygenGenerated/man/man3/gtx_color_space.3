@@ -1,0 +1,95 @@
+.TH "gtx_color_space" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+gtx_color_space \- Related to RGB to HSV conversions and operations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tvec3\fP< T, P > \fBglm::rgbColor\fP (\fBdetail::tvec3\fP< T, P > const &hsvValue)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tvec3\fP< T, P > \fBglm::hsvColor\fP (\fBdetail::tvec3\fP< T, P > const &rgbValue)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, defaultp > \fBglm::saturation\fP (T const s)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tvec3\fP< T, P > \fBglm::saturation\fP (T const s, \fBdetail::tvec3\fP< T, P > const &color)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tvec4\fP< T, P > \fBglm::saturation\fP (T const s, \fBdetail::tvec4\fP< T, P > const &color)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL T \fBglm::luminosity\fP (\fBdetail::tvec3\fP< T, P > const &color)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Related to RGB to HSV conversions and operations\&. 
+
+<\fBglm/gtx/color_space\&.hpp\fP> need to be included to use these functionalities\&. 
+.SH "Function Documentation"
+.PP 
+.SS "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tvec3\fP<T, P> glm::hsvColor (\fBdetail::tvec3\fP< T, P > const & rgbValue)"
+Converts a color from RGB color space to its color in HSV color space\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_color_space\fP 
+.RE
+.PP
+
+.SS "template<typename T , precision P> GLM_FUNC_DECL T glm::luminosity (\fBdetail::tvec3\fP< T, P > const & color)"
+Compute color luminosity associating ratios (0\&.33, 0\&.59, 0\&.11) to RGB canals\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_color_space\fP 
+.RE
+.PP
+
+.SS "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tvec3\fP<T, P> glm::rgbColor (\fBdetail::tvec3\fP< T, P > const & hsvValue)"
+Converts a color from HSV color space to its color in RGB color space\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_color_space\fP 
+.RE
+.PP
+
+.SS "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, defaultp> glm::saturation (T const s)"
+Build a saturation matrix\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_color_space\fP 
+.RE
+.PP
+
+.SS "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tvec3\fP<T, P> glm::saturation (T const s, \fBdetail::tvec3\fP< T, P > const & color)"
+Modify the saturation of a color\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_color_space\fP 
+.RE
+.PP
+
+.SS "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tvec4\fP<T, P> glm::saturation (T const s, \fBdetail::tvec4\fP< T, P > const & color)"
+Modify the saturation of a color\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_color_space\fP 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

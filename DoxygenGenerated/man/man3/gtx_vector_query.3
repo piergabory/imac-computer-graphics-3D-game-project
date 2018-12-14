@@ -1,0 +1,95 @@
+.TH "gtx_vector_query" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+gtx_vector_query \- Query informations of vector types\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL bool \fBglm::areCollinear\fP (vecType< T, P > const &v0, vecType< T, P > const &v1, T const &\fBepsilon\fP)"
+.br
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL bool \fBglm::areOrthogonal\fP (vecType< T, P > const &v0, vecType< T, P > const &v1, T const &\fBepsilon\fP)"
+.br
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL bool \fBglm::isNormalized\fP (vecType< T, P > const &v, T const &\fBepsilon\fP)"
+.br
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL bool \fBglm::isNull\fP (vecType< T, P > const &v, T const &\fBepsilon\fP)"
+.br
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType< bool, P > \fBglm::isCompNull\fP (vecType< T, P > const &v, T const &\fBepsilon\fP)"
+.br
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL bool \fBglm::areOrthonormal\fP (vecType< T, P > const &v0, vecType< T, P > const &v1, T const &\fBepsilon\fP)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Query informations of vector types\&. 
+
+<\fBglm/gtx/vector_query\&.hpp\fP> need to be included to use these functionalities\&. 
+.SH "Function Documentation"
+.PP 
+.SS "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL bool glm::areCollinear (vecType< T, P > const & v0, vecType< T, P > const & v1, T const & epsilon)"
+Check whether two vectors are collinears\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_vector_query\fP extensions\&. 
+.RE
+.PP
+
+.SS "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL bool glm::areOrthogonal (vecType< T, P > const & v0, vecType< T, P > const & v1, T const & epsilon)"
+Check whether two vectors are orthogonals\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_vector_query\fP extensions\&. 
+.RE
+.PP
+
+.SS "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL bool glm::areOrthonormal (vecType< T, P > const & v0, vecType< T, P > const & v1, T const & epsilon)"
+Check whether two vectors are orthonormal\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_vector_query\fP extensions\&. 
+.RE
+.PP
+
+.SS "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType<bool, P> glm::isCompNull (vecType< T, P > const & v, T const & epsilon)"
+Check whether a each component of a vector is null\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_vector_query\fP extensions\&. 
+.RE
+.PP
+
+.SS "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL bool glm::isNormalized (vecType< T, P > const & v, T const & epsilon)"
+Check whether a vector is normalized\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_vector_query\fP extensions\&. 
+.RE
+.PP
+
+.SS "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL bool glm::isNull (vecType< T, P > const & v, T const & epsilon)"
+Check whether a vector is null\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_vector_query\fP extensions\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

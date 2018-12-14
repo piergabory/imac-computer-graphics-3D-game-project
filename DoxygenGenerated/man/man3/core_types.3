@@ -1,0 +1,499 @@
+.TH "core_types" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+core_types \- The standard types defined by the specification\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Modules"
+
+.in +1c
+.ti -1c
+.RI "\fBPrecision types\fP"
+.br
+.RI "Non-GLSL types that are used to define precision-based types\&. "
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBhighp_mat2x2\fP \fBglm::mat2x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_mat2x3\fP \fBglm::mat2x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_mat2x4\fP \fBglm::mat2x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_mat3x2\fP \fBglm::mat3x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_mat3x3\fP \fBglm::mat3x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_mat3x4\fP \fBglm::mat3x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_mat4x2\fP \fBglm::mat4x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_mat4x3\fP \fBglm::mat4x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_mat4x4\fP \fBglm::mat4x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBmat2x2\fP \fBglm::mat2\fP"
+.br
+.ti -1c
+.RI "typedef \fBmat3x3\fP \fBglm::mat3\fP"
+.br
+.ti -1c
+.RI "typedef \fBmat4x4\fP \fBglm::mat4\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_dmat2x2\fP \fBglm::dmat2\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_dmat3x3\fP \fBglm::dmat3\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_dmat4x4\fP \fBglm::dmat4\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_dmat2x2\fP \fBglm::dmat2x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_dmat2x3\fP \fBglm::dmat2x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_dmat2x4\fP \fBglm::dmat2x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_dmat3x2\fP \fBglm::dmat3x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_dmat3x3\fP \fBglm::dmat3x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_dmat3x4\fP \fBglm::dmat3x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_dmat4x2\fP \fBglm::dmat4x2\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_dmat4x3\fP \fBglm::dmat4x3\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_dmat4x4\fP \fBglm::dmat4x4\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_vec2\fP \fBglm::vec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_vec3\fP \fBglm::vec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_vec4\fP \fBglm::vec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_dvec2\fP \fBglm::dvec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_dvec3\fP \fBglm::dvec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_dvec4\fP \fBglm::dvec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_ivec2\fP \fBglm::ivec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_ivec3\fP \fBglm::ivec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_ivec4\fP \fBglm::ivec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_uvec2\fP \fBglm::uvec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_uvec3\fP \fBglm::uvec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_uvec4\fP \fBglm::uvec4\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_bvec2\fP \fBglm::bvec2\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_bvec3\fP \fBglm::bvec3\fP"
+.br
+.ti -1c
+.RI "typedef \fBhighp_bvec4\fP \fBglm::bvec4\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The standard types defined by the specification\&. 
+
+These types are all typedefs of more generalized, template types\&. To see the definiton of these template types, go to \fBTemplate types\fP\&. 
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef \fBhighp_bvec2\fP \fBglm::bvec2\fP"
+2 components vector of boolean\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_bvec3\fP \fBglm::bvec3\fP"
+3 components vector of boolean\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_bvec4\fP \fBglm::bvec4\fP"
+4 components vector of boolean\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_dmat2x2\fP \fBglm::dmat2\fP"
+2 * 2 matrix of double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_dmat2x2\fP \fBglm::dmat2x2\fP"
+2 * 2 matrix of double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_dmat2x3\fP \fBglm::dmat2x3\fP"
+2 * 3 matrix of double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_dmat2x4\fP \fBglm::dmat2x4\fP"
+2 * 4 matrix of double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_dmat3x3\fP \fBglm::dmat3\fP"
+3 * 3 matrix of double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_dmat3x2\fP \fBglm::dmat3x2\fP"
+3 * 2 matrix of double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_dmat3x3\fP \fBglm::dmat3x3\fP"
+3 * 3 matrix of double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_dmat3x4\fP \fBglm::dmat3x4\fP"
+3 * 4 matrix of double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_dmat4x4\fP \fBglm::dmat4\fP"
+4 * 4 matrix of double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_dmat4x2\fP \fBglm::dmat4x2\fP"
+4 * 2 matrix of double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_dmat4x3\fP \fBglm::dmat4x3\fP"
+4 * 3 matrix of double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_dmat4x4\fP \fBglm::dmat4x4\fP"
+4 * 4 matrix of double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_dvec2\fP \fBglm::dvec2\fP"
+2 components vector of double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_dvec3\fP \fBglm::dvec3\fP"
+3 components vector of double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_dvec4\fP \fBglm::dvec4\fP"
+4 components vector of double-precision floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_ivec2\fP \fBglm::ivec2\fP"
+2 components vector of signed integer numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_ivec3\fP \fBglm::ivec3\fP"
+3 components vector of signed integer numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_ivec4\fP \fBglm::ivec4\fP"
+4 components vector of signed integer numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.RE
+.PP
+
+.SS "typedef \fBmat2x2\fP \fBglm::mat2\fP"
+2 columns of 2 components matrix of floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_mat2x2\fP \fBglm::mat2x2\fP"
+2 columns of 2 components matrix of floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_mat2x3\fP \fBglm::mat2x3\fP"
+2 columns of 3 components matrix of floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_mat2x4\fP \fBglm::mat2x4\fP"
+2 columns of 4 components matrix of floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBmat3x3\fP \fBglm::mat3\fP"
+3 columns of 3 components matrix of floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_mat3x2\fP \fBglm::mat3x2\fP"
+3 columns of 2 components matrix of floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_mat3x3\fP \fBglm::mat3x3\fP"
+3 columns of 3 components matrix of floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_mat3x4\fP \fBglm::mat3x4\fP"
+3 columns of 4 components matrix of floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBmat4x4\fP \fBglm::mat4\fP"
+4 columns of 4 components matrix of floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_mat4x2\fP \fBglm::mat4x2\fP"
+4 columns of 2 components matrix of floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_mat4x3\fP \fBglm::mat4x3\fP"
+4 columns of 3 components matrix of floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_mat4x4\fP \fBglm::mat4x4\fP"
+4 columns of 4 components matrix of floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.6 Matrices\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_uvec2\fP \fBglm::uvec2\fP"
+2 components vector of unsigned integer numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_uvec3\fP \fBglm::uvec3\fP"
+3 components vector of unsigned integer numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_uvec4\fP \fBglm::uvec4\fP"
+4 components vector of unsigned integer numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_vec2\fP \fBglm::vec2\fP"
+2 components vector of floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_vec3\fP \fBglm::vec3\fP"
+3 components vector of floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.RE
+.PP
+
+.SS "typedef \fBhighp_vec4\fP \fBglm::vec4\fP"
+4 components vector of floating-point numbers\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL 4\&.20\&.8 specification, section 4\&.1\&.5 Vectors\fP 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

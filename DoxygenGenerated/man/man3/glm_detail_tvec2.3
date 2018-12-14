@@ -1,0 +1,259 @@
+.TH "glm::detail::tvec2< T, P >" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+glm::detail::tvec2< T, P >
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBctor\fP { \fB_null\fP }"
+.br
+.ti -1c
+.RI "typedef \fBtvec2\fP< T, P > \fBtype\fP"
+.br
+.ti -1c
+.RI "typedef \fBtvec2\fP< bool, P > \fBbool_type\fP"
+.br
+.ti -1c
+.RI "typedef T \fBvalue_type\fP"
+.br
+.ti -1c
+.RI "typedef int \fBsize_type\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "GLM_FUNC_DECL GLM_CONSTEXPR length_t \fBlength\fP () const"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL T & \fBoperator[]\fP (length_t i)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL T const  & \fBoperator[]\fP (length_t i) const"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtvec2\fP (\fBtvec2\fP< T, P > const &v)"
+.br
+.ti -1c
+.RI "template<precision Q> GLM_FUNC_DECL \fBtvec2\fP (\fBtvec2\fP< T, Q > const &v)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtvec2\fP (ctor)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtvec2\fP (T const &s)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtvec2\fP (T const &s1, T const &s2)"
+.br
+.ti -1c
+.RI "template<typename U , typename V > GLM_FUNC_DECL \fBtvec2\fP (U const &x, V const &y)"
+.br
+.RI "Explicit converions (From section 5\&.4\&.1 Conversion and scalar constructors of GLSL 1\&.30\&.08 specification) "
+.ti -1c
+.RI "template<typename U , precision Q> GLM_FUNC_DECL \fBtvec2\fP (\fBtvec2\fP< U, Q > const &v)"
+.br
+.RI "Explicit conversions (From section 5\&.4\&.1 Conversion and scalar constructors of GLSL 1\&.30\&.08 specification) "
+.ti -1c
+.RI "template<typename U , precision Q> GLM_FUNC_DECL \fBtvec2\fP (\fBtvec3\fP< U, Q > const &v)"
+.br
+.RI "Explicit conversions (From section 5\&.4\&.1 Conversion and scalar constructors of GLSL 1\&.30\&.08 specification) "
+.ti -1c
+.RI "template<typename U , precision Q> GLM_FUNC_DECL \fBtvec2\fP (\fBtvec4\fP< U, Q > const &v)"
+.br
+.RI "Explicit conversions (From section 5\&.4\&.1 Conversion and scalar constructors of GLSL 1\&.30\&.08 specification) "
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator=\fP (\fBtvec2\fP< T, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator+=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator+=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator\-=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator\-=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator*=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator*=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator/=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator/=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator++\fP ()"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator\-\-\fP ()"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtvec2\fP< T, P > \fBoperator++\fP (int)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtvec2\fP< T, P > \fBoperator\-\-\fP (int)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator%=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator%=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator &=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator &=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator|=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator|=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator^=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator^=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator<<=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator<<=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator>>=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_DECL \fBtvec2\fP< T, P > & \fBoperator>>=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<precision Q> GLM_FUNC_QUALIFIER \fBtvec2\fP (\fBtvec2\fP< T, Q > const &v)"
+.br
+.ti -1c
+.RI "template<typename U, typename V> GLM_FUNC_QUALIFIER \fBtvec2\fP (U const &a, V const &b)"
+.br
+.ti -1c
+.RI "template<typename U, precision Q> GLM_FUNC_QUALIFIER \fBtvec2\fP (\fBtvec2\fP< U, Q > const &v)"
+.br
+.ti -1c
+.RI "template<typename U, precision Q> GLM_FUNC_QUALIFIER \fBtvec2\fP (\fBtvec3\fP< U, Q > const &v)"
+.br
+.ti -1c
+.RI "template<typename U, precision Q> GLM_FUNC_QUALIFIER \fBtvec2\fP (\fBtvec4\fP< U, Q > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator+=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator+=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator\-=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator\-=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator*=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator*=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator/=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator/=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator%=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator%=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator|=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator|=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator^=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator^=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator<<=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator<<=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator>>=\fP (U s)"
+.br
+.ti -1c
+.RI "template<typename U > GLM_FUNC_QUALIFIER \fBtvec2\fP< T, P > & \fBoperator>>=\fP (\fBtvec2\fP< U, P > const &v)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   T \fBx\fP"
+.br
+.ti -1c
+.RI "   T \fBr\fP"
+.br
+.ti -1c
+.RI "   T \fBs\fP"
+.br
+.ti -1c
+.RI "}; "
+.br
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   T \fBy\fP"
+.br
+.ti -1c
+.RI "   T \fBg\fP"
+.br
+.ti -1c
+.RI "   T \fBt\fP"
+.br
+.ti -1c
+.RI "}; "
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

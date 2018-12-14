@@ -1,0 +1,167 @@
+.TH "lib/glm/gtx/bit.hpp" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+lib/glm/gtx/bit.hpp
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&./detail/type_int\&.hpp'\fP
+.br
+\fC#include '\&.\&./detail/setup\&.hpp'\fP
+.br
+\fC#include <cstddef>\fP
+.br
+\fC#include 'bit\&.inl'\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBglm\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename genIType > GLM_FUNC_DECL genIType \fBglm::mask\fP (genIType const &count)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::highestBitValue\fP (genType const &value)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL bool \fBglm::isPowerOfTwo\fP (genType const &value)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::powerOfTwoAbove\fP (genType const &value)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::powerOfTwoBelow\fP (genType const &value)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::powerOfTwoNearest\fP (genType const &value)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_DEPRECATED GLM_FUNC_DECL genType \fBglm::bitRevert\fP (genType const &value)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::bitRotateRight\fP (genType const &In, std::size_t Shift)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::bitRotateLeft\fP (genType const &In, std::size_t Shift)"
+.br
+.ti -1c
+.RI "template<typename genIUType > GLM_FUNC_DECL genIUType \fBglm::fillBitfieldWithOne\fP (genIUType const &Value, int const &FromBit, int const &ToBit)"
+.br
+.ti -1c
+.RI "template<typename genIUType > GLM_FUNC_DECL genIUType \fBglm::fillBitfieldWithZero\fP (genIUType const &Value, int const &FromBit, int const &ToBit)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL int16 \fBglm::bitfieldInterleave\fP (int8 x, int8 y)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL uint16 \fBglm::bitfieldInterleave\fP (uint8 x, uint8 y)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL int32 \fBglm::bitfieldInterleave\fP (int16 x, int16 y)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL uint32 \fBglm::bitfieldInterleave\fP (uint16 x, uint16 y)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL int64 \fBglm::bitfieldInterleave\fP (int32 x, int32 y)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL uint64 \fBglm::bitfieldInterleave\fP (uint32 x, uint32 y)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL int32 \fBglm::bitfieldInterleave\fP (int8 x, int8 y, int8 z)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL uint32 \fBglm::bitfieldInterleave\fP (uint8 x, uint8 y, uint8 z)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL int64 \fBglm::bitfieldInterleave\fP (int16 x, int16 y, int16 z)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL uint64 \fBglm::bitfieldInterleave\fP (uint16 x, uint16 y, uint16 z)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL int64 \fBglm::bitfieldInterleave\fP (int32 x, int32 y, int32 z)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL uint64 \fBglm::bitfieldInterleave\fP (uint32 x, uint32 y, uint32 z)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL int32 \fBglm::bitfieldInterleave\fP (int8 x, int8 y, int8 z, int8 w)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL uint32 \fBglm::bitfieldInterleave\fP (uint8 x, uint8 y, uint8 z, uint8 w)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL int64 \fBglm::bitfieldInterleave\fP (int16 x, int16 y, int16 z, int16 w)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL uint64 \fBglm::bitfieldInterleave\fP (uint16 x, uint16 y, uint16 z, uint16 w)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+OpenGL Mathematics (glm\&.g-truc\&.net)
+.PP
+Copyright (c) 2005 - 2014 G-Truc Creation (www\&.g-truc\&.net) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+.PP
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software\&.
+.PP
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\&. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE\&.
+.PP
+\fBGLM_GTX_bit\fP
+.PP
+\fBDate:\fP
+.RS 4
+2007-03-14 / 2011-06-07 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Christophe Riccio
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM Core\fP (dependence) 
+.PP
+gtc_half_float (dependence)
+.RE
+.PP
+OpenGL Mathematics (glm\&.g-truc\&.net)
+.PP
+Copyright (c) 2005 - 2014 G-Truc Creation (www\&.g-truc\&.net) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+.PP
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software\&.
+.PP
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\&. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE\&.
+.PP
+\fBGLM_GTX_bit\fP
+.PP
+\fBDate:\fP
+.RS 4
+2005-12-30 / 2011-06-07 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Christophe Riccio
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM Core\fP (dependence) 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

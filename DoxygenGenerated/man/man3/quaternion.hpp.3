@@ -1,0 +1,117 @@
+.TH "lib/glm/gtx/quaternion.hpp" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+lib/glm/gtx/quaternion.hpp
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&./glm\&.hpp'\fP
+.br
+\fC#include '\&.\&./gtc/constants\&.hpp'\fP
+.br
+\fC#include '\&.\&./gtc/quaternion\&.hpp'\fP
+.br
+\fC#include '\&.\&./gtx/norm\&.hpp'\fP
+.br
+\fC#include 'quaternion\&.inl'\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBglm\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tvec3< T, P > \fBglm::cross\fP (detail::tquat< T, P > const &q, detail::tvec3< T, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tvec3< T, P > \fBglm::cross\fP (detail::tvec3< T, P > const &v, detail::tquat< T, P > const &q)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tquat< T, P > \fBglm::squad\fP (detail::tquat< T, P > const &q1, detail::tquat< T, P > const &q2, detail::tquat< T, P > const &s1, detail::tquat< T, P > const &s2, T const &h)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tquat< T, P > \fBglm::intermediate\fP (detail::tquat< T, P > const &prev, detail::tquat< T, P > const &curr, detail::tquat< T, P > const &next)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tquat< T, P > \fBglm::exp\fP (detail::tquat< T, P > const &q)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tquat< T, P > \fBglm::log\fP (detail::tquat< T, P > const &q)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tquat< T, P > \fBglm::pow\fP (detail::tquat< T, P > const &x, T const &y)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tvec3< T, P > \fBglm::rotate\fP (detail::tquat< T, P > const &q, detail::tvec3< T, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tvec4< T, P > \fBglm::rotate\fP (detail::tquat< T, P > const &q, detail::tvec4< T, P > const &v)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL T \fBglm::extractRealComponent\fP (detail::tquat< T, P > const &q)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tmat3x3< T, P > \fBglm::toMat3\fP (detail::tquat< T, P > const &x)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tmat4x4< T, P > \fBglm::toMat4\fP (detail::tquat< T, P > const &x)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tquat< T, P > \fBglm::toQuat\fP (detail::tmat3x3< T, P > const &x)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tquat< T, P > \fBglm::toQuat\fP (detail::tmat4x4< T, P > const &x)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tquat< T, P > \fBglm::shortMix\fP (detail::tquat< T, P > const &x, detail::tquat< T, P > const &y, T const &a)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tquat< T, P > \fBglm::fastMix\fP (detail::tquat< T, P > const &x, detail::tquat< T, P > const &y, T const &a)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL detail::tquat< T, P > \fBglm::rotation\fP (detail::tvec3< T, P > const &orig, detail::tvec3< T, P > const &dest)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL T \fBglm::length2\fP (detail::tquat< T, P > const &q)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+OpenGL Mathematics (glm\&.g-truc\&.net)
+.PP
+Copyright (c) 2005 - 2014 G-Truc Creation (www\&.g-truc\&.net) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+.PP
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software\&.
+.PP
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\&. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE\&.
+.PP
+\fBGLM_GTX_quaternion\fP
+.PP
+\fBDate:\fP
+.RS 4
+2005-12-21 / 2011-06-07 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+Christophe Riccio
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM Core\fP (dependence) 
+.PP
+\fBGLM_GTX_extented_min_max\fP (dependence) 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

@@ -1,0 +1,96 @@
+.TH "core_func_noise" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+core_func_noise
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType::value_type \fBglm::noise1\fP (genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL \fBdetail::tvec2\fP< typename genType::value_type, defaultp > \fBglm::noise2\fP (genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL \fBdetail::tvec3\fP< typename genType::value_type, defaultp > \fBglm::noise3\fP (genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL \fBdetail::tvec4\fP< typename genType::value_type, defaultp > \fBglm::noise4\fP (genType const &x)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Noise functions are stochastic functions that can be used to increase visual complexity\&. Values returned by the following noise functions give the appearance of randomness, but are not truly random\&. 
+.SH "Function Documentation"
+.PP 
+.SS "template<typename genType > GLM_FUNC_DECL genType::value_type glm::noise1 (genType const & x)"
+Returns a 1D noise value based on the input value x\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL noise1 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.13 Noise Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL \fBdetail::tvec2\fP<typename genType::value_type, defaultp> glm::noise2 (genType const & x)"
+Returns a 2D noise value based on the input value x\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL noise2 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.13 Noise Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL \fBdetail::tvec3\fP<typename genType::value_type, defaultp> glm::noise3 (genType const & x)"
+Returns a 3D noise value based on the input value x\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL noise3 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.13 Noise Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL \fBdetail::tvec4\fP<typename genType::value_type, defaultp> glm::noise4 (genType const & x)"
+Returns a 4D noise value based on the input value x\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL noise4 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.13 Noise Functions\fP 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

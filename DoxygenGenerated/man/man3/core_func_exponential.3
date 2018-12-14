@@ -1,0 +1,190 @@
+.TH "core_func_exponential" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+core_func_exponential
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::pow\fP (genType const &base, genType const &exponent)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::exp\fP (genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::log\fP (genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::exp2\fP (genType const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::log2\fP (genType x)"
+.br
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType< T, P > \fBglm::sqrt\fP (vecType< T, P > const &x)"
+.br
+.ti -1c
+.RI "template<typename genType > GLM_FUNC_DECL genType \fBglm::inversesqrt\fP (genType const &x)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+These all operate component-wise\&. The description is per component\&. 
+.SH "Function Documentation"
+.PP 
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::exp (genType const & x)"
+Returns the natural exponentiation of x, i\&.e\&., e^x\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP exp function is defined for input values of x defined in the range (inf-, inf+) in the limit of the type precision\&. 
+.RE
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL exp man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.2 Exponential Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::exp2 (genType const & x)"
+Returns 2 raised to the x power\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP exp2 function is defined for input values of x defined in the range (inf-, inf+) in the limit of the type precision\&. 
+.RE
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL exp2 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.2 Exponential Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::inversesqrt (genType const & x)"
+Returns the reciprocal of the positive square root of x\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP inversesqrt function is defined for input values of x defined in the range [0, inf+) in the limit of the type precision\&. 
+.RE
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL inversesqrt man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.2 Exponential Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::log (genType const & x)"
+Returns the natural logarithm of x, i\&.e\&., returns the value y which satisfies the equation x = e^y\&. Results are undefined if x <= 0\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP log function is defined for input values of x defined in the range (0, inf+) in the limit of the type precision\&. 
+.RE
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL log man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.2 Exponential Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::log2 (genType x)"
+Returns the base 2 log of x, i\&.e\&., returns the value y, which satisfies the equation x = 2 ^ y\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP log2 function is defined for input values of x defined in the range (0, inf+) in the limit of the type precision\&. 
+.RE
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL log2 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.2 Exponential Functions\fP 
+.RE
+.PP
+
+.SS "template<typename genType > GLM_FUNC_DECL genType glm::pow (genType const & base, genType const & exponent)"
+Returns 'base' raised to the power 'exponent'\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbase\fP Floating point value\&. pow function is defined for input values of x defined in the range (inf-, inf+) in the limit of the type precision\&. 
+.br
+\fIexponent\fP Floating point value representing the 'exponent'\&. 
+.RE
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL pow man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.2 Exponential Functions\fP 
+.RE
+.PP
+
+.SS "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType<T, P> glm::sqrt (vecType< T, P > const & x)"
+Returns the positive square root of x\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP sqrt function is defined for input values of x defined in the range [0, inf+) in the limit of the type precision\&. 
+.RE
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIgenType\fP Floating-point scalar or vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL sqrt man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.2 Exponential Functions\fP 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

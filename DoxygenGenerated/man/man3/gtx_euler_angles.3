@@ -1,0 +1,203 @@
+.TH "gtx_euler_angles" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+gtx_euler_angles \- Build matrices from Euler angles\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, defaultp > \fBglm::eulerAngleX\fP (T const &angleX)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, defaultp > \fBglm::eulerAngleY\fP (T const &angleY)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, defaultp > \fBglm::eulerAngleZ\fP (T const &angleZ)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, defaultp > \fBglm::eulerAngleXY\fP (T const &angleX, T const &angleY)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, defaultp > \fBglm::eulerAngleYX\fP (T const &angleY, T const &angleX)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, defaultp > \fBglm::eulerAngleXZ\fP (T const &angleX, T const &angleZ)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, defaultp > \fBglm::eulerAngleZX\fP (T const &\fBangle\fP, T const &angleX)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, defaultp > \fBglm::eulerAngleYZ\fP (T const &angleY, T const &angleZ)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, defaultp > \fBglm::eulerAngleZY\fP (T const &angleZ, T const &angleY)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, defaultp > \fBglm::eulerAngleYXZ\fP (T const &\fByaw\fP, T const &\fBpitch\fP, T const &\fBroll\fP)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, defaultp > \fBglm::yawPitchRoll\fP (T const &\fByaw\fP, T const &\fBpitch\fP, T const &\fBroll\fP)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL \fBdetail::tmat2x2\fP< T, defaultp > \fBglm::orientate2\fP (T const &\fBangle\fP)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL \fBdetail::tmat3x3\fP< T, defaultp > \fBglm::orientate3\fP (T const &\fBangle\fP)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat3x3\fP< T, P > \fBglm::orientate3\fP (\fBdetail::tvec3\fP< T, P > const &angles)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat4x4\fP< T, P > \fBglm::orientate4\fP (\fBdetail::tvec3\fP< T, P > const &angles)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Build matrices from Euler angles\&. 
+
+<\fBglm/gtx/euler_angles\&.hpp\fP> need to be included to use these functionalities\&. 
+.SH "Function Documentation"
+.PP 
+.SS "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, defaultp> glm::eulerAngleX (T const & angleX)"
+Creates a 3D 4 * 4 homogeneous rotation matrix from an euler angle X\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_euler_angles\fP 
+.RE
+.PP
+
+.SS "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, defaultp> glm::eulerAngleXY (T const & angleX, T const & angleY)"
+Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (X * Y)\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_euler_angles\fP 
+.RE
+.PP
+
+.SS "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, defaultp> glm::eulerAngleXZ (T const & angleX, T const & angleZ)"
+Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (X * Z)\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_euler_angles\fP 
+.RE
+.PP
+
+.SS "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, defaultp> glm::eulerAngleY (T const & angleY)"
+Creates a 3D 4 * 4 homogeneous rotation matrix from an euler angle Y\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_euler_angles\fP 
+.RE
+.PP
+
+.SS "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, defaultp> glm::eulerAngleYX (T const & angleY, T const & angleX)"
+Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (Y * X)\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_euler_angles\fP 
+.RE
+.PP
+
+.SS "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, defaultp> glm::eulerAngleYXZ (T const & yaw, T const & pitch, T const & roll)"
+Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (Y * X * Z)\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_euler_angles\fP 
+.RE
+.PP
+
+.SS "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, defaultp> glm::eulerAngleYZ (T const & angleY, T const & angleZ)"
+Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (Y * Z)\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_euler_angles\fP 
+.RE
+.PP
+
+.SS "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, defaultp> glm::eulerAngleZ (T const & angleZ)"
+Creates a 3D 4 * 4 homogeneous rotation matrix from an euler angle Z\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_euler_angles\fP 
+.RE
+.PP
+
+.SS "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, defaultp> glm::eulerAngleZX (T const & angle, T const & angleX)"
+Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (Z * X)\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_euler_angles\fP 
+.RE
+.PP
+
+.SS "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, defaultp> glm::eulerAngleZY (T const & angleZ, T const & angleY)"
+Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (Z * Y)\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_euler_angles\fP 
+.RE
+.PP
+
+.SS "template<typename T > GLM_FUNC_DECL \fBdetail::tmat2x2\fP<T, defaultp> glm::orientate2 (T const & angle)"
+Creates a 2D 2 * 2 rotation matrix from an euler angle\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_euler_angles\fP 
+.RE
+.PP
+
+.SS "template<typename T > GLM_FUNC_DECL \fBdetail::tmat3x3\fP<T, defaultp> glm::orientate3 (T const & angle)"
+Creates a 2D 4 * 4 homogeneous rotation matrix from an euler angle\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_euler_angles\fP 
+.RE
+.PP
+
+.SS "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat3x3\fP<T, P> glm::orientate3 (\fBdetail::tvec3\fP< T, P > const & angles)"
+Creates a 3D 3 * 3 rotation matrix from euler angles (Y * X * Z)\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_euler_angles\fP 
+.RE
+.PP
+
+.SS "template<typename T , precision P> GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, P> glm::orientate4 (\fBdetail::tvec3\fP< T, P > const & angles)"
+Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (Y * X * Z)\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_euler_angles\fP 
+.RE
+.PP
+
+.SS "template<typename T > GLM_FUNC_DECL \fBdetail::tmat4x4\fP<T, defaultp> glm::yawPitchRoll (T const & yaw, T const & pitch, T const & roll)"
+Creates a 3D 4 * 4 homogeneous rotation matrix from euler angles (Y * X * Z)\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGLM_GTX_euler_angles\fP 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

@@ -1,0 +1,66 @@
+.TH "glm::detail::tdualquat< T, P >" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+glm::detail::tdualquat< T, P >
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBctor\fP { \fBnull\fP }"
+.br
+.ti -1c
+.RI "typedef \fBglm::detail::tquat\fP< T, P > \fBpart_type\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "GLM_FUNC_DECL GLM_CONSTEXPR int \fBlength\fP () const"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtdualquat\fP (\fBtquat\fP< T, P > const &real)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtdualquat\fP (\fBtquat\fP< T, P > const &real, \fBtquat\fP< T, P > const &dual)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtdualquat\fP (\fBtquat\fP< T, P > const &\fBorientation\fP, \fBtvec3\fP< T, P > const &translation)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtdualquat\fP (\fBtmat2x4\fP< T, P > const &holder_mat)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtdualquat\fP (\fBtmat3x4\fP< T, P > const &aug_mat)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBpart_type\fP & \fBoperator[]\fP (int i)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBpart_type\fP const  & \fBoperator[]\fP (int i) const"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtdualquat\fP< T, P > & \fBoperator*=\fP (T const &s)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBtdualquat\fP< T, P > & \fBoperator/=\fP (T const &s)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBglm::detail::tquat\fP< T, P > \fBreal\fP"
+.br
+.ti -1c
+.RI "\fBglm::detail::tquat\fP< T, P > \fBdual\fP"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

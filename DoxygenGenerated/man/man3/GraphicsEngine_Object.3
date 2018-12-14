@@ -1,0 +1,45 @@
+.TH "GraphicsEngine::Object" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GraphicsEngine::Object
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetProjection\fP (const std::shared_ptr< \fBglm::mat4\fP > &projectionMatrix, const std::shared_ptr< \fBglm::mat4\fP > &sceneModel)"
+.br
+.ti -1c
+.RI "void \fBtranslate\fP (const \fBglm::vec3\fP &translationVector)"
+.br
+.ti -1c
+.RI "void \fBrotate\fP (const float angle, const \fBglm::vec3\fP &direction)"
+.br
+.ti -1c
+.RI "void \fBscale\fP (const \fBglm::vec3\fP &scalingVector)"
+.br
+.ti -1c
+.RI "void \fBproject\fP ()"
+.br
+.ti -1c
+.RI "void \fBdraw\fP () const"
+.br
+.ti -1c
+.RI "\fBObject\fP (std::shared_ptr< \fBMesh\fP > mesh, std::shared_ptr< \fBMaterial\fP > \fBmaterial\fP)"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "GraphicsEngine::Object::Object (std::shared_ptr< \fBMesh\fP > mesh, std::shared_ptr< \fBMaterial\fP > material)\fC [inline]\fP"
+constructor initialise mesh and material\&. Assumes that both are not NULL pointers 
+.SH "Member Function Documentation"
+.PP 
+.SS "void GraphicsEngine::Object::project ()"
+ask the material to update the MVP Matrix and Normal Matrix in the shader\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

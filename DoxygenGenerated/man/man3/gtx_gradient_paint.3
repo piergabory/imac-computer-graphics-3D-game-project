@@ -1,0 +1,47 @@
+.TH "gtx_gradient_paint" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+gtx_gradient_paint \- Functions that return the color of procedural gradient for specific coordinates\&. <\fBglm/gtx/gradient_paint\&.hpp\fP> need to be included to use these functionalities\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL T \fBglm::radialGradient\fP (\fBdetail::tvec2\fP< T, P > const &Center, T const &Radius, \fBdetail::tvec2\fP< T, P > const &Focal, \fBdetail::tvec2\fP< T, P > const &Position)"
+.br
+.ti -1c
+.RI "template<typename T , precision P> GLM_FUNC_DECL T \fBglm::linearGradient\fP (\fBdetail::tvec2\fP< T, P > const &Point0, \fBdetail::tvec2\fP< T, P > const &Point1, \fBdetail::tvec2\fP< T, P > const &Position)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Functions that return the color of procedural gradient for specific coordinates\&. <\fBglm/gtx/gradient_paint\&.hpp\fP> need to be included to use these functionalities\&. 
+
+
+.SH "Function Documentation"
+.PP 
+.SS "template<typename T , precision P> GLM_FUNC_DECL T glm::linearGradient (\fBdetail::tvec2\fP< T, P > const & Point0, \fBdetail::tvec2\fP< T, P > const & Point1, \fBdetail::tvec2\fP< T, P > const & Position)"
+Return a color from a linear gradient\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+- \fBGLM_GTX_gradient_paint\fP 
+.RE
+.PP
+
+.SS "template<typename T , precision P> GLM_FUNC_DECL T glm::radialGradient (\fBdetail::tvec2\fP< T, P > const & Center, T const & Radius, \fBdetail::tvec2\fP< T, P > const & Focal, \fBdetail::tvec2\fP< T, P > const & Position)"
+Return a color from a radial gradient\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+- \fBGLM_GTX_gradient_paint\fP 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

@@ -1,0 +1,113 @@
+.TH "core_func_matrix" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+core_func_matrix
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class matType> GLM_FUNC_DECL matType< T, P > \fBglm::matrixCompMult\fP (matType< T, P > const &x, matType< T, P > const &y)"
+.br
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class vecTypeA, template< typename, precision > class vecTypeB> GLM_FUNC_DECL \fBdetail::outerProduct_trait\fP< T, P, vecTypeA, vecTypeB >::type \fBglm::outerProduct\fP (vecTypeA< T, P > const &c, vecTypeB< T, P > const &r)"
+.br
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class matType> GLM_FUNC_DECL T \fBglm::determinant\fP (matType< T, P > const &m)"
+.br
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class matType> GLM_FUNC_DECL matType< T, P > \fBglm::inverse\fP (matType< T, P > const &m)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+For each of the following built-in matrix functions, there is both a single-precision floating point version, where all arguments and return values are single precision, and a double-precision floating version, where all arguments and return values are double precision\&. Only the single-precision floating point version is shown\&. 
+.SH "Function Documentation"
+.PP 
+.SS "template<typename T , precision P, template< typename, precision > class matType> GLM_FUNC_DECL T glm::determinant (matType< T, P > const & m)"
+Returns the transposed matrix of x
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fImatType\fP Floating-point matrix types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL transpose man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.6 Matrix Functions\fP Return the \fBdeterminant\fP of a squared matrix\&.
+.RE
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIvalType\fP Floating-point scalar types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL determinant man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.6 Matrix Functions\fP 
+.RE
+.PP
+
+.SS "template<typename T , precision P, template< typename, precision > class matType> GLM_FUNC_DECL matType<T, P> glm::inverse (matType< T, P > const & m)"
+Return the inverse of a squared matrix\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIvalType\fP Floating-point scalar types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL inverse man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.6 Matrix Functions\fP 
+.RE
+.PP
+
+.SS "template<typename T , precision P, template< typename, precision > class matType> GLM_FUNC_DECL matType<T, P> glm::matrixCompMult (matType< T, P > const & x, matType< T, P > const & y)"
+Multiply matrix x by matrix y component-wise, i\&.e\&., result[i][j] is the scalar product of x[i][j] and y[i][j]\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fImatType\fP Floating-point matrix types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL matrixCompMult man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.6 Matrix Functions\fP 
+.RE
+.PP
+
+.SS "template<typename T , precision P, template< typename, precision > class vecTypeA, template< typename, precision > class vecTypeB> GLM_FUNC_DECL \fBdetail::outerProduct_trait\fP<T, P, vecTypeA, vecTypeB>::type glm::outerProduct (vecTypeA< T, P > const & c, vecTypeB< T, P > const & r)"
+Treats the first parameter c as a column vector and the second parameter r as a row vector and does a linear algebraic matrix multiply c * r\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fImatType\fP Floating-point matrix types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL outerProduct man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.6 Matrix Functions\fP
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+Clarify the declaration to specify that matType doesn't have to be provided when used\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

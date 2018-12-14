@@ -1,0 +1,220 @@
+.TH "core_func_packing" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+core_func_packing
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "GLM_FUNC_DECL \fBuint\fP \fBglm::packUnorm2x16\fP (\fBvec2\fP const &v)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBuint\fP \fBglm::packSnorm2x16\fP (\fBvec2\fP const &v)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBuint\fP \fBglm::packUnorm4x8\fP (\fBvec4\fP const &v)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBuint\fP \fBglm::packSnorm4x8\fP (\fBvec4\fP const &v)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBvec2\fP \fBglm::unpackUnorm2x16\fP (\fBuint\fP const &p)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBvec2\fP \fBglm::unpackSnorm2x16\fP (\fBuint\fP const &p)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBvec4\fP \fBglm::unpackUnorm4x8\fP (\fBuint\fP const &p)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBvec4\fP \fBglm::unpackSnorm4x8\fP (\fBuint\fP const &p)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL double \fBglm::packDouble2x32\fP (\fBuvec2\fP const &v)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBuvec2\fP \fBglm::unpackDouble2x32\fP (double const &v)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBuint\fP \fBglm::packHalf2x16\fP (\fBvec2\fP const &v)"
+.br
+.ti -1c
+.RI "GLM_FUNC_DECL \fBvec2\fP \fBglm::unpackHalf2x16\fP (\fBuint\fP const &v)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+These functions do not operate component-wise, rather as described in each case\&. 
+.SH "Function Documentation"
+.PP 
+.SS "GLM_FUNC_QUALIFIER double glm::packDouble2x32 (\fBuvec2\fP const & v)"
+Returns a double-precision value obtained by packing the components of v into a 64-bit value\&. If an IEEE 754 Inf or NaN is created, it will not signal, and the resulting floating point value is unspecified\&. Otherwise, the bit- level representation of v is preserved\&. The first vector component specifies the 32 least significant bits; the second component specifies the 32 most significant bits\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL packDouble2x32 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.4 Floating-Point Pack and Unpack Functions\fP 
+.RE
+.PP
+
+.SS "GLM_FUNC_QUALIFIER \fBuint\fP glm::packHalf2x16 (\fBvec2\fP const & v)"
+Returns an unsigned integer obtained by converting the components of a two-component floating-point vector to the 16-bit floating-point representation found in the OpenGL Specification, and then packing these two 16- bit integers into a 32-bit unsigned integer\&. The first vector component specifies the 16 least-significant bits of the result; the second component specifies the 16 most-significant bits\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL packHalf2x16 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.4 Floating-Point Pack and Unpack Functions\fP 
+.RE
+.PP
+
+.SS "GLM_FUNC_QUALIFIER \fBuint\fP glm::packSnorm2x16 (\fBvec2\fP const & v)"
+First, converts each component of the normalized floating-point value v into 8- or 16-bit integer values\&. Then, the results are packed into the returned 32-bit unsigned integer\&.
+.PP
+The conversion for component c of v to fixed point is done as follows: packSnorm2x16: round(clamp(v, -1, +1) * 32767\&.0)
+.PP
+The first component of the vector will be written to the least significant bits of the output; the last component will be written to the most significant bits\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL packSnorm2x16 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.4 Floating-Point Pack and Unpack Functions\fP 
+.RE
+.PP
+
+.SS "GLM_FUNC_QUALIFIER \fBuint\fP glm::packSnorm4x8 (\fBvec4\fP const & v)"
+First, converts each component of the normalized floating-point value v into 8- or 16-bit integer values\&. Then, the results are packed into the returned 32-bit unsigned integer\&.
+.PP
+The conversion for component c of v to fixed point is done as follows: packSnorm4x8: round(clamp(c, -1, +1) * 127\&.0)
+.PP
+The first component of the vector will be written to the least significant bits of the output; the last component will be written to the most significant bits\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL packSnorm4x8 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.4 Floating-Point Pack and Unpack Functions\fP 
+.RE
+.PP
+
+.SS "GLM_FUNC_QUALIFIER \fBuint\fP glm::packUnorm2x16 (\fBvec2\fP const & v)"
+First, converts each component of the normalized floating-point value v into 8- or 16-bit integer values\&. Then, the results are packed into the returned 32-bit unsigned integer\&.
+.PP
+The conversion for component c of v to fixed point is done as follows: packUnorm2x16: round(clamp(c, 0, +1) * 65535\&.0)
+.PP
+The first component of the vector will be written to the least significant bits of the output; the last component will be written to the most significant bits\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL packUnorm2x16 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.4 Floating-Point Pack and Unpack Functions\fP 
+.RE
+.PP
+
+.SS "GLM_FUNC_QUALIFIER \fBuint\fP glm::packUnorm4x8 (\fBvec4\fP const & v)"
+First, converts each component of the normalized floating-point value v into 8- or 16-bit integer values\&. Then, the results are packed into the returned 32-bit unsigned integer\&.
+.PP
+The conversion for component c of v to fixed point is done as follows: packUnorm4x8: round(clamp(c, 0, +1) * 255\&.0)
+.PP
+The first component of the vector will be written to the least significant bits of the output; the last component will be written to the most significant bits\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL packUnorm4x8 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.4 Floating-Point Pack and Unpack Functions\fP 
+.RE
+.PP
+
+.SS "GLM_FUNC_QUALIFIER \fBuvec2\fP glm::unpackDouble2x32 (double const & v)"
+Returns a two-component unsigned integer vector representation of v\&. The bit-level representation of v is preserved\&. The first component of the vector contains the 32 least significant bits of the double; the second component consists the 32 most significant bits\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL unpackDouble2x32 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.4 Floating-Point Pack and Unpack Functions\fP 
+.RE
+.PP
+
+.SS "GLM_FUNC_QUALIFIER \fBvec2\fP glm::unpackHalf2x16 (\fBuint\fP const & v)"
+Returns a two-component floating-point vector with components obtained by unpacking a 32-bit unsigned integer into a pair of 16-bit values, interpreting those values as 16-bit floating-point numbers according to the OpenGL Specification, and converting them to 32-bit floating-point values\&. The first component of the vector is obtained from the 16 least-significant bits of v; the second component is obtained from the 16 most-significant bits of v\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL unpackHalf2x16 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.4 Floating-Point Pack and Unpack Functions\fP 
+.RE
+.PP
+
+.SS "GLM_FUNC_QUALIFIER \fBvec2\fP glm::unpackSnorm2x16 (\fBuint\fP const & p)"
+First, unpacks a single 32-bit unsigned integer p into a pair of 16-bit unsigned integers, four 8-bit unsigned integers, or four 8-bit signed integers\&. Then, each component is converted to a normalized floating-point value to generate the returned two- or four-component vector\&.
+.PP
+The conversion for unpacked fixed-point value f to floating point is done as follows: unpackSnorm2x16: clamp(f / 32767\&.0, -1, +1)
+.PP
+The first component of the returned vector will be extracted from the least significant bits of the input; the last component will be extracted from the most significant bits\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL unpackSnorm2x16 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.4 Floating-Point Pack and Unpack Functions\fP 
+.RE
+.PP
+
+.SS "GLM_FUNC_QUALIFIER \fBglm::vec4\fP glm::unpackSnorm4x8 (\fBuint\fP const & p)"
+First, unpacks a single 32-bit unsigned integer p into a pair of 16-bit unsigned integers, four 8-bit unsigned integers, or four 8-bit signed integers\&. Then, each component is converted to a normalized floating-point value to generate the returned two- or four-component vector\&.
+.PP
+The conversion for unpacked fixed-point value f to floating point is done as follows: unpackSnorm4x8: clamp(f / 127\&.0, -1, +1)
+.PP
+The first component of the returned vector will be extracted from the least significant bits of the input; the last component will be extracted from the most significant bits\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL unpackSnorm4x8 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.4 Floating-Point Pack and Unpack Functions\fP 
+.RE
+.PP
+
+.SS "GLM_FUNC_QUALIFIER \fBvec2\fP glm::unpackUnorm2x16 (\fBuint\fP const & p)"
+First, unpacks a single 32-bit unsigned integer p into a pair of 16-bit unsigned integers, four 8-bit unsigned integers, or four 8-bit signed integers\&. Then, each component is converted to a normalized floating-point value to generate the returned two- or four-component vector\&.
+.PP
+The conversion for unpacked fixed-point value f to floating point is done as follows: unpackUnorm2x16: f / 65535\&.0
+.PP
+The first component of the returned vector will be extracted from the least significant bits of the input; the last component will be extracted from the most significant bits\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL unpackUnorm2x16 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.4 Floating-Point Pack and Unpack Functions\fP 
+.RE
+.PP
+
+.SS "GLM_FUNC_QUALIFIER \fBvec4\fP glm::unpackUnorm4x8 (\fBuint\fP const & p)"
+First, unpacks a single 32-bit unsigned integer p into a pair of 16-bit unsigned integers, four 8-bit unsigned integers, or four 8-bit signed integers\&. Then, each component is converted to a normalized floating-point value to generate the returned two- or four-component vector\&.
+.PP
+The conversion for unpacked fixed-point value f to floating point is done as follows: unpackUnorm4x8: f / 255\&.0
+.PP
+The first component of the returned vector will be extracted from the least significant bits of the input; the last component will be extracted from the most significant bits\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL unpackUnorm4x8 man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.4 Floating-Point Pack and Unpack Functions\fP 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

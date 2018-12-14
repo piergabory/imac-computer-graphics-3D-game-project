@@ -1,0 +1,58 @@
+.TH "gtx_fast_trigonometry" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+gtx_fast_trigonometry \- Fast but less accurate implementations of trigonometric functions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL T \fBglm::fastSin\fP (const T &\fBangle\fP)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL T \fBglm::fastCos\fP (const T &\fBangle\fP)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL T \fBglm::fastTan\fP (const T &\fBangle\fP)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL T \fBglm::fastAsin\fP (const T &\fBangle\fP)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL T \fBglm::fastAcos\fP (const T &\fBangle\fP)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL T \fBglm::fastAtan\fP (const T &y, const T &x)"
+.br
+.ti -1c
+.RI "template<typename T > GLM_FUNC_DECL T \fBglm::fastAtan\fP (const T &\fBangle\fP)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Fast but less accurate implementations of trigonometric functions\&. 
+
+<\fBglm/gtx/fast_trigonometry\&.hpp\fP> need to be included to use these functionalities\&. 
+.SH "Function Documentation"
+.PP 
+.SS "template<typename T > GLM_FUNC_DECL T glm::fastAcos (const T & angle)"
+Faster than the common acos function but less accurate\&. Defined between -2pi and 2pi\&. From GLM_GTX_fast_trigonometry extension\&. 
+.SS "template<typename T > GLM_FUNC_DECL T glm::fastAsin (const T & angle)"
+Faster than the common asin function but less accurate\&. Defined between -2pi and 2pi\&. From GLM_GTX_fast_trigonometry extension\&. 
+.SS "template<typename T > GLM_FUNC_DECL T glm::fastAtan (const T & y, const T & x)"
+Faster than the common atan function but less accurate\&. Defined between -2pi and 2pi\&. From GLM_GTX_fast_trigonometry extension\&. 
+.SS "template<typename T > GLM_FUNC_DECL T glm::fastAtan (const T & angle)"
+Faster than the common atan function but less accurate\&. Defined between -2pi and 2pi\&. From GLM_GTX_fast_trigonometry extension\&. 
+.SS "template<typename T > GLM_FUNC_DECL T glm::fastCos (const T & angle)"
+Faster than the common cos function but less accurate\&. Defined between -2pi and 2pi\&. From GLM_GTX_fast_trigonometry extension\&. 
+.SS "template<typename T > GLM_FUNC_DECL T glm::fastSin (const T & angle)"
+Faster than the common sin function but less accurate\&. Defined between -2pi and 2pi\&. From GLM_GTX_fast_trigonometry extension\&. 
+.SS "template<typename T > GLM_FUNC_DECL T glm::fastTan (const T & angle)"
+Faster than the common tan function but less accurate\&. Defined between -2pi and 2pi\&. From GLM_GTX_fast_trigonometry extension\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.

@@ -1,0 +1,11 @@
+digraph "includes/GraphicsEngine/Object/Material/Shader" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_390edd8708c9f7fed1216d95762400bd {
+    graph [ bgcolor="#ddddee", pencolor="black", label="Material" fontname="Helvetica", fontsize="10", URL="dir_390edd8708c9f7fed1216d95762400bd.html"]
+  dir_9b401340ea5a3f7378b6c86ecac112bf [shape=box, label="Shader", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_9b401340ea5a3f7378b6c86ecac112bf.html"];
+  }
+  dir_97aefd0d527b934f1d99a682da8fe6a9 [shape=box label="lib" fillcolor="white" style="filled" color="red" URL="dir_97aefd0d527b934f1d99a682da8fe6a9.html"];
+  dir_9b401340ea5a3f7378b6c86ecac112bf->dir_97aefd0d527b934f1d99a682da8fe6a9 [headlabel="3", labeldistance=1.5 headhref="dir_000005_000007.html"];
+}

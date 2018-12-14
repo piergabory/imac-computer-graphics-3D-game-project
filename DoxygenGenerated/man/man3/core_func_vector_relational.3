@@ -1,0 +1,179 @@
+.TH "core_func_vector_relational" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+core_func_vector_relational
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType< T, P >::bool_type \fBglm::lessThanEqual\fP (vecType< T, P > const &x, vecType< T, P > const &y)"
+.br
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType< T, P >::bool_type \fBglm::greaterThan\fP (vecType< T, P > const &x, vecType< T, P > const &y)"
+.br
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType< T, P >::bool_type \fBglm::greaterThanEqual\fP (vecType< T, P > const &x, vecType< T, P > const &y)"
+.br
+.ti -1c
+.RI "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType< T, P >::bool_type \fBglm::notEqual\fP (vecType< T, P > const &x, vecType< T, P > const &y)"
+.br
+.ti -1c
+.RI "template<precision P, template< typename, precision > class vecType> GLM_FUNC_DECL bool \fBglm::any\fP (vecType< bool, P > const &v)"
+.br
+.ti -1c
+.RI "template<precision P, template< typename, precision > class vecType> GLM_FUNC_DECL bool \fBglm::all\fP (vecType< bool, P > const &v)"
+.br
+.ti -1c
+.RI "template<precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType< bool, P > \fBglm::not_\fP (vecType< bool, P > const &v)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Relational and equality operators (<, <=, >, >=, ==, !=) are defined to operate on scalars and produce scalar Boolean results\&. For vector results, use the following built-in functions\&.
+.PP
+In all cases, the sizes of all the input and return vectors for any particular call must match\&. 
+.SH "Function Documentation"
+.PP 
+.SS "template<precision P, template< typename, precision > class vecType> GLM_FUNC_DECL bool glm::all (vecType< bool, P > const & v)"
+Returns true if all components of x are true\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIvecType\fP Boolean vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL all man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.7 Vector Relational Functions\fP 
+.RE
+.PP
+
+.SS "template<precision P, template< typename, precision > class vecType> GLM_FUNC_DECL bool glm::any (vecType< bool, P > const & v)"
+Returns true if any component of x is true\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIvecType\fP Boolean vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL any man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.7 Vector Relational Functions\fP 
+.RE
+.PP
+
+.SS "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType<T, P>::bool_type glm::greaterThan (vecType< T, P > const & x, vecType< T, P > const & y)"
+Returns the component-wise comparison of result x > y\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIvecType\fP Floating-point or integer vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL greaterThan man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.7 Vector Relational Functions\fP 
+.RE
+.PP
+
+.SS "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType<T, P>::bool_type glm::greaterThanEqual (vecType< T, P > const & x, vecType< T, P > const & y)"
+Returns the component-wise comparison of result x >= y\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIvecType\fP Floating-point or integer vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL greaterThanEqual man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.7 Vector Relational Functions\fP 
+.RE
+.PP
+
+.SS "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType<T, P>::bool_type glm::lessThanEqual (vecType< T, P > const & x, vecType< T, P > const & y)"
+Returns the component-wise comparison result of x < y\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIvecType\fP Floating-point or integer vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL lessThan man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.7 Vector Relational Functions\fP Returns the component-wise comparison of result x <= y\&.
+.RE
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIvecType\fP Floating-point or integer vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL lessThanEqual man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.7 Vector Relational Functions\fP 
+.RE
+.PP
+
+.SS "template<precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType<bool, P> glm::not_ (vecType< bool, P > const & v)"
+Returns the component-wise logical complement of x\&. /!\\ Because of language incompatibilities between C++ and GLSL, GLM defines the function not but not_ instead\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIvecType\fP Boolean vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL not man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.7 Vector Relational Functions\fP 
+.RE
+.PP
+
+.SS "template<typename T , precision P, template< typename, precision > class vecType> GLM_FUNC_DECL vecType<T, P>::bool_type glm::notEqual (vecType< T, P > const & x, vecType< T, P > const & y)"
+Returns the component-wise comparison of result x == y\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIvecType\fP Floating-point, integer or boolean vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL equal man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.7 Vector Relational Functions\fP Returns the component-wise comparison of result x != y\&.
+.RE
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIvecType\fP Floating-point, integer or boolean vector types\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fCGLSL notEqual man page\fP 
+.PP
+\fCGLSL 4\&.20\&.8 specification, section 8\&.7 Vector Relational Functions\fP 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.
