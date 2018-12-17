@@ -182,42 +182,42 @@ void GameController::createObjects() {
 
     try {
         tex = new GraphicsEngine::Texture(GraphicsEngine::LocalFilePath("textures/test.png").c_str());
-        shader = new GraphicsEngine::PerspectiveShaderProgram( GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl").c_str(), GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl").c_str(), "uMVPMatrix", "uMVMatrix", "uNormalMatrix");
+        shader = new GraphicsEngine::PerspectiveShaderProgram( GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix");
         material = std::make_shared<GraphicsEngine::Material>(shader, tex);
     } catch(GraphicsEngine::InitialisationException error) {
         std::cout << error.what();
     }
 
 
-    std::vector<GraphicsEngine::Vertex> helloTriangle;
-    helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(-0.5f,0.f,0.f), glm::vec3(1.f,0.f,0.f), glm::vec2(0.f,0.f)));
-    helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(0.5f,0.f,0.f), glm::vec3(0.f,1.f,0.f), glm::vec2(0.5f,0.f)));
-    helloTriangle.push_back(GraphicsEngine::Vertex(glm::vec3(0.f,1.f,0.f), glm::vec3(0.f,0.f,1.f), glm::vec2(0.f,1.0f)));
+    std::vector<GraphicsEngine::Vertex3D> helloTriangle;
+    helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(-0.5f,0.f,0.f), glm::vec3(1.f,0.f,0.f), glm::vec2(0.f,0.f)));
+    helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(0.5f,0.f,0.f), glm::vec3(0.f,1.f,0.f), glm::vec2(0.5f,0.f)));
+    helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(0.f,1.f,0.f), glm::vec3(0.f,0.f,1.f), glm::vec2(0.f,1.0f)));
 
-    std::shared_ptr<GraphicsEngine::Mesh> mesh = std::make_shared<GraphicsEngine::Mesh>(helloTriangle);
-    m_helloTriangle = std::make_shared<GraphicsEngine::Object>(mesh, material);
+    std::shared_ptr<GraphicsEngine::Mesh3D> mesh = std::make_shared<GraphicsEngine::Mesh3D>(helloTriangle);
+    m_helloTriangle = std::make_shared<GraphicsEngine::Object3D>(mesh, material);
 
 
 
     // CREATE GRID
-    std::vector<GraphicsEngine::Vertex> grid;
+    std::vector<GraphicsEngine::Vertex3D> grid;
 
     float gridScale = 5;
     uint gridsize = 30;
     for (uint i = 0; i < gridsize; ++i) {
         float position = i * 2.f / gridsize - 1;
-        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(position,0.f,1.f), glm::vec3(0), glm::vec2(0)));
-        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(position,0.f,-1.f), glm::vec3(0), glm::vec2(0)));
-        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
-        grid.push_back(GraphicsEngine::Vertex(gridScale * glm::vec3(-1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(position,0.f,1.f), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(position,0.f,-1.f), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(-1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
     }
-    GraphicsEngine::PerspectiveShaderProgram* wireframeShader = new GraphicsEngine::PerspectiveShaderProgram(GraphicsEngine::LocalFilePath("shaders/wireframe.vs.glsl").c_str(), GraphicsEngine::LocalFilePath("shaders/wireframe.fs.glsl").c_str(), "uMVPMatrix", "uMVMatrix", "uNormalMatrix");
+    GraphicsEngine::PerspectiveShaderProgram* wireframeShader = new GraphicsEngine::PerspectiveShaderProgram(GraphicsEngine::LocalFilePath("shaders/wireframe.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/wireframe.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix");
     GLenum mode = GL_LINES;
 
-    std::shared_ptr<GraphicsEngine::Mesh> gridMesh = std::make_shared<GraphicsEngine::Mesh>(grid, mode);
+    std::shared_ptr<GraphicsEngine::Mesh3D> gridMesh = std::make_shared<GraphicsEngine::Mesh3D>(grid, mode);
     std::shared_ptr<GraphicsEngine::Material> wireframe = std::make_shared<GraphicsEngine::Material>(wireframeShader);
 
-    m_debugGrid = std::make_shared<GraphicsEngine::Object>(gridMesh, wireframe);
+    m_debugGrid = std::make_shared<GraphicsEngine::Object3D>(gridMesh, wireframe);
 }
 
 

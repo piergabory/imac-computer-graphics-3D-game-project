@@ -22,8 +22,8 @@ private:
     // player point of view, scene camera.
     GraphicsEngine::Camera m_playerPointOfView;
 
-    std::shared_ptr<GraphicsEngine::Object> m_debugGrid;
-    std::shared_ptr<GraphicsEngine::Object> m_helloTriangle;
+    std::shared_ptr<GraphicsEngine::Object3D> m_debugGrid;
+    std::shared_ptr<GraphicsEngine::Object3D> m_helloTriangle;
 
     void handlePressedKey();
 

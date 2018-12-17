@@ -20,7 +20,8 @@
  */
 
 namespace GraphicsEngine {
-    
+
+    template<class VertexType>
     class Mesh {
         
     private:
@@ -37,18 +38,37 @@ namespace GraphicsEngine {
         const GLenum m_glArrayDrawMode;
         
         // create vertex buffer
-        void setVertexBuffer(const std::vector<Vertex> &vertices) const;
+        void setVertexBuffer(const std::vector<VertexType> &vertices) const {
+            // select buffer
+            glBindBuffer(GL_ARRAY_BUFFER, m_vertexBufferObject);
+            // push data in buffer
+            glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(VertexType), vertices.data(), GL_STATIC_DRAW);
+            glBindBuffer(GL_ARRAY_BUFFER, 0);
+        }
+
         
         // construct vertex Array from vertex Buffer
-        void setVertexArray(const std::vector<Vertex> &vertices) const;
+        void setVertexArray(const std::vector<VertexType> &vertices) const;
         
         
     public:
         // constructor
-        Mesh(const std::vector<Vertex> &vertices, const GLenum drawMode = GL_TRIANGLES);
+        Mesh(const std::vector<VertexType> &vertices, const GLenum drawMode = GL_TRIANGLES) :
+        m_vertexCount((int) vertices.size()),
+        m_glArrayDrawMode(drawMode)
+        {
+            glGenBuffers(1, &m_vertexBufferObject);
+            setVertexBuffer(vertices);
+
+            glGenVertexArrays(1, &m_vertexArrayObject);
+            setVertexArray(vertices);
+        }
         
         // destrucor
-        ~Mesh();
+        ~Mesh() {
+            // clear VAO
+            glDeleteVertexArrays(1, &m_vertexArrayObject);
+        }
         
         
         // getters        
@@ -65,6 +85,9 @@ namespace GraphicsEngine {
             return m_glArrayDrawMode;
         }
     };
+
+    using Mesh3D = Mesh<Vertex3D>;
+    using Mesh2D = Mesh<Vertex2D>;
 }
 
 #endif /* Mesh_hpp */

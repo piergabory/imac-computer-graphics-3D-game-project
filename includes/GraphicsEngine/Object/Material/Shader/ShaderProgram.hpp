@@ -12,6 +12,7 @@
 #include "Frameworks.hpp"
 #include "Exceptions.hpp"
 #include "Shader.hpp"
+#include "CommonStructs.hpp"
 
 /**
  * SHADER PROGRAM CLASS
@@ -50,7 +51,10 @@ namespace GraphicsEngine {
         }
         
         // constructor, takes in the paths of the vertex shader and fragment shader
-        ShaderProgram(const char* vertexShaderSourcePath, const char* fragmentShaderSourcePath);
+        ShaderProgram(LocalFilePath vertexShaderSourcePath, LocalFilePath fragmentShaderSourcePath);
+
+        // default constructor
+        ShaderProgram(): m_glProgramIdentifier(0) {};
         
         // destructor
         ~ShaderProgram();

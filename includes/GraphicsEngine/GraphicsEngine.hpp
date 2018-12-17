@@ -15,7 +15,8 @@
 #include "Frameworks.hpp"
 #include "Exceptions.hpp"
 #include "Scene.hpp"
-#include "Object.hpp"
+#include "Canvas.hpp"
+#include "Object3D.hpp"
 #include "EventManager.hpp"
 
 /**
@@ -36,6 +37,9 @@ namespace GraphicsEngine {
 
         // current scene
         Scene *m_activeScene;
+
+        // curent
+        Canvas *m_activeGUI;
 
         // frameworks initializers
         void initializeSDL();
