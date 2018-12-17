@@ -29,9 +29,20 @@ namespace GraphicsEngine
         /// Camera
         std::shared_ptr<Camera> m_camera;
 
-        void initializeObject(Object3D &newObject) override{
+        void contextWillRender() override {
+            glEnable(GL_DEPTH_TEST);
+            glEnable(GL_CULL_FACE);
+        }
+
+        void initializeObject(Object3D &newObject) override {
             newObject.setProjection(m_camera->projectionMatrix(), m_camera->modelMatrix());
         }
+
+
+        void objectPrerenderStage(Object3D &newObject) override {
+            newObject.project();
+        }
+
 
     public:
         
@@ -40,8 +51,7 @@ namespace GraphicsEngine
         Scene() : Context<Object3D>(), m_camera(std::make_shared<Camera>()) {}
         // takes an existing camera
         Scene(Camera &cameraPtr) : Context<Object3D>(), m_camera(std::make_shared<Camera>(cameraPtr)) {}
-        
-        
+
         // destructor
         // deletes memory allocated on each pointer in the object vector.
         ~Scene() {}

@@ -13,7 +13,13 @@
 #include "Object2D.hpp"
 
 namespace GraphicsEngine {
-    class Canvas : Context<Object2D> {
+    class Canvas : public Context<Object2D> {
+    private:
+        void contextWillRender() {
+            glDisable(GL_DEPTH_TEST);
+            glDisable(GL_CULL_FACE);
+        }
+
     public:
         Canvas() : Context<Object2D>() {}
         ~Canvas() {}

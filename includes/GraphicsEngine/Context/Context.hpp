@@ -25,7 +25,9 @@ namespace GraphicsEngine {
          */
         std::vector< std::weak_ptr<ObjectType> > m_objects;
 
+        virtual void contextWillRender() {}
         virtual void initializeObject(ObjectType &newObject) {}
+        virtual void objectPrerenderStage(ObjectType &newObject) {}
 
     public:
         // adds an object in the scene.
@@ -53,6 +55,8 @@ namespace GraphicsEngine {
 
         // Draws the scene: Span through each element in the scene, projects them on the camera.
         void render() {
+            contextWillRender();
+
             for(typename std::vector< std::weak_ptr<ObjectType> >::iterator objectIterator = m_objects.begin(); objectIterator != m_objects.end(); ++objectIterator) {
                 if (objectIterator->expired()) {
                     //m_objects.erase(objectIterator);
@@ -61,10 +65,8 @@ namespace GraphicsEngine {
 
                 std::shared_ptr<ObjectType> object = objectIterator->lock();
 
-                // update the shader's matrices
-                object->project();
-
                 // push the vertices in the pipeline
+                objectPrerenderStage(*object);
                 object->draw();
 
             }

@@ -99,6 +99,9 @@ namespace GraphicsEngine {
         // render the scene
         m_activeScene->render();
 
+        // print the GUI overlay
+        m_activeGUI->render();
+
         // swap buffer width visible
         SDL_GL_SwapWindow(m_sdlWindow);
     }

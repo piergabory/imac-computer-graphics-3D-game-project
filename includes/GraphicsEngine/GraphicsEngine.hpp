@@ -83,6 +83,7 @@ namespace GraphicsEngine {
 
         // scene
         inline Scene* activeScene() { return m_activeScene; }
+        inline Canvas* activeGUI() { return m_activeGUI; }
     };
 }
 
