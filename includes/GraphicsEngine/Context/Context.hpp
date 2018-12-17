@@ -25,9 +25,9 @@ namespace GraphicsEngine {
          */
         std::vector< std::weak_ptr<ObjectType> > m_objects;
 
-        virtual void contextWillRender() {}
-        virtual void initializeObject(ObjectType &newObject) {}
-        virtual void objectPrerenderStage(ObjectType &newObject) {}
+        virtual void contextWillRender() const {}
+        virtual void initializeObject(ObjectType &newObject) const {}
+        virtual void objectPrerenderStage(ObjectType &newObject) const {}
 
     public:
         // adds an object in the scene.

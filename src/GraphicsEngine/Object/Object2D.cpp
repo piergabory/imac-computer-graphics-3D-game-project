@@ -33,8 +33,8 @@ namespace GraphicsEngine {
         std::shared_ptr<ShaderProgram> shader(&m_2dShader);
         return std::make_shared<Material>(shader, texture);
     }
-
-    void Object2D::initialize2DShaderProgram(LocalFilePath &vertexShaderPath, LocalFilePath &fragementShaderPath) {
+    
+    void Object2D::initialize2DShaderProgram(LocalFilePath vertexShaderPath, LocalFilePath fragementShaderPath) {
         m_2dShader = ShaderProgram(vertexShaderPath, fragementShaderPath);
     }
 }

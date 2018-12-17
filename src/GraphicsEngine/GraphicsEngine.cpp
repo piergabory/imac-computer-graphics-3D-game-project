@@ -11,7 +11,7 @@ namespace GraphicsEngine {
     // singleton instance getter
     Controller* Controller::instance() {
         // create if non-existent
-        if (Controller::m_controllerInstance == NULL)
+        if (Controller::m_controllerInstance == nullptr)
             Controller::m_controllerInstance = new Controller();
 
         return Controller::m_controllerInstance;
@@ -58,16 +58,6 @@ namespace GraphicsEngine {
 
         // initialize OpenGL
         SDL_GL_CreateContext(m_sdlWindow);
-
-        // hide faces viewed from behind
-        glFrontFace(GL_CCW);
-        glCullFace(GL_BACK);
-        glEnable(GL_CULL_FACE);
-
-
-        // enable z-buffer test
-        glEnable(GL_DEPTH_TEST);
-        glDepthFunc(GL_LESS);
     }
 
 
@@ -81,6 +71,8 @@ namespace GraphicsEngine {
             initializeWindow(windowTitle, viewportWidth, viewportHeight);
             initializeGlew();
         }
+
+        Object2D::initialize2DShaderProgram(LocalFilePath("shaders/triangle.vs.glsl"), LocalFilePath("shaders/triangle.fs.glsl"));
     }
 
     void Controller::loadScene(Scene* newScene) {
@@ -91,16 +83,26 @@ namespace GraphicsEngine {
         m_activeScene = newScene;
     }
 
+    void Controller::loadGUI(Canvas* newGUI) {
+        assert(newGUI);
+        // destroy scene if already exists
+        if (!m_activeGUI)
+            delete m_activeGUI;
+        m_activeGUI = newGUI;
+    }
+
+
     void Controller::render()
     {
         // clears buffer
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+
         // render the scene
-        m_activeScene->render();
+        if (m_activeScene) m_activeScene->render();
 
         // print the GUI overlay
-        m_activeGUI->render();
+        if (m_activeGUI) m_activeGUI->render();
 
         // swap buffer width visible
         SDL_GL_SwapWindow(m_sdlWindow);

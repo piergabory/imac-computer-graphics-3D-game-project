@@ -29,17 +29,24 @@ namespace GraphicsEngine
         /// Camera
         std::shared_ptr<Camera> m_camera;
 
-        void contextWillRender() override {
-            glEnable(GL_DEPTH_TEST);
+        void contextWillRender() const override {
+            // hide faces viewed from behind
+            glFrontFace(GL_CCW);
+            glCullFace(GL_BACK);
             glEnable(GL_CULL_FACE);
+
+
+            // enable z-buffer test
+            glEnable(GL_DEPTH_TEST);
+            glDepthFunc(GL_LESS);
         }
 
-        void initializeObject(Object3D &newObject) override {
+        void initializeObject(Object3D &newObject) const override {
             newObject.setProjection(m_camera->projectionMatrix(), m_camera->modelMatrix());
         }
 
 
-        void objectPrerenderStage(Object3D &newObject) override {
+        void objectPrerenderStage(Object3D &newObject) const override {
             newObject.project();
         }
 

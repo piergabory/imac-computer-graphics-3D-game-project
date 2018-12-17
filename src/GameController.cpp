@@ -10,9 +10,14 @@ void GameController::linkEventObserver() {
 // creates scene and load objects
 void GameController::initializeScene() {
     createObjects();
+
     GraphicsEngine::Scene *scene = new GraphicsEngine::Scene(m_playerPointOfView);
     GraphicsEngine::Controller::instance()->loadScene(scene);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_helloTriangle);
+
+    GraphicsEngine::Canvas *canvas = new GraphicsEngine::Canvas();
+    GraphicsEngine::Controller::instance()->loadGUI(canvas);
+    GraphicsEngine::Controller::instance()->activeGUI()->add(m_testSquare);
 }
 
 
@@ -218,6 +223,10 @@ void GameController::createObjects() {
     std::shared_ptr<GraphicsEngine::Material> wireframe = std::make_shared<GraphicsEngine::Material>(wireframeShader);
 
     m_debugGrid = std::make_shared<GraphicsEngine::Object3D>(gridMesh, wireframe);
+
+    glm::vec2 position(0.1), size(0.1);
+    std::shared_ptr<GraphicsEngine::Texture> letex(tex);
+    m_testSquare = std::make_shared<GraphicsEngine::Object2D>(position, size, letex);
 }
 
 

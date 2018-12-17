@@ -36,10 +36,10 @@ namespace GraphicsEngine {
         SDL_Window *m_sdlWindow;
 
         // current scene
-        Scene *m_activeScene;
+        Scene *m_activeScene = nullptr;
 
         // curent
-        Canvas *m_activeGUI;
+        Canvas *m_activeGUI = nullptr;
 
         // frameworks initializers
         void initializeSDL();
@@ -62,6 +62,9 @@ namespace GraphicsEngine {
 
         // replace existing scene with a given one
         void loadScene(Scene* newScene);
+
+        // replace existing scene with a given one
+        void loadGUI(Canvas* newGUI);
 
         // starts a render cycle
         void render();
