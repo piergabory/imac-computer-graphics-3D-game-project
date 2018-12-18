@@ -31,10 +31,10 @@ namespace GraphicsEngine {
     public:
         // apply a 3D translation on the object
         void translate(const glm::vec3 &translationVector);
-        
+
         // apply a 3D rotation on the object
         void rotate(const float angle, const glm::vec3 &direction);
-        
+
         // apply a 3D scale on the object
         void scale(const glm::vec3 &scalingVector);
 
@@ -56,7 +56,7 @@ namespace GraphicsEngine {
         // destructor
         ~Object3D() {}
     };
-    
+
 }
 
 #endif /* Object_hpp */
