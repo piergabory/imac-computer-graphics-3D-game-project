@@ -26,13 +26,12 @@ namespace GraphicsEngine {
     private:
         // Load a shader from file
         void loadShader(const char* sourcePath, GLenum shaderType) const;
-        
-        // creates a string of the compile log.
-        std::string log() const;
+
         
     protected:
         // program GL identifier
         GLuint m_glProgramIdentifier;
+        
         
     public:
         // const identifier getter

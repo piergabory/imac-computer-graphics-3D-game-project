@@ -85,12 +85,14 @@ void GameController::keyRealeaseHandler(unsigned char keycode) {
             case 224: case 225: break;
 
             case 'g':
-                std::cout << "Toggling Grid" << std::endl;
-                if (m_isDebugGridActive)
-                    GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
-                else
-                    GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
                 m_isDebugGridActive = !m_isDebugGridActive;
+                std::cout << "Toggling Grid " << (m_isDebugGridActive? "on" : "off") << std::endl;
+                if (m_isDebugGridActive) {
+                    GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
+                } else {
+                    GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
+                }
+
                 break;
 
             default:
@@ -188,8 +190,8 @@ void GameController::createObjects() {
 
     // hello triangle
     helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(-0.5f,0.f,0.f), glm::vec3(1.f,0.f,0.f), glm::vec2(0.f,0.f)));
-    helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(0.5f,0.f,0.f), glm::vec3(0.f,1.f,0.f), glm::vec2(0.5f,0.f)));
-    helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(0.f,1.f,0.f), glm::vec3(0.f,0.f,1.f), glm::vec2(0.f,1.0f)));
+    helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(0.5f,0.f,0.f), glm::vec3(0.f,1.f,0.f), glm::vec2(0.5f,1.f)));
+    helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(0.f,1.f,0.f), glm::vec3(0.f,0.f,1.f), glm::vec2(1.f,0.0f)));
 
     // debug grid
     float gridScale = 5;
@@ -214,7 +216,7 @@ void GameController::createObjects() {
 
         m_debugGrid = std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/wireframe.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/wireframe.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix")));
 
-        m_testSquare = std::make_shared<GraphicsEngine::Object2D>(glm::vec2(0.1), glm::vec2(0.1), testTexture);
+        m_testSquare = std::make_shared<GraphicsEngine::Object2D>(glm::vec2(0, 0), glm::vec2(0.1, 0.1), std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/test.png")));
 
     } catch(GraphicsEngine::InitialisationException error) {
         std::cout << error.what();

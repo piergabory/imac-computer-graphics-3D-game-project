@@ -72,7 +72,7 @@ namespace GraphicsEngine {
             initializeGlew();
         }
 
-        Object2D::initialize2DShaderProgram(LocalFilePath("shaders/triangle.vs.glsl"), LocalFilePath("shaders/triangle.fs.glsl"));
+        Object2D::initialize2DShaderProgram(LocalFilePath("shaders/2D.vs.glsl"), LocalFilePath("shaders/2D.fs.glsl"));
     }
 
     void Controller::loadScene(std::unique_ptr<Scene> &newScene) {

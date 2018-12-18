@@ -15,7 +15,7 @@
 namespace GraphicsEngine {
     class Object2D : public Object<Vertex2D> {
     private:
-        static ShaderProgram m_2dShader;
+        static std::shared_ptr<ShaderProgram> m_2dShader;
         static std::shared_ptr<Material> createMaterial(LocalFilePath textureImagePath);
         static std::shared_ptr<Material> createMaterial(std::shared_ptr<Texture> &texture);
         static std::shared_ptr<Mesh2D> createBoundingBox(glm::vec2 &position, glm::vec2 &size);

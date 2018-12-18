@@ -51,6 +51,16 @@ namespace GraphicsEngine {
         GLint status;
         glGetShaderiv(m_glShaderIdentifier, GL_COMPILE_STATUS, &status);
         if (status != GL_TRUE)
-            throw InitialisationException("Shader Compilation failed", m_glShaderIdentifier);
+            throw InitialisationException("Shader Compilation failed", log().c_str());
+    }
+
+    std::string Shader::log() const {
+        GLint length;
+        glGetShaderiv(m_glShaderIdentifier, GL_INFO_LOG_LENGTH, &length);
+        char* logCString = new char[length];
+        glGetShaderInfoLog(m_glShaderIdentifier, length, 0, logCString);
+        std::string log(logCString);
+        delete[] logCString;
+        return log;
     }
 }

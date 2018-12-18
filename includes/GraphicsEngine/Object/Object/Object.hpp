@@ -18,6 +18,7 @@ namespace GraphicsEngine {
 
     template<class VertexType>
     class Object {
+        
     protected:
         // Mesh, represent the group of vertices making the shape of the object.
         // (Vertex Array Object)
@@ -34,6 +35,10 @@ namespace GraphicsEngine {
             m_material->apply();
 
             glDrawArrays(m_mesh->mode(), 0, m_mesh->vertexCount());
+
+            glBindTexture(GL_TEXTURE_2D, 0);
+            glBindVertexArray(0);
+
         }
 
         /**

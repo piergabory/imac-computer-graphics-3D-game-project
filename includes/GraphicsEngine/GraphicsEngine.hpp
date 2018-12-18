@@ -43,6 +43,7 @@ namespace GraphicsEngine {
         // frameworks initializers
         void initializeSDL();
         void initializeGlew();
+        
         // parameters: menu bar description, and the window's pixel dimentions
         void initializeWindow(const char* windowTitle, const uint viewportWidth, const uint viewportHeight);
 
@@ -85,6 +86,7 @@ namespace GraphicsEngine {
 
         // scene
         inline const std::unique_ptr<Scene> &activeScene() const { return m_activeScene; }
+
         inline const std::unique_ptr<Canvas> &activeGUI() const { return m_activeGUI; }
     };
 }
