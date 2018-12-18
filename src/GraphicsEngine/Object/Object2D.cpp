@@ -21,7 +21,7 @@ namespace GraphicsEngine {
         return std::make_shared<Mesh2D>(vertices);
     }
 
-    std::shared_ptr<Material> Object2D::createMaterial(const char* textureImagePath) {
+    std::shared_ptr<Material> Object2D::createMaterial(LocalFilePath textureImagePath) {
         assert(m_2dShader.identifier() != 0);
         std::shared_ptr<Texture> texture = std::make_shared<Texture>(textureImagePath);
         std::shared_ptr<ShaderProgram> shader(&m_2dShader);
