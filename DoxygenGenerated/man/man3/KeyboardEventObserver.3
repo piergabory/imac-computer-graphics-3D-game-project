@@ -1,4 +1,4 @@
-.TH "KeyboardEventObserver" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.TH "KeyboardEventObserver" 3 "Tue Dec 18 2018" "IMAC run" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -9,7 +9,7 @@ KeyboardEventObserver
 .PP
 \fC#include <EventObservers\&.hpp>\fP
 .PP
-Inherited by \fBGameController\fP\fC [private]\fP\&.
+Inherited by \fBGameController\fP\fC [private]\fP, and \fBPlayer\fP\fC [private]\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
@@ -18,6 +18,9 @@ Inherited by \fBGameController\fP\fC [private]\fP\&.
 .br
 .ti -1c
 .RI "virtual void \fBkeyDownHandler\fP (unsigned char keycode)"
+.br
+.ti -1c
+.RI "virtual void \fBkeyPressHandler\fP (std::set< unsigned char > pressedKeys)"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -28,4 +31,4 @@ Classes implementing this interface can subscribe to key events in EventManager
 
 .SH "Author"
 .PP 
-Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.
+Generated automatically by Doxygen for IMAC run from the source code\&.

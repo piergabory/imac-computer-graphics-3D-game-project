@@ -23,7 +23,7 @@ namespace GraphicsEngine {
     }
 
 
-    void EventManager::pollEvents() const {
+    void EventManager::pollEvents() {
         // temporary variable holding each event
         SDL_Event event;
 
@@ -86,8 +86,8 @@ namespace GraphicsEngine {
                       for(unsigned int i=0; i<m_pKeyboardEventsObserver.size(); i++){
                         m_pKeyboardEventsObserver[i]->keyDownHandler(event.key.keysym.sym);
                       }
-                      //m_pressedKeys.insert((unsigned char)event.key.keysym.sym);
-                      insertInSet(event.key.keysym.sym);
+                      m_pressedKeys.insert(event.key.keysym.sym);
+
                       //m_pKeyboardEventsObserver->keyDownHandler(event.key.keysym.sym);
                       break;
                     case SDL_KEYUP:
@@ -101,23 +101,26 @@ namespace GraphicsEngine {
                 }
             }
         }
+        // if the set isn't empty (key currently pressed) send the set to the observer
+        if(!m_pressedKeys.empty()){
+          for(unsigned int i=0; i<m_pKeyboardEventsObserver.size(); i++){
+            m_pKeyboardEventsObserver[i]->keyPressHandler(m_pressedKeys);
+          }
+        }
     }
 
 
-
-    // setters
-
     void EventManager::subscribe(QuitEventObserver* quitObserver) {
-        m_pQuitEventObserver.push_back(std::unique_ptr<QuitEventObserver>( quitObserver));
+        m_pQuitEventObserver.push_back(std::unique_ptr<QuitEventObserver>(quitObserver));
     }
 
 
     void EventManager::subscribe(MouseEventObserver* mouseObserver) {
-        m_pMouseEventsObserver.push_back(std::unique_ptr<MouseEventObserver>( mouseObserver));
+        m_pMouseEventsObserver.push_back(std::unique_ptr<MouseEventObserver>(mouseObserver));
     }
 
 
     void EventManager::subscribe(KeyboardEventObserver* keyboardObserver) {
-        m_pKeyboardEventsObserver.push_back(std::unique_ptr<KeyboardEventObserver> (keyboardObserver));
+        m_pKeyboardEventsObserver.push_back(std::unique_ptr<KeyboardEventObserver>(keyboardObserver));
     }
 }

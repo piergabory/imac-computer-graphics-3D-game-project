@@ -219,6 +219,8 @@ void GameController::createObjects() {
     std::shared_ptr<GraphicsEngine::Material> wireframe = std::make_shared<GraphicsEngine::Material>(wireframeShader);
 
     m_debugGrid = std::make_shared<GraphicsEngine::Object>(gridMesh, wireframe);
+
+    m_player= new Player(*m_helloTriangle, 0.5);
 }
 
 
@@ -248,4 +250,5 @@ GameController* GameController::instance() {
     return m_controllerInstance;
 }
 
-GameController::GameController() { }
+GameController::GameController() {
+}

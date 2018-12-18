@@ -7,6 +7,7 @@
 
 #include "GraphicsEngine.hpp"
 #include "EventObservers.hpp"
+#include "Player.hpp"
 
 class GameController: QuitEventObserver, KeyboardEventObserver, MouseEventObserver {
 
@@ -15,6 +16,8 @@ private:
     bool m_isRunning = true;
 
     bool m_isDebugGridActive = false;
+
+
 
     // contains all keycodes of currently pressed keyboard keys
     //DEPRECATED
@@ -25,6 +28,8 @@ private:
 
     std::shared_ptr<GraphicsEngine::Object> m_debugGrid;
     std::shared_ptr<GraphicsEngine::Object> m_helloTriangle;
+
+    Player *m_player;
 
     void handlePressedKey();
 

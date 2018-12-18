@@ -39,7 +39,7 @@ struct KeyboardEventObserver {
     virtual void keyRealeaseHandler(unsigned char keycode) {}
     // handles a key press from the user
     virtual void keyDownHandler(unsigned char keycode) {}
-
+    // handles a set of keys
     virtual void keyPressHandler(std::set<unsigned char> pressedKeys){}
 };
 

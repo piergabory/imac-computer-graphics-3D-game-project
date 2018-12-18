@@ -40,16 +40,12 @@ namespace GraphicsEngine {
         // contains all keycodes of currently pressed keyboard keys
         std::set<unsigned char> m_pressedKeys;
 
-        void insertInSet(unsigned char key){
-          m_pressedKeys.insert(key);
-        }
-
     public:
         // instance getter
         static EventManager* instance();
 
         // fetches events from the SDL framework
-        void pollEvents() const;
+        void pollEvents() ;
 
         // Add observer to the manager.
         void subscribe(QuitEventObserver* quitObserver);
