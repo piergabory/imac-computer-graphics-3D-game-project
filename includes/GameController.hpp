@@ -17,7 +17,8 @@ private:
     bool m_isDebugGridActive = false;
 
     // contains all keycodes of currently pressed keyboard keys
-    std::set<unsigned char> m_pressedKeys;
+    //DEPRECATED
+    std::set<unsigned char> m_pressedKeys; //Déplacé dans EventManager
 
     // player point of view, scene camera.
     GraphicsEngine::Camera m_playerPointOfView;
