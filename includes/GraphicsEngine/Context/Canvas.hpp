@@ -15,6 +15,7 @@
 namespace GraphicsEngine {
     class Canvas : public Context<Object2D> {
     private:
+
         void contextWillRender() const override{
             glDisable(GL_DEPTH_TEST);
             glDisable(GL_CULL_FACE);
@@ -23,6 +24,7 @@ namespace GraphicsEngine {
     public:
         Canvas() : Context<Object2D>() {}
         ~Canvas() {}
+        
     };
 }
 

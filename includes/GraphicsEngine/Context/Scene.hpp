@@ -35,7 +35,6 @@ namespace GraphicsEngine
             glCullFace(GL_BACK);
             glEnable(GL_CULL_FACE);
 
-
             // enable z-buffer test
             glEnable(GL_DEPTH_TEST);
             glDepthFunc(GL_LESS);

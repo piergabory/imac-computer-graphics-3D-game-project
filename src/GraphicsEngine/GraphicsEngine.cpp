@@ -75,20 +75,12 @@ namespace GraphicsEngine {
         Object2D::initialize2DShaderProgram(LocalFilePath("shaders/triangle.vs.glsl"), LocalFilePath("shaders/triangle.fs.glsl"));
     }
 
-    void Controller::loadScene(Scene* newScene) {
-        assert(newScene);
-        // destroy scene if already exists
-        if (!m_activeScene)
-            delete m_activeScene;
-        m_activeScene = newScene;
+    void Controller::loadScene(std::unique_ptr<Scene> &newScene) {
+        m_activeScene = std::move(newScene);
     }
 
-    void Controller::loadGUI(Canvas* newGUI) {
-        assert(newGUI);
-        // destroy scene if already exists
-        if (!m_activeGUI)
-            delete m_activeGUI;
-        m_activeGUI = newGUI;
+    void Controller::loadGUI(std::unique_ptr<Canvas> &newGUI) {
+        m_activeGUI = std::move(newGUI);
     }
 
 

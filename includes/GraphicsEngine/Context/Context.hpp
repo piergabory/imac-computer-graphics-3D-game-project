@@ -14,6 +14,7 @@
 #include "Object3D.hpp"
 
 namespace GraphicsEngine {
+
     template<class ObjectType>
     class Context {
     private:
@@ -28,6 +29,7 @@ namespace GraphicsEngine {
         virtual void contextWillRender() const {}
         virtual void initializeObject(ObjectType &newObject) const {}
         virtual void objectPrerenderStage(ObjectType &newObject) const {}
+
 
     public:
         // adds an object in the scene.
@@ -68,7 +70,6 @@ namespace GraphicsEngine {
                 // push the vertices in the pipeline
                 objectPrerenderStage(*object);
                 object->draw();
-
             }
 
             // shared pointer object is destroyed.

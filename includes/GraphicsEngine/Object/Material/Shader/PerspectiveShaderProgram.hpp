@@ -46,6 +46,10 @@ namespace GraphicsEngine {
             const char* uniformMVPName = "uMVPMatrix",
             const char* uniformMVName = "uMVMatrix",
             const char* uniformNormName = "uNormalMatrix");
+
+        PerspectiveShaderProgram(const PerspectiveShaderProgram &copy) = default;
+        PerspectiveShaderProgram& operator=(const PerspectiveShaderProgram &source) = default;
+
         
         // destructor
         ~PerspectiveShaderProgram() {};

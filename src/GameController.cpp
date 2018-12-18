@@ -11,13 +11,16 @@ void GameController::linkEventObserver() {
 void GameController::initializeScene() {
     createObjects();
 
-    GraphicsEngine::Scene *scene = new GraphicsEngine::Scene(m_playerPointOfView);
+    std::unique_ptr<GraphicsEngine::Canvas> canvas(new GraphicsEngine::Canvas());
+    GraphicsEngine::Controller::instance()->loadGUI(canvas);
+    GraphicsEngine::Controller::instance()->activeGUI()->add(m_testSquare);
+
+    std::unique_ptr<GraphicsEngine::Scene>  scene(new GraphicsEngine::Scene(m_playerPointOfView));
     GraphicsEngine::Controller::instance()->loadScene(scene);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_helloTriangle);
 
-    GraphicsEngine::Canvas *canvas = new GraphicsEngine::Canvas();
-    GraphicsEngine::Controller::instance()->loadGUI(canvas);
-    GraphicsEngine::Controller::instance()->activeGUI()->add(m_testSquare);
+    m_anotherHelloTriangle->translate(glm::vec3(-1));
+    GraphicsEngine::Controller::instance()->activeScene()->add(m_anotherHelloTriangle);
 }
 
 
@@ -163,7 +166,7 @@ void GameController::handlePressedKey() {
                 m_playerPointOfView.pan(glm::vec3(-1,0,0), KEYBOARD_CAMERA_CONTROL_SPEED);
                 break;
 
-                // '0/à' key (not the numpad)
+                // '0' key (not the numpad)
             case '0':
                 m_playerPointOfView.resetPosition();
                 break;
@@ -180,33 +183,15 @@ void GameController::handlePressedKey() {
 }
 
 void GameController::createObjects() {
-    // Hello triangle
-    std::shared_ptr<GraphicsEngine::Material> material;
-    GraphicsEngine::Texture *tex;
-    GraphicsEngine::PerspectiveShaderProgram *shader;
+    // create meshes
+    std::vector<GraphicsEngine::Vertex3D> grid, helloTriangle;
 
-    try {
-        tex = new GraphicsEngine::Texture(GraphicsEngine::LocalFilePath("textures/test.png").c_str());
-        shader = new GraphicsEngine::PerspectiveShaderProgram( GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix");
-        material = std::make_shared<GraphicsEngine::Material>(shader, tex);
-    } catch(GraphicsEngine::InitialisationException error) {
-        std::cout << error.what();
-    }
-
-
-    std::vector<GraphicsEngine::Vertex3D> helloTriangle;
+    // hello triangle
     helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(-0.5f,0.f,0.f), glm::vec3(1.f,0.f,0.f), glm::vec2(0.f,0.f)));
     helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(0.5f,0.f,0.f), glm::vec3(0.f,1.f,0.f), glm::vec2(0.5f,0.f)));
     helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(0.f,1.f,0.f), glm::vec3(0.f,0.f,1.f), glm::vec2(0.f,1.0f)));
 
-    std::shared_ptr<GraphicsEngine::Mesh3D> mesh = std::make_shared<GraphicsEngine::Mesh3D>(helloTriangle);
-    m_helloTriangle = std::make_shared<GraphicsEngine::Object3D>(mesh, material);
-
-
-
-    // CREATE GRID
-    std::vector<GraphicsEngine::Vertex3D> grid;
-
+    // debug grid
     float gridScale = 5;
     uint gridsize = 30;
     for (uint i = 0; i < gridsize; ++i) {
@@ -216,17 +201,25 @@ void GameController::createObjects() {
         grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
         grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(-1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
     }
-    GraphicsEngine::PerspectiveShaderProgram* wireframeShader = new GraphicsEngine::PerspectiveShaderProgram(GraphicsEngine::LocalFilePath("shaders/wireframe.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/wireframe.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix");
-    GLenum mode = GL_LINES;
 
-    std::shared_ptr<GraphicsEngine::Mesh3D> gridMesh = std::make_shared<GraphicsEngine::Mesh3D>(grid, mode);
-    std::shared_ptr<GraphicsEngine::Material> wireframe = std::make_shared<GraphicsEngine::Material>(wireframeShader);
 
-    m_debugGrid = std::make_shared<GraphicsEngine::Object3D>(gridMesh, wireframe);
+    try {
+        // create test texture
+        std::shared_ptr<GraphicsEngine::Texture> testTexture = std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/test.png"));
 
-    glm::vec2 position(0.1), size(0.1);
-    std::shared_ptr<GraphicsEngine::Texture> letex(tex);
-    m_testSquare = std::make_shared<GraphicsEngine::Object2D>(position, size, letex);
+        // create objects
+        m_helloTriangle = std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::Mesh3D>(helloTriangle), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), testTexture));
+
+        m_anotherHelloTriangle = std::make_shared<GraphicsEngine::Object3D>(*m_helloTriangle);
+
+        m_debugGrid = std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/wireframe.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/wireframe.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix")));
+
+        m_testSquare = std::make_shared<GraphicsEngine::Object2D>(glm::vec2(0.1), glm::vec2(0.1), testTexture);
+
+    } catch(GraphicsEngine::InitialisationException error) {
+        std::cout << error.what();
+    }
+
 }
 
 

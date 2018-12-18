@@ -11,12 +11,11 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
 
-#include "Frameworks.hpp"
 #include "Exceptions.hpp"
 #include "Scene.hpp"
 #include "Canvas.hpp"
-#include "Object3D.hpp"
 #include "EventManager.hpp"
 
 /**
@@ -33,13 +32,13 @@ namespace GraphicsEngine {
     private:
 
         // sdl window struct pointer
-        SDL_Window *m_sdlWindow;
+        SDL_Window* m_sdlWindow;
 
         // current scene
-        Scene *m_activeScene = nullptr;
+        std::unique_ptr<Scene> m_activeScene;
 
         // curent
-        Canvas *m_activeGUI = nullptr;
+        std::unique_ptr<Canvas> m_activeGUI;
 
         // frameworks initializers
         void initializeSDL();
@@ -61,10 +60,10 @@ namespace GraphicsEngine {
         void setup(const char* windowTitle = "", const uint viewportWidth = 800, const uint viewportHeight = 600);
 
         // replace existing scene with a given one
-        void loadScene(Scene* newScene);
+        void loadScene(std::unique_ptr<Scene> &newScene);
 
         // replace existing scene with a given one
-        void loadGUI(Canvas* newGUI);
+        void loadGUI(std::unique_ptr<Canvas> &newGUI);
 
         // starts a render cycle
         void render();
@@ -85,8 +84,8 @@ namespace GraphicsEngine {
         static Controller* instance();
 
         // scene
-        inline Scene* activeScene() { return m_activeScene; }
-        inline Canvas* activeGUI() { return m_activeGUI; }
+        inline const std::unique_ptr<Scene> &activeScene() const { return m_activeScene; }
+        inline const std::unique_ptr<Canvas> &activeGUI() const { return m_activeGUI; }
     };
 }
 
