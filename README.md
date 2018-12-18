@@ -15,7 +15,7 @@
 * Doxygen (soon)
 
 ## Setup environnement
-1. install dependencies (sdl2, image, glew... )
+1. install dependencies (sdl2, image, glew, assimp... )
 2. make ( -j + number of CPU cors you have - 1)
 
 

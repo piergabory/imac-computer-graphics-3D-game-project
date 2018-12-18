@@ -53,6 +53,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2F55231E21C9256B00B5B28A /* Model.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
 		D40AFE5A21B05E530019E461 /* EventObservers.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EventObservers.hpp; sourceTree = "<group>"; };
 		D44D288721C081E400492876 /* wireframe.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = wireframe.fs.glsl; sourceTree = "<group>"; };
 		D44D288821C081E400492876 /* wireframe.vs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = wireframe.vs.glsl; sourceTree = "<group>"; };
@@ -297,6 +298,7 @@
 		D4F56EF021AF345500767ECA /* Object */ = {
 			isa = PBXGroup;
 			children = (
+				2F55231E21C9256B00B5B28A /* Model.hpp */,
 				D4F56EEC21AF33F200767ECA /* Material */,
 				D4F56EC821AEC28500767ECA /* Object.hpp */,
 				D46A4A4F21A0CD870096F02F /* Mesh.hpp */,

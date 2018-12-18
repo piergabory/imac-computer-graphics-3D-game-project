@@ -77,7 +77,7 @@ else
 
 		# Imported frameworks and librairies
 		LDFLAGS += -F/Library/Frameworks -framework SDL2 -framework SDL2_Image
-		LDFLAGS += -I/usr/local/include -L/usr/local/lib -lglew
+		LDFLAGS += -I/usr/local/include -L/usr/local/lib -lglew -lassimp
 
 	endif
 endif
