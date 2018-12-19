@@ -13,6 +13,7 @@
 #include "Frameworks.hpp"
 #include "CommonStructs.hpp"
 #include "Mesh.hpp"
+#include "ImportedMesh.hpp" //Remove this include (Debug for Imported Object)
 #include "Material.hpp"
 
 /**
@@ -68,6 +69,12 @@ namespace GraphicsEngine {
          * initialise mesh and material. Assumes that both are not NULL pointers
          */
         Object(std::shared_ptr<Mesh> mesh, std::shared_ptr<Material> material) : m_mesh(mesh), m_material(material) {
+            assert(mesh != nullptr);
+            assert(material != nullptr);
+        }
+        
+        //TODO - Remove this constructor (debug)
+        Object(std::shared_ptr<ImportedMesh> mesh, std::shared_ptr<Material> material) : m_mesh(mesh), m_material(material) {
             assert(mesh != nullptr);
             assert(material != nullptr);
         }

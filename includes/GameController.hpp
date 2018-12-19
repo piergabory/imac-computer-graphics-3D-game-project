@@ -6,6 +6,8 @@
 #include <memory>
 
 #include "GraphicsEngine.hpp"
+#include "CommonStructs.hpp"
+#include "ImportedMesh.hpp"
 #include "EventObservers.hpp"
 
 class GameController: QuitEventObserver, KeyboardEventObserver, MouseEventObserver {
@@ -24,6 +26,7 @@ private:
 
     std::shared_ptr<GraphicsEngine::Object> m_debugGrid;
     std::shared_ptr<GraphicsEngine::Object> m_helloTriangle;
+    std::shared_ptr<GraphicsEngine::Object> m_helloMonkey;
 
     void handlePressedKey();
 

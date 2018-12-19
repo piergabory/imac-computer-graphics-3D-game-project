@@ -13,6 +13,8 @@ void GameController::initializeScene() {
     GraphicsEngine::Scene *scene = new GraphicsEngine::Scene(m_playerPointOfView);
     GraphicsEngine::Controller::instance()->loadScene(scene);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_helloTriangle);
+    GraphicsEngine::Controller::instance()->activeScene()->add(m_helloMonkey);
+    
 }
 
 
@@ -196,6 +198,10 @@ void GameController::createObjects() {
 
     std::shared_ptr<GraphicsEngine::Mesh> mesh = std::make_shared<GraphicsEngine::Mesh>(helloTriangle);
     m_helloTriangle = std::make_shared<GraphicsEngine::Object>(mesh, material);
+    
+    GraphicsEngine::LocalFilePath monkeypath ("assets/monkey1.obj");
+    std::shared_ptr<GraphicsEngine::ImportedMesh> monkeymesh = std::make_shared<GraphicsEngine::ImportedMesh>(monkeypath);
+    m_helloMonkey = std::make_shared<GraphicsEngine::Object>(monkeymesh, material);
 
 
 

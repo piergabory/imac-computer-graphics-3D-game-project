@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F55232021C9550C00B5B28A /* libassimp.4.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F55231F21C9550C00B5B28A /* libassimp.4.1.0.dylib */; };
 		D460750D21BD883E00BAF7D0 /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D460750B21BD883E00BAF7D0 /* GameController.cpp */; };
 		D46A4A7421A0CE220096F02F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A7321A0CE220096F02F /* main.cpp */; };
 		D46A4A7521A0CE860096F02F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A3621A0C5960096F02F /* OpenGL.framework */; };
@@ -53,7 +54,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2F55231E21C9256B00B5B28A /* Model.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
+		2F55231E21C9256B00B5B28A /* ImportedMesh.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ImportedMesh.hpp; sourceTree = "<group>"; };
+		2F55231F21C9550C00B5B28A /* libassimp.4.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.4.1.0.dylib; path = ../../../../usr/local/Cellar/assimp/4.1.0/lib/libassimp.4.1.0.dylib; sourceTree = "<group>"; };
 		D40AFE5A21B05E530019E461 /* EventObservers.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EventObservers.hpp; sourceTree = "<group>"; };
 		D44D288721C081E400492876 /* wireframe.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = wireframe.fs.glsl; sourceTree = "<group>"; };
 		D44D288821C081E400492876 /* wireframe.vs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = wireframe.vs.glsl; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F55232021C9550C00B5B28A /* libassimp.4.1.0.dylib in Frameworks */,
 				D4F56EE821AF25F300767ECA /* SDL2.framework in Frameworks */,
 				D46A4A7F21A0CFC50096F02F /* libGLEW.2.1.0.dylib in Frameworks */,
 				D4F56EC621AEB29400767ECA /* SDL2_image.framework in Frameworks */,
@@ -207,6 +210,7 @@
 		D46A4A3521A0C5960096F02F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F55231F21C9550C00B5B28A /* libassimp.4.1.0.dylib */,
 				D4F56EE721AF25F300767ECA /* SDL2.framework */,
 				D4F56EC521AEB29400767ECA /* SDL2_image.framework */,
 				D46A4A7A21A0CF120096F02F /* include */,
@@ -300,7 +304,7 @@
 			children = (
 				D4F56EEC21AF33F200767ECA /* Material */,
 				D4F56EC821AEC28500767ECA /* Object.hpp */,
-				2F55231E21C9256B00B5B28A /* Model.hpp */,
+				2F55231E21C9256B00B5B28A /* ImportedMesh.hpp */,
 				D46A4A4F21A0CD870096F02F /* Mesh.hpp */,
 			);
 			path = Object;
@@ -615,7 +619,7 @@
 		D46A4A4721A0CBEC0096F02F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
@@ -630,6 +634,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
+					/usr/local/Cellar/assimp/4.1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = build;
@@ -640,7 +645,7 @@
 		D46A4A4821A0CBEC0096F02F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
@@ -655,6 +660,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
+					/usr/local/Cellar/assimp/4.1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = build;

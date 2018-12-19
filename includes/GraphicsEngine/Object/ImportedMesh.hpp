@@ -6,102 +6,103 @@
 //  Copyright © 2018 Pierre Gabory. All rights reserved.
 //
 
-#ifndef MODEL_H
-#define MODEL_H
 
-//#include <glad/glad.h>
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-//#include <stb_image.h>
+#ifndef IMPORTEDMESH_H
+#define IMPORTEDMESH_H
+
+
 
 //include all assimp functions
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
-#include "Object.hpp"
+
 #include "Mesh.hpp"
 #include "CommonStructs.hpp"
 
 #include <string>
-#include <fstream>
+#include <fstream> // TODO check if useful
 #include <sstream>
 #include <iostream>
 #include <map>
 #include <vector>
 
-using namespace std;
+
 
 namespace GraphicsEngine {
 
-    class Model
+    class ImportedMesh : public Mesh
     {
+  
     public:
-        /*  Model Data */
+        //static std::string directory;
 
-        vector<Object> objects;
-        
-        string directory;
-        bool gammaCorrection;
         
         /*  Functions   */
         // constructor, expects a filepath to a 3D model.
-        Model(string const &path, bool gamma = false) : gammaCorrection(gamma)
+        ImportedMesh(LocalFilePath &path) : Mesh (loadModel(path))
         {
-            loadModel(path);
+            displayVertices(loadModel(path),"constructeur");
         }
         
-        // draws the model, and thus all its meshes
-        void Draw(Shader shader)
-        {
-            for(unsigned int i = 0; i < objects.size(); i++)
-                objects[i].draw();
-        }
         
     private:
         /*  Functions   */
         // loads a model with supported ASSIMP extensions from file and stores the resulting meshes in the meshes vector.
-        void loadModel(string const &path)
+        std::vector<Vertex> loadModel(LocalFilePath &path) //TODO - load multiple meshes
         {
+            std::vector<Vertex> vertices;
+            
             // read file via ASSIMP
             Assimp::Importer importer;
             const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenNormals);
             // check for errors
             if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
             {
-                cout << "ERROR::ASSIMP:: " << importer.GetErrorString() << endl;
-                return;
+                std::cout << "ERROR::ASSIMP:: " << importer.GetErrorString() << std::endl;
+                //return;
             }
             // retrieve the directory path of the filepath
-            directory = path.substr(0, path.find_last_of('/'));
+            //directory = path.substr(0, path.find_last_of('/'));
             
             // process ASSIMP's root node recursively
-            processNode(scene->mRootNode, scene);
+            vertices = processNode(scene->mRootNode, scene);
+            
+            return vertices;
         }
         
-        // processes a node in a recursive fashion. Processes each individual mesh located at the node and repeats this process on its children nodes (if any).
-        void processNode(aiNode *node, const aiScene *scene)
+
+        
+        std::vector<Vertex> processNode(aiNode *node, const aiScene *scene)
         {
+            std::vector<Vertex> vertices;
+            
             // process each mesh located at the current node
             for(unsigned int i = 0; i < node->mNumMeshes; i++)
             {
                 // the node object only contains indices to index the actual objects in the scene.
                 // the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
                 aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-                displayVertices(processMesh(mesh, scene));
+                vertices = processMesh(mesh, scene);
+                
+
             }
             // after we've processed all of the meshes (if any) we then recursively process each of the children nodes
             for(unsigned int i = 0; i < node->mNumChildren; i++)
             {
-                processNode(node->mChildren[i], scene);
+                vertices = processNode(node->mChildren[i], scene);
             }
             
+            
+            
+            return vertices ;
         }
         
-        vector<Vertex> processMesh(aiMesh *mesh, const aiScene *scene)
+        std::vector<Vertex> processMesh(aiMesh *mesh, const aiScene *scene)
         {
-            vector<Vertex> vertices;
+            std::vector<Vertex> vertices;
             
             // Walk through each of the mesh's vertices
             for(unsigned int i = 0; i < mesh->mNumVertices; i++)
@@ -134,24 +135,26 @@ namespace GraphicsEngine {
             }
             
             // return a mesh object created from the extracted mesh data
-            //return Object(vertices, indices, textures);
+
+            
             return vertices;
         }
         
-        void displayVertices (vector<Vertex> vertices){
+        void displayVertices (std::vector<Vertex> vertices, std::string bugLocation){
+            //TODO remove test
+            std::cout << "Print vertices of " << bugLocation <<  std::endl;
+            std::cout << "Vertices vector size : " << vertices.size() << std::endl;
             for (int i=0; i < vertices.size(); i++){
-                cout << "m_position : " << vertices[i].m_position[0] << " / " << vertices[i].m_position[1] << " / " << vertices[i].m_position[2] <<  endl;
-                cout << "m_normal : " << vertices[i].m_normal[0] << " / " << vertices[i].m_normal[1] << " / " << vertices[i].m_normal[2] <<  endl;
-                cout << "m_textureCoordinates : " << vertices[i].m_textureCoordinates[0] << " / " << vertices[i].m_textureCoordinates[1] <<  endl;
+                std::cout << "m_position : " << vertices[i].m_position[0] << " / " << vertices[i].m_position[1] << " / " << vertices[i].m_position[2] <<  std::endl;
+                std::cout << "m_normal : " << vertices[i].m_normal[0] << " / " << vertices[i].m_normal[1] << " / " << vertices[i].m_normal[2] <<  std::endl;
+                std::cout << "m_textureCoordinates : " << vertices[i].m_textureCoordinates[0] << " / " << vertices[i].m_textureCoordinates[1] <<  std::endl;
                 
-                cout << endl;
             }
+            std::cout << "end of printed vertices" << std::endl;
+            std::cout << std::endl;
         }
       
     };
 
-    unsigned int testFunction(){
-        return 42;
-    };
 }
 #endif
