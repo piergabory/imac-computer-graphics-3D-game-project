@@ -4,13 +4,14 @@
 #include <iostream>
 #include <set>
 #include <memory>
+#include <functional>
 
 #include "GraphicsEngine.hpp"
-#include "CommonStructs.hpp"
-#include "ImportedMesh.hpp"
+#include "EventManager.hpp"
 #include "EventObservers.hpp"
+#include "Player.hpp"
 
-class GameController: QuitEventObserver, KeyboardEventObserver, MouseEventObserver {
+class GameController: Events::QuitEventObserver, Events::KeyboardEventObserver, Events::MouseEventObserver {
 
 private:
     // when false, cleans the memory and close the game.
@@ -18,15 +19,22 @@ private:
 
     bool m_isDebugGridActive = false;
 
+
+
     // contains all keycodes of currently pressed keyboard keys
-    std::set<unsigned char> m_pressedKeys;
+    //DEPRECATED
+    std::set<unsigned char> m_pressedKeys; //Déplacé dans EventManager
 
     // player point of view, scene camera.
     GraphicsEngine::Camera m_playerPointOfView;
 
-    std::shared_ptr<GraphicsEngine::Object> m_debugGrid;
-    std::shared_ptr<GraphicsEngine::Object> m_helloTriangle;
-    std::shared_ptr<GraphicsEngine::Object> m_helloMonkey;
+    std::shared_ptr<GraphicsEngine::Object3D> m_debugGrid;
+    std::shared_ptr<GraphicsEngine::Object3D> m_helloTriangle;
+    std::shared_ptr<GraphicsEngine::Object3D> m_anotherHelloTriangle;
+
+    std::shared_ptr<GraphicsEngine::Object2D> m_testSquare;
+
+    Player *m_player;
 
     void handlePressedKey();
 
@@ -40,7 +48,7 @@ private:
     GameController();
 
     // singleton instances
-    static GameController*  m_controllerInstance;
+    static GameController*  s_controllerInstance;
 
 public:
 

@@ -1,5 +1,5 @@
 /**
- * CommonStructs.hpp
+ * \file CommonStructs.hpp
  *
  * IMAC 2 Project CG CPP
  *
@@ -16,16 +16,32 @@
       * VERTEX STRUCT
       * holds vertex data for 3D meshes.
       */
-     struct Vertex {
+     struct Vertex3D {
          // properties
          glm::vec3 m_position;
          glm::vec3 m_normal;
          glm::vec2 m_textureCoordinates;
          
          // constructor
-         Vertex(glm::vec3 position, glm::vec3 normal, glm::vec2 texture):
+         Vertex3D(glm::vec3 position, glm::vec3 normal, glm::vec2 texture):
             m_position(position), m_normal(normal), m_textureCoordinates(texture) {}
      };
+
+
+     /**
+      * VERTEX STRUCT
+      * holds vertex data for 2D meshes.
+      */
+     struct Vertex2D {
+         // properties
+         glm::vec2 m_position;
+         glm::vec2 m_textureCoordinates;
+
+         // constructor
+         Vertex2D(glm::vec2 position, glm::vec2 texture):
+         m_position(position), m_textureCoordinates(texture) {}
+     };
+
 
      /**
       * LocalFilePath
@@ -33,13 +49,13 @@
       */
      class LocalFilePath : public std::string {
      private:
-         static std::string m_absolutePathToExecutable;
+         static std::string s_absolutePathToExecutable;
 
      public:
          static void setLocation(std::string executablePath);
 
-         LocalFilePath(std::string localPath) : std::string(m_absolutePathToExecutable + localPath) {
-             assert(!m_absolutePathToExecutable.empty());
+         LocalFilePath(std::string localPath) : std::string(s_absolutePathToExecutable + localPath) {
+             assert(!s_absolutePathToExecutable.empty());
          }
      };
  }

@@ -2,6 +2,10 @@ obj/
 bin/
 build/
 
+# doxygen
+html/
+*.tag
+
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
@@ -82,3 +86,4 @@ fastlane/test_output
 iOSInjectionProject/
 Projet_S2_CG_CPP.xcodeproj/project.xcworkspace/xcuserdata/piergabory.xcuserdatad/UserInterfaceState.xcuserstate
 .vscode
+DoxygenGenerated

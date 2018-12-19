@@ -5,14 +5,14 @@
 
 namespace GraphicsEngine {
     
-    ShaderProgram::ShaderProgram(const char* vertexShaderSourcePath, const char* fragmentShaderSourcePath) :
+    ShaderProgram::ShaderProgram(LocalFilePath vertexShaderSourcePath, LocalFilePath fragmentShaderSourcePath) :
     // init program
     m_glProgramIdentifier(glCreateProgram())
     {
         // load shaders
         try {
-            loadShader(vertexShaderSourcePath, GL_VERTEX_SHADER);
-            loadShader(fragmentShaderSourcePath, GL_FRAGMENT_SHADER);
+            loadShader(vertexShaderSourcePath.c_str(), GL_VERTEX_SHADER);
+            loadShader(fragmentShaderSourcePath.c_str(), GL_FRAGMENT_SHADER);
         }
         
         // check for compile success

@@ -32,6 +32,8 @@ namespace GraphicsEngine {
         
         // compile shader
         void compile();
+
+           std::string log() const;
         
     public:
         // constructor

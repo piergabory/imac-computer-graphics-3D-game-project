@@ -12,6 +12,7 @@
 #include "Frameworks.hpp"
 #include "Exceptions.hpp"
 #include "Shader.hpp"
+#include "CommonStructs.hpp"
 
 /**
  * SHADER PROGRAM CLASS
@@ -25,13 +26,12 @@ namespace GraphicsEngine {
     private:
         // Load a shader from file
         void loadShader(const char* sourcePath, GLenum shaderType) const;
-        
-        // creates a string of the compile log.
-        std::string log() const;
+
         
     protected:
         // program GL identifier
         GLuint m_glProgramIdentifier;
+        
         
     public:
         // const identifier getter
@@ -50,7 +50,10 @@ namespace GraphicsEngine {
         }
         
         // constructor, takes in the paths of the vertex shader and fragment shader
-        ShaderProgram(const char* vertexShaderSourcePath, const char* fragmentShaderSourcePath);
+        ShaderProgram(LocalFilePath vertexShaderSourcePath, LocalFilePath fragmentShaderSourcePath);
+
+        // default constructor
+        ShaderProgram(): m_glProgramIdentifier(0) {};
         
         // destructor
         ~ShaderProgram();

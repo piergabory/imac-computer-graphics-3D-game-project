@@ -6,15 +6,15 @@
 
 namespace GraphicsEngine {
     // singleton instance definition
-    Controller* Controller::m_controllerInstance = nullptr;
+    Controller* Controller::s_controllerInstance = nullptr;
 
     // singleton instance getter
     Controller* Controller::instance() {
         // create if non-existent
-        if (Controller::m_controllerInstance == NULL)
-            Controller::m_controllerInstance = new Controller();
+        if (Controller::s_controllerInstance == nullptr)
+            Controller::s_controllerInstance = new Controller();
 
-        return Controller::m_controllerInstance;
+        return Controller::s_controllerInstance;
     }
 
 
@@ -58,16 +58,6 @@ namespace GraphicsEngine {
 
         // initialize OpenGL
         SDL_GL_CreateContext(m_sdlWindow);
-
-        // hide faces viewed from behind
-        glFrontFace(GL_CCW);
-        glCullFace(GL_BACK);
-        glEnable(GL_CULL_FACE);
-
-
-        // enable z-buffer test
-        glEnable(GL_DEPTH_TEST);
-        glDepthFunc(GL_LESS);
     }
 
 
@@ -81,35 +71,35 @@ namespace GraphicsEngine {
             initializeWindow(windowTitle, viewportWidth, viewportHeight);
             initializeGlew();
         }
+
+        Object2D::initialize2DShaderProgram(LocalFilePath("shaders/2D.vs.glsl"), LocalFilePath("shaders/2D.fs.glsl"));
+        Button::initializeButtons(viewportPixelSize());
     }
 
-    void Controller::loadScene(Scene* newScene) {
-        assert(newScene);
-        // destroy scene if already exists
-        if (!m_activeScene)
-            delete m_activeScene;
-        m_activeScene = newScene;
+    void Controller::loadScene(std::unique_ptr<Scene> &newScene) {
+        m_activeScene = std::move(newScene);
     }
+
+    void Controller::loadGUI(std::unique_ptr<Canvas> &newGUI) {
+        m_activeGUI = std::move(newGUI);
+    }
+
 
     void Controller::render()
     {
         // clears buffer
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+
         // render the scene
-        m_activeScene->render();
+        if (m_activeScene) m_activeScene->render();
+
+        // print the GUI overlay
+        if (m_activeGUI) m_activeGUI->render();
 
         // swap buffer width visible
         SDL_GL_SwapWindow(m_sdlWindow);
     }
-
-
-    
-    void Controller::pollEvents()
-    {
-        EventManager::instance()->pollEvents();
-    }
-
 
     
     void Controller::printInfos()
@@ -126,6 +116,13 @@ namespace GraphicsEngine {
     {
         SDL_Quit();
         //delete window;
+    }
+
+
+    inline const glm::ivec2 Controller::viewportPixelSize() const {
+        int width, height;
+        SDL_GetWindowSize(m_sdlWindow, &width, &height);
+        return glm::ivec2(width, height);
     }
 
 }

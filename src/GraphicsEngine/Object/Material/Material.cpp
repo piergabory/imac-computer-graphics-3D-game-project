@@ -6,13 +6,21 @@
 
 namespace GraphicsEngine {
     
-    Material::Material(PerspectiveShaderProgram *shader, Texture *texture) :
+    Material::Material(std::shared_ptr<ShaderProgram> shader, std::shared_ptr<Texture>texture) :
     m_texture(texture), m_shader(shader) {
         if (m_texture) {
             // sends the texture(s) to the shader texture sampler
             texture->linkTo(*shader);
         }
     };
+
+    Material::Material(ShaderProgram* shader, Texture* texture) :
+    m_texture(std::shared_ptr<Texture>(texture)), m_shader(std::shared_ptr<ShaderProgram>(shader)) {
+        if (m_texture) {
+            // sends the texture(s) to the shader texture sampler
+            texture->linkTo(*shader);
+        }
+    }
     
     
     void Material::apply() const {
