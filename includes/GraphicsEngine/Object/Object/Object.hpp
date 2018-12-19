@@ -52,7 +52,7 @@ namespace GraphicsEngine {
 
 
         /// \brief Object constructor
-        /// initialise mesh and material. Assumes that both are not NULL pointers
+        /// initialise mesh and material. Assumes that both are not NULL pointers 
         Object(std::shared_ptr< Mesh<VertexType> > mesh, std::shared_ptr<Material> material) : m_mesh(mesh), m_material(material) {
             assert(mesh != nullptr);
             assert(material != nullptr);
