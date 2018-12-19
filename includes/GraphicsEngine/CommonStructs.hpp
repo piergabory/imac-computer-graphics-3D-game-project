@@ -1,5 +1,5 @@
 /**
- * CommonStructs.hpp
+ * \file CommonStructs.hpp
  *
  * IMAC 2 Project CG CPP
  *
@@ -28,6 +28,10 @@
      };
 
 
+     /**
+      * VERTEX STRUCT
+      * holds vertex data for 2D meshes.
+      */
      struct Vertex2D {
          // properties
          glm::vec2 m_position;

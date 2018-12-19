@@ -1,5 +1,5 @@
 /**
- * CommonStructs.hpp
+ * \file CommonStructs.hpp
  */
 
 #include "CommonStructs.hpp"
