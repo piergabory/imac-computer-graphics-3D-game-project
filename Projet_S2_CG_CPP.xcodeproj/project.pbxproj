@@ -355,9 +355,9 @@
 		D4F56EF121AF348C00767ECA /* Object */ = {
 			isa = PBXGroup;
 			children = (
-				D4F56EF421AF34C400767ECA /* Material */,
 				D42A1DD521C7D77E00B2F379 /* Object2D.cpp */,
 				D4F56EC721AEC28500767ECA /* Object3D.cpp */,
+				D4F56EF421AF34C400767ECA /* Material */,
 				D46A4A6721A0CE110096F02F /* Mesh.cpp */,
 			);
 			path = Object;

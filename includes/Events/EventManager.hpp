@@ -2,7 +2,7 @@
  * Manager.hpp
  *
  * IMAC 2 Project CG CPP
-  * \version 0.2
+ * \version 0.2
  * \brief gestion des évenements
  *
  * Version 0.2: Contient des tableau d'observer, plusieurs objets peuvent maintenant écouter les évènements

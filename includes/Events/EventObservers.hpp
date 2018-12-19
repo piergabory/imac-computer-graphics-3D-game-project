@@ -24,6 +24,7 @@ namespace Events {
         // handles window event (resize/move)
         virtual void windowEventHandler() {};
 
+        // destructor
         virtual ~QuitEventObserver() {};
     };
 
@@ -41,6 +42,7 @@ namespace Events {
         // handles a key press from the user
         virtual void keyDownHandler(unsigned char keycode) {};
 
+        // destructor
         virtual ~KeyboardEventObserver() {};
     };
 
@@ -65,6 +67,7 @@ namespace Events {
         // handles scrollwheel
         virtual void mouseWheelHandler(float deltaX, float deltaY) {};
 
+        // destructor 
         virtual ~MouseEventObserver() {}
     };
 }
