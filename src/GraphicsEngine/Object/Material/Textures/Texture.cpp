@@ -5,15 +5,22 @@
 #include "Texture.hpp"
 
 namespace GraphicsEngine {
-    
+    Texture::Texture(LocalFilePath imagePath): m_image(imagePath.c_str()) {
+        generateTexture();
+    }
+
     // constructor
     Texture::Texture(const char* imagePath): m_image(imagePath) {
+        generateTexture();
+    }
+
+    void Texture::generateTexture() {
         // generate texture
         glGenTextures(1, &m_glTextureIdentifier);
-        
+
         // select texture
         glBindTexture(GL_TEXTURE_2D, m_glTextureIdentifier);
-        
+
         // set scaling parameters
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

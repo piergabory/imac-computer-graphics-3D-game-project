@@ -1,8 +1,8 @@
 /**
- * EventManager.hpp
+ * Manager.hpp
  *
  * IMAC 2 Project CG CPP
-  * \version 0.2
+ * \version 0.2
  * \brief gestion des évenements
  *
  * Version 0.2: Contient des tableau d'observer, plusieurs objets peuvent maintenant écouter les évènements
@@ -23,13 +23,13 @@
  * Singleton class.
  * Manages events from the SDL framework. Calls the right observers.
  */
-namespace GraphicsEngine {
+namespace Events {
 
-    class EventManager {
+    class Manager {
 
     private:
         // singleton instance
-        static EventManager* m_pEventManagerInstance;
+        static Manager* s_pEventManagerInstance;
 
         // observers
         ///< Les observeurs sont contenus dans des vectors de pointeurs (unique_ptr)
@@ -42,7 +42,7 @@ namespace GraphicsEngine {
 
     public:
         // instance getter
-        static EventManager* instance();
+        static Manager* instance();
 
         // fetches events from the SDL framework
         void pollEvents() ;

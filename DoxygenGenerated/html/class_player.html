@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>IMAC run: Player Class Reference</title>
+<title>IMAC RUN: Player Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">IMAC run
+   <div id="projectname">IMAC RUN
    </div>
+   <div id="projectbrief">Temple Run des IMAC2</div>
   </td>
  </tr>
  </tbody>
@@ -68,125 +69,30 @@ $(function() {
 <div class="dynheader">
 Inheritance diagram for Player:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="class_player.png" usemap="#Player_map" alt=""/>
-  <map id="Player_map" name="Player_map">
-<area href="struct_keyboard_event_observer.html" alt="KeyboardEventObserver" shape="rect" coords="0,0,153,24"/>
+<div class="center"><img src="class_player__inherit__graph.png" border="0" usemap="#_player_inherit__map" alt="Inheritance graph"/></div>
+<map name="_player_inherit__map" id="_player_inherit__map">
 </map>
- </div></div>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for Player:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_player__coll__graph.png" border="0" usemap="#_player_coll__map" alt="Collaboration graph"/></div>
+<map name="_player_coll__map" id="_player_coll__map">
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6728cdd712e2cce3282f30c5dd8cab4e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a6728cdd712e2cce3282f30c5dd8cab4e">Player</a> (const MooveObjet obj, const float speed)</td></tr>
-<tr class="memdesc:a6728cdd712e2cce3282f30c5dd8cab4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">constucteur avec les var initiales à 0, prends en param la cible  <a href="#a6728cdd712e2cce3282f30c5dd8cab4e">More...</a><br /></td></tr>
-<tr class="separator:a6728cdd712e2cce3282f30c5dd8cab4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d7389cfb1692282cb084bf12f0419c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a4d7389cfb1692282cb084bf12f0419c1">Player</a> (const MooveObjet obj, const float speed, const <a class="el" href="group__core__types.html#ga1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a> position)</td></tr>
-<tr class="memdesc:a4d7389cfb1692282cb084bf12f0419c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructeur où l'on peut choisir la position intiale du joueur  <a href="#a4d7389cfb1692282cb084bf12f0419c1">More...</a><br /></td></tr>
-<tr class="separator:a4d7389cfb1692282cb084bf12f0419c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a432369989349532fa33c8f1e65bdd04f"><td class="memItemLeft" align="right" valign="top"><a id="a432369989349532fa33c8f1e65bdd04f"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>keyPressHandler</b> (std::set&lt; unsigned char &gt; pressedKeys)</td></tr>
-<tr class="separator:a432369989349532fa33c8f1e65bdd04f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69ea37fea921b1b1961b661344405843"><td class="memItemLeft" align="right" valign="top"><a id="a69ea37fea921b1b1961b661344405843"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Player</b> (const MooveObjet obj)</td></tr>
+<tr class="separator:a69ea37fea921b1b1961b661344405843"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4c596bc659ca92e6df14981d0ebe853"><td class="memItemLeft" align="right" valign="top"><a id="ab4c596bc659ca92e6df14981d0ebe853"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>keyDownHandler</b> (unsigned char keycode)</td></tr>
+<tr class="separator:ab4c596bc659ca92e6df14981d0ebe853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1e5a8635a04ec3c05382f872b8dd776"><td class="memItemLeft" align="right" valign="top"><a id="aa1e5a8635a04ec3c05382f872b8dd776"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>moove</b> (const bool tx, const bool ty, const bool tz)</td></tr>
 <tr class="separator:aa1e5a8635a04ec3c05382f872b8dd776"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a6728cdd712e2cce3282f30c5dd8cab4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6728cdd712e2cce3282f30c5dd8cab4e">&#9670;&nbsp;</a></span>Player() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Player::Player </td>
-          <td>(</td>
-          <td class="paramtype">const MooveObjet&#160;</td>
-          <td class="paramname"><em>obj</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const float&#160;</td>
-          <td class="paramname"><em>speed</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>constucteur avec les var initiales à 0, prends en param la cible </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">obj</td><td>L'objet qui servira de mesh pour le joueur </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">speed</td><td>distance qui sera rajouté aux coordonnées à chaque fois qu'une touche sera pressée </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a4d7389cfb1692282cb084bf12f0419c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d7389cfb1692282cb084bf12f0419c1">&#9670;&nbsp;</a></span>Player() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Player::Player </td>
-          <td>(</td>
-          <td class="paramtype">const MooveObjet&#160;</td>
-          <td class="paramname"><em>obj</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const float&#160;</td>
-          <td class="paramname"><em>speed</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="group__core__types.html#ga1c47e8b3386109bc992b6c48e91b0be7">glm::vec3</a>&#160;</td>
-          <td class="paramname"><em>position</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>constructeur où l'on peut choisir la position intiale du joueur </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">obj</td><td>L'objet qui servira de mesh pour le joueur </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">speed</td><td>distance qui sera rajouté aux coordonnées à chaque fois qu'une touche sera pressée [in] position vecteur qui contien la position initiale </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>includes/<a class="el" href="_player_8hpp_source.html">Player.hpp</a></li>
 </ul>

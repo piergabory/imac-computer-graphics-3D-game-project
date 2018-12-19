@@ -25,10 +25,14 @@ namespace GraphicsEngine {
         
         // image loaded from disk
         ImageData m_image;
+
+        void generateTexture();
         
     public:
         // constructor
         // load image from disk, initialize the openGL texture
+        Texture(LocalFilePath imagePath);
+        // deprecated constructor
         Texture(const char* imagePath);
         
         // destructor, free the openGL texture memory

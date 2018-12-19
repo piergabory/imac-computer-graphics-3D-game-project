@@ -6,8 +6,8 @@
 namespace GraphicsEngine {
     
     PerspectiveShaderProgram::PerspectiveShaderProgram(
-       const char* vertexShaderSourcePath, 
-       const char* fragmentShaderSourcePath,
+       LocalFilePath vertexShaderSourcePath,
+       LocalFilePath fragmentShaderSourcePath,
        const char* uniformMVPName, 
        const char* uniformMVName, 
        const char* uniformNormName):

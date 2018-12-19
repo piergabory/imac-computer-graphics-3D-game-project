@@ -17,6 +17,7 @@
 // ------------------------------------------------
 // disable MacOS Mojave OpenGL deprecation warnings
 #define GL_SILENCE_DEPRECATION
+#define CG_CONTEXT_SHOW_BACKTRACE
 #ifdef __APPLE__
 
     // SDL library and extensions

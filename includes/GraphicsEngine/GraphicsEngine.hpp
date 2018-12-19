@@ -11,12 +11,11 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
 
-#include "Frameworks.hpp"
 #include "Exceptions.hpp"
 #include "Scene.hpp"
-#include "Object.hpp"
-#include "EventManager.hpp"
+#include "Canvas.hpp"
 
 /**
  * GRAPHIC ENGINE CONTROLLER CLASS
@@ -32,14 +31,18 @@ namespace GraphicsEngine {
     private:
 
         // sdl window struct pointer
-        SDL_Window *m_sdlWindow;
+        SDL_Window* m_sdlWindow;
 
         // current scene
-        Scene *m_activeScene;
+        std::unique_ptr<Scene> m_activeScene;
+
+        // curent
+        std::unique_ptr<Canvas> m_activeGUI;
 
         // frameworks initializers
         void initializeSDL();
         void initializeGlew();
+        
         // parameters: menu bar description, and the window's pixel dimentions
         void initializeWindow(const char* windowTitle, const uint viewportWidth, const uint viewportHeight);
 
@@ -48,7 +51,7 @@ namespace GraphicsEngine {
         Controller() {}
 
         // singleton instance
-        static Controller* m_controllerInstance;
+        static Controller* s_controllerInstance;
 
 
     public:
@@ -57,13 +60,14 @@ namespace GraphicsEngine {
         void setup(const char* windowTitle = "", const uint viewportWidth = 800, const uint viewportHeight = 600);
 
         // replace existing scene with a given one
-        void loadScene(Scene* newScene);
+        void loadScene(std::unique_ptr<Scene> &newScene);
+
+        // replace existing scene with a given one
+        void loadGUI(std::unique_ptr<Canvas> &newGUI);
 
         // starts a render cycle
         void render();
 
-        // calls events fetch to EventManager
-        void pollEvents();
 
         // output miscellaneous infos, such as available frameworks versions.
         void printInfos();
@@ -71,14 +75,17 @@ namespace GraphicsEngine {
         // closes the window with SDL_QUIT
         void close();
 
-
         // getters
 
         // singleton instance
         static Controller* instance();
 
         // scene
-        inline Scene* activeScene() { return m_activeScene; }
+        inline const std::unique_ptr<Scene> &activeScene() const { return m_activeScene; }
+
+        inline const std::unique_ptr<Canvas> &activeGUI() const { return m_activeGUI; }
+
+        const glm::ivec2 viewportPixelSize() const;
     };
 }
 
