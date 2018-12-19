@@ -96,6 +96,7 @@
 		D4EA624B21C938FF00CBFCAC /* 2D.vs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2D.vs.glsl; sourceTree = "<group>"; };
 		D4EA624C21C955A400CBFCAC /* Button.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
 		D4EA624D21C955A400CBFCAC /* Button.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Button.hpp; sourceTree = "<group>"; };
+		D4EA625121CA674D00CBFCAC /* ImportedMesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImportedMesh.hpp; sourceTree = "<group>"; };
 		D4F56EBF21AEAA6300767ECA /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
 		D4F56EC021AEAA6300767ECA /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 		D4F56EC221AEAC8300767ECA /* ImageData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImageData.cpp; sourceTree = "<group>"; };
@@ -313,6 +314,15 @@
 			path = GUI;
 			sourceTree = "<group>";
 		};
+		D4EA625321CA675D00CBFCAC /* Mesh */ = {
+			isa = PBXGroup;
+			children = (
+				D4EA625121CA674D00CBFCAC /* ImportedMesh.hpp */,
+				D46A4A4F21A0CD870096F02F /* Mesh.hpp */,
+			);
+			path = Mesh;
+			sourceTree = "<group>";
+		};
 		D4F56EEC21AF33F200767ECA /* Material */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,7 +357,7 @@
 			children = (
 				D4F56EEC21AF33F200767ECA /* Material */,
 				D42A1DD921C7D8FE00B2F379 /* Object */,
-				D46A4A4F21A0CD870096F02F /* Mesh.hpp */,
+				D4EA625321CA675D00CBFCAC /* Mesh */,
 			);
 			path = Object;
 			sourceTree = "<group>";

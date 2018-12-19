@@ -1,13 +1,3 @@
-//
-//  Model.hpp
-//  Projet_S2_CG_CPP
-//
-//  Created by Djayd Nova on 18/12/2018.
-//  Copyright © 2018 Pierre Gabory. All rights reserved.
-//
-
-
-
 #ifndef IMPORTEDMESH_H
 #define IMPORTEDMESH_H
 
@@ -33,7 +23,7 @@
 
 namespace GraphicsEngine {
 
-    class ImportedMesh : public Mesh
+    class ImportedMesh : public Mesh3D
     {
   
     public:
@@ -51,9 +41,9 @@ namespace GraphicsEngine {
     private:
         /*  Functions   */
         // loads a model with supported ASSIMP extensions from file and stores the resulting meshes in the meshes vector.
-        std::vector<Vertex> loadModel(LocalFilePath &path) //TODO - load multiple meshes
+        std::vector<Vertex3D> loadModel(LocalFilePath &path) //TODO - load multiple meshes
         {
-            std::vector<Vertex> vertices;
+            std::vector<Vertex3D> vertices;
             
             // read file via ASSIMP
             Assimp::Importer importer;
@@ -75,9 +65,9 @@ namespace GraphicsEngine {
         
 
         
-        std::vector<Vertex> processNode(aiNode *node, const aiScene *scene)
+        static std::vector<Vertex3D> processNode(aiNode *node, const aiScene *scene)
         {
-            std::vector<Vertex> vertices;
+            std::vector<Vertex3D> vertices;
             
             // process each mesh located at the current node
             for(unsigned int i = 0; i < node->mNumMeshes; i++)
@@ -100,9 +90,9 @@ namespace GraphicsEngine {
             return vertices ;
         }
         
-        std::vector<Vertex> processMesh(aiMesh *mesh, const aiScene *scene)
+        static std::vector<Vertex3D> processMesh(aiMesh *mesh, const aiScene *scene)
         {
-            std::vector<Vertex> vertices;
+            std::vector<Vertex3D> vertices;
             
             // Walk through each of the mesh's vertices
             for(unsigned int i = 0; i < mesh->mNumVertices; i++)
@@ -130,7 +120,7 @@ namespace GraphicsEngine {
                 }
                 else
                     vectorT = glm::vec2(0.0f, 0.0f);
-                Vertex vertex(vectorP,vectorN,vectorT);
+                Vertex3D vertex(vectorP,vectorN,vectorT);
                 vertices.push_back(vertex);
             }
             
@@ -140,7 +130,7 @@ namespace GraphicsEngine {
             return vertices;
         }
         
-        void displayVertices (std::vector<Vertex> vertices, std::string bugLocation){
+        static void displayVertices (std::vector<Vertex3D> vertices, std::string bugLocation){
             //TODO remove test
             std::cout << "Print vertices of " << bugLocation <<  std::endl;
             std::cout << "Vertices vector size : " << vertices.size() << std::endl;
