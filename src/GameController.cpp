@@ -234,6 +234,7 @@ void GameController::createObjects() {
         std::cout << error.what();
     }
 
+    m_player= new Player(*m_helloTriangle, 0.5);
 }
 
 
