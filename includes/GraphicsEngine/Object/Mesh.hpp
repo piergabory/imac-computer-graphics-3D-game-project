@@ -1,5 +1,5 @@
 /**
- * Mesh.hpp
+ * \file Mesh.hpp
  *
  * IMAC 2 Project CG CPP
  *
@@ -13,31 +13,33 @@
 #include "CommonStructs.hpp"
 #include "Frameworks.hpp"
 
-/**
- * MESH CLASS
- *
- * Manages and Loads in GPU, Vertices of objects.
- */
-
 namespace GraphicsEngine {
 
+
+    /**
+     * MESH TEMPLATE CLASS
+     * \version 0.3
+     *
+     * \brief Manages and Loads in GPU a group of vertices.
+     * \warning Use Mesh3D or Mesh2D Aliases!
+     */
     template<class VertexType>
     class Mesh {
-        
+
     private:
-        // gl objects
+        /// \brief opengGl objects refrences
         GLuint m_vertexBufferObject;
         GLuint m_vertexArrayObject;
         
         
-        // mesh vertices count
-        const int m_vertexCount;
+        /// \brief mesh vertices count
+        const GLsizei m_vertexCount;
 
-        // Indicates the drawing mode
+        /// \brief Indicates the drawing mode
         // TRIANGLE, LINE, POINT, TRIANGLE_FAN
         const GLenum m_glArrayDrawMode;
         
-        // create vertex buffer
+        /// \brief create vertex buffer
         void setVertexBuffer(const std::vector<VertexType> &vertices) const {
             // select buffer
             glBindBuffer(GL_ARRAY_BUFFER, m_vertexBufferObject);
@@ -47,7 +49,7 @@ namespace GraphicsEngine {
         }
 
         
-        // construct vertex Array from vertex Buffer
+        /// \brief construct vertex Array from vertex Buffer
         void setVertexArray(const std::vector<VertexType> &vertices) const;
         
         
@@ -75,17 +77,19 @@ namespace GraphicsEngine {
         inline const GLuint &vertexArrayIdentifier() const {
             return m_vertexArrayObject;
         }
-        
-        
-        inline const int vertexCount() const  {
+
+
+        inline const GLsizei vertexCount() const  {
             return m_vertexCount;
         }
+
 
         inline const GLenum mode() const {
             return m_glArrayDrawMode;
         }
     };
 
+    /// aliases
     using Mesh3D = Mesh<Vertex3D>;
     using Mesh2D = Mesh<Vertex2D>;
 }

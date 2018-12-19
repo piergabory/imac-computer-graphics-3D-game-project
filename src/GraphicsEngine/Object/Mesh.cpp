@@ -1,5 +1,5 @@
 /**
- * Mesh.cpp
+ * \file Mesh.cpp
  */
 
 #include "Mesh.hpp"
