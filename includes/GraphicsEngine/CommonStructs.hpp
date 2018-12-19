@@ -45,13 +45,13 @@
       */
      class LocalFilePath : public std::string {
      private:
-         static std::string m_absolutePathToExecutable;
+         static std::string s_absolutePathToExecutable;
 
      public:
          static void setLocation(std::string executablePath);
 
-         LocalFilePath(std::string localPath) : std::string(m_absolutePathToExecutable + localPath) {
-             assert(!m_absolutePathToExecutable.empty());
+         LocalFilePath(std::string localPath) : std::string(s_absolutePathToExecutable + localPath) {
+             assert(!s_absolutePathToExecutable.empty());
          }
      };
  }

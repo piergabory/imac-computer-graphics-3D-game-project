@@ -15,16 +15,16 @@
 namespace GraphicsEngine {
     class Object2D : public Object<Vertex2D> {
     private:
-        static std::shared_ptr<ShaderProgram> m_2dShader;
+        static std::shared_ptr<ShaderProgram> s_2dShader;
         static std::shared_ptr<Material> createMaterial(LocalFilePath textureImagePath);
         static std::shared_ptr<Material> createMaterial(std::shared_ptr<Texture> &texture);
-        static std::shared_ptr<Mesh2D> createBoundingBox(glm::vec2 &position, glm::vec2 &size);
+        static std::shared_ptr<Mesh2D> createBoundingBox(const glm::vec2 &position, const glm::vec2 &size);
 
     public:
 
         static void initialize2DShaderProgram(LocalFilePath vertexShaderPath, LocalFilePath  framgmentShaderPath);
 
-        Object2D(glm::vec2 &position, glm::vec2 &size, LocalFilePath image) : Object<Vertex2D>(createBoundingBox(position, size), createMaterial(image)) { }
+        Object2D(const glm::vec2 &position, const glm::vec2 &size, const LocalFilePath image) : Object<Vertex2D>(createBoundingBox(position, size), createMaterial(image)) { }
 
         Object2D(glm::vec2 position, glm::vec2 size, std::shared_ptr<Texture> texture) : Object<Vertex2D>(createBoundingBox(position, size), createMaterial(texture)) { }
     };

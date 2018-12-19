@@ -16,7 +16,6 @@
 #include "Exceptions.hpp"
 #include "Scene.hpp"
 #include "Canvas.hpp"
-#include "EventManager.hpp"
 
 /**
  * GRAPHIC ENGINE CONTROLLER CLASS
@@ -52,7 +51,7 @@ namespace GraphicsEngine {
         Controller() {}
 
         // singleton instance
-        static Controller* m_controllerInstance;
+        static Controller* s_controllerInstance;
 
 
     public:
@@ -69,15 +68,12 @@ namespace GraphicsEngine {
         // starts a render cycle
         void render();
 
-        // calls events fetch to EventManager
-        void pollEvents();
 
         // output miscellaneous infos, such as available frameworks versions.
         void printInfos();
 
         // closes the window with SDL_QUIT
         void close();
-
 
         // getters
 
@@ -88,6 +84,8 @@ namespace GraphicsEngine {
         inline const std::unique_ptr<Scene> &activeScene() const { return m_activeScene; }
 
         inline const std::unique_ptr<Canvas> &activeGUI() const { return m_activeGUI; }
+
+        const glm::ivec2 viewportPixelSize() const;
     };
 }
 

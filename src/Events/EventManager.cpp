@@ -5,24 +5,22 @@
  */
 
 #include "EventManager.hpp"
-#include <vector> ///< gestion du tableau (push_back)
-#include <memory> ///< gestion de pointeurs uniques (unique_ptr)
 
-namespace GraphicsEngine {
+namespace Events {
     // define instance in cpp file
-    EventManager* EventManager::m_pEventManagerInstance = nullptr;
+    Manager* Manager::s_pEventManagerInstance = nullptr;
 
     // singleton instance getter
-    EventManager* EventManager::instance() {
+    Manager* Manager::instance() {
         // creates instance if doesn't exists
-        if (m_pEventManagerInstance == nullptr)
-            m_pEventManagerInstance = new EventManager();
+        if (s_pEventManagerInstance == nullptr)
+            s_pEventManagerInstance = new Manager();
 
-        return  m_pEventManagerInstance;
+        return  s_pEventManagerInstance;
     }
 
 
-    void EventManager::pollEvents() const {
+    void Manager::pollEvents() const {
         // temporary variable holding each event
         SDL_Event event;
 
@@ -103,17 +101,17 @@ namespace GraphicsEngine {
 
     // setters
 
-    void EventManager::subscribe(QuitEventObserver* quitObserver) {
+    void Manager::subscribe(QuitEventObserver* quitObserver) {
         m_pQuitEventObserver.push_back(std::unique_ptr<QuitEventObserver>( quitObserver));
     }
 
 
-    void EventManager::subscribe(MouseEventObserver* mouseObserver) {
+    void Manager::subscribe(MouseEventObserver* mouseObserver) {
         m_pMouseEventsObserver.push_back(std::unique_ptr<MouseEventObserver>( mouseObserver));
     }
 
 
-    void EventManager::subscribe(KeyboardEventObserver* keyboardObserver) {
+    void Manager::subscribe(KeyboardEventObserver* keyboardObserver) {
         m_pKeyboardEventsObserver.push_back(std::unique_ptr<KeyboardEventObserver> (keyboardObserver));
     }
 }

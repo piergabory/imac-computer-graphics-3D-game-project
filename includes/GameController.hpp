@@ -4,11 +4,13 @@
 #include <iostream>
 #include <set>
 #include <memory>
+#include <functional>
 
 #include "GraphicsEngine.hpp"
+#include "EventManager.hpp"
 #include "EventObservers.hpp"
 
-class GameController: QuitEventObserver, KeyboardEventObserver, MouseEventObserver {
+class GameController: Events::QuitEventObserver, Events::KeyboardEventObserver, Events::MouseEventObserver {
 
 private:
     // when false, cleans the memory and close the game.
@@ -40,7 +42,7 @@ private:
     GameController();
 
     // singleton instances
-    static GameController*  m_controllerInstance;
+    static GameController*  s_controllerInstance;
 
 public:
 

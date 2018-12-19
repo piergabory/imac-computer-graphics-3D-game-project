@@ -11,6 +11,7 @@
 
 #include "Context.hpp"
 #include "Object2D.hpp"
+#include "Button.hpp"
 
 namespace GraphicsEngine {
     class Canvas : public Context<Object2D> {

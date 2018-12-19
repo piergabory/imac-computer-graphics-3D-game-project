@@ -6,15 +6,15 @@
 
 namespace GraphicsEngine {
     // singleton instance definition
-    Controller* Controller::m_controllerInstance = nullptr;
+    Controller* Controller::s_controllerInstance = nullptr;
 
     // singleton instance getter
     Controller* Controller::instance() {
         // create if non-existent
-        if (Controller::m_controllerInstance == nullptr)
-            Controller::m_controllerInstance = new Controller();
+        if (Controller::s_controllerInstance == nullptr)
+            Controller::s_controllerInstance = new Controller();
 
-        return Controller::m_controllerInstance;
+        return Controller::s_controllerInstance;
     }
 
 
@@ -73,6 +73,7 @@ namespace GraphicsEngine {
         }
 
         Object2D::initialize2DShaderProgram(LocalFilePath("shaders/2D.vs.glsl"), LocalFilePath("shaders/2D.fs.glsl"));
+        Button::initializeButtons(viewportPixelSize());
     }
 
     void Controller::loadScene(std::unique_ptr<Scene> &newScene) {
@@ -100,14 +101,6 @@ namespace GraphicsEngine {
         SDL_GL_SwapWindow(m_sdlWindow);
     }
 
-
-    
-    void Controller::pollEvents()
-    {
-        EventManager::instance()->pollEvents();
-    }
-
-
     
     void Controller::printInfos()
     {
@@ -123,6 +116,13 @@ namespace GraphicsEngine {
     {
         SDL_Quit();
         //delete window;
+    }
+
+
+    inline const glm::ivec2 Controller::viewportPixelSize() const {
+        int width, height;
+        SDL_GetWindowSize(m_sdlWindow, &width, &height);
+        return glm::ivec2(width, height);
     }
 
 }

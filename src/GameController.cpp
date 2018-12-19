@@ -1,9 +1,10 @@
 #include "GameController.hpp"
+
 // subscribe the game controller to the SDL event manager.
 void GameController::linkEventObserver() {
-    GraphicsEngine::EventManager::instance()->subscribe((QuitEventObserver*) this);
-    GraphicsEngine::EventManager::instance()->subscribe((KeyboardEventObserver*) this);
-    GraphicsEngine::EventManager::instance()->subscribe((MouseEventObserver*) this);
+    Events::Manager::instance()->subscribe((QuitEventObserver*) this);
+    Events::Manager::instance()->subscribe((KeyboardEventObserver*) this);
+    Events::Manager::instance()->subscribe((MouseEventObserver*) this);
 }
 
 
@@ -54,7 +55,7 @@ bool GameController::loop() {
     GraphicsEngine::Controller::instance()->render();
 
     // fetches new events
-    GraphicsEngine::Controller::instance()->pollEvents();
+    Events::Manager::instance()->pollEvents();
 
     // calculate the time spent since the start of the game loop
     Uint32 elapsedTime = SDL_GetTicks() - startTime;
@@ -216,7 +217,17 @@ void GameController::createObjects() {
 
         m_debugGrid = std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/wireframe.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/wireframe.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix")));
 
-        m_testSquare = std::make_shared<GraphicsEngine::Object2D>(glm::vec2(0, 0), glm::vec2(0.1, 0.1), std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/test.png")));
+
+        std::function<void(GraphicsEngine::Button*, unsigned char)> callback = [](GraphicsEngine::Button* target, unsigned char mouseButton) -> void {
+            std::cout << "you clicked the button" << std::endl;
+        };
+
+        m_testSquare = std::make_shared<GraphicsEngine::Button>(
+            glm::vec2(0, 0),
+            glm::vec2(0.1, 0.1),
+            std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/test.png")),
+            callback
+        );
 
     } catch(GraphicsEngine::InitialisationException error) {
         std::cout << error.what();
@@ -243,12 +254,12 @@ void GameController::mouseReleaseHandler(unsigned char button) {
 }
 
 
-GameController* GameController::m_controllerInstance = nullptr;
+GameController* GameController::s_controllerInstance = nullptr;
 
 GameController* GameController::instance() {
-    if (m_controllerInstance == nullptr)
-        m_controllerInstance = new GameController();
-    return m_controllerInstance;
+    if (s_controllerInstance == nullptr)
+        s_controllerInstance = new GameController();
+    return s_controllerInstance;
 }
 
 GameController::GameController() { }

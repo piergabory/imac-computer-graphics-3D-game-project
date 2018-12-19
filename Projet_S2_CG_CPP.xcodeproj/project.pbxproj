@@ -190,6 +190,7 @@
 			children = (
 				D460750B21BD883E00BAF7D0 /* GameController.cpp */,
 				D46A4A7321A0CE220096F02F /* main.cpp */,
+				D4F56EF921AFE83700767ECA /* Events */,
 				D46A4A6421A0CE110096F02F /* GraphicsEngine */,
 			);
 			path = src;
@@ -221,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				D460750C21BD883E00BAF7D0 /* GameController.hpp */,
+				D4F56EF821AFE83000767ECA /* Events */,
 				D46A4A4921A0CD870096F02F /* GraphicsEngine */,
 			);
 			path = includes;
@@ -261,7 +263,6 @@
 			children = (
 				D42A1DD121C7D59400B2F379 /* Context */,
 				D42A1DC921C7C4FF00B2F379 /* GUI */,
-				D4F56EF821AFE83000767ECA /* Events */,
 				D4F56EF021AF345500767ECA /* Object */,
 				D46A4A4A21A0CD870096F02F /* GraphicsEngine.hpp */,
 				D4F56ECD21AED12100767ECA /* Camera.hpp */,
@@ -276,7 +277,6 @@
 			isa = PBXGroup;
 			children = (
 				D4EA624F21C955B400CBFCAC /* GUI */,
-				D4F56EF921AFE83700767ECA /* Events */,
 				D4F56EF121AF348C00767ECA /* Object */,
 				D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */,
 				D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */,
