@@ -1,5 +1,7 @@
 /**
  * \file ImportedMesh.cpp
+ * \author Marco Kouyaté
+ * \date 19/12/18
  */
 
 #include "ImportedMesh.hpp"
@@ -7,11 +9,13 @@
 namespace GraphicsEngine {
     
     //CONSTRUCTOR
-    //expects a filepath to a 3D model.
+    //Create a Mesh3D from imported .obj
+    //Parameters :
+        //LocalFilePath - relative path -> absolute path
     ImportedMesh::ImportedMesh(LocalFilePath &path) : Mesh (loadModel(path)) {}
     
     //ASSIMP FUNCTIONS
-    //loads a model with supported ASSIMP extensions from file and returns a vector of vertices.
+    //Read file through ASSIMP importer
     std::vector<Vertex3D> ImportedMesh::loadModel(LocalFilePath &path)
     {
         std::vector<Vertex3D> vertices;
@@ -19,6 +23,9 @@ namespace GraphicsEngine {
         // read file via ASSIMP
         Assimp::Importer importer;
         const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenNormals);
+            //aiProcess_Triangulate - triangulate polygons for OpenGL
+            //aiProcess_FlipUVs - flips all UV coordinates along the y-axis
+            //aiProcess_GenNormals - Generate normals if they don't exist
         
         // check for errors
         if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
