@@ -1,5 +1,5 @@
 /**
- * \file Object.hpp
+ * \file Button.hpp
  *
  * IMAC 2 Project CG CPP
  *

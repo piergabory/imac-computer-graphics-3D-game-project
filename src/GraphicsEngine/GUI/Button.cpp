@@ -1,5 +1,5 @@
 /**
- * \file Object.cpp
+ * \file Button.cpp
  */
 
 #include "Button.hpp"
