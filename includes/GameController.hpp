@@ -9,6 +9,7 @@
 #include "GraphicsEngine.hpp"
 #include "EventManager.hpp"
 #include "EventObservers.hpp"
+#include "Player.hpp"
 
 class GameController: Events::QuitEventObserver, Events::KeyboardEventObserver, Events::MouseEventObserver {
 
@@ -18,8 +19,11 @@ private:
 
     bool m_isDebugGridActive = false;
 
+
+
     // contains all keycodes of currently pressed keyboard keys
-    std::set<unsigned char> m_pressedKeys;
+    //DEPRECATED
+    std::set<unsigned char> m_pressedKeys; //Déplacé dans EventManager
 
     // player point of view, scene camera.
     GraphicsEngine::Camera m_playerPointOfView;
@@ -29,6 +33,8 @@ private:
     std::shared_ptr<GraphicsEngine::Object3D> m_anotherHelloTriangle;
 
     std::shared_ptr<GraphicsEngine::Object2D> m_testSquare;
+
+    Player *m_player;
 
     void handlePressedKey();
 

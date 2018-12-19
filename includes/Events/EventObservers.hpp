@@ -22,10 +22,10 @@ namespace Events {
         virtual void quitEventHandler() = 0;
 
         // handles window event (resize/move)
-        virtual void windowEventHandler() {};
+        virtual void windowEventHandler() {}
 
         // destructor
-        virtual ~QuitEventObserver() {};
+        virtual ~QuitEventObserver() {}
     };
 
 
@@ -38,12 +38,15 @@ namespace Events {
      */
     struct KeyboardEventObserver {
         // handles a key release from the user
-        virtual void keyRealeaseHandler(unsigned char keycode) {};
+        virtual void keyRealeaseHandler(unsigned char keycode) {}
         // handles a key press from the user
-        virtual void keyDownHandler(unsigned char keycode) {};
+        virtual void keyDownHandler(unsigned char keycode) {}
+        
+        // handles a set of keys
+        virtual void keyPressHandler(std::set<unsigned char> pressedKeys){}
 
         // destructor
-        virtual ~KeyboardEventObserver() {};
+        virtual ~KeyboardEventObserver() {}
     };
 
 
@@ -56,16 +59,16 @@ namespace Events {
      */
     struct MouseEventObserver {
         // handles a mouse release from the user
-        virtual void mouseReleaseHandler(unsigned char button) {};
+        virtual void mouseReleaseHandler(unsigned char button) {}
 
         // handles a mouse down from the user
-        virtual void mouseDownHandler(unsigned char button) {};
+        virtual void mouseDownHandler(unsigned char button) {}
 
         // handles a mouse movement from the user
-        virtual void mouseMoveHandler(float relativeXMovement,float relativeYMovement) {};
+        virtual void mouseMoveHandler(float relativeXMovement,float relativeYMovement) {}
 
         // handles scrollwheel
-        virtual void mouseWheelHandler(float deltaX, float deltaY) {};
+        virtual void mouseWheelHandler(float deltaX, float deltaY) {}
 
         // destructor 
         virtual ~MouseEventObserver() {}

@@ -12,6 +12,7 @@
 
 #include <vector>
 #include <memory>
+#include <set>
 
 #include "Frameworks.hpp"
 #include "EventObservers.hpp"
@@ -36,12 +37,15 @@ namespace Events {
         std::vector<std::unique_ptr<MouseEventObserver> > m_pMouseEventsObserver;
         std::vector<std::unique_ptr<KeyboardEventObserver> > m_pKeyboardEventsObserver;
 
+        // contains all keycodes of currently pressed keyboard keys
+        std::set<unsigned char> m_pressedKeys;
+
     public:
         // instance getter
         static Manager* instance();
 
         // fetches events from the SDL framework
-        void pollEvents() const;
+        void pollEvents() ;
 
         // Add observer to the manager.
         void subscribe(QuitEventObserver* quitObserver);
