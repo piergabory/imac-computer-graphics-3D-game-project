@@ -1,0 +1,50 @@
+.TH "Player" 3 "Tue Dec 18 2018" "IMAC run" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Player \- < nullptr  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Player\&.hpp>\fP
+.PP
+Inherits \fBKeyboardEventObserver\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPlayer\fP (const MooveObjet obj, const float speed)"
+.br
+.RI "constucteur avec les var initiales à 0, prends en param la cible "
+.ti -1c
+.RI "\fBPlayer\fP (const MooveObjet obj, const float speed, const float x, const float y, const float z)"
+.br
+.RI "constructeur où l'on peut choisir la position intiale du joueur "
+.ti -1c
+.RI "virtual void \fBkeyRealeaseHandler\fP (unsigned char keycode)"
+.br
+.ti -1c
+.RI "virtual void \fBkeyDownHandler\fP (unsigned char keycode)"
+.br
+.ti -1c
+.RI "virtual void \fBkeyPressHandler\fP (std::set< unsigned char > pressedKeys)"
+.br
+.ti -1c
+.RI "void \fBmoove\fP (const bool tx, const bool ty, const bool tz)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+< nullptr 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Player::Player (const MooveObjet obj, const float speed, const float x, const float y, const float z)\fC [inline]\fP"
+
+.PP
+constructeur où l'on peut choisir la position intiale du joueur Methodes de l'observer 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for IMAC run from the source code\&.

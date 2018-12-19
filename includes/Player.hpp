@@ -1,32 +1,73 @@
 #ifndef Player_hpp
-#deine Player_hpp
+#define Player_hpp
 
 #include <iostream>
 #include <set>
 #include <memory>
+#include <cstddef>// nullptr
+#include <glm/glm.hpp> //verctors
+#include <ctime> //time in moovePlayer
 
 #include "GraphicsEngine.hpp"
 #include "EventObservers.hpp"
+#include "Object.hpp"
 
-class Player : KeyboardEventObserver{
+class Player : KeyboardEventObserver {
 private:
-  float x;
-  float y;
-  float z;
-  float step;
-  std::set<unsigned char>m_pressedKeys;
-  MooveObjet cible; //obj joueur
+  /*
+  * m_characterModel : mesh of the Player
+  * m_speed : in how many frame the player has to do his annimation (side to side, half of a jump)
+  * m_position : the current posion of the player
+  */
+  GraphicsEngine::Object m_characterModel;   //eventuelement changer avec un MooveObject
+  int m_speed;
+  glm::vec3 m_position;
+
 public:
-  //constucteur avec les var initiales à 0, prends en param la cible
-  Player(const MooveObjet obj): cible(obj), x(0),y(0),z(0){}
-  void keyDownHandler(unsigned char keycode) {
-    m_pressedKeys.insert(keycode);
+  /**
+  * \brief constucteur avec les var initiales à 0, prends en param la cible
+  * @param[in] obj L'objet qui servira de mesh pour le joueur
+  * @param[in] speed distance qui sera rajouté aux coordonnées à chaque fois qu'une touche sera pressée
+  */
+  Player(const GraphicsEngine::Object &obj, const int speed, const glm::vec3 &position = glm::vec3(0.f)): m_characterModel(obj), m_speed(speed), m_position(position){
+    //lever les erreurs
+    if(speed<0){
+       throw std::invalid_argument( "Player speed can not be negative.");
+    }
+    //subscribe to keyboard listener
+    GraphicsEngine::EventManager::instance()->subscribe(this);
+    std::cout << "New player in:\n\t- x : "<<m_position[0]<<"\n\t- y : "<<m_position[1]<<"\n\t- z : "<<m_position[2]<< std::endl;
   }
-  
-  void moove(const bool tx, const bool ty, const bool tz) {
-      /*Bouger dans la direction voulue puis faire un translate de la cible*/
-      glm::vec3 vectorTransalte= glm::vec3(step*tx,step*ty,step*tz);
-      cible.translate(vectorTransalte);
+  /**
+  * \brief method called by the KeyboardEventObserver
+  * @param[in] pressedKeys set of the keys currently pressed
+  */
+  virtual void keyPressHandler( const std::set<unsigned char> pressedKeys){
+    for(std::set<unsigned char>::iterator it=pressedKeys.begin(); it!=pressedKeys.end(); ++it){
+        switch (*it) {
+          case 'R':
+            std::cout << "Player: ^ (UP)" << '\n';
+            //TODO implement jump
+            break;
+          case 'O':
+            std::cout << "Player:-->" << '\n';
+            break;
+          case 'Q':
+            std::cout << "Player: v (DOWN)" << '\n';
+            break;
+          case 'P':
+            std::cout << "Player: <--" << '\n';
+            break;
+          //No default because the player isn't supposed to react to other key
+        }
+    }
+  }
+
+  //function called in each loop
+  void moovePlayer(unsigned smallint direction, std::time &startTime) {
+    /* TODO: en fonction de la direction
+            peutètre faire d'autres fonction pour le déplacemennt latéral et le saut
+    */
   }
 };
 

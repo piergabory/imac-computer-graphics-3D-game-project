@@ -5,6 +5,7 @@
  */
 
 #include "EventManager.hpp"
+#include <cstddef>///< nullptr
 #include <vector> ///< gestion du tableau (push_back)
 #include <memory> ///< gestion de pointeurs uniques (unique_ptr)
 
@@ -22,7 +23,7 @@ namespace GraphicsEngine {
     }
 
 
-    void EventManager::pollEvents() const {
+    void EventManager::pollEvents() {
         // temporary variable holding each event
         SDL_Event event;
 
@@ -30,7 +31,7 @@ namespace GraphicsEngine {
         while (SDL_PollEvent(&event)) {
 
             // check if observer is defined
-            if (m_pQuitEventObserver[0]!= NULL) {
+            if (m_pQuitEventObserver[0]!= nullptr) {
                 // check event type, calls the corresponding method.
                 switch (event.type) {
                     case SDL_QUIT:
@@ -49,7 +50,7 @@ namespace GraphicsEngine {
                 }
             }
 
-            if (m_pMouseEventsObserver[0]!= NULL) {
+            if (m_pMouseEventsObserver[0]!= nullptr) {
                 switch (event.type) {
                     case SDL_MOUSEMOTION:
                       for(unsigned int i=0; i<m_pMouseEventsObserver.size(); i++){
@@ -79,41 +80,47 @@ namespace GraphicsEngine {
                 }
             }
 
-            if (m_pKeyboardEventsObserver[0]!= NULL) {
+            if (m_pKeyboardEventsObserver[0]!= nullptr) {
                 switch (event.type) {
                     case SDL_KEYDOWN:
                       for(unsigned int i=0; i<m_pKeyboardEventsObserver.size(); i++){
                         m_pKeyboardEventsObserver[i]->keyDownHandler(event.key.keysym.sym);
                       }
+                      m_pressedKeys.insert(event.key.keysym.sym);
+
                       //m_pKeyboardEventsObserver->keyDownHandler(event.key.keysym.sym);
                       break;
                     case SDL_KEYUP:
                       for(unsigned int i=0; i<m_pKeyboardEventsObserver.size(); i++){
                         m_pKeyboardEventsObserver[i]->keyRealeaseHandler(event.key.keysym.sym);
                       }
+                      m_pressedKeys.erase(event.key.keysym.sym);
                       //m_pKeyboardEventsObserver->keyRealeaseHandler(event.key.keysym.sym);
                       break;
                     default: break;
                 }
             }
         }
+        // if the set isn't empty (key currently pressed) send the set to the observer
+        if(!m_pressedKeys.empty()){
+          for(unsigned int i=0; i<m_pKeyboardEventsObserver.size(); i++){
+            m_pKeyboardEventsObserver[i]->keyPressHandler(m_pressedKeys);
+          }
+        }
     }
 
 
-
-    // setters
-
     void EventManager::subscribe(QuitEventObserver* quitObserver) {
-        m_pQuitEventObserver.push_back(std::unique_ptr<QuitEventObserver>( quitObserver));
+        m_pQuitEventObserver.push_back(std::unique_ptr<QuitEventObserver>(quitObserver));
     }
 
 
     void EventManager::subscribe(MouseEventObserver* mouseObserver) {
-        m_pMouseEventsObserver.push_back(std::unique_ptr<MouseEventObserver>( mouseObserver));
+        m_pMouseEventsObserver.push_back(std::unique_ptr<MouseEventObserver>(mouseObserver));
     }
 
 
     void EventManager::subscribe(KeyboardEventObserver* keyboardObserver) {
-        m_pKeyboardEventsObserver.push_back(std::unique_ptr<KeyboardEventObserver> (keyboardObserver));
+        m_pKeyboardEventsObserver.push_back(std::unique_ptr<KeyboardEventObserver>(keyboardObserver));
     }
 }

@@ -72,6 +72,8 @@ namespace GraphicsEngine {
             assert(material != nullptr);
         }
 
+        Object(const Object &copy) = default;
+
         // destructor
         ~Object() {}
     };

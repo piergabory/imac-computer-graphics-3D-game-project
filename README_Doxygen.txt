@@ -33,7 +33,7 @@ public:
 
   /**
   * \brief description
-  * \param a un int qui sert a qqch
+  * @param a un int qui sert a qqch
   *
   *description très longue...
   */

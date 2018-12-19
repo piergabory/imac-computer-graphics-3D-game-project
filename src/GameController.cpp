@@ -40,6 +40,7 @@ bool GameController::loop() {
     Uint32 startTime = SDL_GetTicks();
 
     // respond to events
+    // TODO utiliser l'EventManager
     handlePressedKey();
 
     // start new render cycle
@@ -66,12 +67,12 @@ void GameController::quitEventHandler() {
 }
 
 
-
+// a déolacer dans l'EventManager
 void GameController::keyRealeaseHandler(unsigned char keycode) {
     m_pressedKeys.erase(keycode);
     // check if debug shortcuts is activated (CTRL-SHIFT):
     if (m_pressedKeys.find(225) != m_pressedKeys.end() && m_pressedKeys.find(224) != m_pressedKeys.end()) {
-        
+
         switch (keycode) {
                 // we ignore Shift and Ctrl
             case 224: case 225: break;
@@ -218,6 +219,8 @@ void GameController::createObjects() {
     std::shared_ptr<GraphicsEngine::Material> wireframe = std::make_shared<GraphicsEngine::Material>(wireframeShader);
 
     m_debugGrid = std::make_shared<GraphicsEngine::Object>(gridMesh, wireframe);
+
+    m_player= new Player(*m_helloTriangle, 0.5);
 }
 
 
@@ -247,4 +250,5 @@ GameController* GameController::instance() {
     return m_controllerInstance;
 }
 
-GameController::GameController() { }
+GameController::GameController() {
+}

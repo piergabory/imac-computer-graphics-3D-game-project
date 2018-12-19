@@ -1,8 +1,9 @@
-.TH "GraphicsEngine" 3 "Fri Dec 14 2018" "IMAC3_CG_CPP_Game_Project" \" -*- nroff -*-
+.TH "GraphicsEngine" 3 "Tue Dec 18 2018" "IMAC run" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-GraphicsEngine
+GraphicsEngine \- gestion des évenements  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -34,6 +35,9 @@ GraphicsEngine
 .RI "class \fBMesh\fP"
 .br
 .ti -1c
+.RI "class \fBMooveObject\fP"
+.br
+.ti -1c
 .RI "class \fBObject\fP"
 .br
 .ti -1c
@@ -57,6 +61,8 @@ GraphicsEngine
 .in -1c
 .SH "Detailed Description"
 .PP 
+gestion des évenements 
+
 CAMERA CLASS
 .PP
 Facade to the glm projection matrix provides the camera's projection matrix and attributes to rotate and move the simulated camera
@@ -67,7 +73,12 @@ IMAC 2 Project CG CPP
 .PP
 \fBEventManager\&.hpp\fP
 .PP
-IMAC 2 Project CG CPP EVENT MANAGER CLASS
+IMAC 2 Project CG CPP 
+.PP
+\fBVersion:\fP
+.RS 4
+0\&.2 Version 0\&.2: Contient des tableau d'observer, plusieurs objets peuvent maintenant écouter les évènements EVENT MANAGER CLASS
+.RE
 .PP
 Singleton class\&. Manages events from the SDL framework\&. Calls the right observers\&.
 .PP
@@ -129,7 +140,7 @@ Cameras\&.hpp
 .PP
 \fBCommonStructs\&.hpp\fP
 .PP
-\fBEventManager\&.hpp\fP
+< nullptr < gestion du tableau (push_back) gestion de pointeurs uniques (unique_ptr)
 .PP
 Object\&.cpp
 .PP
@@ -150,4 +161,4 @@ Mesh\&.cpp
 Scene\&.cpp 
 .SH "Author"
 .PP 
-Generated automatically by Doxygen for IMAC3_CG_CPP_Game_Project from the source code\&.
+Generated automatically by Doxygen for IMAC run from the source code\&.
