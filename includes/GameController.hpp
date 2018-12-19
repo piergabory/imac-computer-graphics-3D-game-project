@@ -10,6 +10,7 @@
 #include "EventManager.hpp"
 #include "EventObservers.hpp"
 #include "Player.hpp"
+#include "ImportedMesh.hpp"
 
 class GameController: Events::QuitEventObserver, Events::KeyboardEventObserver, Events::MouseEventObserver {
 
