@@ -18,12 +18,13 @@ void GameController::initializeScene() {
 
     std::unique_ptr<GraphicsEngine::Scene>  scene(new GraphicsEngine::Scene(m_playerPointOfView));
     GraphicsEngine::Controller::instance()->loadScene(scene);
-    GraphicsEngine::Controller::instance()->activeScene()->add(m_helloTriangle);
+    
+
     
     GraphicsEngine::Controller::instance()->activeScene()->add(m_nanosuit);
     
-
-    m_anotherHelloTriangle->translate(glm::vec3(-1));
+    GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
+    
     GraphicsEngine::Controller::instance()->activeScene()->add(m_anotherHelloTriangle);
     
 }
@@ -192,7 +193,7 @@ void GameController::handlePressedKey() {
 
 void GameController::createObjects() {
     // create meshes
-    std::vector<GraphicsEngine::Vertex3D> grid, helloTriangle;
+    std::vector<GraphicsEngine::Vertex3D> grid, helloTriangle, skybox;
 
     // hello triangle
     helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(-0.5f,0.f,0.f), glm::vec3(1.f,0.f,0.f), glm::vec2(0.f,0.f)));
@@ -229,6 +230,11 @@ void GameController::createObjects() {
         
         GraphicsEngine::LocalFilePath nanopath("assets/nanosuit/nanosuit.obj");
         m_nanosuit = std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::ImportedMesh>(nanopath), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), nanoTexture));
+        
+        //create Skybox
+        std::shared_ptr<GraphicsEngine::Texture> skyTexture = std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/cubemap_skybox.jpg"));
+        GraphicsEngine::LocalFilePath skyboxpath("assets/skyboxtest.obj");
+        m_skybox = std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::ImportedMesh>(skyboxpath), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), skyTexture));
 
 
         
