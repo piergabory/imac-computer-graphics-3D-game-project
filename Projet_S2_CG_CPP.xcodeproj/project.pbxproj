@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F55232B21CBB77B00B5B28A /* libassimp.4.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F55232A21CBB77B00B5B28A /* libassimp.4.1.0.dylib */; };
+		2F55232D21CBB7F900B5B28A /* ImportedMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F55232C21CBB7F900B5B28A /* ImportedMesh.cpp */; };
 		D42A1DD721C7D77E00B2F379 /* Object2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D42A1DD521C7D77E00B2F379 /* Object2D.cpp */; };
 		D460750D21BD883E00BAF7D0 /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D460750B21BD883E00BAF7D0 /* GameController.cpp */; };
 		D46A4A7421A0CE220096F02F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A7321A0CE220096F02F /* main.cpp */; };
@@ -54,6 +56,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2F55232A21CBB77B00B5B28A /* libassimp.4.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.4.1.0.dylib; path = ../../../../usr/local/Cellar/assimp/4.1.0/lib/libassimp.4.1.0.dylib; sourceTree = "<group>"; };
+		2F55232C21CBB7F900B5B28A /* ImportedMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImportedMesh.cpp; sourceTree = "<group>"; };
 		D40AFE5A21B05E530019E461 /* EventObservers.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EventObservers.hpp; sourceTree = "<group>"; };
 		D42A1DCF21C7C55300B2F379 /* Context.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Context.hpp; sourceTree = "<group>"; };
 		D42A1DD321C7D5A600B2F379 /* Canvas.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Canvas.hpp; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F55232B21CBB77B00B5B28A /* libassimp.4.1.0.dylib in Frameworks */,
 				D4F56EE821AF25F300767ECA /* SDL2.framework in Frameworks */,
 				D46A4A7F21A0CFC50096F02F /* libGLEW.2.1.0.dylib in Frameworks */,
 				D4F56EC621AEB29400767ECA /* SDL2_image.framework in Frameworks */,
@@ -248,6 +253,7 @@
 		D46A4A3521A0C5960096F02F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F55232A21CBB77B00B5B28A /* libassimp.4.1.0.dylib */,
 				D4F56EE721AF25F300767ECA /* SDL2.framework */,
 				D4F56EC521AEB29400767ECA /* SDL2_image.framework */,
 				D46A4A7A21A0CF120096F02F /* include */,
@@ -366,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				D42A1DD521C7D77E00B2F379 /* Object2D.cpp */,
+				2F55232C21CBB7F900B5B28A /* ImportedMesh.cpp */,
 				D4F56EC721AEC28500767ECA /* Object3D.cpp */,
 				D4F56EF421AF34C400767ECA /* Material */,
 				D46A4A6721A0CE110096F02F /* Mesh.cpp */,
@@ -505,6 +512,7 @@
 				D46A4A8521A0D0B50096F02F /* GraphicsEngine.cpp in Sources */,
 				D4F56EC921AEC28500767ECA /* Object3D.cpp in Sources */,
 				D46A4A7421A0CE220096F02F /* main.cpp in Sources */,
+				2F55232D21CBB7F900B5B28A /* ImportedMesh.cpp in Sources */,
 				D4F56EC421AEAC8300767ECA /* ImageData.cpp in Sources */,
 				D46A4A8621A0D0B50096F02F /* CommonStructs.cpp in Sources */,
 				D4F56ED121AEDFB700767ECA /* Material.cpp in Sources */,
@@ -688,6 +696,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
+					/usr/local/Cellar/assimp/4.1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = build;
@@ -713,6 +722,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
+					/usr/local/Cellar/assimp/4.1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = build;
