@@ -58,6 +58,25 @@
              assert(!s_absolutePathToExecutable.empty());
          }
      };
+     /**
+     * @struct u_light_direction
+     * @brief This structure represents light points
+     */
+    
+     struct Light{
+      // propriety
+      glm::vec3 m_position;
+      float m_intensity;
+      glm::vec3 m_color;
+
+      //constructor
+      Light(glm::vec3 position, float intensity = 0.5, glm::vec3 color = glm::vec3(255)):m_position(position), m_intensity(intensity), m_color(color){
+        assert(intensity>=0 && intensity<=1 && "The intensity shoud be in [0;1]");
+        /// \todo faire une intensité > 1 pour les surexpositions
+        assert(color[0]<256 && color[1]<256 && color[2]<256);
+        assert(color[0]>=0 && color[1]>=0 && color[2]>=0);
+        }
+};
  }
 
  #endif /* CommonStructs_hpp */
