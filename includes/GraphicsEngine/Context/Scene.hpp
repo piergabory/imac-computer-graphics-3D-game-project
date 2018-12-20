@@ -28,6 +28,9 @@ namespace GraphicsEngine
     private:
         /// Camera
         std::shared_ptr<Camera> m_camera;
+        //light
+        std::vector<std::weak_ptr<Light> > m_lights;
+
 
         void contextWillRender() const override {
             // hide faces viewed from behind
@@ -61,6 +64,30 @@ namespace GraphicsEngine
         // destructor
         // deletes memory allocated on each pointer in the object vector.
         ~Scene() {}
+        /**
+         * \brief add new light to the scene
+         * @param newLight pointer that wil be destroyed
+         */
+        void addLight(std::shared_ptr<Light> &newLight){
+            m_lights.push_back(newLight);
+            // shared pointer is destroyed.
+            // Value is own in the scope of Context::add() call, and linked here by a weak pointer in m_objects
+        }
+        /**
+         * \brief remoove the light from the scene
+         */
+        void remooveLight(std::shared_ptr<Light> &light){
+            for(size_t i = 0; i < m_lights.size(); ++i) {
+                std::shared_ptr<Light> tmpobject = m_lights[i].lock();
+
+                // find object and deletes it.
+                if (light == tmpobject) {
+                    m_lights.erase(m_lights.begin() + i);
+                }
+
+                // tmpobject is destroyed
+            }
+        }
     };
     
 }
