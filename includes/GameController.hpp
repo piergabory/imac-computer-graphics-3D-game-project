@@ -6,47 +6,59 @@
 #include <memory>
 #include <functional>
 
+#include "Game.hpp"
 #include "GraphicsEngine.hpp"
 #include "EventManager.hpp"
 #include "EventObservers.hpp"
-#include "Player.hpp"
-#include "ImportedMesh.hpp"
 
 class GameController: Events::QuitEventObserver, Events::KeyboardEventObserver, Events::MouseEventObserver {
 
 private:
     // when false, cleans the memory and close the game.
     bool m_isRunning = true;
-
     bool m_isDebugGridActive = false;
-
 
 
     // contains all keycodes of currently pressed keyboard keys
     //DEPRECATED
-    std::set<unsigned char> m_pressedKeys; //Déplacé dans EventManager
 
     // player point of view, scene camera.
     GraphicsEngine::Camera m_playerPointOfView;
 
     std::shared_ptr<GraphicsEngine::Object3D> m_debugGrid;
-    std::shared_ptr<GraphicsEngine::Object3D> m_helloTriangle;
-    std::shared_ptr<GraphicsEngine::Object3D> m_anotherHelloTriangle;
-    std::shared_ptr<GraphicsEngine::Object3D> m_nanosuit;
     std::shared_ptr<GraphicsEngine::Object3D> m_skybox;
-    
 
-    std::shared_ptr<GraphicsEngine::Object2D> m_testSquare;
 
-    Player *m_player;
+    std::unique_ptr<Game> m_currentGame;
 
-    void handlePressedKey();
-
-    void linkEventObserver();
 
     void initializeScene();
 
-    void createObjects();
+    static std::shared_ptr<GraphicsEngine::Object3D> initializeDebugGrid();
+    static std::shared_ptr<GraphicsEngine::Object3D> createSkyBox();
+
+
+
+    // EVENT OBSERVERS
+
+    // observer method called by the event manager
+    // when called, sets the running condition returned by loop to false.
+    void quitEventHandler() override;
+
+    // observer methods called by the event manager when a key is engaged
+    // Add/Removes the pressed key from the pressedKeys set.
+    void keyRealeaseHandler(unsigned char keycode) override;
+    void keyPressHandler(std::set<unsigned char> &pressedKeys) override;
+
+    // observer methods called by the event manager when a mouse event is fired
+    // controls the camera orientation
+    void mouseMoveHandler(float relativeXMovement,float relativeYMovement) override;
+    // controls the camera position (x-z plane)
+    void mouseWheelHandler(float deltaX, float deltaY) override;
+    // captures the cursor in the sdl window
+    void mouseReleaseHandler(unsigned char button) override;
+
+
 
     // private constructor
     GameController();
@@ -61,24 +73,6 @@ public:
 
     // Game loop, return false when exiting the program.
     bool loop();
-
-    // observer method called by the event manager
-    // when called, sets the running condition returned by loop to false.
-    void quitEventHandler() override;
-
-    // observer methods called by the event manager when a key is engaged
-    // Add/Removes the pressed key from the pressedKeys set.
-    void keyDownHandler(unsigned char keycode) override;
-    void keyRealeaseHandler(unsigned char keycode) override;
-
-
-    // observer methods called by the event manager when a mouse event is fired
-    // controls the camera orientation
-    void mouseMoveHandler(float relativeXMovement,float relativeYMovement) override;
-    // controls the camera position (x-z plane)
-    void mouseWheelHandler(float deltaX, float deltaY) override;
-    // captures the cursor in the sdl window
-    void mouseReleaseHandler(unsigned char button) override;
 
     // singleton getter
     static GameController* instance();
