@@ -16,7 +16,7 @@ namespace GraphicsEngine {
     
     //ASSIMP FUNCTIONS
     //Read file through ASSIMP importer
-    std::vector<Vertex3D> ImportedMesh::loadModel(LocalFilePath &path)
+    std::vector<Vertex3D> ImportedMesh::loadModel(const LocalFilePath &path)
     {
         std::vector<Vertex3D> vertices;
         
