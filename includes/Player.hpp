@@ -35,7 +35,7 @@ public:
     };
 
 
-    inline std::shared_ptr<GraphicsEngine::Object3D> model() const {
+    inline const std::shared_ptr<GraphicsEngine::Object3D> model() const {
         return m_characterModel;
     }
 

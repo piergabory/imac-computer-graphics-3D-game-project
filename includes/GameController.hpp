@@ -8,12 +8,17 @@
 #include "GraphicsEngine.hpp"
 #include "EventManager.hpp"
 
+#include <cmath>
+
 class GameController: Events::QuitEventObserver, Events::KeyboardEventObserver, Events::MouseEventObserver {
 
 private:
     // when false, cleans the memory and close the game.
     bool m_isRunning = true;
     bool m_isDebugGridActive = false;
+
+    const int m_CHUNK_FRAME_DURATION = 60;
+    int m_chunkframe = 0;
 
 
     // contains all keycodes of currently pressed keyboard keys

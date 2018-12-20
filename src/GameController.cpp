@@ -13,7 +13,7 @@ void GameController::initializeScene() {
 
     // create objects
     m_skybox = createSkyBox();
-    std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
+    const std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
 
 
     // adds objects in the scene
@@ -44,14 +44,20 @@ void GameController::setup() {
 
 // game loop
 bool GameController::loop() {
-    // framerate 60 frames per seconds
-    const float FRAMERATE = 60;
-
     // read the time at the start of the game loop
     Uint32 startTime = SDL_GetTicks();
 
+    // framerate 60 frames per seconds
+    const float FRAMERATE = 60;
+
+    // compute current chunk progress
+    m_chunkframe ++;
+    m_chunkframe %= m_CHUNK_FRAME_DURATION;
+
     // start new render cycle
     GraphicsEngine::Controller::instance()->render();
+
+    m_currentGame->playerModel()->translate(glm::vec3(0,0, std::sin(3.141592654 * 2 * m_chunkframe / (float) m_CHUNK_FRAME_DURATION)));
 
     // fetches new events
     Events::Manager::instance()->pollEvents();
@@ -85,7 +91,7 @@ void GameController::keyRealeaseHandler(unsigned char keycode) {
             std::cout << "Toggling Grid " << (m_isDebugGridActive? "off" : "on") << std::endl;
             if (m_debugGrid){
                 m_debugGrid.reset();
-                GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
+                // GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
             } else {
                 m_debugGrid = initializeDebugGrid();
                 GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
