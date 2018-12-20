@@ -25,6 +25,8 @@
          // constructor
          Vertex3D(glm::vec3 position, glm::vec3 normal, glm::vec2 texture):
             m_position(position), m_normal(normal), m_textureCoordinates(texture) {}
+
+         Vertex3D(const Vertex3D& copy) = default;
      };
 
 

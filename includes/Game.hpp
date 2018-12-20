@@ -8,9 +8,14 @@ class Game{
 private:
     Player m_pPlayer;
 
-    static GraphicsEngine::Object3D loadPlayerObject();
+    static std::shared_ptr<GraphicsEngine::Object3D> loadPlayerObject();
 
 public:
+
+    inline std::shared_ptr<GraphicsEngine::Object3D> playerModel() const {
+        return m_pPlayer.model();
+    }
+
     Game();
     ~Game();
 };

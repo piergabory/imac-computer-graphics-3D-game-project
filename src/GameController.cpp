@@ -3,22 +3,16 @@
 
 // creates scene and load objects
 void GameController::initializeScene() {
-    createObjects();
+    initializeDebugGrid();
 
     std::unique_ptr<GraphicsEngine::Canvas> canvas(new GraphicsEngine::Canvas());
     GraphicsEngine::Controller::instance()->loadGUI(canvas);
-    GraphicsEngine::Controller::instance()->activeGUI()->add(m_testSquare);
 
     std::unique_ptr<GraphicsEngine::Scene>  scene(new GraphicsEngine::Scene(m_playerPointOfView));
     GraphicsEngine::Controller::instance()->loadScene(scene);
-    GraphicsEngine::Controller::instance()->activeScene()->add(m_helloTriangle);
-    
-    GraphicsEngine::Controller::instance()->activeScene()->add(m_nanosuit);
-    
 
-    m_anotherHelloTriangle->translate(glm::vec3(-1));
-    GraphicsEngine::Controller::instance()->activeScene()->add(m_anotherHelloTriangle);
-    
+    std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
+    GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
 }
 
 
@@ -27,6 +21,9 @@ void GameController::setup() {
     // initialize framworks and windows
     GraphicsEngine::Controller::instance()->setup();
     GraphicsEngine::Controller::instance()->printInfos();
+
+
+    m_currentGame = std::unique_ptr<Game>(new Game);
 
     // create scene
     initializeScene();
@@ -73,20 +70,21 @@ void GameController::quitEventHandler() {
 
 // a déolacer dans l'EventManager
 void GameController::keyRealeaseHandler(unsigned char keycode) {
-// check if debug shortcuts is activated (CTRL-SHIFT):
+    // check if debug shortcuts is activated (CTRL-SHIFT):
     switch (keycode) {
             // we ignore Shift and Ctrl
         case 224: case 225: break;
 
         case 'g':
-            m_isDebugGridActive = !m_isDebugGridActive;
-            std::cout << "Toggling Grid " << (m_isDebugGridActive? "on" : "off") << std::endl;
-            if (m_isDebugGridActive) {
+            std::cout << "Toggling Grid " << (m_isDebugGridActive? "off" : "on") << std::endl;
+            if (m_debugGrid){
+                m_debugGrid.reset();
                 GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
             } else {
+                m_debugGrid = initializeDebugGrid();
                 GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
             }
-
+            m_isDebugGridActive = !m_isDebugGridActive;
             break;
 
         default:
@@ -169,68 +167,7 @@ void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
     }
 }
 
-void GameController::createObjects() {
-    // create meshes
-    std::vector<GraphicsEngine::Vertex3D> grid, helloTriangle;
 
-    // hello triangle
-    helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(-0.5f,0.f,0.f), glm::vec3(1.f,0.f,0.f), glm::vec2(0.f,0.f)));
-    helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(0.5f,0.f,0.f), glm::vec3(0.f,1.f,0.f), glm::vec2(0.5f,1.f)));
-    helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(0.f,1.f,0.f), glm::vec3(0.f,0.f,1.f), glm::vec2(1.f,0.0f)));
-
-    // debug grid
-    float gridScale = 5;
-    uint gridsize = 30;
-    for (uint i = 0; i < gridsize; ++i) {
-        float position = i * 2.f / gridsize - 1;
-        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(position,0.f,1.f), glm::vec3(0), glm::vec2(0)));
-        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(position,0.f,-1.f), glm::vec3(0), glm::vec2(0)));
-        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
-        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(-1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
-    }
-
-
-    try {
-        // create test texture
-        std::shared_ptr<GraphicsEngine::Texture> testTexture = std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/test.png"));
-        
-
-
-        // create objects
-        m_helloTriangle = std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::Mesh3D>(helloTriangle), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), testTexture));
-
-        m_anotherHelloTriangle = std::make_shared<GraphicsEngine::Object3D>(*m_helloTriangle);
-        
-
-     
-        //Create nanosuit object 
-        std::shared_ptr<GraphicsEngine::Texture> nanoTexture = std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/nanosuit/body_showroom_spec.png"));
-        
-        GraphicsEngine::LocalFilePath nanopath("assets/nanosuit/nanosuit.obj");
-        m_nanosuit = std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::ImportedMesh>(nanopath), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), nanoTexture));
-
-
-        
-        m_debugGrid = std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/wireframe.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/wireframe.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix")));
-
-
-        std::function<void(GraphicsEngine::Button*, unsigned char)> callback = [](GraphicsEngine::Button* target, unsigned char mouseButton) -> void {
-            std::cout << "you clicked the button" << std::endl;
-        };
-
-        m_testSquare = std::make_shared<GraphicsEngine::Button>(
-            glm::vec2(0, 0),
-            glm::vec2(0.1, 0.1),
-            std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/test.png")),
-            callback
-        );
-
-    } catch(GraphicsEngine::InitialisationException error) {
-        std::cout << error.what();
-    }
-
-    m_player= new Player(*m_helloTriangle, 0.5f);
-}
 
 
 void GameController::mouseMoveHandler(float relativeXMovement,float relativeYMovement) {
@@ -248,6 +185,38 @@ void GameController::mouseWheelHandler(float deltaX, float deltaY) {
 void GameController::mouseReleaseHandler(unsigned char button) {
     SDL_CaptureMouse(SDL_TRUE);
     SDL_ShowCursor(SDL_DISABLE);
+}
+
+std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() {
+    float gridScale = 5;
+    uint gridsize = 30;
+
+    // create debug grid mesh
+    std::vector<GraphicsEngine::Vertex3D> grid;
+    grid.reserve(4 * gridsize);
+    for (uint i = 0; i < gridsize; ++i) {
+        float position = i * 2.f / gridsize - 1;
+        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(position,0.f,1.f), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(position,0.f,-1.f), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(-1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
+    }
+
+    try {
+        // create debug object
+        return std::make_shared<GraphicsEngine::Object3D>(
+          std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES),
+            std::make_shared<GraphicsEngine::Material>(
+              std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(
+                  GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"),
+                  GraphicsEngine::LocalFilePath("shaders/flatColor.fs.glsl")
+               )
+            )
+         );
+    } catch(GraphicsEngine::InitialisationException error) {
+        std::cerr << error.what() << std::endl;
+        return nullptr;
+    }
 }
 
 

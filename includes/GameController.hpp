@@ -26,19 +26,13 @@ private:
     GraphicsEngine::Camera m_playerPointOfView;
 
     std::shared_ptr<GraphicsEngine::Object3D> m_debugGrid;
-    std::shared_ptr<GraphicsEngine::Object3D> m_helloTriangle;
-    std::shared_ptr<GraphicsEngine::Object3D> m_anotherHelloTriangle;
-    std::shared_ptr<GraphicsEngine::Object3D> m_nanosuit;
-    
 
-    std::shared_ptr<GraphicsEngine::Object2D> m_testSquare;
-
-    Player *m_player;
+    std::unique_ptr<Game> m_currentGame;
 
 
     void initializeScene();
 
-    void createObjects();
+    static std::shared_ptr<GraphicsEngine::Object3D> initializeDebugGrid();
 
 
 
@@ -63,7 +57,6 @@ private:
 
 
 
-    
     // private constructor
     GameController();
 

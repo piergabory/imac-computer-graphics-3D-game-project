@@ -63,7 +63,7 @@
 		D42A1DD521C7D77E00B2F379 /* Object2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Object2D.cpp; sourceTree = "<group>"; };
 		D42A1DD621C7D77E00B2F379 /* Object2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Object2D.hpp; sourceTree = "<group>"; };
 		D42A1DD821C7D8C500B2F379 /* Object.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Object.hpp; sourceTree = "<group>"; };
-		D44D288821C081E400492876 /* white.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = white.glsl; sourceTree = "<group>"; };
+		D44D288821C081E400492876 /* flatColor.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = flatColor.fs.glsl; sourceTree = "<group>"; };
 		D460750B21BD883E00BAF7D0 /* GameController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameController.cpp; sourceTree = "<group>"; };
 		D460750C21BD883E00BAF7D0 /* GameController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameController.hpp; sourceTree = "<group>"; };
 		D46A496521A0C5130096F02F /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
@@ -181,7 +181,6 @@
 				D46A496621A0C5130096F02F /* src */,
 				D46A4A2F21A0C5130096F02F /* obj */,
 				D46A496B21A0C5130096F02F /* shaders */,
-				D46A4A2E21A0C5130096F02F /* textures */,
 				D4EA626121CB93A200CBFCAC /* assets */,
 				D46A488621A0C3F10096F02F /* Products */,
 				D46A4A3521A0C5960096F02F /* Frameworks */,
@@ -213,7 +212,7 @@
 			children = (
 				D4EA624A21C938FF00CBFCAC /* 2D.fs.glsl */,
 				D4EA624B21C938FF00CBFCAC /* 2D.vs.glsl */,
-				D44D288821C081E400492876 /* white.glsl */,
+				D44D288821C081E400492876 /* flatColor.fs.glsl */,
 				D46A4B8C21A2FDF90096F02F /* perspective.vs.glsl */,
 				D46A4B8D21A2FE020096F02F /* flatTexture.fs.glsl */,
 			);
@@ -339,6 +338,7 @@
 		D4EA626121CB93A200CBFCAC /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				D46A4A2E21A0C5130096F02F /* textures */,
 				D4EA626221CB93A200CBFCAC /* monkey1.obj */,
 			);
 			path = assets;
@@ -425,8 +425,8 @@
 		D4F56EF421AF34C400767ECA /* Material */ = {
 			isa = PBXGroup;
 			children = (
-				D4F56ECF21AEDFB700767ECA /* Material.cpp */,
 				D4F56EF321AF34B100767ECA /* Textures */,
+				D4F56ECF21AEDFB700767ECA /* Material.cpp */,
 				D4F56EF221AF34AA00767ECA /* Shader */,
 			);
 			path = Material;

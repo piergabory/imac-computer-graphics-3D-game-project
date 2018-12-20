@@ -12,7 +12,7 @@ namespace GraphicsEngine {
     //Create a Mesh3D from imported .obj
     //Parameters :
         //LocalFilePath - relative path -> absolute path
-    ImportedMesh::ImportedMesh(const LocalFilePath &path) : Mesh (loadModel(path)) {}
+    ImportedMesh::ImportedMesh(const LocalFilePath &path) : Mesh(loadModel(path)) {}
     
     //ASSIMP FUNCTIONS
     //Read file through ASSIMP importer
