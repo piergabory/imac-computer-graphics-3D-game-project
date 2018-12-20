@@ -32,6 +32,8 @@ private:
     std::shared_ptr<GraphicsEngine::Object3D> m_debugGrid;
     std::shared_ptr<GraphicsEngine::Object3D> m_helloTriangle;
     std::shared_ptr<GraphicsEngine::Object3D> m_anotherHelloTriangle;
+    std::shared_ptr<GraphicsEngine::Object3D> m_nanosuit;
+    
 
     std::shared_ptr<GraphicsEngine::Object2D> m_testSquare;
 

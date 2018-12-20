@@ -19,9 +19,13 @@ void GameController::initializeScene() {
     std::unique_ptr<GraphicsEngine::Scene>  scene(new GraphicsEngine::Scene(m_playerPointOfView));
     GraphicsEngine::Controller::instance()->loadScene(scene);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_helloTriangle);
+    
+    GraphicsEngine::Controller::instance()->activeScene()->add(m_nanosuit);
+    
 
     m_anotherHelloTriangle->translate(glm::vec3(-1));
     GraphicsEngine::Controller::instance()->activeScene()->add(m_anotherHelloTriangle);
+    
 }
 
 
@@ -210,12 +214,24 @@ void GameController::createObjects() {
     try {
         // create test texture
         std::shared_ptr<GraphicsEngine::Texture> testTexture = std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/test.png"));
+        
+
 
         // create objects
         m_helloTriangle = std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::Mesh3D>(helloTriangle), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), testTexture));
 
         m_anotherHelloTriangle = std::make_shared<GraphicsEngine::Object3D>(*m_helloTriangle);
+        
 
+     
+        //Create nanosuit object 
+        std::shared_ptr<GraphicsEngine::Texture> nanoTexture = std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/nanosuit/body_showroom_spec.png"));
+        
+        GraphicsEngine::LocalFilePath nanopath("assets/nanosuit/nanosuit.obj");
+        m_nanosuit = std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::ImportedMesh>(nanopath), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), nanoTexture));
+
+
+        
         m_debugGrid = std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/wireframe.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/wireframe.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix")));
 
 
@@ -234,7 +250,7 @@ void GameController::createObjects() {
         std::cout << error.what();
     }
 
-    m_player= new Player(*m_helloTriangle, 0.5);
+    m_player= new Player(*m_helloTriangle, 0.5f);
 }
 
 
