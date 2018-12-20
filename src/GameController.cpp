@@ -1,12 +1,5 @@
 #include "GameController.hpp"
 
-// subscribe the game controller to the SDL event manager.
-void GameController::linkEventObserver() {
-    Events::Manager::instance()->subscribe((QuitEventObserver*) this);
-    Events::Manager::instance()->subscribe((KeyboardEventObserver*) this);
-    Events::Manager::instance()->subscribe((MouseEventObserver*) this);
-}
-
 
 // creates scene and load objects
 void GameController::initializeScene() {
@@ -39,7 +32,9 @@ void GameController::setup() {
     initializeScene();
 
     // subscribe event manager
-    linkEventObserver();
+    Events::Manager::instance()->subscribe((QuitEventObserver*) this);
+    Events::Manager::instance()->subscribe((KeyboardEventObserver*) this);
+    Events::Manager::instance()->subscribe((MouseEventObserver*) this);
 }
 
 
@@ -51,10 +46,6 @@ bool GameController::loop() {
 
     // read the time at the start of the game loop
     Uint32 startTime = SDL_GetTicks();
-
-    // respond to events
-    // TODO utiliser l'EventManager
-    handlePressedKey();
 
     // start new render cycle
     GraphicsEngine::Controller::instance()->render();
@@ -82,45 +73,33 @@ void GameController::quitEventHandler() {
 
 // a déolacer dans l'EventManager
 void GameController::keyRealeaseHandler(unsigned char keycode) {
-    m_pressedKeys.erase(keycode);
-    // check if debug shortcuts is activated (CTRL-SHIFT):
-    if (m_pressedKeys.find(225) != m_pressedKeys.end() && m_pressedKeys.find(224) != m_pressedKeys.end()) {
+// check if debug shortcuts is activated (CTRL-SHIFT):
+    switch (keycode) {
+            // we ignore Shift and Ctrl
+        case 224: case 225: break;
 
-        switch (keycode) {
-                // we ignore Shift and Ctrl
-            case 224: case 225: break;
+        case 'g':
+            m_isDebugGridActive = !m_isDebugGridActive;
+            std::cout << "Toggling Grid " << (m_isDebugGridActive? "on" : "off") << std::endl;
+            if (m_isDebugGridActive) {
+                GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
+            } else {
+                GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
+            }
 
-            case 'g':
-                m_isDebugGridActive = !m_isDebugGridActive;
-                std::cout << "Toggling Grid " << (m_isDebugGridActive? "on" : "off") << std::endl;
-                if (m_isDebugGridActive) {
-                    GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
-                } else {
-                    GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
-                }
+            break;
 
-                break;
-
-            default:
-                std::cout << "DEBUG! ";
-                std::cout << "char: " << keycode << " int: " << (int) keycode << std::endl;
-                break;
-        }
+        default:
+            std::cout << "DEBUG! ";
+            std::cout << "char: " << keycode << " int: " << (int) keycode << std::endl;
+            break;
     }
 };
 
 
-
-void GameController::keyDownHandler(unsigned char keycode) {
-    m_pressedKeys.insert(keycode);
-};
-
-
-
-void GameController::handlePressedKey() {
+void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
     const float KEYBOARD_CAMERA_CONTROL_SPEED = 0.1;
-
-    for (unsigned char key : m_pressedKeys) {
+    for (unsigned char key : pressedKeys) {
         switch (key) {
             case 224: case 225: break;
 
@@ -280,5 +259,4 @@ GameController* GameController::instance() {
     return s_controllerInstance;
 }
 
-GameController::GameController() {
-}
+GameController::GameController() {}

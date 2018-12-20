@@ -29,7 +29,7 @@ public:
      * @param[in] obj L'objet qui servira de mesh pour le joueur
      * @param[in] speed distance qui sera rajouté aux coordonnées à chaque fois qu'une touche sera pressée
      */
-    Player(const GraphicsEngine::Object3D &obj, const int speed, const glm::vec3 &position = glm::vec3(0.f)): m_characterModel(obj), m_speed(speed), m_position(position){
+    Player(const GraphicsEngine::Object3D &obj, const int speed = 1, const glm::vec3 &position = glm::vec3(0.f)): m_characterModel(obj), m_speed(speed), m_position(position){
         //lever les erreurs
         if(speed<0){
             throw std::invalid_argument( "Player speed can not be negative.");

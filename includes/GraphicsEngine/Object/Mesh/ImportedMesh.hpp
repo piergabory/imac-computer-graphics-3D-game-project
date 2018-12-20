@@ -46,7 +46,7 @@ namespace GraphicsEngine {
     {
   
     public:
-        ImportedMesh(LocalFilePath &path) ;
+        ImportedMesh(LocalFilePath const &path) ;
         
         
     private:
@@ -54,7 +54,7 @@ namespace GraphicsEngine {
         //ASSIMP FUNCTIONS
         
         /// \brief loads a model with supported ASSIMP extensions from file and returns a vector of vertices.
-        static std::vector<Vertex3D> loadModel(LocalFilePath &path);
+        static std::vector<Vertex3D> loadModel(const LocalFilePath &path);
         
         /// \brief process ASSIMP's root node recursively
         static std::vector<Vertex3D> processNode(aiNode *node, const aiScene *scene);
