@@ -238,7 +238,7 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createSkyBox() {
 
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
     try {
-        return std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::ImportedMesh>(GraphicsEngine::LocalFilePath("assets/cube.obj")), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/flatTexture.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/cubemap_a.jpg"))));
+        return std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::ImportedMesh>(GraphicsEngine::LocalFilePath("assets/cube.obj")), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/flatTexture.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/cubemap_a.png"))));
     } catch(GraphicsEngine::InitialisationException error) {
         std::cout << error.what();
         return nullptr;
