@@ -19,6 +19,9 @@
 		D46A4A8521A0D0B50096F02F /* GraphicsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */; };
 		D46A4A8621A0D0B50096F02F /* CommonStructs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */; };
 		D4EA624E21C955A400CBFCAC /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4EA624C21C955A400CBFCAC /* Button.cpp */; };
+		D4EA625F21CB8E2B00CBFCAC /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4EA625D21CB8E2B00CBFCAC /* Game.cpp */; };
+		D4EA626821CBB36C00CBFCAC /* ImportedMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4EA626721CBB36C00CBFCAC /* ImportedMesh.cpp */; };
+		D4EA626B21CBB56000CBFCAC /* libassimp.4.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D4EA626A21CBB56000CBFCAC /* libassimp.4.1.0.dylib */; };
 		D4F56EC121AEAA6300767ECA /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4F56EBF21AEAA6300767ECA /* Texture.cpp */; };
 		D4F56EC421AEAC8300767ECA /* ImageData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4F56EC221AEAC8300767ECA /* ImageData.cpp */; };
 		D4F56EC621AEB29400767ECA /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F56EC521AEB29400767ECA /* SDL2_image.framework */; };
@@ -60,8 +63,7 @@
 		D42A1DD521C7D77E00B2F379 /* Object2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Object2D.cpp; sourceTree = "<group>"; };
 		D42A1DD621C7D77E00B2F379 /* Object2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Object2D.hpp; sourceTree = "<group>"; };
 		D42A1DD821C7D8C500B2F379 /* Object.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Object.hpp; sourceTree = "<group>"; };
-		D44D288721C081E400492876 /* wireframe.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = wireframe.fs.glsl; sourceTree = "<group>"; };
-		D44D288821C081E400492876 /* wireframe.vs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = wireframe.vs.glsl; sourceTree = "<group>"; };
+		D44D288821C081E400492876 /* flatColor.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = flatColor.fs.glsl; sourceTree = "<group>"; };
 		D460750B21BD883E00BAF7D0 /* GameController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameController.cpp; sourceTree = "<group>"; };
 		D460750C21BD883E00BAF7D0 /* GameController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameController.hpp; sourceTree = "<group>"; };
 		D46A496521A0C5130096F02F /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
@@ -89,14 +91,20 @@
 		D46A4A7C21A0CF120096F02F /* glxew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glxew.h; sourceTree = "<group>"; };
 		D46A4A7D21A0CF120096F02F /* wglew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wglew.h; sourceTree = "<group>"; };
 		D46A4A7E21A0CF120096F02F /* glew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glew.h; sourceTree = "<group>"; };
-		D46A4B8C21A2FDF90096F02F /* triangle.vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = triangle.vs.glsl; sourceTree = "<group>"; };
-		D46A4B8D21A2FE020096F02F /* triangle.fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = triangle.fs.glsl; sourceTree = "<group>"; };
+		D46A4B8C21A2FDF90096F02F /* perspective.vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = perspective.vs.glsl; sourceTree = "<group>"; };
+		D46A4B8D21A2FE020096F02F /* flatTexture.fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = flatTexture.fs.glsl; sourceTree = "<group>"; };
 		D46A4B8F21A318F40096F02F /* Scene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Scene.hpp; sourceTree = "<group>"; };
 		D4EA624A21C938FF00CBFCAC /* 2D.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2D.fs.glsl; sourceTree = "<group>"; };
 		D4EA624B21C938FF00CBFCAC /* 2D.vs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2D.vs.glsl; sourceTree = "<group>"; };
 		D4EA624C21C955A400CBFCAC /* Button.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
 		D4EA624D21C955A400CBFCAC /* Button.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Button.hpp; sourceTree = "<group>"; };
 		D4EA625121CA674D00CBFCAC /* ImportedMesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImportedMesh.hpp; sourceTree = "<group>"; };
+		D4EA625D21CB8E2B00CBFCAC /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		D4EA625E21CB8E2B00CBFCAC /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
+		D4EA626021CB910D00CBFCAC /* Player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		D4EA626221CB93A200CBFCAC /* monkey1.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = monkey1.obj; sourceTree = "<group>"; };
+		D4EA626721CBB36C00CBFCAC /* ImportedMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImportedMesh.cpp; sourceTree = "<group>"; };
+		D4EA626A21CBB56000CBFCAC /* libassimp.4.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.4.1.0.dylib; path = ../../../../../../usr/local/Cellar/assimp/4.1.0/lib/libassimp.4.1.0.dylib; sourceTree = "<group>"; };
 		D4F56EBF21AEAA6300767ECA /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
 		D4F56EC021AEAA6300767ECA /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 		D4F56EC221AEAC8300767ECA /* ImageData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImageData.cpp; sourceTree = "<group>"; };
@@ -123,8 +131,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4F56EE821AF25F300767ECA /* SDL2.framework in Frameworks */,
+				D4EA626B21CBB56000CBFCAC /* libassimp.4.1.0.dylib in Frameworks */,
 				D46A4A7F21A0CFC50096F02F /* libGLEW.2.1.0.dylib in Frameworks */,
+				D4F56EE821AF25F300767ECA /* SDL2.framework in Frameworks */,
 				D4F56EC621AEB29400767ECA /* SDL2_image.framework in Frameworks */,
 				D46A4A7621A0CE940096F02F /* Cocoa.framework in Frameworks */,
 				D46A4A7521A0CE860096F02F /* OpenGL.framework in Frameworks */,
@@ -172,7 +181,7 @@
 				D46A496621A0C5130096F02F /* src */,
 				D46A4A2F21A0C5130096F02F /* obj */,
 				D46A496B21A0C5130096F02F /* shaders */,
-				D46A4A2E21A0C5130096F02F /* textures */,
+				D4EA626121CB93A200CBFCAC /* assets */,
 				D46A488621A0C3F10096F02F /* Products */,
 				D46A4A3521A0C5960096F02F /* Frameworks */,
 			);
@@ -189,6 +198,7 @@
 		D46A496621A0C5130096F02F /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D4EA625D21CB8E2B00CBFCAC /* Game.cpp */,
 				D460750B21BD883E00BAF7D0 /* GameController.cpp */,
 				D46A4A7321A0CE220096F02F /* main.cpp */,
 				D4F56EF921AFE83700767ECA /* Events */,
@@ -202,10 +212,9 @@
 			children = (
 				D4EA624A21C938FF00CBFCAC /* 2D.fs.glsl */,
 				D4EA624B21C938FF00CBFCAC /* 2D.vs.glsl */,
-				D44D288721C081E400492876 /* wireframe.fs.glsl */,
-				D44D288821C081E400492876 /* wireframe.vs.glsl */,
-				D46A4B8C21A2FDF90096F02F /* triangle.vs.glsl */,
-				D46A4B8D21A2FE020096F02F /* triangle.fs.glsl */,
+				D44D288821C081E400492876 /* flatColor.fs.glsl */,
+				D46A4B8C21A2FDF90096F02F /* perspective.vs.glsl */,
+				D46A4B8D21A2FE020096F02F /* flatTexture.fs.glsl */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -222,7 +231,9 @@
 		D46A496F21A0C5130096F02F /* includes */ = {
 			isa = PBXGroup;
 			children = (
+				D4EA625E21CB8E2B00CBFCAC /* Game.hpp */,
 				D460750C21BD883E00BAF7D0 /* GameController.hpp */,
+				D4EA626021CB910D00CBFCAC /* Player.hpp */,
 				D4F56EF821AFE83000767ECA /* Events */,
 				D46A4A4921A0CD870096F02F /* GraphicsEngine */,
 			);
@@ -248,6 +259,7 @@
 		D46A4A3521A0C5960096F02F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4EA626A21CBB56000CBFCAC /* libassimp.4.1.0.dylib */,
 				D4F56EE721AF25F300767ECA /* SDL2.framework */,
 				D4F56EC521AEB29400767ECA /* SDL2_image.framework */,
 				D46A4A7A21A0CF120096F02F /* include */,
@@ -323,6 +335,24 @@
 			path = Mesh;
 			sourceTree = "<group>";
 		};
+		D4EA626121CB93A200CBFCAC /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A2E21A0C5130096F02F /* textures */,
+				D4EA626221CB93A200CBFCAC /* monkey1.obj */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		D4EA626921CBB36F00CBFCAC /* Mesh */ = {
+			isa = PBXGroup;
+			children = (
+				D46A4A6721A0CE110096F02F /* Mesh.cpp */,
+				D4EA626721CBB36C00CBFCAC /* ImportedMesh.cpp */,
+			);
+			path = Mesh;
+			sourceTree = "<group>";
+		};
 		D4F56EEC21AF33F200767ECA /* Material */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,7 +398,7 @@
 				D42A1DD521C7D77E00B2F379 /* Object2D.cpp */,
 				D4F56EC721AEC28500767ECA /* Object3D.cpp */,
 				D4F56EF421AF34C400767ECA /* Material */,
-				D46A4A6721A0CE110096F02F /* Mesh.cpp */,
+				D4EA626921CBB36F00CBFCAC /* Mesh */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -395,8 +425,8 @@
 		D4F56EF421AF34C400767ECA /* Material */ = {
 			isa = PBXGroup;
 			children = (
-				D4F56ECF21AEDFB700767ECA /* Material.cpp */,
 				D4F56EF321AF34B100767ECA /* Textures */,
+				D4F56ECF21AEDFB700767ECA /* Material.cpp */,
 				D4F56EF221AF34AA00767ECA /* Shader */,
 			);
 			path = Material;
@@ -506,6 +536,8 @@
 				D4F56EC921AEC28500767ECA /* Object3D.cpp in Sources */,
 				D46A4A7421A0CE220096F02F /* main.cpp in Sources */,
 				D4F56EC421AEAC8300767ECA /* ImageData.cpp in Sources */,
+				D4EA626821CBB36C00CBFCAC /* ImportedMesh.cpp in Sources */,
+				D4EA625F21CB8E2B00CBFCAC /* Game.cpp in Sources */,
 				D46A4A8621A0D0B50096F02F /* CommonStructs.cpp in Sources */,
 				D4F56ED121AEDFB700767ECA /* Material.cpp in Sources */,
 				D42A1DD721C7D77E00B2F379 /* Object2D.cpp in Sources */,
@@ -688,6 +720,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
+					/usr/local/Cellar/assimp/4.1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = build;
@@ -713,6 +746,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
+					/usr/local/Cellar/assimp/4.1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = build;

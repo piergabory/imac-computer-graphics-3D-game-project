@@ -1,27 +1,24 @@
 #include "GameController.hpp"
 
-// subscribe the game controller to the SDL event manager.
-void GameController::linkEventObserver() {
-    Events::Manager::instance()->subscribe((QuitEventObserver*) this);
-    Events::Manager::instance()->subscribe((KeyboardEventObserver*) this);
-    Events::Manager::instance()->subscribe((MouseEventObserver*) this);
-}
-
 
 // creates scene and load objects
 void GameController::initializeScene() {
-    createObjects();
+    initializeDebugGrid();
 
     std::unique_ptr<GraphicsEngine::Canvas> canvas(new GraphicsEngine::Canvas());
     GraphicsEngine::Controller::instance()->loadGUI(canvas);
-    GraphicsEngine::Controller::instance()->activeGUI()->add(m_testSquare);
 
     std::unique_ptr<GraphicsEngine::Scene>  scene(new GraphicsEngine::Scene(m_playerPointOfView));
     GraphicsEngine::Controller::instance()->loadScene(scene);
-    GraphicsEngine::Controller::instance()->activeScene()->add(m_helloTriangle);
 
-    m_anotherHelloTriangle->translate(glm::vec3(-1));
-    GraphicsEngine::Controller::instance()->activeScene()->add(m_anotherHelloTriangle);
+
+    // create objects
+    std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
+    m_skybox = createSkyBox();
+
+    // adds objects in the scene
+    GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
+    GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
 }
 
 
@@ -31,11 +28,16 @@ void GameController::setup() {
     GraphicsEngine::Controller::instance()->setup();
     GraphicsEngine::Controller::instance()->printInfos();
 
+
+    m_currentGame = std::unique_ptr<Game>(new Game);
+
     // create scene
     initializeScene();
 
     // subscribe event manager
-    linkEventObserver();
+    Events::Manager::instance()->subscribe((QuitEventObserver*) this);
+    Events::Manager::instance()->subscribe((KeyboardEventObserver*) this);
+    Events::Manager::instance()->subscribe((MouseEventObserver*) this);
 }
 
 
@@ -47,10 +49,6 @@ bool GameController::loop() {
 
     // read the time at the start of the game loop
     Uint32 startTime = SDL_GetTicks();
-
-    // respond to events
-    // TODO utiliser l'EventManager
-    handlePressedKey();
 
     // start new render cycle
     GraphicsEngine::Controller::instance()->render();
@@ -78,45 +76,34 @@ void GameController::quitEventHandler() {
 
 // a déolacer dans l'EventManager
 void GameController::keyRealeaseHandler(unsigned char keycode) {
-    m_pressedKeys.erase(keycode);
     // check if debug shortcuts is activated (CTRL-SHIFT):
-    if (m_pressedKeys.find(225) != m_pressedKeys.end() && m_pressedKeys.find(224) != m_pressedKeys.end()) {
+    switch (keycode) {
+            // we ignore Shift and Ctrl
+        case 224: case 225: break;
 
-        switch (keycode) {
-                // we ignore Shift and Ctrl
-            case 224: case 225: break;
+        case 'g':
+            std::cout << "Toggling Grid " << (m_isDebugGridActive? "off" : "on") << std::endl;
+            if (m_debugGrid){
+                m_debugGrid.reset();
+                GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
+            } else {
+                m_debugGrid = initializeDebugGrid();
+                GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
+            }
+            m_isDebugGridActive = !m_isDebugGridActive;
+            break;
 
-            case 'g':
-                m_isDebugGridActive = !m_isDebugGridActive;
-                std::cout << "Toggling Grid " << (m_isDebugGridActive? "on" : "off") << std::endl;
-                if (m_isDebugGridActive) {
-                    GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
-                } else {
-                    GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
-                }
-
-                break;
-
-            default:
-                std::cout << "DEBUG! ";
-                std::cout << "char: " << keycode << " int: " << (int) keycode << std::endl;
-                break;
-        }
+        default:
+            std::cout << "DEBUG! ";
+            std::cout << "char: " << keycode << " int: " << (int) keycode << std::endl;
+            break;
     }
 };
 
 
-
-void GameController::keyDownHandler(unsigned char keycode) {
-    m_pressedKeys.insert(keycode);
-};
-
-
-
-void GameController::handlePressedKey() {
+void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
     const float KEYBOARD_CAMERA_CONTROL_SPEED = 0.1;
-
-    for (unsigned char key : m_pressedKeys) {
+    for (unsigned char key : pressedKeys) {
         switch (key) {
             case 224: case 225: break;
 
@@ -186,57 +173,6 @@ void GameController::handlePressedKey() {
     }
 }
 
-void GameController::createObjects() {
-    // create meshes
-    std::vector<GraphicsEngine::Vertex3D> grid, helloTriangle;
-
-    // hello triangle
-    helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(-0.5f,0.f,0.f), glm::vec3(1.f,0.f,0.f), glm::vec2(0.f,0.f)));
-    helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(0.5f,0.f,0.f), glm::vec3(0.f,1.f,0.f), glm::vec2(0.5f,1.f)));
-    helloTriangle.push_back(GraphicsEngine::Vertex3D(glm::vec3(0.f,1.f,0.f), glm::vec3(0.f,0.f,1.f), glm::vec2(1.f,0.0f)));
-
-    // debug grid
-    float gridScale = 5;
-    uint gridsize = 30;
-    for (uint i = 0; i < gridsize; ++i) {
-        float position = i * 2.f / gridsize - 1;
-        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(position,0.f,1.f), glm::vec3(0), glm::vec2(0)));
-        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(position,0.f,-1.f), glm::vec3(0), glm::vec2(0)));
-        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
-        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(-1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
-    }
-
-
-    try {
-        // create test texture
-        std::shared_ptr<GraphicsEngine::Texture> testTexture = std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/test.png"));
-
-        // create objects
-        m_helloTriangle = std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::Mesh3D>(helloTriangle), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/triangle.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/triangle.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), testTexture));
-
-        m_anotherHelloTriangle = std::make_shared<GraphicsEngine::Object3D>(*m_helloTriangle);
-
-        m_debugGrid = std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/wireframe.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/wireframe.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix")));
-
-
-        std::function<void(GraphicsEngine::Button*, unsigned char)> callback = [](GraphicsEngine::Button* target, unsigned char mouseButton) -> void {
-            std::cout << "you clicked the button" << std::endl;
-        };
-
-        m_testSquare = std::make_shared<GraphicsEngine::Button>(
-            glm::vec2(0, 0),
-            glm::vec2(0.1, 0.1),
-            std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/test.png")),
-            callback
-        );
-
-    } catch(GraphicsEngine::InitialisationException error) {
-        std::cout << error.what();
-    }
-
-    m_player= new Player(*m_helloTriangle, 0.5);
-}
-
 
 void GameController::mouseMoveHandler(float relativeXMovement,float relativeYMovement) {
     const float MOUSEMOVE_SCALING = 0.006;
@@ -255,6 +191,48 @@ void GameController::mouseReleaseHandler(unsigned char button) {
     SDL_ShowCursor(SDL_DISABLE);
 }
 
+std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() {
+    float gridScale = 5;
+    uint gridsize = 30;
+
+    // create debug grid mesh
+    std::vector<GraphicsEngine::Vertex3D> grid;
+    grid.reserve(4 * gridsize);
+    for (uint i = 0; i < gridsize; ++i) {
+        float position = i * 2.f / gridsize - 1;
+        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(position,0.f,1.f), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(position,0.f,-1.f), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
+        grid.push_back(GraphicsEngine::Vertex3D(gridScale * glm::vec3(-1.f,0.f,position), glm::vec3(0), glm::vec2(0)));
+    }
+
+    try {
+        // create debug object
+        return std::make_shared<GraphicsEngine::Object3D>(
+                                                          std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES),
+                                                          std::make_shared<GraphicsEngine::Material>(
+                                                                                                     std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(
+                                                                                                                                                                GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"),
+                                                                                                                                                                GraphicsEngine::LocalFilePath("shaders/flatColor.fs.glsl")
+                                                                                                                                                                )
+                                                                                                     )
+                                                          );
+    } catch(GraphicsEngine::InitialisationException error) {
+        std::cerr << error.what() << std::endl;
+        return nullptr;
+    }
+}
+
+
+std::shared_ptr<GraphicsEngine::Object3D> GameController::createSkyBox() {
+    try {
+        return std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::ImportedMesh>(GraphicsEngine::LocalFilePath("assets/skyboxtest.obj")), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/flatTexture.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/cubemap_skybox.jpg"))));
+    } catch(GraphicsEngine::InitialisationException error) {
+        std::cout << error.what();
+        return nullptr;
+    }
+}
+
 
 GameController* GameController::s_controllerInstance = nullptr;
 
@@ -264,5 +242,4 @@ GameController* GameController::instance() {
     return s_controllerInstance;
 }
 
-GameController::GameController() {
-}
+GameController::GameController() {}
