@@ -54,7 +54,7 @@
       allowLocationSimulation = "YES">
       <PathRunnable
          runnableDebuggingMode = "0"
-         FilePath = "/Users/piergabory/Developer/IMAC/Projet CG CPP/IMAC2_CG_CPP_Game_Project/bin/product">
+         FilePath = "/Users/djaydnova/Developer/IMAC2_CG_CPP_Game_Project/bin/product">
       </PathRunnable>
       <MacroExpansion>
          <BuildableReference

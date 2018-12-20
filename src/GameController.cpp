@@ -15,10 +15,12 @@ void GameController::initializeScene() {
     // create objects
     std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
     m_skybox = createSkyBox();
+    m_chunk = createChunk();
 
     // adds objects in the scene
     GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
+    GraphicsEngine::Controller::instance()->activeScene()->add(m_chunk);
 }
 
 
@@ -227,6 +229,62 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() 
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createSkyBox() {
     try {
         return std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::ImportedMesh>(GraphicsEngine::LocalFilePath("assets/skyboxtest.obj")), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/flatTexture.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/cubemap_skybox.jpg"))));
+    } catch(GraphicsEngine::InitialisationException error) {
+        std::cout << error.what();
+        return nullptr;
+    }
+}
+
+std::shared_ptr<GraphicsEngine::Object3D> GameController::createObject3D(GraphicsEngine::LocalFilePath meshPath, GraphicsEngine::LocalFilePath texPath,GraphicsEngine::LocalFilePath vsPath, GraphicsEngine::LocalFilePath fsPath) {
+        try {
+            return std::make_shared<GraphicsEngine::Object3D>(importMesh3D(meshPath), createMaterial(loadShaders(vsPath, fsPath), importTexture(texPath)));
+        } catch(GraphicsEngine::InitialisationException error) {
+            std::cout << error.what();
+            return nullptr;
+        }
+}
+
+std::shared_ptr<GraphicsEngine::ImportedMesh> GameController::importMesh3D(GraphicsEngine::LocalFilePath &meshPath) {
+    try {
+        return std::make_shared<GraphicsEngine::ImportedMesh>(meshPath);
+    } catch(GraphicsEngine::InitialisationException error) {
+        std::cout << error.what();
+        return nullptr;
+    }
+}
+
+std::shared_ptr<GraphicsEngine::Material> GameController::createMaterial(std::shared_ptr<GraphicsEngine::PerspectiveShaderProgram> perspectiveShader, std::shared_ptr<GraphicsEngine::Texture> texture) {
+    try {
+        return std::make_shared<GraphicsEngine::Material>(perspectiveShader,  texture);
+    } catch(GraphicsEngine::InitialisationException error) {
+        std::cout << error.what();
+        return nullptr;
+    }
+}
+
+std::shared_ptr<GraphicsEngine::Texture> GameController::importTexture(GraphicsEngine::LocalFilePath & texturePath) {
+    try {
+        return std::make_shared<GraphicsEngine::Texture>(texturePath);
+    } catch(GraphicsEngine::InitialisationException error) {
+        std::cout << error.what();
+        return nullptr;
+    }
+}
+
+std::shared_ptr<GraphicsEngine::PerspectiveShaderProgram> loadShaders(GraphicsEngine::LocalFilePath vertexShader, GraphicsEngine::LocalFilePath fragmentShader) {
+    try {
+        return std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(vertexShader, fragmentShader, "uMVPMatrix", "uMVMatrix", "uNormalMatrix");
+    } catch(GraphicsEngine::InitialisationException error) {
+        std::cout << error.what();
+        return nullptr;
+    }
+}
+
+std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
+    try {
+        ;
+        
+        return createObject3D(GraphicsEngine::LocalFilePath("assets/cube.obj"),GraphicsEngine::LocalFilePath("textures/cubemap_skybox.jpg"),GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/flatTexture.fs.glsl"));
     } catch(GraphicsEngine::InitialisationException error) {
         std::cout << error.what();
         return nullptr;
