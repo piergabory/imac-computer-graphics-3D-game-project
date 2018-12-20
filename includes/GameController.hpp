@@ -2,14 +2,11 @@
 #define GameController_hpp
 
 #include <iostream>
-#include <set>
 #include <memory>
-#include <functional>
 
 #include "Game.hpp"
 #include "GraphicsEngine.hpp"
 #include "EventManager.hpp"
-#include "EventObservers.hpp"
 
 class GameController: Events::QuitEventObserver, Events::KeyboardEventObserver, Events::MouseEventObserver {
 
@@ -25,18 +22,15 @@ private:
     // player point of view, scene camera.
     GraphicsEngine::Camera m_playerPointOfView;
 
-    std::shared_ptr<GraphicsEngine::Object3D> m_debugGrid;
-    std::shared_ptr<GraphicsEngine::Object3D> m_skybox;
-
-
     std::unique_ptr<Game> m_currentGame;
 
-
-    void initializeScene();
+    std::shared_ptr<GraphicsEngine::Object3D> m_debugGrid;
+    std::shared_ptr<GraphicsEngine::Object3D> m_skybox;
 
     static std::shared_ptr<GraphicsEngine::Object3D> initializeDebugGrid();
     static std::shared_ptr<GraphicsEngine::Object3D> createSkyBox();
 
+    void initializeScene();
 
 
     // EVENT OBSERVERS

@@ -28,9 +28,12 @@ namespace GraphicsEngine {
     
     void Object3D::project() {
         static_cast<PerspectiveShaderProgram *>(m_material->shader())->setUniformMatrices(m_modelViewMatrix);
+        
     }
 
 
-    Object3D::Object3D(std::shared_ptr<Mesh3D> mesh, std::shared_ptr<Material> material) : Object<Vertex3D>(mesh, material) {}
+    Object3D::Object3D(std::shared_ptr<Mesh3D> mesh, std::shared_ptr<Material> material) : Object<Vertex3D>(mesh, material) {
+        
+    }
 
 }

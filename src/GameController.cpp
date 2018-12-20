@@ -11,14 +11,14 @@ void GameController::initializeScene() {
     std::unique_ptr<GraphicsEngine::Scene>  scene(new GraphicsEngine::Scene(m_playerPointOfView));
     GraphicsEngine::Controller::instance()->loadScene(scene);
 
-
     // create objects
-    std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
     m_skybox = createSkyBox();
+    std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
+
 
     // adds objects in the scene
-    GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
+    GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
 }
 
 
@@ -105,27 +105,11 @@ void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
     const float KEYBOARD_CAMERA_CONTROL_SPEED = 0.1;
     for (unsigned char key : pressedKeys) {
         switch (key) {
-            case 224: case 225: break;
-
-                // Forward
-            case 'z':
-                m_playerPointOfView.move(glm::vec3(0,0,-KEYBOARD_CAMERA_CONTROL_SPEED));
-                break;
-
-                // Left
-            case 'q':
-                m_playerPointOfView.move(glm::vec3(-KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
-                break;
-
-                // Backward
-            case 's':
-                m_playerPointOfView.move(glm::vec3(0,0,KEYBOARD_CAMERA_CONTROL_SPEED));
-                break;
-
-                // Right
-            case 'd':
-                m_playerPointOfView.move(glm::vec3(KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
-                break;
+                
+            case 'z': m_currentGame->callInput(Controls::UP); break;
+            case 'q': m_currentGame->callInput(Controls::LEFT); break;
+            case 's': m_currentGame->callInput(Controls::DOWN); break;
+            case 'd': m_currentGame->callInput(Controls::RIGHT); break;
 
                 // Up
             case 'w':
@@ -209,14 +193,14 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() 
     try {
         // create debug object
         return std::make_shared<GraphicsEngine::Object3D>(
-                                                          std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES),
-                                                          std::make_shared<GraphicsEngine::Material>(
-                                                                                                     std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(
-                                                                                                                                                                GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"),
-                                                                                                                                                                GraphicsEngine::LocalFilePath("shaders/flatColor.fs.glsl")
-                                                                                                                                                                )
-                                                                                                     )
-                                                          );
+            std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES),
+            std::make_shared<GraphicsEngine::Material>(
+            std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(
+            GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"),
+            GraphicsEngine::LocalFilePath("shaders/flatColor.fs.glsl")
+            )
+            )
+            );
     } catch(GraphicsEngine::InitialisationException error) {
         std::cerr << error.what() << std::endl;
         return nullptr;

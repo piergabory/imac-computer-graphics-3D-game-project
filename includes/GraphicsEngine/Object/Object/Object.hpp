@@ -36,7 +36,6 @@ namespace GraphicsEngine {
         /// \brief Material, represent the object behavior with light (wrapper of Shaders and textures)
         std::shared_ptr<Material> m_material;
 
-
     public:
         /// \brief apply material and push the mesh vertices in the graphic pipeline to be rendered
         void draw() const {
@@ -61,6 +60,8 @@ namespace GraphicsEngine {
         
         // destructor
         ~Object() {}
+
+        std::string m_debug;
     };
 
 }
