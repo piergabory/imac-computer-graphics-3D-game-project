@@ -27,6 +27,7 @@ private:
 
     std::shared_ptr<GraphicsEngine::Object3D> m_debugGrid;
     std::shared_ptr<GraphicsEngine::Object3D> m_skybox;
+    std::shared_ptr<GraphicsEngine::Object3D> m_chunk;
 
 
     std::unique_ptr<Game> m_currentGame;
@@ -36,6 +37,7 @@ private:
 
     static std::shared_ptr<GraphicsEngine::Object3D> initializeDebugGrid();
     static std::shared_ptr<GraphicsEngine::Object3D> createSkyBox();
+    static std::shared_ptr<GraphicsEngine::Object3D> createChunk();
 
 
 
