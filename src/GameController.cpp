@@ -11,8 +11,14 @@ void GameController::initializeScene() {
     std::unique_ptr<GraphicsEngine::Scene>  scene(new GraphicsEngine::Scene(m_playerPointOfView));
     GraphicsEngine::Controller::instance()->loadScene(scene);
 
+
+    // create objects
     std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
+    m_skybox = createSkyBox();
+
+    // adds objects in the scene
     GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
+    GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
 }
 
 
@@ -168,8 +174,6 @@ void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
 }
 
 
-
-
 void GameController::mouseMoveHandler(float relativeXMovement,float relativeYMovement) {
     const float MOUSEMOVE_SCALING = 0.006;
     m_playerPointOfView.pan(glm::vec3(0,-1,0), relativeXMovement * MOUSEMOVE_SCALING);
@@ -205,16 +209,26 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() 
     try {
         // create debug object
         return std::make_shared<GraphicsEngine::Object3D>(
-          std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES),
-            std::make_shared<GraphicsEngine::Material>(
-              std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(
-                  GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"),
-                  GraphicsEngine::LocalFilePath("shaders/flatColor.fs.glsl")
-               )
-            )
-         );
+                                                          std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES),
+                                                          std::make_shared<GraphicsEngine::Material>(
+                                                                                                     std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(
+                                                                                                                                                                GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"),
+                                                                                                                                                                GraphicsEngine::LocalFilePath("shaders/flatColor.fs.glsl")
+                                                                                                                                                                )
+                                                                                                     )
+                                                          );
     } catch(GraphicsEngine::InitialisationException error) {
         std::cerr << error.what() << std::endl;
+        return nullptr;
+    }
+}
+
+
+std::shared_ptr<GraphicsEngine::Object3D> GameController::createSkyBox() {
+    try {
+        return std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::ImportedMesh>(GraphicsEngine::LocalFilePath("assets/skyboxtest.obj")), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/flatTexture.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/cubemap_skybox.jpg"))));
+    } catch(GraphicsEngine::InitialisationException error) {
+        std::cout << error.what();
         return nullptr;
     }
 }

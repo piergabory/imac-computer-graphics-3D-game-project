@@ -26,6 +26,8 @@ private:
     GraphicsEngine::Camera m_playerPointOfView;
 
     std::shared_ptr<GraphicsEngine::Object3D> m_debugGrid;
+    std::shared_ptr<GraphicsEngine::Object3D> m_skybox;
+
 
     std::unique_ptr<Game> m_currentGame;
 
@@ -33,6 +35,7 @@ private:
     void initializeScene();
 
     static std::shared_ptr<GraphicsEngine::Object3D> initializeDebugGrid();
+    static std::shared_ptr<GraphicsEngine::Object3D> createSkyBox();
 
 
 
