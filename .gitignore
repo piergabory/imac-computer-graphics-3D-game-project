@@ -7,3 +7,4 @@ html/
 *.tag
 .vscode
 DoxygenGenerated
+*.xcuserstate
