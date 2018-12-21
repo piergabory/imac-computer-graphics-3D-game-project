@@ -15,10 +15,12 @@ void GameController::initializeScene() {
     // create objects
     std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
     m_skybox = createSkyBox();
+    m_chunk = createChunk();
 
     // adds objects in the scene
     GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
+    GraphicsEngine::Controller::instance()->activeScene()->add(m_chunk);
 }
 
 
@@ -234,6 +236,26 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createSkyBox() {
 }
 
 
+
+std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
+    try {
+        
+        GraphicsEngine::LocalFilePath chunkmesh("assets/cube.obj");
+        GraphicsEngine::LocalFilePath chunktex("textures/cubemap_a.png");
+        GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
+        GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
+        
+        return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
+
+    }
+    
+    catch(GraphicsEngine::InitialisationException error) {
+        std::cout << error.what();
+        return nullptr;
+    }
+}
+
+
 GameController* GameController::s_controllerInstance = nullptr;
 
 GameController* GameController::instance() {
@@ -242,4 +264,30 @@ GameController* GameController::instance() {
     return s_controllerInstance;
 }
 
+
+
+
+
+
+//FUNCTION TO CREATE 3D OBJECTS
+
+//Loading assets and shaders from relative filepaths to create a 3D object
+std::shared_ptr<GraphicsEngine::Object3D> GameController::createObject3D(GraphicsEngine::LocalFilePath meshPath, GraphicsEngine::LocalFilePath texPath,GraphicsEngine::LocalFilePath vsPath, GraphicsEngine::LocalFilePath fsPath) {
+    try {
+        return std::make_shared<GraphicsEngine::Object3D>
+        (
+         std::make_shared<GraphicsEngine::ImportedMesh>(meshPath),
+         std::make_shared<GraphicsEngine::Material>(
+                                                    std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(vsPath, fsPath,"uMVPMatrix", "uMVMatrix", "uNormalMatrix"), std::make_shared<GraphicsEngine::Texture>(texPath)
+                                                    )
+         );
+    } catch(GraphicsEngine::InitialisationException error) {
+        std::cout << error.what();
+        return nullptr;
+    }
+}
+
+
+
+//CONSTRUCTOR
 GameController::GameController() {}
