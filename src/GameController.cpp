@@ -269,7 +269,7 @@ GameController* GameController::instance() {
 
 
 
-//FUNCTIONS TO CREATE 3D OBJECTS
+//FUNCTION TO CREATE 3D OBJECTS
 
 //Loading assets and shaders from relative filepaths to create a 3D object
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createObject3D(GraphicsEngine::LocalFilePath meshPath, GraphicsEngine::LocalFilePath texPath,GraphicsEngine::LocalFilePath vsPath, GraphicsEngine::LocalFilePath fsPath) {
@@ -287,45 +287,7 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createObject3D(Graphic
     }
 }
 
-//Loading a Mesh3D from an .obj filepath
-std::shared_ptr<GraphicsEngine::ImportedMesh> GameController::importMesh3D(GraphicsEngine::LocalFilePath &meshPath) {
-    try {
-        return std::make_shared<GraphicsEngine::ImportedMesh>(meshPath);
-    } catch(GraphicsEngine::InitialisationException error) {
-        std::cout << error.what();
-        return nullptr;
-    }
-}
 
-//Create a Material using shaders and texture
-std::shared_ptr<GraphicsEngine::Material> GameController::createMaterial(std::shared_ptr<GraphicsEngine::PerspectiveShaderProgram> perspectiveShader, std::shared_ptr<GraphicsEngine::Texture> texture) {
-    try {
-        return std::make_shared<GraphicsEngine::Material>(perspectiveShader,  texture);
-    } catch(GraphicsEngine::InitialisationException error) {
-        std::cout << error.what();
-        return nullptr;
-    }
-}
-
-//Loads a Texture from a .png filepath
-std::shared_ptr<GraphicsEngine::Texture> GameController::importTexture(GraphicsEngine::LocalFilePath & texturePath) {
-    try {
-        return std::make_shared<GraphicsEngine::Texture>(texturePath);
-    } catch(GraphicsEngine::InitialisationException error) {
-        std::cout << error.what();
-        return nullptr;
-    }
-}
-
-//Loads a vertex shader and a fragment shader for Material
-std::shared_ptr<GraphicsEngine::PerspectiveShaderProgram> loadShaders(GraphicsEngine::LocalFilePath vertexShader, GraphicsEngine::LocalFilePath fragmentShader) {
-    try {
-        return std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(vertexShader, fragmentShader, "uMVPMatrix", "uMVMatrix", "uNormalMatrix");
-    } catch(GraphicsEngine::InitialisationException error) {
-        std::cout << error.what();
-        return nullptr;
-    }
-}
 
 //CONSTRUCTOR
 GameController::GameController() {}
