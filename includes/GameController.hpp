@@ -5,6 +5,7 @@
 #include <set>
 #include <memory>
 #include <functional>
+#include <string>
 
 #include "Game.hpp"
 #include "GraphicsEngine.hpp"
@@ -38,12 +39,11 @@ private:
     static std::shared_ptr<GraphicsEngine::Object3D> initializeDebugGrid();
     static std::shared_ptr<GraphicsEngine::Object3D> createSkyBox();
     static std::shared_ptr<GraphicsEngine::Object3D> createChunk();
-    static std::shared_ptr<GraphicsEngine::Object3D>
-    createObject3D(GraphicsEngine::LocalFilePath meshPath, GraphicsEngine::LocalFilePath texturePath,GraphicsEngine::LocalFilePath vertexShader, GraphicsEngine::LocalFilePath);
-    
+    static std::shared_ptr<GraphicsEngine::Object3D> createObject3D(GraphicsEngine::LocalFilePath meshPath, GraphicsEngine::LocalFilePath texPath,GraphicsEngine::LocalFilePath vsPath, GraphicsEngine::LocalFilePath fsPath);
+
     static std::shared_ptr<GraphicsEngine::ImportedMesh> importMesh3D (GraphicsEngine::LocalFilePath & meshPath);
     static std::shared_ptr<GraphicsEngine::Material> createMaterial(std::shared_ptr<GraphicsEngine::PerspectiveShaderProgram> perspectiveShader, std::shared_ptr<GraphicsEngine::Texture> texture);
-    
+
     static std::shared_ptr<GraphicsEngine::Texture> importTexture(GraphicsEngine::LocalFilePath & texturePath);
     
     static std::shared_ptr<GraphicsEngine::PerspectiveShaderProgram> loadShaders(GraphicsEngine::LocalFilePath vertexShader, GraphicsEngine::LocalFilePath fragmentShader);
