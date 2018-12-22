@@ -13,22 +13,28 @@
 #include "Object.hpp"
 #include "Animation.hpp"
 
-enum class Direction: char {
-    LEFT = -1,
-    RIGHT = 1
-};
-
-enum class Position: char {
-    LEFT = -1,
-    MIDDLE = 0,
-    RIGHT = 1
-};
+enum class Direction: char { LEFT, RIGHT};
+enum class Position { LEFT, MIDDLE, RIGHT };
+enum class Status { STANDING, JUMPING, CROUCHING };
 
 class Player : Events::KeyboardEventObserver {
 private:
+
+    Position m_position = Position::MIDDLE;
+    Status m_status = Status::STANDING;
+
     std::shared_ptr<GraphicsEngine::Object3D> m_characterModel;   //eventuelement changer avec un MooveObject
-    char position;
-    
+
+    GraphicsEngine::Animation m_jumpingAnimation;
+    GraphicsEngine::Animation m_crouchingAnimation;
+    GraphicsEngine::Animation m_standingAnimation;
+
+    GraphicsEngine::Animation m_moveToLeftLaneAnimation;
+    GraphicsEngine::Animation m_moveToMiddleLaneAnimation;
+    GraphicsEngine::Animation m_moveToRightLaneAnimation;
+
+    void changeLane(const Position &to);
+
 public:
     Player(std::shared_ptr<GraphicsEngine::Object3D> obj);
     ~Player() {};
@@ -37,7 +43,12 @@ public:
         return m_characterModel;
     }
 
-    void translate(const Direction &to);
-};
+    void jump();
+
+    void crouch();
+
+    void move(const Direction &direction);
+
+ };
 
 #endif

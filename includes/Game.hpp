@@ -9,15 +9,11 @@ enum class Controls : unsigned char {
 };
 
 class Game{
+    
 private:
     Player m_pPlayer;
 
     static std::shared_ptr<GraphicsEngine::Object3D> loadPlayerObject();
-
-    GraphicsEngine::Animation m_moveToLeftPath;
-    GraphicsEngine::Animation m_moveToMiddlePath;
-    GraphicsEngine::Animation m_moveToRightPath;
-    GraphicsEngine::Animation m_playerJump;
 
 public:
 
@@ -28,19 +24,19 @@ public:
     void callInput(Controls control) {
         switch(control) {
             case Controls::LEFT:
-                m_moveToLeftPath.begin();
+                m_pPlayer.move(Direction::LEFT);
                 break;
 
             case Controls::RIGHT:
-                m_moveToRightPath.begin();
+                m_pPlayer.move(Direction::RIGHT);
                 break;
 
             case Controls::UP:
-                m_playerJump.begin();
+                m_pPlayer.jump();
                 break;
-
+                
             case Controls::DOWN:
-                m_moveToMiddlePath.begin();
+                m_pPlayer.crouch();
                 break;
 
         }

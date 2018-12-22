@@ -324,6 +324,15 @@
 			path = GL;
 			sourceTree = "<group>";
 		};
+		D479956121CE490B000E11F3 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				D42A1DD521C7D77E00B2F379 /* Object2D.cpp */,
+				D4F56EC721AEC28500767ECA /* Object3D.cpp */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
 		D4EA624F21C955B400CBFCAC /* GUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,8 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				D479955E21CE2BA1000E11F3 /* Animation.cpp */,
-				D42A1DD521C7D77E00B2F379 /* Object2D.cpp */,
-				D4F56EC721AEC28500767ECA /* Object3D.cpp */,
+				D479956121CE490B000E11F3 /* Object */,
 				D4F56EF421AF34C400767ECA /* Material */,
 				D4EA626921CBB36F00CBFCAC /* Mesh */,
 			);
