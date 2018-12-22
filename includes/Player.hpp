@@ -11,6 +11,7 @@
 #include "GraphicsEngine.hpp"
 #include "EventObservers.hpp"
 #include "Object.hpp"
+#include "Animation.hpp"
 
 enum class Direction: char {
     LEFT = -1,
@@ -29,24 +30,14 @@ private:
     char position;
     
 public:
-    Player(std::shared_ptr<GraphicsEngine::Object3D> obj): m_characterModel(obj) {}
-    ~Player() {
-        
-    };
+    Player(std::shared_ptr<GraphicsEngine::Object3D> obj);
+    ~Player() {};
 
-
-    inline const std::shared_ptr<GraphicsEngine::Object3D> model() const {
+    inline const std::shared_ptr<GraphicsEngine::Object3D>& model() const {
         return m_characterModel;
     }
 
-
-    void translate(const Direction &to) {
-        char direction = static_cast<char>(to);
-        if(abs(position + direction) <= 1) {
-            position += direction;
-            m_characterModel->translate(glm::vec3(direction * 3.0,0,0));
-        }
-    }
+    void translate(const Direction &to);
 };
 
 #endif

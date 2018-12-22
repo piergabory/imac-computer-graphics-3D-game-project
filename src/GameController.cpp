@@ -16,6 +16,9 @@ void GameController::initializeScene() {
     m_skybox = createSkyBox();
     m_chunk = createChunk();
 
+    // skybox max scale before clipping out of far-field
+    m_skybox->scale(glm::vec3(3.14f));
+
     // adds objects in the scene
     GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
@@ -55,10 +58,10 @@ bool GameController::loop() {
     m_chunkframe ++;
     m_chunkframe %= m_CHUNK_FRAME_DURATION;
 
+    GraphicsEngine::Animation::updateAnimations();
+
     // start new render cycle
     GraphicsEngine::Controller::instance()->render();
-
-    m_currentGame->playerModel()->translate(glm::vec3(0,0, std::sin(3.141592654 * 2 * m_chunkframe / (float) m_CHUNK_FRAME_DURATION)));
 
     // fetches new events
     Events::Manager::instance()->pollEvents();
@@ -203,11 +206,11 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() 
             std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES),
             std::make_shared<GraphicsEngine::Material>(
             std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(
-            GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"),
-            GraphicsEngine::LocalFilePath("shaders/flatColor.fs.glsl")
+               GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"),
+               GraphicsEngine::LocalFilePath("shaders/flatColor.fs.glsl")
             )
-            )
-            );
+          )
+       );
     } catch(GraphicsEngine::InitialisationException error) {
         std::cerr << error.what() << std::endl;
         return nullptr;

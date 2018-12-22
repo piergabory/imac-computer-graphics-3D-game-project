@@ -1,6 +1,11 @@
 #include "Game.hpp"
 
-Game::Game() : m_pPlayer(loadPlayerObject()) { }
+Game::Game() :
+    m_pPlayer(loadPlayerObject()),
+    m_moveToLeftPath(GraphicsEngine::makeLinearTranslation(m_pPlayer.model(), 30, glm::vec3(-1.f,0,0))),
+    m_moveToMiddlePath(GraphicsEngine::makeLinearTranslation(m_pPlayer.model(), 30, glm::vec3(0.f,0,0))),
+    m_moveToRightPath(GraphicsEngine::makeLinearTranslation(m_pPlayer.model(), 30, glm::vec3(1.f,0,0)))
+{ }
 
 Game::~Game() {}
 

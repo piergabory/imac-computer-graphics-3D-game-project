@@ -14,6 +14,10 @@ private:
 
     static std::shared_ptr<GraphicsEngine::Object3D> loadPlayerObject();
 
+    GraphicsEngine::Animation m_moveToLeftPath;
+    GraphicsEngine::Animation m_moveToMiddlePath;
+    GraphicsEngine::Animation m_moveToRightPath;
+
 public:
 
     inline std::shared_ptr<GraphicsEngine::Object3D> playerModel() const {
@@ -23,15 +27,15 @@ public:
     void callInput(Controls control) {
         switch(control) {
             case Controls::LEFT:
-                m_pPlayer.translate(Direction::LEFT);
+                m_moveToLeftPath.begin();
                 break;
 
             case Controls::RIGHT:
-                m_pPlayer.translate(Direction::RIGHT);
+                m_moveToRightPath.begin();
                 break;
 
             case Controls::UP:
-                //m_pPlayer.translate(Direction::RIGHT);
+                m_moveToMiddlePath.begin();
                 break;
 
             case Controls::DOWN:

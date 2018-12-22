@@ -18,6 +18,8 @@
 		D46A4A8421A0D0B50096F02F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6821A0CE110096F02F /* Shader.cpp */; };
 		D46A4A8521A0D0B50096F02F /* GraphicsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */; };
 		D46A4A8621A0D0B50096F02F /* CommonStructs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */; };
+		D479955D21CE2B32000E11F3 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D479955C21CE2B32000E11F3 /* Player.cpp */; };
+		D479956021CE2BA1000E11F3 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D479955E21CE2BA1000E11F3 /* Animation.cpp */; };
 		D4EA624E21C955A400CBFCAC /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4EA624C21C955A400CBFCAC /* Button.cpp */; };
 		D4EA625F21CB8E2B00CBFCAC /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4EA625D21CB8E2B00CBFCAC /* Game.cpp */; };
 		D4EA626821CBB36C00CBFCAC /* ImportedMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4EA626721CBB36C00CBFCAC /* ImportedMesh.cpp */; };
@@ -94,6 +96,9 @@
 		D46A4B8C21A2FDF90096F02F /* perspective.vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = perspective.vs.glsl; sourceTree = "<group>"; };
 		D46A4B8D21A2FE020096F02F /* flatTexture.fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = flatTexture.fs.glsl; sourceTree = "<group>"; };
 		D46A4B8F21A318F40096F02F /* Scene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Scene.hpp; sourceTree = "<group>"; };
+		D479955C21CE2B32000E11F3 /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		D479955E21CE2BA1000E11F3 /* Animation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
+		D479955F21CE2BA1000E11F3 /* Animation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Animation.hpp; sourceTree = "<group>"; };
 		D4EA624A21C938FF00CBFCAC /* 2D.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2D.fs.glsl; sourceTree = "<group>"; };
 		D4EA624B21C938FF00CBFCAC /* 2D.vs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2D.vs.glsl; sourceTree = "<group>"; };
 		D4EA624C21C955A400CBFCAC /* Button.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
@@ -200,6 +205,7 @@
 			children = (
 				D4EA625D21CB8E2B00CBFCAC /* Game.cpp */,
 				D460750B21BD883E00BAF7D0 /* GameController.cpp */,
+				D479955C21CE2B32000E11F3 /* Player.cpp */,
 				D46A4A7321A0CE220096F02F /* main.cpp */,
 				D4F56EF921AFE83700767ECA /* Events */,
 				D46A4A6421A0CE110096F02F /* GraphicsEngine */,
@@ -385,6 +391,7 @@
 		D4F56EF021AF345500767ECA /* Object */ = {
 			isa = PBXGroup;
 			children = (
+				D479955F21CE2BA1000E11F3 /* Animation.hpp */,
 				D4F56EEC21AF33F200767ECA /* Material */,
 				D42A1DD921C7D8FE00B2F379 /* Object */,
 				D4EA625321CA675D00CBFCAC /* Mesh */,
@@ -395,6 +402,7 @@
 		D4F56EF121AF348C00767ECA /* Object */ = {
 			isa = PBXGroup;
 			children = (
+				D479955E21CE2BA1000E11F3 /* Animation.cpp */,
 				D42A1DD521C7D77E00B2F379 /* Object2D.cpp */,
 				D4F56EC721AEC28500767ECA /* Object3D.cpp */,
 				D4F56EF421AF34C400767ECA /* Material */,
@@ -531,6 +539,7 @@
 				D460750D21BD883E00BAF7D0 /* GameController.cpp in Sources */,
 				D4EA624E21C955A400CBFCAC /* Button.cpp in Sources */,
 				D4F56EF621AF34FE00767ECA /* ShaderProgram.cpp in Sources */,
+				D479955D21CE2B32000E11F3 /* Player.cpp in Sources */,
 				D4F56EEA21AF321F00767ECA /* PerspectiveShaderProgram.cpp in Sources */,
 				D46A4A8521A0D0B50096F02F /* GraphicsEngine.cpp in Sources */,
 				D4F56EC921AEC28500767ECA /* Object3D.cpp in Sources */,
@@ -543,6 +552,7 @@
 				D42A1DD721C7D77E00B2F379 /* Object2D.cpp in Sources */,
 				D4F56EC121AEAA6300767ECA /* Texture.cpp in Sources */,
 				D46A4A8321A0D0B50096F02F /* Mesh.cpp in Sources */,
+				D479956021CE2BA1000E11F3 /* Animation.cpp in Sources */,
 				D46A4A8121A0D0B50096F02F /* Exceptions.cpp in Sources */,
 				D4F56EFC21AFE84A00767ECA /* EventManager.cpp in Sources */,
 				D46A4A8421A0D0B50096F02F /* Shader.cpp in Sources */,

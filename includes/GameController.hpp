@@ -7,6 +7,7 @@
 #include "Game.hpp"
 #include "GraphicsEngine.hpp"
 #include "EventManager.hpp"
+#include "Animation.hpp"
 
 #include <cmath>
 

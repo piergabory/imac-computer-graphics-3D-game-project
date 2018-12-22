@@ -45,7 +45,13 @@ namespace GraphicsEngine {
 
         /// \brief ask the material to update the MVP Matrix and Normal Matrix in the shader.
         void project();
-        
+
+
+        /// \brief position getter
+        inline const glm::vec3 position() const {
+            return glm::vec3(m_modelViewMatrix * glm::vec4(0,0,0,1));
+        }
+
         // constructor
         /// \brief initialise mesh and material. Assumes the material shader is of perspective kind.
         Object3D(std::shared_ptr<Mesh3D> mesh, std::shared_ptr<Material> material);
