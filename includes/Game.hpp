@@ -1,48 +1,45 @@
+/**
+ * \file Game.hpp
+ *
+ * IMAC 2 Project CG CPP
+ *
+ */
 #ifndef Game_hpp
 #define Game_hpp
 
 #include "Player.hpp"
 #include "ImportedMesh.hpp"
 
-enum class Controls : unsigned char {
-    LEFT, RIGHT, UP, DOWN
-};
+/// game controls, to be mapped on keyboard or game controller in GameController
+enum class Controls : unsigned char { LEFT, RIGHT, UP, DOWN };
 
+/**
+ * GAME CLASS
+ *
+ * \brief Central controller class, Handles communication between Model classes and the GameController
+ */
 class Game{
     
 private:
+    /// \brief Player instance
     Player m_pPlayer;
 
+    /// \brief Static method generating the player's character object.
     static std::shared_ptr<GraphicsEngine::Object3D> loadPlayerObject();
 
 public:
-
+    /// \brief getter on the character model
     inline std::shared_ptr<GraphicsEngine::Object3D> playerModel() const {
         return m_pPlayer.model();
     }
 
-    void callInput(Controls control) {
-        switch(control) {
-            case Controls::LEFT:
-                m_pPlayer.move(Direction::LEFT);
-                break;
+    /// \brief Redirects controller inputs on player movements, attacks, bonuses etc...
+    void callInput(Controls control);
 
-            case Controls::RIGHT:
-                m_pPlayer.move(Direction::RIGHT);
-                break;
-
-            case Controls::UP:
-                m_pPlayer.jump();
-                break;
-                
-            case Controls::DOWN:
-                m_pPlayer.crouch();
-                break;
-
-        }
-    }
-
+    /// \brief constructor
     Game();
+
+    /// \brief destructor
     ~Game();
 };
 

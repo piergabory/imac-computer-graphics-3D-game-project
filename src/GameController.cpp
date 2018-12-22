@@ -1,3 +1,7 @@
+/**
+ * \file GameController.cpp
+ */
+
 #include "GameController.hpp"
 
 
@@ -5,10 +9,12 @@
 void GameController::initializeScene() {
     initializeDebugGrid();
 
+    // 2D context
     std::unique_ptr<GraphicsEngine::Canvas> canvas(new GraphicsEngine::Canvas());
     GraphicsEngine::Controller::instance()->loadGUI(canvas);
 
-    std::unique_ptr<GraphicsEngine::Scene>  scene(new GraphicsEngine::Scene(m_playerPointOfView));
+    // 3D context
+    std::unique_ptr<GraphicsEngine::Scene> scene(new GraphicsEngine::Scene(m_playerPointOfView));
     GraphicsEngine::Controller::instance()->loadScene(scene);
 
     // create objects
@@ -78,6 +84,9 @@ bool GameController::loop() {
 
 
 
+
+
+
 void GameController::quitEventHandler() {
     m_isRunning = false;
     GraphicsEngine::Controller::instance()->close();
@@ -97,7 +106,7 @@ void GameController::keyRealeaseHandler(unsigned char keycode) {
         case 's': m_currentGame->callInput(Controls::DOWN); break;
 
         case 'g':
-            std::cout << "Toggling Grid " << (m_isDebugGridActive? "off" : "on") << std::endl;
+            std::cout << "Toggling Grid " << (m_debugGrid? "off" : "on") << std::endl;
             if (m_debugGrid){
                 m_debugGrid.reset();
                 // GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
@@ -105,7 +114,6 @@ void GameController::keyRealeaseHandler(unsigned char keycode) {
                 m_debugGrid = initializeDebugGrid();
                 GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
             }
-            m_isDebugGridActive = !m_isDebugGridActive;
             break;
     }
 };
@@ -166,6 +174,7 @@ void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
 }
 
 
+
 void GameController::mouseMoveHandler(float relativeXMovement,float relativeYMovement) {
     const float MOUSEMOVE_SCALING = 0.006;
     m_playerPointOfView.pan(glm::vec3(0,-1,0), relativeXMovement * MOUSEMOVE_SCALING);
@@ -178,11 +187,17 @@ void GameController::mouseWheelHandler(float deltaX, float deltaY) {
     m_playerPointOfView.move(glm::vec3(MOUSEWHEEL_SCALING * deltaX, 0, MOUSEWHEEL_SCALING * deltaY));
 }
 
+
 void GameController::mouseReleaseHandler(unsigned char button) {
     SDL_CaptureMouse(SDL_TRUE);
     SDL_ShowCursor(SDL_DISABLE);
 }
 
+
+
+
+
+// make grid
 std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() {
     float gridScale = 5;
     uint gridsize = 30;
@@ -216,35 +231,28 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() 
 }
 
 
+// make skybox
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createSkyBox() {
-    try {
-        return std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::ImportedMesh>(GraphicsEngine::LocalFilePath("assets/skyboxtest.obj")), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/flatTexture.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/cubemap_skybox.png"))));
-    } catch(GraphicsEngine::InitialisationException error) {
-        std::cout << error.what();
-        return nullptr;
-    }
+    GraphicsEngine::LocalFilePath chunkmesh("assets/skyboxtest.obj");
+    GraphicsEngine::LocalFilePath chunktex("textures/cubemap_skybox.png");
+    GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
+    GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
+    return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
 }
 
 
-
+// make chunk
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
-    try {
-        
-        GraphicsEngine::LocalFilePath chunkmesh("assets/cube.obj");
-        GraphicsEngine::LocalFilePath chunktex("textures/cubemap_a.png");
-        GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
-        GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
-        
-        return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
+    GraphicsEngine::LocalFilePath chunkmesh("assets/cube.obj");
+    GraphicsEngine::LocalFilePath chunktex("textures/cubemap_a.png");
+    GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
+    GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
 
-    }
-    
-    catch(GraphicsEngine::InitialisationException error) {
-        std::cout << error.what();
-        return nullptr;
-    }
+    return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
 }
 
+
+// singleton
 
 GameController* GameController::s_controllerInstance = nullptr;
 
@@ -256,27 +264,21 @@ GameController* GameController::instance() {
 
 
 
-
-
-
-//FUNCTION TO CREATE 3D OBJECTS
-
 //Loading assets and shaders from relative filepaths to create a 3D object
-std::shared_ptr<GraphicsEngine::Object3D> GameController::createObject3D(GraphicsEngine::LocalFilePath meshPath, GraphicsEngine::LocalFilePath texPath,GraphicsEngine::LocalFilePath vsPath, GraphicsEngine::LocalFilePath fsPath) {
+std::shared_ptr<GraphicsEngine::Object3D> GameController::createObject3D(GraphicsEngine::LocalFilePath &meshPath, GraphicsEngine::LocalFilePath &textureImagePath,GraphicsEngine::LocalFilePath &vertexShaderPath, GraphicsEngine::LocalFilePath &fragmentShaderPath) {
     try {
         return std::make_shared<GraphicsEngine::Object3D>
         (
          std::make_shared<GraphicsEngine::ImportedMesh>(meshPath),
          std::make_shared<GraphicsEngine::Material>(
-                                                    std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(vsPath, fsPath,"uMVPMatrix", "uMVMatrix", "uNormalMatrix"), std::make_shared<GraphicsEngine::Texture>(texPath)
-                                                    )
+            std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(vertexShaderPath, fragmentShaderPath,"uMVPMatrix", "uMVMatrix", "uNormalMatrix"), std::make_shared<GraphicsEngine::Texture>(textureImagePath)
+            )
          );
     } catch(GraphicsEngine::InitialisationException error) {
         std::cout << error.what();
         return nullptr;
     }
 }
-
 
 
 //CONSTRUCTOR
