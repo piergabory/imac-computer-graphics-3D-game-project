@@ -40,13 +40,13 @@ namespace GraphicsEngine
             glDepthFunc(GL_LESS);
         }
 
-        void initializeObject(Object3D &newObject) const override {
-            newObject.setProjection(m_camera->projectionMatrix(), m_camera->modelMatrix());
+        void initializeObject(const std::shared_ptr<Object3D> &newObject) const override {
+            newObject->setProjection(m_camera->projectionMatrix(), m_camera->modelMatrix());
         }
 
 
-        void objectPrerenderStage(Object3D &newObject) const override {
-            newObject.project();
+        void objectPrerenderStage(const std::shared_ptr<Object3D> &newObject) const override {
+            newObject->project();
         }
 
 

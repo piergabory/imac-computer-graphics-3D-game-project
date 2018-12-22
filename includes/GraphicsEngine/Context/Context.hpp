@@ -1,11 +1,3 @@
-//
-//  Context.hpp
-//  xcode target
-//
-//  Created by Pierre Gabory on 17/12/2018.
-//  Copyright © 2018 Pierre Gabory. All rights reserved.
-//
-
 #ifndef Context_hpp
 #define Context_hpp
 
@@ -27,21 +19,21 @@ namespace GraphicsEngine {
         std::vector< std::weak_ptr<ObjectType> > m_objects;
 
         virtual void contextWillRender() const {}
-        virtual void initializeObject(ObjectType &newObject) const {}
-        virtual void objectPrerenderStage(ObjectType &newObject) const {}
+        virtual void initializeObject(const std::shared_ptr<ObjectType> &newObject) const {}
+        virtual void objectPrerenderStage(const std::shared_ptr<ObjectType> &newObject) const {}
 
 
     public:
         // adds an object in the scene.
-        void add(std::shared_ptr<ObjectType> &newObject) {
+        void add(const std::shared_ptr<ObjectType> &newObject) {
             m_objects.push_back(newObject);
-            initializeObject(*newObject);
+            initializeObject(newObject);
             // shared pointer is destroyed.
             // Value is own in the scope of Context::add() call, and linked here by a weak pointer in m_objects
         }
 
         // remove an object from the scenes.
-        void remove(std::shared_ptr<ObjectType> &object) {
+        void remove(const std::shared_ptr<ObjectType> &object) {
             for(size_t i = 0; i < m_objects.size(); ++i) {
                 std::shared_ptr<ObjectType> tmpobject = m_objects[i].lock();
 
@@ -59,16 +51,16 @@ namespace GraphicsEngine {
         void render() {
             contextWillRender();
 
-            for(typename std::vector< std::weak_ptr<ObjectType> >::iterator objectIterator = m_objects.begin(); objectIterator != m_objects.end(); ++objectIterator) {
-                if (objectIterator->expired()) {
-                    //m_objects.erase(objectIterator);
+            for(size_t i = 0; i < m_objects.size(); ++i) {
+                if (m_objects[i].expired()) {
+                    m_objects.erase(m_objects.begin() + i);
                     continue;
                 }
 
-                std::shared_ptr<ObjectType> object = objectIterator->lock();
+                std::shared_ptr<ObjectType> object = m_objects[i].lock();
 
                 // push the vertices in the pipeline
-                objectPrerenderStage(*object);
+                objectPrerenderStage(object);
                 object->draw();
             }
 

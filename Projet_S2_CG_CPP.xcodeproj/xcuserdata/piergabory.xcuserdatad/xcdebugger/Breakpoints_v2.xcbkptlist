@@ -10,27 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "includes/Player.hpp"
-            timestampString = "567001390.378999"
+            timestampString = "567185062.556213"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "m_position(position)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "includes/Player.hpp"
-            timestampString = "567001390.379053"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81">
+            startingLineNumber = "63"
+            endingLineNumber = "63">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -47,6 +31,54 @@
             endingLineNumber = "7"
             landmarkName = "Animation::nextFrame()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "includes/GraphicsEngine/Context/Context.hpp"
+            timestampString = "567185062.556518"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "render()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GraphicsEngine::Context&lt;GraphicsEngine::Object3D&gt;::render()"
+                  moduleName = "product"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/piergabory/Developer/IMAC/Projet%20CG%20CPP/IMAC2_CG_CPP_Game_Project/./includes/GraphicsEngine/Context/Context.hpp"
+                  timestampString = "567158287.827547"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "2542">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GraphicsEngine::Context&lt;GraphicsEngine::Object2D&gt;::render()"
+                  moduleName = "product"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/piergabory/Developer/IMAC/Projet%20CG%20CPP/IMAC2_CG_CPP_Game_Project/./includes/GraphicsEngine/Context/Context.hpp"
+                  timestampString = "567158287.829621"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "2542">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

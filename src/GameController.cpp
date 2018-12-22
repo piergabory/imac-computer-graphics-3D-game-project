@@ -11,16 +11,18 @@ void GameController::initializeScene() {
     std::unique_ptr<GraphicsEngine::Scene>  scene(new GraphicsEngine::Scene(m_playerPointOfView));
     GraphicsEngine::Controller::instance()->loadScene(scene);
 
-
     // create objects
     std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
     m_skybox = createSkyBox();
     m_chunk = createChunk();
 
+    // skybox max scale before clipping out of far-field
+    m_skybox->scale(glm::vec3(3.14f));
+
     // adds objects in the scene
     GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
-    GraphicsEngine::Controller::instance()->activeScene()->add(m_chunk);
+    //GraphicsEngine::Controller::instance()->activeScene()->add(m_chunk);
 }
 
 
@@ -46,11 +48,17 @@ void GameController::setup() {
 
 // game loop
 bool GameController::loop() {
+    // read the time at the start of the game loop
+    Uint32 startTime = SDL_GetTicks();
+
     // framerate 60 frames per seconds
     const float FRAMERATE = 60;
 
-    // read the time at the start of the game loop
-    Uint32 startTime = SDL_GetTicks();
+    // compute current chunk progress
+    m_chunkframe ++;
+    m_chunkframe %= m_CHUNK_FRAME_DURATION;
+
+    GraphicsEngine::Animation::updateAnimations();
 
     // start new render cycle
     GraphicsEngine::Controller::instance()->render();
@@ -83,21 +91,21 @@ void GameController::keyRealeaseHandler(unsigned char keycode) {
             // we ignore Shift and Ctrl
         case 224: case 225: break;
 
+        case 'z': m_currentGame->callInput(Controls::UP); break;
+        case 'q': m_currentGame->callInput(Controls::LEFT); break;
+        case 'd': m_currentGame->callInput(Controls::RIGHT); break;
+        case 's': m_currentGame->callInput(Controls::DOWN); break;
+
         case 'g':
             std::cout << "Toggling Grid " << (m_isDebugGridActive? "off" : "on") << std::endl;
             if (m_debugGrid){
                 m_debugGrid.reset();
-                GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
+                // GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
             } else {
                 m_debugGrid = initializeDebugGrid();
                 GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
             }
             m_isDebugGridActive = !m_isDebugGridActive;
-            break;
-
-        default:
-            std::cout << "DEBUG! ";
-            std::cout << "char: " << keycode << " int: " << (int) keycode << std::endl;
             break;
     }
 };
@@ -107,27 +115,7 @@ void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
     const float KEYBOARD_CAMERA_CONTROL_SPEED = 0.1;
     for (unsigned char key : pressedKeys) {
         switch (key) {
-            case 224: case 225: break;
 
-                // Forward
-            case 'z':
-                m_playerPointOfView.move(glm::vec3(0,0,-KEYBOARD_CAMERA_CONTROL_SPEED));
-                break;
-
-                // Left
-            case 'q':
-                m_playerPointOfView.move(glm::vec3(-KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
-                break;
-
-                // Backward
-            case 's':
-                m_playerPointOfView.move(glm::vec3(0,0,KEYBOARD_CAMERA_CONTROL_SPEED));
-                break;
-
-                // Right
-            case 'd':
-                m_playerPointOfView.move(glm::vec3(KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
-                break;
 
                 // Up
             case 'w':
@@ -136,7 +124,7 @@ void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
 
                 // Down
             case 'x':
-                m_playerPointOfView.move(glm::vec3(0,KEYBOARD_CAMERA_CONTROL_SPEED,0));
+            m_playerPointOfView.move(glm::vec3(0,KEYBOARD_CAMERA_CONTROL_SPEED,0));
                 break;
 
                 // Rotate right
@@ -170,7 +158,9 @@ void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
                 SDL_ShowCursor(SDL_ENABLE);
                 break;
 
-            default: std::cout << "char: " << key << " int: " << (int) key << std::endl; break;
+            default:
+                //std::cout << "char: " << key << " int: " << (int) key << std::endl;
+                break;
         }
     }
 }
@@ -211,14 +201,14 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() 
     try {
         // create debug object
         return std::make_shared<GraphicsEngine::Object3D>(
-                                                          std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES),
-                                                          std::make_shared<GraphicsEngine::Material>(
-                                                                                                     std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(
-                                                                                                                                                                GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"),
-                                                                                                                                                                GraphicsEngine::LocalFilePath("shaders/flatColor.fs.glsl")
-                                                                                                                                                                )
-                                                                                                     )
-                                                          );
+            std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES),
+            std::make_shared<GraphicsEngine::Material>(
+            std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(
+               GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"),
+               GraphicsEngine::LocalFilePath("shaders/flatColor.fs.glsl")
+            )
+          )
+       );
     } catch(GraphicsEngine::InitialisationException error) {
         std::cerr << error.what() << std::endl;
         return nullptr;
