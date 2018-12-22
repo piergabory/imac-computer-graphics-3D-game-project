@@ -1,5 +1,5 @@
 /**
- * Player.cpp
+ * \file Player.cpp
  */
 #include "Player.hpp"
 

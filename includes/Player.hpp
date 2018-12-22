@@ -1,5 +1,5 @@
 /**
- * Player.hpp
+ * \file Player.hpp
  *
  * IMAC 2 Project CG CPP
  *
