@@ -20,6 +20,14 @@ enum class Status { STANDING, JUMPING, CROUCHING };
 class Player : Events::KeyboardEventObserver {
 private:
 
+    const float LANE_WIDTH = 9.f;
+    const float JUMP_HEIGHT = 6.f;
+    const float CROUCH_HEIGHT = 0.8;
+
+    const uint TRANSLATE_FRAMETIME = 30;
+    const uint JUMP_FRAMETIME = 90;
+    const uint CROUCH_FRAMETIME = 10;
+
     Position m_position = Position::MIDDLE;
     Status m_status = Status::STANDING;
 

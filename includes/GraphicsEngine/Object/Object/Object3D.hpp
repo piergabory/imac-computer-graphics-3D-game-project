@@ -8,6 +8,7 @@
 #ifndef Object_hpp
 #define Object_hpp
 
+#include <iostream>
 #include "Object.hpp"
 #include "PerspectiveShaderProgram.hpp"
 
@@ -43,13 +44,11 @@ namespace GraphicsEngine {
         /// \brief apply a 3D scale on the object
         void scale(const glm::vec3 &scalingVector);
 
-
         /// \brief link the scene camera's matrices to the perspective shader.
         void setProjection(const std::shared_ptr<glm::mat4> &projectionMatrix, const std::shared_ptr<glm::mat4> &sceneModel);
 
         /// \brief ask the material to update the MVP Matrix and Normal Matrix in the shader.
         void project();
-
 
         /// \brief position getter
         inline const glm::vec3 position() const {

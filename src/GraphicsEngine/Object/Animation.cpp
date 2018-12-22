@@ -9,15 +9,6 @@ namespace GraphicsEngine {
         }
     };
 
-
-    Animation::Animation(const std::shared_ptr<Object3D> &object, const uint duration, const glm::vec3 &position, const std::function<void(const std::shared_ptr<Object3D>&,const glm::vec3&, const float, const float)> &interpolation):
-        m_pObjectToMove(object),
-        m_duration(duration),
-        m_targetPositon(position),
-        m_interpolationFunction(interpolation),
-        m_callback([](void) -> void {})
-    {}
-
     bool Animation::animateNextFrame() {
         if (m_currentFrame == 0) {
             cancel();
@@ -35,7 +26,8 @@ namespace GraphicsEngine {
 
     Animation makeLinearTranslation(const std::shared_ptr<Object3D> &object, const uint duration, const glm::vec3 &position) {
         return Animation(object, duration, position, [](const std::shared_ptr<Object3D> &object,const glm::vec3 &position, const float step, const float progress) -> void {
-            object->translate((position - object->position()) * step);
+            glm::vec3 newPosition = (position - object->position()) * step;
+            object->translate(newPosition);
         });
     }
 
@@ -50,15 +42,25 @@ namespace GraphicsEngine {
 
     Animation makeCrouchAnimation(const std::shared_ptr<Object3D> &object, const uint duration, const float toHeight) {
         return Animation(object, duration, glm::vec3(0,toHeight,0), [](const std::shared_ptr<Object3D> &object, const glm::vec3 &position, const float step, const float progress) {
-            object->scale(glm::vec3(0,position.y * step,0));
+            object->scale(glm::vec3(1, 1 - 0.01,1));
         });
     }
 
 
     Animation makeUnCrouchAnimation(const std::shared_ptr<Object3D> &object, const uint duration, const float fromHeight) {
         return Animation(object, duration, glm::vec3(0,fromHeight,0), [](const std::shared_ptr<Object3D> &object, const glm::vec3 &position, const float step, const float progress) {
-            object->scale(glm::vec3(0, 1.f / position.y * step,0));
+            object->scale(glm::vec3(1, 1 + 0.01,1));
         });
     }
+
+
+    Animation::Animation(const std::shared_ptr<Object3D> &object, const uint duration, const glm::vec3 &position, const std::function<void(const std::shared_ptr<Object3D>&,const glm::vec3&, const float, const float)> &interpolation):
+    m_pObjectToMove(object),
+    m_duration(duration),
+    m_targetPositon(position),
+    m_interpolationFunction(interpolation),
+    m_callback([](void) -> void {})
+    {}
+
 }
 
