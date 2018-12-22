@@ -1,3 +1,10 @@
+/**
+ * \file Canvas.hpp
+ *
+ * IMAC 2 Project CG CPP
+ *
+ */
+
 #ifndef Canvas_hpp
 #define Canvas_hpp
 
@@ -6,18 +13,29 @@
 #include "Button.hpp"
 
 namespace GraphicsEngine {
+
+    /**
+     * CANVAS CLASS
+     *
+     * Context Sub-class
+     * \brief Contains and manages 2D objects.
+     */
     class Canvas : public Context<Object2D> {
     private:
 
+        /// lifecycle methods
+        /// \brief disable Depth testing and back-face culling
         void contextWillRender() const override{
             glDisable(GL_DEPTH_TEST);
             glDisable(GL_CULL_FACE);
         }
 
     public:
+        ///\brief constructor
         Canvas() : Context<Object2D>() {}
+
+        ///\brief destructor
         ~Canvas() {}
-        
     };
 }
 
