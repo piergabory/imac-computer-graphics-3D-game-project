@@ -17,6 +17,7 @@ private:
     GraphicsEngine::Animation m_moveToLeftPath;
     GraphicsEngine::Animation m_moveToMiddlePath;
     GraphicsEngine::Animation m_moveToRightPath;
+    GraphicsEngine::Animation m_playerJump;
 
 public:
 
@@ -35,11 +36,11 @@ public:
                 break;
 
             case Controls::UP:
-                m_moveToMiddlePath.begin();
+                m_playerJump.begin();
                 break;
 
             case Controls::DOWN:
-                //m_pPlayer.translate(Direction::RIGHT);
+                m_moveToMiddlePath.begin();
                 break;
 
         }

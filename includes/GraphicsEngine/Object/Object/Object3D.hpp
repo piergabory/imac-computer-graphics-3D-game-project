@@ -30,6 +30,10 @@ namespace GraphicsEngine {
         glm::mat4 m_modelViewMatrix;
         
     public:
+
+        /// \brief places move the object to coordinates
+        void place(const glm::vec3 &newPosition);
+
         /// \brief apply a 3D translation on the object
         void translate(const glm::vec3 &translationVector);
 

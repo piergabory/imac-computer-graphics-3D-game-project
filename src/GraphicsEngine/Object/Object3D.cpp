@@ -10,6 +10,9 @@ namespace GraphicsEngine {
         static_cast<PerspectiveShaderProgram *>(m_material->shader())->setViewMatrices(projectionMatrix, sceneModel);
     }
 
+    void Object3D::place(const glm::vec3 &newPosition) {
+        m_modelViewMatrix[3] = glm::vec4(newPosition, 1);
+    }
 
     void Object3D::translate(const glm::vec3 &translationVector) {
         m_modelViewMatrix = glm::translate(m_modelViewMatrix, translationVector);

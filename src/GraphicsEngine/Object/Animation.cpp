@@ -8,7 +8,8 @@ namespace GraphicsEngine {
         }
     };
 
-    Animation::Animation(const std::shared_ptr<Object3D> &object, const uint duration, const glm::vec3 &position, const std::function<void(const std::shared_ptr<Object3D>&,const glm::vec3&, const float)> &interpolation):
+
+    Animation::Animation(const std::shared_ptr<Object3D> &object, const uint duration, const glm::vec3 &position, const std::function<void(const std::shared_ptr<Object3D>&,const glm::vec3&, const float, const float)> &interpolation):
         m_pObjectToMove(object),
         m_duration(duration),
     m_targetPositon(position),
@@ -19,12 +20,21 @@ namespace GraphicsEngine {
         m_currentFrame--;
         
         std::shared_ptr<GraphicsEngine::Object3D> objectToMove = m_pObjectToMove.lock();
-        m_interpolationFunction(objectToMove, m_targetPositon, 1.f / m_duration);
+        m_interpolationFunction(objectToMove, m_targetPositon, 1.f / m_duration, 1.f - m_currentFrame /(float) m_duration);
     }
 
+
     Animation makeLinearTranslation(const std::shared_ptr<Object3D> &object, const uint duration, const glm::vec3 &position) {
-        return Animation(object, duration, position, [](const std::shared_ptr<Object3D> &object,const glm::vec3 &position, const float step) -> void {
+        return Animation(object, duration, position, [](const std::shared_ptr<Object3D> &object,const glm::vec3 &position, const float step, const float progress) -> void {
             object->translate((position - object->position()) * step);
+        });
+    }
+
+
+    Animation makeBounceAnimation(const std::shared_ptr<Object3D> &object, const uint duration, const float height) {
+        return Animation(object, duration, glm::vec3(0,height,0), [](const std::shared_ptr<Object3D> &object, const glm::vec3 &position, const float step, const float progress) {
+            const float heightPosition = (1 - pow(-2 * progress + 1, 2)) * position.y;
+            object->place(glm::vec3(object->position().x, heightPosition, object->position().z));
         });
     }
 }

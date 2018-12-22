@@ -10,13 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "includes/Player.hpp"
-            timestampString = "567163273.236937"
+            timestampString = "567166856.650061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            endingLineNumber = "44">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,7 +40,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "includes/GraphicsEngine/Context/Context.hpp"
-            timestampString = "567163273.237015"
+            timestampString = "567166856.650141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
