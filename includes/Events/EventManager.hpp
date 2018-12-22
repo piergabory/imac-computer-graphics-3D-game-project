@@ -21,7 +21,7 @@
  * EVENT MANAGER CLASS
  *
  * Singleton class.
- * Manages events from the SDL framework. Calls the right observers.
+ * \brief Manages events from the SDL framework. Calls the right observers.
  */
 namespace Events {
 

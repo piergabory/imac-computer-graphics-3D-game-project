@@ -2,7 +2,6 @@
  * \file Player.hpp
  *
  * IMAC 2 Project CG CPP
- *
  */
 #ifndef Player_hpp
 #define Player_hpp

@@ -2,7 +2,6 @@
  * \file Game.hpp
  *
  * IMAC 2 Project CG CPP
- *
  */
 #ifndef Game_hpp
 #define Game_hpp
