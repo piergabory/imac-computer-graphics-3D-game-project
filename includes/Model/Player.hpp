@@ -84,6 +84,7 @@ public:
     ///\brief Moves player to the adjacent lane. Ignored if there are no lanes to go to.
     void move(const Direction &direction);
 
+    inline const Position position() const { return m_position; }
  };
 
 #endif

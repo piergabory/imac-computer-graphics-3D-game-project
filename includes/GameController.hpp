@@ -1,5 +1,4 @@
 /**
- *
  * \file GameController.hpp
  * 
  * IMAC 2 Project CG CPP
