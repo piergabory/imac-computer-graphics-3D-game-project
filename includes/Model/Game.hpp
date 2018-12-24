@@ -7,6 +7,8 @@
 #define Game_hpp
 
 #include "Player.hpp"
+#include "Terrain.hpp"
+
 #include "ImportedMesh.hpp"
 
 /// game controls, to be mapped on keyboard or game controller in GameController
@@ -21,7 +23,10 @@ class Game{
     
 private:
     /// \brief Player instance
-    Player m_pPlayer;
+    Player m_player;
+
+    /// \brief Terrain instance
+    Terrain m_terrain;
 
     /// \brief Static method generating the player's character object.
     static std::shared_ptr<GraphicsEngine::Object3D> loadPlayerObject();
@@ -29,7 +34,15 @@ private:
 public:
     /// \brief getter on the character model
     inline std::shared_ptr<GraphicsEngine::Object3D> playerModel() const {
-        return m_pPlayer.model();
+        return m_player.model();
+    }
+
+    inline Terrain& terrain() {
+        return m_terrain;
+    }
+
+    inline const Terrain& terrain() const {
+        return m_terrain;
     }
 
     /// \brief Redirects controller inputs on player movements, attacks, bonuses etc...

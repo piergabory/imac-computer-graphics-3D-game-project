@@ -28,7 +28,6 @@ void GameController::initializeScene() {
     // adds objects in the scene
     GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
-    //GraphicsEngine::Controller::instance()->activeScene()->add(m_chunk);
 }
 
 
@@ -38,11 +37,17 @@ void GameController::setup() {
     GraphicsEngine::Controller::instance()->setup();
     GraphicsEngine::Controller::instance()->printInfos();
 
+    Entity::loadObject();
 
     m_currentGame = std::unique_ptr<Game>(new Game);
 
     // create scene
     initializeScene();
+
+
+    for (size_t i = 0; i < 100; i++) {
+        loadNewChunk();
+    }
 
     // subscribe event manager
     Events::Manager::instance()->subscribe((QuitEventObserver*) this);
@@ -64,6 +69,13 @@ bool GameController::loop() {
     m_chunkframe ++;
     m_chunkframe %= m_CHUNK_FRAME_DURATION;
 
+    if(m_chunkframe == 0) {
+        loadNewChunk();
+        m_currentGame->terrain().nextChunk();
+    }
+
+    m_currentGame->terrain().progress(1.f/m_CHUNK_FRAME_DURATION);
+
     GraphicsEngine::Animation::updateAnimations();
 
     // start new render cycle
@@ -84,6 +96,16 @@ bool GameController::loop() {
 
 
 
+void GameController::loadNewChunk() {
+    Entity* left = new Entity();
+    Entity* middle = new Entity();
+    Entity* right = new Entity();
+
+    m_currentGame->terrain().loadChunk(left,middle, right);
+    GraphicsEngine::Controller::instance()->activeScene()->add(left->object());
+    GraphicsEngine::Controller::instance()->activeScene()->add(middle->object());
+    GraphicsEngine::Controller::instance()->activeScene()->add(right->object());
+}
 
 
 
@@ -233,8 +255,8 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() 
 
 // make skybox
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createSkyBox() {
-    GraphicsEngine::LocalFilePath chunkmesh("assets/skyboxtest.obj");
-    GraphicsEngine::LocalFilePath chunktex("textures/cubemap_skybox.png");
+    GraphicsEngine::LocalFilePath chunkmesh("assets/models/skyboxtest.obj");
+    GraphicsEngine::LocalFilePath chunktex("assets/textures/cubemap_skybox.png");
     GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
     GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
     return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
@@ -243,8 +265,8 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createSkyBox() {
 
 // make chunk
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
-    GraphicsEngine::LocalFilePath chunkmesh("assets/cube.obj");
-    GraphicsEngine::LocalFilePath chunktex("textures/cubemap_a.png");
+    GraphicsEngine::LocalFilePath chunkmesh("assets/models/cube.obj");
+    GraphicsEngine::LocalFilePath chunktex("assets/textures/cubemap_a.png");
     GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
     GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
 

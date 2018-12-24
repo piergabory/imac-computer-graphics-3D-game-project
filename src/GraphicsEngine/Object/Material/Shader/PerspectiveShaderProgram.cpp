@@ -28,7 +28,7 @@ namespace GraphicsEngine {
         // move the object modelView in the camera referenceframe
         glm::mat4 modelView, modelViewProjection;
 
-        modelView = objectModel * (*m_sceneModelViewMatrix);
+        modelView = (*m_sceneModelViewMatrix) * objectModel;
         modelViewProjection = (*m_projectionMatrix) * modelView;
 
         // use program

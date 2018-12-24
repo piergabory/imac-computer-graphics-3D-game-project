@@ -8,7 +8,7 @@ std::shared_ptr<GraphicsEngine::Object3D> Game::loadPlayerObject() {
 
     // define resources paths
     const GraphicsEngine::LocalFilePath
-    PLAYER_MESH("assets/monkey1.obj"),
+    PLAYER_MESH("assets/models/monkey1.obj"),
     PLAYER_TEXTURE("assets/textures/test.png"),
     VERTEX_SHADER("shaders/perspective.vs.glsl"),
     FRAGMENT_SHADER("shaders/flatTexture.fs.glsl");
@@ -26,26 +26,26 @@ std::shared_ptr<GraphicsEngine::Object3D> Game::loadPlayerObject() {
 void Game::callInput(Controls control) {
     switch(control) {
         case Controls::LEFT:
-            m_pPlayer.move(Direction::LEFT);
+            m_player.move(Direction::LEFT);
             break;
 
         case Controls::RIGHT:
-            m_pPlayer.move(Direction::RIGHT);
+            m_player.move(Direction::RIGHT);
             break;
 
         case Controls::UP:
-            m_pPlayer.jump();
+            m_player.jump();
             break;
 
         case Controls::DOWN:
-            m_pPlayer.crouch();
+            m_player.crouch();
             break;
     }
 }
 
 
 // constructor
-Game::Game() : m_pPlayer(loadPlayerObject()) {}
+Game::Game() : m_player(loadPlayerObject()) {}
 
 // destructor
 Game::~Game() {}

@@ -1,5 +1,4 @@
 /**
- *
  * \file GameController.hpp
  * 
  * IMAC 2 Project CG CPP
@@ -15,6 +14,7 @@
 #include "GraphicsEngine.hpp"
 #include "EventManager.hpp"
 #include "Animation.hpp"
+#include "Terrain.hpp"
 
 #include <cmath>
 
@@ -36,7 +36,7 @@ private:
 
 
     /// \brief defines the game rythm
-    const int m_CHUNK_FRAME_DURATION = 60;
+    const int m_CHUNK_FRAME_DURATION = 10;
     int m_chunkframe = 0;
 
 
@@ -58,6 +58,8 @@ private:
 
     // setup
     void initializeScene();
+
+    void loadNewChunk();
 
     /// \brief static methods for object initialization
     /// Loading assets and shaders from relative filepaths to create a 3D object
