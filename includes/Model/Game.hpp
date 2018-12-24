@@ -11,48 +11,50 @@
 
 #include "ImportedMesh.hpp"
 
-/// game controls, to be mapped on keyboard or game controller in GameController
-enum class Controls : unsigned char { LEFT, RIGHT, UP, DOWN };
+namespace GameModel {
 
-/**
- * GAME CLASS
- *
- * \brief Central controller class, Handles communication between Model classes and the GameController
- */
-class Game{
-    
-private:
-    /// \brief Player instance
-    Player m_player;
+    /// game controls, to be mapped on keyboard or game controller in GameController
+    enum class Controls : unsigned char { LEFT, RIGHT, UP, DOWN };
 
-    /// \brief Terrain instance
-    Terrain m_terrain;
+    /**
+     * GAME CLASS
+     *
+     * \brief Central controller class, Handles communication between Model classes and the GameController
+     */
+    class Game{
 
-    /// \brief Static method generating the player's character object.
-    static std::shared_ptr<GraphicsEngine::Object3D> loadPlayerObject();
+    private:
+        /// \brief Player instance
+        Player m_player;
 
-public:
-    /// \brief getter on the character model
-    inline std::shared_ptr<GraphicsEngine::Object3D> playerModel() const {
-        return m_player.model();
-    }
+        /// \brief Terrain instance
+        Terrain m_terrain;
 
-    inline Terrain& terrain() {
-        return m_terrain;
-    }
+        /// \brief Static method generating the player's character object.
+        static std::shared_ptr<GraphicsEngine::Object3D> loadPlayerObject();
 
-    inline const Terrain& terrain() const {
-        return m_terrain;
-    }
+    public:
+        /// \brief getter on the character model
+        inline std::shared_ptr<GraphicsEngine::Object3D> playerModel() const {
+            return m_player.model();
+        }
 
-    /// \brief Redirects controller inputs on player movements, attacks, bonuses etc...
-    void callInput(Controls control);
+        inline Terrain& terrain() {
+            return m_terrain;
+        }
 
-    /// \brief constructor
-    Game();
+        inline const Terrain& terrain() const {
+            return m_terrain;
+        }
 
-    /// \brief destructor
-    ~Game();
-};
+        /// \brief Redirects controller inputs on player movements, attacks, bonuses etc...
+        void callInput(Controls control);
 
+        /// \brief constructor
+        Game();
+
+        /// \brief destructor
+        ~Game();
+    };
+}
 #endif /* Game_hpp */

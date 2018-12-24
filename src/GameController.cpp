@@ -37,9 +37,9 @@ void GameController::setup() {
     GraphicsEngine::Controller::instance()->setup();
     GraphicsEngine::Controller::instance()->printInfos();
 
-    Entity::loadObject();
+    GameModel::Entity::loadObject();
 
-    m_currentGame = std::unique_ptr<Game>(new Game);
+    m_currentGame = std::unique_ptr<GameModel::Game>(new GameModel::Game);
 
     // create scene
     initializeScene();
@@ -99,9 +99,9 @@ bool GameController::loop() {
 
 
 void GameController::loadNewChunk() {
-    Entity* left = new Entity();
-    Entity* middle = new Entity();
-    Entity* right = new Entity();
+    GameModel::Entity* left = new GameModel::Entity();
+    GameModel::Entity* middle = new GameModel::Entity();
+    GameModel::Entity* right = new GameModel::Entity();
 
     m_currentGame->terrain().loadChunk(left,middle, right, -m_CHUNK_LENGTH * m_CHUNK_PRELOADING_COUNT);
     GraphicsEngine::Controller::instance()->activeScene()->add(left->object());
@@ -124,10 +124,10 @@ void GameController::keyRealeaseHandler(unsigned char keycode) {
             // we ignore Shift and Ctrl
         case 224: case 225: break;
 
-        case 'z': m_currentGame->callInput(Controls::UP); break;
-        case 'q': m_currentGame->callInput(Controls::LEFT); break;
-        case 'd': m_currentGame->callInput(Controls::RIGHT); break;
-        case 's': m_currentGame->callInput(Controls::DOWN); break;
+        case 'z': m_currentGame->callInput(GameModel::Controls::UP); break;
+        case 'q': m_currentGame->callInput(GameModel::Controls::LEFT); break;
+        case 'd': m_currentGame->callInput(GameModel::Controls::RIGHT); break;
+        case 's': m_currentGame->callInput(GameModel::Controls::DOWN); break;
 
         case 'g':
             std::cout << "Toggling Grid " << (m_debugGrid? "off" : "on") << std::endl;
