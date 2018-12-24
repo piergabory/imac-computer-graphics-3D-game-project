@@ -45,8 +45,10 @@ void GameController::setup() {
     initializeScene();
 
 
-    for (size_t i = 0; i < 100; i++) {
+    // preload terrain
+    for (size_t i = 0; i < m_CHUNK_PRELOADING_COUNT; i++) {
         loadNewChunk();
+        m_currentGame->terrain().progress(m_CHUNK_LENGTH/m_CHUNK_FRAME_DURATION);
     }
 
     // subscribe event manager
@@ -74,7 +76,7 @@ bool GameController::loop() {
         m_currentGame->terrain().nextChunk();
     }
 
-    m_currentGame->terrain().progress(1.f/m_CHUNK_FRAME_DURATION);
+    m_currentGame->terrain().progress(m_CHUNK_LENGTH/m_CHUNK_FRAME_DURATION);
 
     GraphicsEngine::Animation::updateAnimations();
 
@@ -101,7 +103,7 @@ void GameController::loadNewChunk() {
     Entity* middle = new Entity();
     Entity* right = new Entity();
 
-    m_currentGame->terrain().loadChunk(left,middle, right);
+    m_currentGame->terrain().loadChunk(left,middle, right, -m_CHUNK_LENGTH * m_CHUNK_PRELOADING_COUNT);
     GraphicsEngine::Controller::instance()->activeScene()->add(left->object());
     GraphicsEngine::Controller::instance()->activeScene()->add(middle->object());
     GraphicsEngine::Controller::instance()->activeScene()->add(right->object());
