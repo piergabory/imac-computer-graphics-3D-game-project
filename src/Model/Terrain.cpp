@@ -7,9 +7,10 @@ void Terrain::testAction(Player &player) {
     m_chunks.front().entityAt(player.position())->action();
 }
 
-void Terrain::loadChunk(Entity* left, Entity* middle, Entity* right) {
-    left->object()->translate(glm::vec3(-2.0f,0.f,0.f));
-    right->object()->translate(glm::vec3(2.0f,0.f,0.f));
+void Terrain::loadChunk(Entity* left, Entity* middle, Entity* right, float offset) {
+    left->object()->translate(glm::vec3(-2.0f,0.f,offset));
+    middle->object()->translate(glm::vec3(0.f,0.f,offset));
+    right->object()->translate(glm::vec3(2.0f,0.f,offset));
     m_chunks.emplace_back(left, middle, right);
 }
 
