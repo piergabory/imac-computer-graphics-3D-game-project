@@ -243,8 +243,8 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() 
             std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES),
             std::make_shared<GraphicsEngine::Material>(
             std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(
-               GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"),
-               GraphicsEngine::LocalFilePath("shaders/flatColor.fs.glsl")
+               LocalFilePath("shaders/perspective.vs.glsl"),
+               LocalFilePath("shaders/flatColor.fs.glsl")
             )
           )
        );
@@ -257,20 +257,20 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() 
 
 // make skybox
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createSkyBox() {
-    GraphicsEngine::LocalFilePath chunkmesh("assets/models/skyboxtest.obj");
-    GraphicsEngine::LocalFilePath chunktex("assets/textures/cubemap_skybox.png");
-    GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
-    GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
+    LocalFilePath chunkmesh("assets/models/skyboxtest.obj");
+    LocalFilePath chunktex("assets/textures/cubemap_skybox.png");
+    LocalFilePath chunkvs("shaders/perspective.vs.glsl");
+    LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
     return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
 }
 
 
 // make chunk
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
-    GraphicsEngine::LocalFilePath chunkmesh("assets/models/cube.obj");
-    GraphicsEngine::LocalFilePath chunktex("assets/textures/cubemap_a.png");
-    GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
-    GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
+    LocalFilePath chunkmesh("assets/models/cube.obj");
+    LocalFilePath chunktex("assets/textures/cubemap_a.png");
+    LocalFilePath chunkvs("shaders/perspective.vs.glsl");
+    LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
 
     return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
 }
@@ -289,7 +289,7 @@ GameController* GameController::instance() {
 
 
 //Loading assets and shaders from relative filepaths to create a 3D object
-std::shared_ptr<GraphicsEngine::Object3D> GameController::createObject3D(GraphicsEngine::LocalFilePath &meshPath, GraphicsEngine::LocalFilePath &textureImagePath,GraphicsEngine::LocalFilePath &vertexShaderPath, GraphicsEngine::LocalFilePath &fragmentShaderPath) {
+std::shared_ptr<GraphicsEngine::Object3D> GameController::createObject3D(LocalFilePath &meshPath, LocalFilePath &textureImagePath,LocalFilePath &vertexShaderPath, LocalFilePath &fragmentShaderPath) {
     try {
         return std::make_shared<GraphicsEngine::Object3D>
         (

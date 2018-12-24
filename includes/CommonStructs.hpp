@@ -43,23 +43,23 @@
          Vertex2D(glm::vec2 position, glm::vec2 texture):
          m_position(position), m_textureCoordinates(texture) {}
      };
-
-
-     /**
-      * LocalFilePath
-      * Subclass to std::string allowing easy creation of absolutes paths relatives to the executable
-      */
-     class LocalFilePath : public std::string {
-     private:
-         static std::string s_absolutePathToExecutable;
-
-     public:
-         static void setLocation(std::string executablePath);
-
-         LocalFilePath(std::string localPath) : std::string(s_absolutePathToExecutable + localPath) {
-             assert(!s_absolutePathToExecutable.empty());
-         }
-     };
  }
 
- #endif /* CommonStructs_hpp */
+
+ /**
+  * LocalFilePath
+  * Subclass to std::string allowing easy creation of absolutes paths relatives to the executable
+  */
+ class LocalFilePath : public std::string {
+ private:
+     static std::string s_absolutePathToExecutable;
+
+ public:
+     static void setLocation(std::string executablePath);
+
+     LocalFilePath(std::string localPath) : std::string(s_absolutePathToExecutable + localPath) {
+         assert(!s_absolutePathToExecutable.empty());
+     }
+ };
+
+#endif /* CommonStructs_hpp */

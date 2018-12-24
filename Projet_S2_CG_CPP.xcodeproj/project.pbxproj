@@ -23,6 +23,7 @@
 		D479956721CEB7D1000E11F3 /* Terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D479956521CEB7D1000E11F3 /* Terrain.cpp */; };
 		D479956A21CEB858000E11F3 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D479956821CEB858000E11F3 /* Entity.cpp */; };
 		D4A0E2DB21D0E9BF00A1E24C /* Chunk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4A0E2D921D0E9BF00A1E24C /* Chunk.cpp */; };
+		D4A0E2DE21D0F07D00A1E24C /* SaveLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4A0E2DC21D0F07D00A1E24C /* SaveLoader.cpp */; };
 		D4EA624E21C955A400CBFCAC /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4EA624C21C955A400CBFCAC /* Button.cpp */; };
 		D4EA625F21CB8E2B00CBFCAC /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4EA625D21CB8E2B00CBFCAC /* Game.cpp */; };
 		D4EA626821CBB36C00CBFCAC /* ImportedMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4EA626721CBB36C00CBFCAC /* ImportedMesh.cpp */; };
@@ -90,7 +91,7 @@
 		D46A4A6721A0CE110096F02F /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		D46A4A6821A0CE110096F02F /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsEngine.cpp; sourceTree = "<group>"; };
-		D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CommonStructs.cpp; path = src/GraphicsEngine/CommonStructs.cpp; sourceTree = SOURCE_ROOT; };
+		D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CommonStructs.cpp; path = src/CommonStructs.cpp; sourceTree = SOURCE_ROOT; };
 		D46A4A7321A0CE220096F02F /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D46A4A7821A0CEEC0096F02F /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../../../usr/local/Cellar/glew/2.1.0/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
 		D46A4A7C21A0CF120096F02F /* glxew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glxew.h; sourceTree = "<group>"; };
@@ -136,6 +137,8 @@
 		D4A0E2D821D0E0A100A1E24C /* monkey1.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = monkey1.obj; sourceTree = "<group>"; };
 		D4A0E2D921D0E9BF00A1E24C /* Chunk.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Chunk.cpp; sourceTree = "<group>"; };
 		D4A0E2DA21D0E9BF00A1E24C /* Chunk.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Chunk.hpp; sourceTree = "<group>"; };
+		D4A0E2DC21D0F07D00A1E24C /* SaveLoader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SaveLoader.cpp; sourceTree = "<group>"; };
+		D4A0E2DD21D0F07D00A1E24C /* SaveLoader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SaveLoader.hpp; sourceTree = "<group>"; };
 		D4EA624A21C938FF00CBFCAC /* 2D.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2D.fs.glsl; sourceTree = "<group>"; };
 		D4EA624B21C938FF00CBFCAC /* 2D.vs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2D.vs.glsl; sourceTree = "<group>"; };
 		D4EA624C21C955A400CBFCAC /* Button.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
@@ -238,9 +241,11 @@
 		D46A496621A0C5130096F02F /* src */ = {
 			isa = PBXGroup;
 			children = (
-				D479956421CEB704000E11F3 /* Model */,
-				D460750B21BD883E00BAF7D0 /* GameController.cpp */,
 				D46A4A7321A0CE220096F02F /* main.cpp */,
+				D460750B21BD883E00BAF7D0 /* GameController.cpp */,
+				D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */,
+				D4A0E2DC21D0F07D00A1E24C /* SaveLoader.cpp */,
+				D479956421CEB704000E11F3 /* Model */,
 				D4F56EF921AFE83700767ECA /* Events */,
 				D46A4A6421A0CE110096F02F /* GraphicsEngine */,
 			);
@@ -271,8 +276,10 @@
 		D46A496F21A0C5130096F02F /* includes */ = {
 			isa = PBXGroup;
 			children = (
-				D479956321CEB6F1000E11F3 /* Model */,
 				D460750C21BD883E00BAF7D0 /* GameController.hpp */,
+				D46A4A4B21A0CD870096F02F /* CommonStructs.hpp */,
+				D4A0E2DD21D0F07D00A1E24C /* SaveLoader.hpp */,
+				D479956321CEB6F1000E11F3 /* Model */,
 				D4F56EF821AFE83000767ECA /* Events */,
 				D46A4A4921A0CD870096F02F /* GraphicsEngine */,
 			);
@@ -305,12 +312,11 @@
 		D46A4A4921A0CD870096F02F /* GraphicsEngine */ = {
 			isa = PBXGroup;
 			children = (
+				D46A4A4A21A0CD870096F02F /* GraphicsEngine.hpp */,
 				D42A1DD121C7D59400B2F379 /* Context */,
 				D42A1DC921C7C4FF00B2F379 /* GUI */,
 				D4F56EF021AF345500767ECA /* Object */,
-				D46A4A4A21A0CD870096F02F /* GraphicsEngine.hpp */,
 				D4F56ECD21AED12100767ECA /* Camera.hpp */,
-				D46A4A4B21A0CD870096F02F /* CommonStructs.hpp */,
 				D46A4A4D21A0CD870096F02F /* Frameworks.hpp */,
 				D46A4A5121A0CD870096F02F /* Exceptions.hpp */,
 			);
@@ -320,10 +326,9 @@
 		D46A4A6421A0CE110096F02F /* GraphicsEngine */ = {
 			isa = PBXGroup;
 			children = (
+				D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */,
 				D4EA624F21C955B400CBFCAC /* GUI */,
 				D4F56EF121AF348C00767ECA /* Object */,
-				D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */,
-				D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */,
 				D46A4A6521A0CE110096F02F /* Exceptions.cpp */,
 				D4F56ECC21AED12100767ECA /* Camera.cpp */,
 			);
@@ -646,6 +651,7 @@
 				D460750D21BD883E00BAF7D0 /* GameController.cpp in Sources */,
 				D4EA624E21C955A400CBFCAC /* Button.cpp in Sources */,
 				D4F56EF621AF34FE00767ECA /* ShaderProgram.cpp in Sources */,
+				D4A0E2DE21D0F07D00A1E24C /* SaveLoader.cpp in Sources */,
 				D479955D21CE2B32000E11F3 /* Player.cpp in Sources */,
 				D4F56EEA21AF321F00767ECA /* PerspectiveShaderProgram.cpp in Sources */,
 				D46A4A8521A0D0B50096F02F /* GraphicsEngine.cpp in Sources */,

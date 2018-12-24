@@ -5,9 +5,9 @@ namespace GameModel {
 
     GraphicsEngine::Object3D* Entity::makeObject(const char* meshPath, const char* texturePath, const char* vertexShaderProgram, const char* fragmentShaderProgram) {
         try {
-            std::shared_ptr<GraphicsEngine::Mesh3D> mesh = std::make_shared<GraphicsEngine::ImportedMesh>(GraphicsEngine::LocalFilePath(meshPath));
-            std::shared_ptr<GraphicsEngine::Texture> texture = std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath(texturePath));
-            std::shared_ptr<GraphicsEngine::ShaderProgram> shaderProgram = std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath(vertexShaderProgram),GraphicsEngine::LocalFilePath(fragmentShaderProgram));
+            std::shared_ptr<GraphicsEngine::Mesh3D> mesh = std::make_shared<GraphicsEngine::ImportedMesh>(LocalFilePath(meshPath));
+            std::shared_ptr<GraphicsEngine::Texture> texture = std::make_shared<GraphicsEngine::Texture>(LocalFilePath(texturePath));
+            std::shared_ptr<GraphicsEngine::ShaderProgram> shaderProgram = std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(LocalFilePath(vertexShaderProgram),LocalFilePath(fragmentShaderProgram));
             std::shared_ptr<GraphicsEngine::Material> material = std::make_shared<GraphicsEngine::Material>(shaderProgram, texture);
             return new GraphicsEngine::Object3D(mesh, material);
         } catch(GraphicsEngine::InitialisationException error) {
