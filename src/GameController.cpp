@@ -28,7 +28,6 @@ void GameController::initializeScene() {
     // adds objects in the scene
     GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
-    //GraphicsEngine::Controller::instance()->activeScene()->add(m_chunk);
 }
 
 
