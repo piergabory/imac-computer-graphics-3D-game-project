@@ -8,8 +8,8 @@ void Terrain::testAction(Player &player) {
 }
 
 void Terrain::loadChunk(Entity* left, Entity* middle, Entity* right) {
-    left->object()->translate(glm::vec3(-3.0f,0.f,0.f));
-    right->object()->translate(glm::vec3(3.0f,0.f,0.f));
+    left->object()->translate(glm::vec3(-2.0f,0.f,0.f));
+    right->object()->translate(glm::vec3(2.0f,0.f,0.f));
     m_chunks.emplace_back(left, middle, right);
 }
 

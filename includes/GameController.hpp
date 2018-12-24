@@ -36,7 +36,7 @@ private:
 
 
     /// \brief defines the game rythm
-    const int m_CHUNK_FRAME_DURATION = 60;
+    const int m_CHUNK_FRAME_DURATION = 10;
     int m_chunkframe = 0;
 
 
