@@ -4,13 +4,19 @@
 #include "Terrain.hpp"
 
 void Terrain::testAction(Player &player) {
-    (m_chunks.front())[player.position()]->action(/*player*/);
+    m_chunks.front().entityAt(player.position())->action();
 }
 
 void Terrain::loadChunk(Entity* left, Entity* middle, Entity* right) {
-    std::map<Position, std::unique_ptr<Entity> > chunk;
-    chunk[Position::LEFT] = std::unique_ptr<Entity>(left);
-    chunk[Position::MIDDLE] = std::unique_ptr<Entity>(middle);
-    chunk[Position::RIGHT] = std::unique_ptr<Entity>(right);
-    m_chunks.push(chunk);
+    left->object()->translate(glm::vec3(-3.0f,0.f,0.f));
+    right->object()->translate(glm::vec3(3.0f,0.f,0.f));
+    m_chunks.emplace_back(left, middle, right);
+}
+
+void Terrain::progress(const float progress){
+    for (std::list<Chunk>::iterator chunkIterator = m_chunks.begin(); chunkIterator != m_chunks.end(); ++chunkIterator) {
+        chunkIterator->left->object()->translate(glm::vec3(0.f,0.f,progress));
+        chunkIterator->middle->object()->translate(glm::vec3(0.f,0.f,progress));
+        chunkIterator->right->object()->translate(glm::vec3(0.f,0.f,progress));
+    }
 }

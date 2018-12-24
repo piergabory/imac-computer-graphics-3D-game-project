@@ -37,6 +37,14 @@ public:
         return m_player.model();
     }
 
+    inline Terrain& terrain() {
+        return m_terrain;
+    }
+
+    inline const Terrain& terrain() const {
+        return m_terrain;
+    }
+
     /// \brief Redirects controller inputs on player movements, attacks, bonuses etc...
     void callInput(Controls control);
 

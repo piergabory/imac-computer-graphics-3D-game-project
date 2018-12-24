@@ -8,7 +8,7 @@ std::shared_ptr<GraphicsEngine::Object3D> Game::loadPlayerObject() {
 
     // define resources paths
     const GraphicsEngine::LocalFilePath
-    PLAYER_MESH("assets/monkey1.obj"),
+    PLAYER_MESH("assets/models/monkey1.obj"),
     PLAYER_TEXTURE("assets/textures/test.png"),
     VERTEX_SHADER("shaders/perspective.vs.glsl"),
     FRAGMENT_SHADER("shaders/flatTexture.fs.glsl");

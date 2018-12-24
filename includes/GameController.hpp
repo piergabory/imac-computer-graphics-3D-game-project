@@ -14,6 +14,7 @@
 #include "GraphicsEngine.hpp"
 #include "EventManager.hpp"
 #include "Animation.hpp"
+#include "Terrain.hpp"
 
 #include <cmath>
 
@@ -57,6 +58,8 @@ private:
 
     // setup
     void initializeScene();
+
+    void loadNewChunk();
 
     /// \brief static methods for object initialization
     /// Loading assets and shaders from relative filepaths to create a 3D object
