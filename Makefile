@@ -65,7 +65,7 @@ else
 	# LINUX
 	ifeq ($(UNAME_S),Linux)
 		CPPFLAGS += -D __LINUX__
-		LDFLAGS += -lGL -lGLU -lGLEW -lSDL2 -lSDL2_image -lm -lassimp
+		LDFLAGS += -lGL -lGLU -lGLEW -lSDL2 -lSDL2_image -lm -lassimp -ljsoncpp
 	endif
 
 	# MACINTOSH
@@ -77,7 +77,7 @@ else
 
 		# Imported frameworks and librairies
 		LDFLAGS += -F/Library/Frameworks -framework SDL2 -framework SDL2_Image
-		LDFLAGS += -I/usr/local/include -L/usr/local/lib -lglew -lassimp
+		LDFLAGS += -I/usr/local/include -L/usr/local/lib -lglew -lassimp -ljsoncpp
 
 	endif
 endif

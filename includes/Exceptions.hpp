@@ -33,4 +33,23 @@ namespace GraphicsEngine
     };
 }
 
+
+class SaveLoaderException : public std::exception
+{
+
+private:
+    std::string m_message;
+    std::string m_info;
+
+public:
+
+    const char* what() const throw() override;
+
+    SaveLoaderException(const char* message, const char* info);
+
+    SaveLoaderException() = default;
+
+    ~SaveLoaderException() throw() {}
+};
+
 #endif /* Exceptions_h */

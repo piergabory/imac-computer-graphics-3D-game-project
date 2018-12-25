@@ -19,7 +19,9 @@ namespace GameModel {
 
         void testAction(Player &player);
 
-        void loadChunk(Entity* left, Entity* middle, Entity* right, float offset = 0);
+        void loadChunk(Chunk &chunk, const float offset = 0);
+
+        void loadChunk(Entity* left, Entity* middle, Entity* right, const float offset = 0);
 
         void progress(const float progress);
 

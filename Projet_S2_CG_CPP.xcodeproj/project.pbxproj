@@ -22,6 +22,7 @@
 		D479956021CE2BA1000E11F3 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D479955E21CE2BA1000E11F3 /* Animation.cpp */; };
 		D479956721CEB7D1000E11F3 /* Terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D479956521CEB7D1000E11F3 /* Terrain.cpp */; };
 		D479956A21CEB858000E11F3 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D479956821CEB858000E11F3 /* Entity.cpp */; };
+		D48A89F221D240B800EF985C /* libjsoncpp.1.8.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D48A89F121D240B800EF985C /* libjsoncpp.1.8.4.dylib */; };
 		D4A0E2DB21D0E9BF00A1E24C /* Chunk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4A0E2D921D0E9BF00A1E24C /* Chunk.cpp */; };
 		D4A0E2DE21D0F07D00A1E24C /* SaveLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4A0E2DC21D0F07D00A1E24C /* SaveLoader.cpp */; };
 		D4EA624E21C955A400CBFCAC /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4EA624C21C955A400CBFCAC /* Button.cpp */; };
@@ -107,6 +108,8 @@
 		D479956621CEB7D1000E11F3 /* Terrain.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Terrain.hpp; sourceTree = "<group>"; };
 		D479956821CEB858000E11F3 /* Entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		D479956921CEB858000E11F3 /* Entity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
+		D48A89F021D23E4700EF985C /* testSave.json */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; lineEnding = 0; path = testSave.json; sourceTree = "<group>"; };
+		D48A89F121D240B800EF985C /* libjsoncpp.1.8.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjsoncpp.1.8.4.dylib; path = ../../../../../../usr/local/Cellar/jsoncpp/1.8.4/lib/libjsoncpp.1.8.4.dylib; sourceTree = "<group>"; };
 		D4A0E2BB21D0E0A100A1E24C /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		D4A0E2BC21D0E0A100A1E24C /* cubemap_skybox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cubemap_skybox.png; sourceTree = "<group>"; };
 		D4A0E2BD21D0E0A100A1E24C /* cubemap_skybox.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cubemap_skybox.jpg; sourceTree = "<group>"; };
@@ -174,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D48A89F221D240B800EF985C /* libjsoncpp.1.8.4.dylib in Frameworks */,
 				D4EA626B21CBB56000CBFCAC /* libassimp.4.1.0.dylib in Frameworks */,
 				D46A4A7F21A0CFC50096F02F /* libGLEW.2.1.0.dylib in Frameworks */,
 				D4F56EE821AF25F300767ECA /* SDL2.framework in Frameworks */,
@@ -224,6 +228,7 @@
 				D46A496621A0C5130096F02F /* src */,
 				D46A4A2F21A0C5130096F02F /* obj */,
 				D46A496B21A0C5130096F02F /* shaders */,
+				D48A89EF21D23DF800EF985C /* saves */,
 				D4A0E2B921D0E0A100A1E24C /* assets */,
 				D46A488621A0C3F10096F02F /* Products */,
 				D46A4A3521A0C5960096F02F /* Frameworks */,
@@ -244,6 +249,7 @@
 				D46A4A7321A0CE220096F02F /* main.cpp */,
 				D460750B21BD883E00BAF7D0 /* GameController.cpp */,
 				D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */,
+				D46A4A6521A0CE110096F02F /* Exceptions.cpp */,
 				D4A0E2DC21D0F07D00A1E24C /* SaveLoader.cpp */,
 				D479956421CEB704000E11F3 /* Model */,
 				D4F56EF921AFE83700767ECA /* Events */,
@@ -278,6 +284,7 @@
 			children = (
 				D460750C21BD883E00BAF7D0 /* GameController.hpp */,
 				D46A4A4B21A0CD870096F02F /* CommonStructs.hpp */,
+				D46A4A5121A0CD870096F02F /* Exceptions.hpp */,
 				D4A0E2DD21D0F07D00A1E24C /* SaveLoader.hpp */,
 				D479956321CEB6F1000E11F3 /* Model */,
 				D4F56EF821AFE83000767ECA /* Events */,
@@ -297,6 +304,7 @@
 		D46A4A3521A0C5960096F02F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D48A89F121D240B800EF985C /* libjsoncpp.1.8.4.dylib */,
 				D4EA626A21CBB56000CBFCAC /* libassimp.4.1.0.dylib */,
 				D4F56EE721AF25F300767ECA /* SDL2.framework */,
 				D4F56EC521AEB29400767ECA /* SDL2_image.framework */,
@@ -318,7 +326,6 @@
 				D4F56EF021AF345500767ECA /* Object */,
 				D4F56ECD21AED12100767ECA /* Camera.hpp */,
 				D46A4A4D21A0CD870096F02F /* Frameworks.hpp */,
-				D46A4A5121A0CD870096F02F /* Exceptions.hpp */,
 			);
 			path = GraphicsEngine;
 			sourceTree = "<group>";
@@ -329,7 +336,6 @@
 				D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */,
 				D4EA624F21C955B400CBFCAC /* GUI */,
 				D4F56EF121AF348C00767ECA /* Object */,
-				D46A4A6521A0CE110096F02F /* Exceptions.cpp */,
 				D4F56ECC21AED12100767ECA /* Camera.cpp */,
 			);
 			path = GraphicsEngine;
@@ -385,6 +391,14 @@
 				D4A0E2D921D0E9BF00A1E24C /* Chunk.cpp */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D48A89EF21D23DF800EF985C /* saves */ = {
+			isa = PBXGroup;
+			children = (
+				D48A89F021D23E4700EF985C /* testSave.json */,
+			);
+			path = saves;
 			sourceTree = "<group>";
 		};
 		D4A0E2B921D0E0A100A1E24C /* assets */ = {
@@ -847,6 +861,7 @@
 					"$(inherited)",
 					/usr/local/lib,
 					/usr/local/Cellar/assimp/4.1.0/lib,
+					/usr/local/Cellar/jsoncpp/1.8.4/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = build;
@@ -873,6 +888,7 @@
 					"$(inherited)",
 					/usr/local/lib,
 					/usr/local/Cellar/assimp/4.1.0/lib,
+					/usr/local/Cellar/jsoncpp/1.8.4/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = build;

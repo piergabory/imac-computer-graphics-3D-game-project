@@ -1,10 +1,3 @@
-//
-//  Exceptions.cpp
-//  product
-//
-//  Created by Pierre Gabory on 16/11/2018.
-//
-
 #include "Exceptions.hpp"
 
 namespace GraphicsEngine
@@ -37,4 +30,20 @@ namespace GraphicsEngine
         ret += "\n";
         return ret.c_str();
     }
+}
+
+
+
+SaveLoaderException::SaveLoaderException(const char* message, const char* info) :
+m_message(message), m_info(info)
+{}
+
+const char* SaveLoaderException::what() const throw() {
+    std::string ret;
+    ret += "\n/!\\ GAME FILE LOADER EXCEPTION :";
+    ret += m_message;
+    ret += "\n";
+    ret += m_info;
+    ret += "\n";
+    return ret.c_str();
 }

@@ -38,18 +38,13 @@ void GameController::setup() {
     GraphicsEngine::Controller::instance()->printInfos();
 
     GameModel::Entity::loadObject();
+    SaveLoader::instance()->openFile(LocalFilePath("saves/testSave.json"));
+    SaveLoader::instance()->loadChunkBuffer();
 
     m_currentGame = std::unique_ptr<GameModel::Game>(new GameModel::Game);
 
     // create scene
     initializeScene();
-
-
-    // preload terrain
-    for (size_t i = 0; i < m_CHUNK_PRELOADING_COUNT; i++) {
-        loadNewChunk();
-        m_currentGame->terrain().progress(m_CHUNK_LENGTH/m_CHUNK_FRAME_DURATION);
-    }
 
     // subscribe event manager
     Events::Manager::instance()->subscribe((QuitEventObserver*) this);
@@ -73,7 +68,6 @@ bool GameController::loop() {
 
     if(m_chunkframe == 0) {
         loadNewChunk();
-        m_currentGame->terrain().nextChunk();
     }
 
     m_currentGame->terrain().progress(m_CHUNK_LENGTH/m_CHUNK_FRAME_DURATION);
@@ -99,14 +93,17 @@ bool GameController::loop() {
 
 
 void GameController::loadNewChunk() {
-    GameModel::Entity* left = new GameModel::Entity();
-    GameModel::Entity* middle = new GameModel::Entity();
-    GameModel::Entity* right = new GameModel::Entity();
+    if (SaveLoader::instance()->chunks().empty()) return;
 
-    m_currentGame->terrain().loadChunk(left,middle, right, -m_CHUNK_LENGTH * m_CHUNK_PRELOADING_COUNT);
-    GraphicsEngine::Controller::instance()->activeScene()->add(left->object());
-    GraphicsEngine::Controller::instance()->activeScene()->add(middle->object());
-    GraphicsEngine::Controller::instance()->activeScene()->add(right->object());
+    GameModel::Chunk newChunk(SaveLoader::instance()->chunks().front());
+    SaveLoader::instance()->chunks().pop();
+
+    GraphicsEngine::Controller::instance()->activeScene()->add(newChunk.left->object());
+    GraphicsEngine::Controller::instance()->activeScene()->add(newChunk.middle->object());
+    GraphicsEngine::Controller::instance()->activeScene()->add(newChunk.right->object());
+
+    m_currentGame->terrain().loadChunk(newChunk, -m_CHUNK_LENGTH * m_CHUNK_PRELOADING_COUNT);
+    m_currentGame->terrain().nextChunk();
 }
 
 

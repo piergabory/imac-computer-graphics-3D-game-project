@@ -34,6 +34,14 @@ namespace GameModel {
             right = std::move(source.right);
         }
 
+        Chunk operator=(Chunk source) {
+            Chunk newChunk;
+            newChunk.left = std::move(source.left);
+            newChunk.middle = std::move(source.middle);
+            newChunk.right = std::move(source.right);
+            return newChunk;
+        }
+
         // default constructor
         Chunk() {}
 
