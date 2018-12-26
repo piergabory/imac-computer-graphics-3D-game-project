@@ -19,7 +19,7 @@ public:
     static void loadObjects();
 
     Turn(TurnDirection direction): Entity(), m_direction(direction) {
-        if (!s_turnObjectLeftVariant || !s_turnObjectRightVariant) loadObject();
+        if (s_turnObjectLeftVariant == nullptr || s_turnObjectRightVariant == nullptr) loadObjects();
 
         switch (direction) {
             case TurnDirection::LEFT:

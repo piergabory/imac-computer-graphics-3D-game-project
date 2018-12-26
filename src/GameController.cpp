@@ -70,6 +70,7 @@ bool GameController::loop() {
     m_chunkframe %= m_CHUNK_FRAME_DURATION;
 
     if(m_chunkframe == 0) {
+        m_chunkCycle ++;
         loadNewChunk();
         m_currentGame->terrain().nextChunk();
     }
@@ -97,9 +98,22 @@ bool GameController::loop() {
 
 
 void GameController::loadNewChunk() {
-    Entity* left = new Entity();
-    Entity* middle = new Entity();
-    Entity* right = new Entity();
+    Entity* left, *middle, *right;
+    if (m_chunkCycle % 40 == 0) {
+        left = new Turn(TurnDirection::LEFT);
+        middle = new Turn(TurnDirection::LEFT);
+        right = new Turn(TurnDirection::LEFT);
+    } else if(m_chunkCycle % 50 == 0) {
+        left = new Turn(TurnDirection::RIGHT);
+        middle = new Turn(TurnDirection::RIGHT);
+        right = new Turn(TurnDirection::RIGHT);
+    } else {
+        left = new Entity();
+        middle = new Entity();
+        right = new Entity();
+    }
+
+
 
     m_currentGame->terrain().loadChunk(left,middle, right, -m_CHUNK_LENGTH * m_CHUNK_PRELOADING_COUNT);
     GraphicsEngine::Controller::instance()->activeScene()->add(left->object());

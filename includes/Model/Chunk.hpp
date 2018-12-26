@@ -2,7 +2,7 @@
 #ifndef Chunk_hpp
 #define Chunk_hpp
 
-#include "Entity.hpp"
+#include "Turn.hpp"
 #include "Player.hpp"
 
 

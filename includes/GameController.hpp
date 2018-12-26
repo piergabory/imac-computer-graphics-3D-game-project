@@ -44,7 +44,12 @@ private:
     const uint m_CHUNK_PRELOADING_COUNT = 60;
     const uint m_CHUNK_FRAME_DURATION = 10;
     const float m_CHUNK_LENGTH = -2.f;
-    int m_chunkframe = 0;
+
+    // progress in the current chunk
+    uint m_chunkframe = 0;
+
+    // passed chunk count
+    unsigned long m_chunkCycle = 0;
 
 
     /// \brief player point of view, scene camera.
