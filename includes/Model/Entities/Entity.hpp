@@ -11,10 +11,11 @@ private:
 
     static std::unique_ptr<GraphicsEngine::Object3D> s_entityObject;
 
-    std::shared_ptr<GraphicsEngine::Object3D> m_entityObject;
-
     // todo check for use?
     const glm::vec3 position() const { return m_entityObject->position(); }
+
+protected:
+    std::shared_ptr<GraphicsEngine::Object3D> m_entityObject;
 
     static GraphicsEngine::Object3D* makeObject(const char* meshPath, const char* texturePath, const char* vertexShaderProgram, const char* fragmentShaderProgram);
 
@@ -26,7 +27,10 @@ public:
 
     static void loadObject();
 
-    Entity(): m_entityObject(std::make_shared<GraphicsEngine::Object3D>(*s_entityObject)) {}
+    Entity() {
+        if (!s_entityObject) loadObject();
+        m_entityObject =  std::make_shared<GraphicsEngine::Object3D>(*s_entityObject);
+    }
 
     virtual ~Entity() {}
 };

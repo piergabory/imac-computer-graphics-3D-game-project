@@ -22,6 +22,7 @@
 		D479956021CE2BA1000E11F3 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D479955E21CE2BA1000E11F3 /* Animation.cpp */; };
 		D479956721CEB7D1000E11F3 /* Terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D479956521CEB7D1000E11F3 /* Terrain.cpp */; };
 		D479956A21CEB858000E11F3 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D479956821CEB858000E11F3 /* Entity.cpp */; };
+		D48A89F721D3C1FC00EF985C /* Turn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D48A89F521D3C1FC00EF985C /* Turn.cpp */; };
 		D4A0E2DB21D0E9BF00A1E24C /* Chunk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4A0E2D921D0E9BF00A1E24C /* Chunk.cpp */; };
 		D4EA624E21C955A400CBFCAC /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4EA624C21C955A400CBFCAC /* Button.cpp */; };
 		D4EA625F21CB8E2B00CBFCAC /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4EA625D21CB8E2B00CBFCAC /* Game.cpp */; };
@@ -106,6 +107,8 @@
 		D479956621CEB7D1000E11F3 /* Terrain.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Terrain.hpp; sourceTree = "<group>"; };
 		D479956821CEB858000E11F3 /* Entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		D479956921CEB858000E11F3 /* Entity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
+		D48A89F521D3C1FC00EF985C /* Turn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Turn.cpp; sourceTree = "<group>"; };
+		D48A89F621D3C1FC00EF985C /* Turn.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Turn.hpp; sourceTree = "<group>"; };
 		D4A0E2BB21D0E0A100A1E24C /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		D4A0E2BC21D0E0A100A1E24C /* cubemap_skybox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cubemap_skybox.png; sourceTree = "<group>"; };
 		D4A0E2BD21D0E0A100A1E24C /* cubemap_skybox.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cubemap_skybox.jpg; sourceTree = "<group>"; };
@@ -361,10 +364,10 @@
 		D479956321CEB6F1000E11F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D48A89F321D3C1CA00EF985C /* Entities */,
 				D4EA625E21CB8E2B00CBFCAC /* Game.hpp */,
 				D4EA626021CB910D00CBFCAC /* Player.hpp */,
 				D479956621CEB7D1000E11F3 /* Terrain.hpp */,
-				D479956921CEB858000E11F3 /* Entity.hpp */,
 				D4A0E2DA21D0E9BF00A1E24C /* Chunk.hpp */,
 			);
 			path = Model;
@@ -373,13 +376,31 @@
 		D479956421CEB704000E11F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D48A89F421D3C1E100EF985C /* Entities */,
 				D4EA625D21CB8E2B00CBFCAC /* Game.cpp */,
 				D479955C21CE2B32000E11F3 /* Player.cpp */,
 				D479956521CEB7D1000E11F3 /* Terrain.cpp */,
-				D479956821CEB858000E11F3 /* Entity.cpp */,
 				D4A0E2D921D0E9BF00A1E24C /* Chunk.cpp */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D48A89F321D3C1CA00EF985C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				D479956921CEB858000E11F3 /* Entity.hpp */,
+				D48A89F621D3C1FC00EF985C /* Turn.hpp */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		D48A89F421D3C1E100EF985C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				D48A89F521D3C1FC00EF985C /* Turn.cpp */,
+				D479956821CEB858000E11F3 /* Entity.cpp */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		D4A0E2B921D0E0A100A1E24C /* assets */ = {
@@ -656,6 +677,7 @@
 				D4EA625F21CB8E2B00CBFCAC /* Game.cpp in Sources */,
 				D46A4A8621A0D0B50096F02F /* CommonStructs.cpp in Sources */,
 				D4F56ED121AEDFB700767ECA /* Material.cpp in Sources */,
+				D48A89F721D3C1FC00EF985C /* Turn.cpp in Sources */,
 				D42A1DD721C7D77E00B2F379 /* Object2D.cpp in Sources */,
 				D479956721CEB7D1000E11F3 /* Terrain.cpp in Sources */,
 				D4F56EC121AEAA6300767ECA /* Texture.cpp in Sources */,

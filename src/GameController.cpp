@@ -37,8 +37,6 @@ void GameController::setup() {
     GraphicsEngine::Controller::instance()->setup();
     GraphicsEngine::Controller::instance()->printInfos();
 
-    Entity::loadObject();
-
     m_currentGame = std::unique_ptr<Game>(new Game);
 
     // create scene
