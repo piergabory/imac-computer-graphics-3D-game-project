@@ -118,18 +118,42 @@ void GameController::quitEventHandler() {
 
 
 // a déolacer dans l'EventManager
-void GameController::keyRealeaseHandler(unsigned char keycode) {
+void GameController::keyRealeaseHandler(const SDL_Keycode keycode) {
     // check if debug shortcuts is activated (CTRL-SHIFT):
     switch (keycode) {
-            // we ignore Shift and Ctrl
-        case 224: case 225: break;
+            // escape key
+        case SDLK_ESCAPE:
+            SDL_CaptureMouse(SDL_FALSE);
+            SDL_ShowCursor(SDL_ENABLE);
+            break;
 
-        case 'z': m_currentGame->callInput(Controls::UP); break;
-        case 'q': m_currentGame->callInput(Controls::LEFT); break;
-        case 'd': m_currentGame->callInput(Controls::RIGHT); break;
-        case 's': m_currentGame->callInput(Controls::DOWN); break;
+        case SDLK_z: m_currentGame->callInput(Controls::UP); break;
+        case SDLK_q: m_currentGame->callInput(Controls::LEFT); break;
+        case SDLK_d: m_currentGame->callInput(Controls::RIGHT); break;
+        case SDLK_s: m_currentGame->callInput(Controls::DOWN); break;
 
-        case 'g':
+        case SDLK_c:
+            switch (m_cameraBehavior) {
+                case CameraBehaviors::LOCKED:
+                    m_cameraBehavior = CameraBehaviors::FOLOW_PLAYER;
+                    std::cout << "Camera set to FOLOW PLAYER" << std::endl;
+                    break;
+
+                case CameraBehaviors::FOLOW_PLAYER:
+                    m_cameraBehavior = CameraBehaviors::FREE;
+                    std::cout << "Camera set to LOCKED" << std::endl;
+                    break;
+
+                case CameraBehaviors::FREE:
+                    m_cameraBehavior = CameraBehaviors::LOCKED;
+                    std::cout << "Camera set to FREE" << std::endl;
+                    break;
+
+                default: assert(false && "Bad CameraBehavior enum");
+            }
+            break;
+
+        case SDLK_g:
             std::cout << "Toggling Grid " << (m_debugGrid? "off" : "on") << std::endl;
             if (m_debugGrid){
                 m_debugGrid.reset();
@@ -143,57 +167,9 @@ void GameController::keyRealeaseHandler(unsigned char keycode) {
 };
 
 
-void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
-    const float KEYBOARD_CAMERA_CONTROL_SPEED = 0.1;
-    for (unsigned char key : pressedKeys) {
-        switch (key) {
-
-
-                // Up
-            case 'w':
-                m_playerPointOfView.move(glm::vec3(0,-KEYBOARD_CAMERA_CONTROL_SPEED,0));
-                break;
-
-                // Down
-            case 'x':
-            m_playerPointOfView.move(glm::vec3(0,KEYBOARD_CAMERA_CONTROL_SPEED,0));
-                break;
-
-                // Rotate right
-            case 'e':
-                m_playerPointOfView.pan(glm::vec3(0,1,0), KEYBOARD_CAMERA_CONTROL_SPEED);
-                break;
-
-                // Rotate left
-            case 'a':
-                m_playerPointOfView.pan(glm::vec3(0,-1,0), KEYBOARD_CAMERA_CONTROL_SPEED);
-                break;
-
-                // Rotate up
-            case 'r':
-                m_playerPointOfView.pan(glm::vec3(1,0,0), KEYBOARD_CAMERA_CONTROL_SPEED);
-                break;
-
-                // rotate down
-            case 'f':
-                m_playerPointOfView.pan(glm::vec3(-1,0,0), KEYBOARD_CAMERA_CONTROL_SPEED);
-                break;
-
-                // '0' key (not the numpad)
-            case '0':
-                m_playerPointOfView.resetPosition();
-                break;
-
-                // escape key
-            case 27:
-                SDL_CaptureMouse(SDL_FALSE);
-                SDL_ShowCursor(SDL_ENABLE);
-                break;
-
-            default:
-                //std::cout << "char: " << key << " int: " << (int) key << std::endl;
-                break;
-        }
+void GameController::keyPressHandler(const std::set<const SDL_Keycode> &pressedKeys) {
+    for (SDL_Keycode key : pressedKeys) {
+        cameraMoves(key);
     }
 }
 
@@ -212,13 +188,62 @@ void GameController::mouseWheelHandler(float deltaX, float deltaY) {
 }
 
 
-void GameController::mouseReleaseHandler(unsigned char button) {
+void GameController::mouseReleaseHandler(const unsigned char button) {
     SDL_CaptureMouse(SDL_TRUE);
     SDL_ShowCursor(SDL_DISABLE);
 }
 
 
+void GameController::cameraMoves(const SDL_Keycode key) {
+    const float KEYBOARD_CAMERA_CONTROL_SPEED = 0.1;
+    if (m_cameraBehavior == CameraBehaviors::FREE) switch(key) {
+            // Up
+        case 'i':
+            m_playerPointOfView.move(glm::vec3(0,-KEYBOARD_CAMERA_CONTROL_SPEED,0));
+            break;
 
+            // Down
+        case 'k':
+            m_playerPointOfView.move(glm::vec3(0,KEYBOARD_CAMERA_CONTROL_SPEED,0));
+            break;
+
+            // left
+        case 'j':
+            m_playerPointOfView.move(glm::vec3(-KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
+            break;
+
+            // right
+        case 'l':
+            m_playerPointOfView.move(glm::vec3(KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
+            break;
+
+            // Rotate right
+        case 'u':
+            m_playerPointOfView.pan(glm::vec3(0,1,0), KEYBOARD_CAMERA_CONTROL_SPEED);
+            break;
+
+            // Rotate left
+        case 'o':
+            m_playerPointOfView.pan(glm::vec3(0,-1,0), KEYBOARD_CAMERA_CONTROL_SPEED);
+            break;
+
+            // Rotate up
+        case 'p':
+            m_playerPointOfView.pan(glm::vec3(1,0,0), KEYBOARD_CAMERA_CONTROL_SPEED);
+            break;
+
+            // rotate down
+        case 'm':
+            m_playerPointOfView.pan(glm::vec3(-1,0,0), KEYBOARD_CAMERA_CONTROL_SPEED);
+            break;
+
+            // '0' key (not the numpad)
+        case '0':
+            // replace to origin
+            m_playerPointOfView.resetPosition();
+            break;
+    }
+}
 
 
 // make grid

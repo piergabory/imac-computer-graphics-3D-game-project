@@ -26,14 +26,14 @@ namespace GraphicsEngine {
 
 
 
-    void Button::mouseReleaseHandler(unsigned char button) {
+    void Button::mouseReleaseHandler(const unsigned char button) {
         // if in bounds, calls the callback
         if (checkBounds()) m_onClickCallback(this, button);
     }
 
 
 
-    Button::Button(const glm::vec2 &position, const glm::vec2 &size, const LocalFilePath image, const std::function<void(Button*, unsigned char)> &callback):
+    Button::Button(const glm::vec2 &position, const glm::vec2 &size, const LocalFilePath image, const std::function<void(Button*, const unsigned char)> &callback):
         // superclass constructor
         Object2D(position, size, image),
 
@@ -54,7 +54,7 @@ namespace GraphicsEngine {
 
 
     // Same constructor, using textures instead of image paths.
-    Button::Button(const glm::vec2 &position, const glm::vec2 &size, const std::shared_ptr<Texture> sprite, const std::function<void(Button*, unsigned char)> &callback):
+    Button::Button(const glm::vec2 &position, const glm::vec2 &size, const std::shared_ptr<Texture> sprite, const std::function<void(Button*, const unsigned char)> &callback):
         Object2D(position, size, sprite),
         m_onClickCallback(callback),
         m_boundingBoxTopLeftCorner(position),

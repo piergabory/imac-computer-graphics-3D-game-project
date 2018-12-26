@@ -19,6 +19,11 @@
 #include <cmath>
 
 
+/// \brief describe camera behaviors states
+enum class CameraBehaviors {
+    FOLOW_PLAYER, FREE, LOCKED
+};
+
 /**
  *
  * GAME CONTROLLER CLASS
@@ -44,6 +49,7 @@ private:
 
     /// \brief player point of view, scene camera.
     GraphicsEngine::Camera m_playerPointOfView;
+    CameraBehaviors m_cameraBehavior = CameraBehaviors::FOLOW_PLAYER;
 
 
     /// \brief object instances handles
@@ -70,6 +76,9 @@ private:
     static std::shared_ptr<GraphicsEngine::Object3D> createChunk();
     static std::shared_ptr<GraphicsEngine::Object3D> createObject3D(GraphicsEngine::LocalFilePath &meshPath, GraphicsEngine::LocalFilePath &textureImagePath,GraphicsEngine::LocalFilePath &vertexShaderPath, GraphicsEngine::LocalFilePath &fragmentShaderPath);
 
+    // control action
+    void cameraMoves(const SDL_Keycode key);
+
 
 
     // EVENT OBSERVERS
@@ -80,8 +89,8 @@ private:
 
     /// \brief observer methods called by the event manager when a key is engaged
     /// Add/Removes the pressed key from the pressedKeys set.
-    void keyRealeaseHandler(unsigned char keycode) override;
-    void keyPressHandler(std::set<unsigned char> &pressedKeys) override;
+    void keyRealeaseHandler(const SDL_Keycode keycode) override;
+    void keyPressHandler(const std::set<const SDL_Keycode> &pressedKeys) override;
 
     /// \brief observer methods called by the event manager when a mouse event is fired
     /// controls the camera orientation
@@ -89,7 +98,7 @@ private:
     /// controls the camera position (x-z plane)
     void mouseWheelHandler(float deltaX, float deltaY) override;
     /// captures the cursor in the sdl window
-    void mouseReleaseHandler(unsigned char button) override;
+    void mouseReleaseHandler(const unsigned char button) override;
 
 
     // STATICS
