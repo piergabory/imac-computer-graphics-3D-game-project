@@ -1,6 +1,6 @@
 obj/
 bin/
 build/
-Projet_S2_CG_CPP.xcodeproj/
 .vscode/
-DoxygenGenerated
+DoxygenGenerated/
+*.xcuserstate
