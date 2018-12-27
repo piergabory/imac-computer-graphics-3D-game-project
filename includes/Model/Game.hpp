@@ -12,7 +12,7 @@
 #include "ImportedMesh.hpp"
 
 /// game controls, to be mapped on keyboard or game controller in GameController
-enum class Controls : unsigned char { LEFT, RIGHT, UP, DOWN };
+enum class Controls { LEFT, RIGHT, UP, DOWN };
 
 /**
  * GAME CLASS

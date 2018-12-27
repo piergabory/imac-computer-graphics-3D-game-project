@@ -115,7 +115,7 @@ void GameController::loadNewChunk() {
 
 
 
-    m_currentGame->terrain().loadChunk(left,middle, right, -m_CHUNK_LENGTH * m_CHUNK_PRELOADING_COUNT);
+    m_currentGame->terrain().loadChunk(left,middle, right);
     GraphicsEngine::Controller::instance()->activeScene()->add(left->object());
     GraphicsEngine::Controller::instance()->activeScene()->add(middle->object());
     GraphicsEngine::Controller::instance()->activeScene()->add(right->object());

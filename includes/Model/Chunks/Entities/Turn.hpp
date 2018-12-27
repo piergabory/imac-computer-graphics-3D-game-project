@@ -3,8 +3,8 @@
 
 #include "Entity.hpp"
 
-enum class TurnDirection {
-    LEFT, RIGHT
+enum class TurnDirection : int {
+    LEFT = 90, RIGHT = -90
 };
 
 class Turn : public Entity {

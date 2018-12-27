@@ -30,7 +30,7 @@ private:
     // ANIMATION CONSTANTS
 
     ///\brief distance the player travels when switching lanes
-    const float LANE_WIDTH = 9.f;
+    const float LANE_WIDTH = 2.f;
 
     ///\brief Maximum height of the jump (Parabolic curve)
     const float JUMP_HEIGHT = 6.f;

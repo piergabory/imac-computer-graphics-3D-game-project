@@ -23,6 +23,7 @@
 		D479956721CEB7D1000E11F3 /* Terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D479956521CEB7D1000E11F3 /* Terrain.cpp */; };
 		D479956A21CEB858000E11F3 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D479956821CEB858000E11F3 /* Entity.cpp */; };
 		D48A89F721D3C1FC00EF985C /* Turn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D48A89F521D3C1FC00EF985C /* Turn.cpp */; };
+		D48A89FB21D3F31200EF985C /* TurningChunk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D48A89F921D3F31200EF985C /* TurningChunk.cpp */; };
 		D4A0E2DB21D0E9BF00A1E24C /* Chunk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4A0E2D921D0E9BF00A1E24C /* Chunk.cpp */; };
 		D4EA624E21C955A400CBFCAC /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4EA624C21C955A400CBFCAC /* Button.cpp */; };
 		D4EA625F21CB8E2B00CBFCAC /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4EA625D21CB8E2B00CBFCAC /* Game.cpp */; };
@@ -109,6 +110,8 @@
 		D479956921CEB858000E11F3 /* Entity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
 		D48A89F521D3C1FC00EF985C /* Turn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Turn.cpp; sourceTree = "<group>"; };
 		D48A89F621D3C1FC00EF985C /* Turn.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Turn.hpp; sourceTree = "<group>"; };
+		D48A89F921D3F31200EF985C /* TurningChunk.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TurningChunk.cpp; sourceTree = "<group>"; };
+		D48A89FA21D3F31200EF985C /* TurningChunk.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TurningChunk.hpp; sourceTree = "<group>"; };
 		D4A0E2BB21D0E0A100A1E24C /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		D4A0E2BC21D0E0A100A1E24C /* cubemap_skybox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cubemap_skybox.png; sourceTree = "<group>"; };
 		D4A0E2BD21D0E0A100A1E24C /* cubemap_skybox.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cubemap_skybox.jpg; sourceTree = "<group>"; };
@@ -364,11 +367,10 @@
 		D479956321CEB6F1000E11F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D48A89F321D3C1CA00EF985C /* Entities */,
+				D48A89F821D3F2FE00EF985C /* Chunks */,
 				D4EA625E21CB8E2B00CBFCAC /* Game.hpp */,
 				D4EA626021CB910D00CBFCAC /* Player.hpp */,
 				D479956621CEB7D1000E11F3 /* Terrain.hpp */,
-				D4A0E2DA21D0E9BF00A1E24C /* Chunk.hpp */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -376,11 +378,10 @@
 		D479956421CEB704000E11F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D48A89F421D3C1E100EF985C /* Entities */,
+				D48A89FC21D3F34F00EF985C /* Chunks */,
 				D4EA625D21CB8E2B00CBFCAC /* Game.cpp */,
 				D479955C21CE2B32000E11F3 /* Player.cpp */,
 				D479956521CEB7D1000E11F3 /* Terrain.cpp */,
-				D4A0E2D921D0E9BF00A1E24C /* Chunk.cpp */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,6 +402,26 @@
 				D479956821CEB858000E11F3 /* Entity.cpp */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		D48A89F821D3F2FE00EF985C /* Chunks */ = {
+			isa = PBXGroup;
+			children = (
+				D48A89F321D3C1CA00EF985C /* Entities */,
+				D4A0E2DA21D0E9BF00A1E24C /* Chunk.hpp */,
+				D48A89FA21D3F31200EF985C /* TurningChunk.hpp */,
+			);
+			path = Chunks;
+			sourceTree = "<group>";
+		};
+		D48A89FC21D3F34F00EF985C /* Chunks */ = {
+			isa = PBXGroup;
+			children = (
+				D4A0E2D921D0E9BF00A1E24C /* Chunk.cpp */,
+				D48A89F921D3F31200EF985C /* TurningChunk.cpp */,
+				D48A89F421D3C1E100EF985C /* Entities */,
+			);
+			path = Chunks;
 			sourceTree = "<group>";
 		};
 		D4A0E2B921D0E0A100A1E24C /* assets */ = {
@@ -670,6 +691,7 @@
 				D479955D21CE2B32000E11F3 /* Player.cpp in Sources */,
 				D4F56EEA21AF321F00767ECA /* PerspectiveShaderProgram.cpp in Sources */,
 				D46A4A8521A0D0B50096F02F /* GraphicsEngine.cpp in Sources */,
+				D48A89FB21D3F31200EF985C /* TurningChunk.cpp in Sources */,
 				D4F56EC921AEC28500767ECA /* Object3D.cpp in Sources */,
 				D46A4A7421A0CE220096F02F /* main.cpp in Sources */,
 				D4F56EC421AEAC8300767ECA /* ImageData.cpp in Sources */,

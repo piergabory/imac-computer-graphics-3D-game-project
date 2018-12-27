@@ -1,0 +1,38 @@
+#include "Chunk.hpp"
+
+const float Chunk::s_ENTITY_WIDTH = 2;
+
+Entity* Chunk::entityAt(Position position) {
+    switch(position) {
+        case Position::LEFT: return left.get();
+        case Position::MIDDLE: return middle.get();
+        case Position::RIGHT: return right.get();
+    }
+}
+
+void Chunk::rotate(float &angle) {
+    glm::vec3 up(0.f,1.f,0.f);
+    left->object()->rotate(angle, up);
+    middle->object()->rotate(angle, up);
+    right->object()->rotate(angle, up);
+    m_orientation += angle;
+}
+
+void Chunk::translate(glm::vec3 direction) {
+    left->object()->translate(direction);
+    middle->object()->translate(direction);
+    right->object()->translate(direction);
+}
+
+Chunk::Chunk(Entity* leftEntity, Entity* middleEntity, Entity* rightEntity):
+left(leftEntity), middle(middleEntity), right(rightEntity) {
+    left->object()->translate(glm::vec3(-s_ENTITY_WIDTH, 0.f, 0.f));
+    middle->object()->translate(glm::vec3(0.f, 0.f, 0.f));
+    right->object()->translate(glm::vec3(s_ENTITY_WIDTH, 0.f, 0.f));
+}
+
+Chunk::Chunk(Chunk& source) {
+    left = std::move(source.left);
+    middle = std::move(source.middle);
+    right = std::move(source.right);
+}
