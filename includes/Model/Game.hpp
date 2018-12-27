@@ -45,6 +45,11 @@ public:
         return m_terrain;
     }
 
+    inline void nextChunk() {
+        m_terrain.nextChunk();
+        m_terrain.enterChunk(m_player);
+    }
+
     /// \brief Redirects controller inputs on player movements, attacks, bonuses etc...
     void callInput(Controls control);
 

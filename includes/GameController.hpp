@@ -51,8 +51,11 @@ private:
     unsigned long m_chunkCycle = 0;
 
 
-    /// \brief player point of view, scene camera.
-    GraphicsEngine::Camera m_playerPointOfView;
+    /// \brief player point of view / scene camera.
+    std::shared_ptr<GraphicsEngine::Camera> m_playerPointOfView;
+
+
+    // todo doc
     CameraBehaviors m_cameraBehavior = CameraBehaviors::FOLOW_PLAYER;
 
 

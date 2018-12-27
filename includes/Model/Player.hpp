@@ -11,7 +11,6 @@
 
 #include "GraphicsEngine.hpp"
 #include "EventObservers.hpp"
-#include "Object.hpp"
 #include "Animation.hpp"
 
 // Player characteristics enumerations.

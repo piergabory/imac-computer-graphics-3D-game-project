@@ -14,6 +14,9 @@ void GameController::initializeScene() {
     GraphicsEngine::Controller::instance()->loadGUI(canvas);
 
     // 3D context
+    m_playerPointOfView = std::make_shared<GraphicsEngine::Camera>();
+    m_playerPointOfView->place(glm::vec3(0,2,0));
+    m_playerPointOfView->rotate(glm::radians(10.f), glm::vec3(1,0,0));
     std::unique_ptr<GraphicsEngine::Scene> scene(new GraphicsEngine::Scene(m_playerPointOfView));
     GraphicsEngine::Controller::instance()->loadScene(scene);
 
@@ -74,7 +77,7 @@ bool GameController::loop() {
     if(m_chunkframe == 0) {
         m_chunkCycle ++;
         loadNewChunk();
-        m_currentGame->terrain().nextChunk();
+        m_currentGame->nextChunk();
     }
 
     m_currentGame->terrain().progress(1.f/m_CHUNK_FRAME_DURATION);
@@ -101,10 +104,15 @@ bool GameController::loop() {
 
 void GameController::loadNewChunk() {
     Chunk* chunk;
+
     if (m_chunkCycle % 40 == 0) {
-        chunk = new TurningChunk(TurnDirection::LEFT);
+        chunk = new TurningChunk(TurnDirection::LEFT,
+                                 static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_playerPointOfView),
+                                 static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_currentGame->playerModel()));
     } else if(m_chunkCycle % 50 == 0) {
-        chunk = new TurningChunk(TurnDirection::RIGHT);
+        chunk = new TurningChunk(TurnDirection::RIGHT,
+                                 static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_playerPointOfView),
+                                 static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_currentGame->playerModel()));
     } else {
         chunk = new Chunk(new Entity(), new Entity(), new Entity());
     }
@@ -183,14 +191,14 @@ void GameController::keyPressHandler(const std::set<const SDL_Keycode> &pressedK
 
 void GameController::mouseMoveHandler(float relativeXMovement,float relativeYMovement) {
     const float MOUSEMOVE_SCALING = 0.006;
-    m_playerPointOfView.pan(glm::vec3(0,-1,0), relativeXMovement * MOUSEMOVE_SCALING);
-    m_playerPointOfView.pan(glm::vec3(1,0,0), relativeYMovement * MOUSEMOVE_SCALING);
+    m_playerPointOfView->rotate(relativeXMovement * MOUSEMOVE_SCALING, glm::vec3(0,-1,0));
+    m_playerPointOfView->rotate(relativeYMovement * MOUSEMOVE_SCALING, glm::vec3(1,0,0));
 }
 
 
 void GameController::mouseWheelHandler(float deltaX, float deltaY) {
     const float MOUSEWHEEL_SCALING = 0.1;
-    m_playerPointOfView.move(glm::vec3(MOUSEWHEEL_SCALING * deltaX, 0, MOUSEWHEEL_SCALING * deltaY));
+    m_playerPointOfView->translate(glm::vec3(MOUSEWHEEL_SCALING * deltaX, 0, MOUSEWHEEL_SCALING * deltaY));
 }
 
 
@@ -205,48 +213,48 @@ void GameController::cameraMoves(const SDL_Keycode key) {
     if (m_cameraBehavior == CameraBehaviors::FREE) switch(key) {
             // Up
         case 'i':
-            m_playerPointOfView.move(glm::vec3(0,-KEYBOARD_CAMERA_CONTROL_SPEED,0));
+            m_playerPointOfView->translate(glm::vec3(0,-KEYBOARD_CAMERA_CONTROL_SPEED,0));
             break;
 
             // Down
         case 'k':
-            m_playerPointOfView.move(glm::vec3(0,KEYBOARD_CAMERA_CONTROL_SPEED,0));
+            m_playerPointOfView->translate(glm::vec3(0,KEYBOARD_CAMERA_CONTROL_SPEED,0));
             break;
 
             // left
         case 'j':
-            m_playerPointOfView.move(glm::vec3(-KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
+            m_playerPointOfView->translate(glm::vec3(-KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
             break;
 
             // right
         case 'l':
-            m_playerPointOfView.move(glm::vec3(KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
+            m_playerPointOfView->translate(glm::vec3(KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
             break;
 
             // Rotate right
         case 'u':
-            m_playerPointOfView.pan(glm::vec3(0,1,0), KEYBOARD_CAMERA_CONTROL_SPEED);
+            m_playerPointOfView->rotate(KEYBOARD_CAMERA_CONTROL_SPEED, glm::vec3(0,1,0));
             break;
 
             // Rotate left
         case 'o':
-            m_playerPointOfView.pan(glm::vec3(0,-1,0), KEYBOARD_CAMERA_CONTROL_SPEED);
+            m_playerPointOfView->rotate(KEYBOARD_CAMERA_CONTROL_SPEED, glm::vec3(0,-1,0));
             break;
 
             // Rotate up
         case 'p':
-            m_playerPointOfView.pan(glm::vec3(1,0,0), KEYBOARD_CAMERA_CONTROL_SPEED);
+            m_playerPointOfView->rotate(KEYBOARD_CAMERA_CONTROL_SPEED, glm::vec3(1,0,0));
             break;
 
             // rotate down
         case 'm':
-            m_playerPointOfView.pan(glm::vec3(-1,0,0), KEYBOARD_CAMERA_CONTROL_SPEED);
+            m_playerPointOfView->rotate(KEYBOARD_CAMERA_CONTROL_SPEED, glm::vec3(-1,0,0));
             break;
 
             // '0' key (not the numpad)
         case '0':
             // replace to origin
-            m_playerPointOfView.resetPosition();
+            m_playerPointOfView->resetPosition();
             break;
     }
 }

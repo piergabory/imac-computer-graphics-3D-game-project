@@ -33,21 +33,24 @@ namespace GraphicsEngine {
         updateProjectionMatrix();
     }
 
-
-
-    void Camera::move(const glm::vec3 &to) {
-        m_cameraPosition += glm::vec3(glm::inverse(*m_cameraTransform) * glm::vec4(to,0));
+    void Camera::translate(const glm::vec3& direction) {
+        m_cameraPosition += glm::vec3(glm::inverse(*m_cameraTransform) * glm::vec4(direction,0));
         updateCameraTransformMatrix();
     }
 
+    inline const glm::vec3 Camera::position() const {
+        return m_cameraPosition;
+    }
 
-
-    void Camera::pan(const glm::vec3 &axis, const float angle) {
-        m_cameraDirection = glm::vec3(glm::rotate(glm::mat4(1), angle, axis) * glm::vec4(m_cameraDirection, 0));
+    void Camera::place(const glm::vec3& direction) {
+        m_cameraPosition = direction;
         updateCameraTransformMatrix();
     }
 
-
+    void Camera::rotate(const float angle, const glm::vec3 &direction) {
+        m_cameraDirection = glm::vec3(glm::rotate(glm::mat4(1), angle, direction) * glm::vec4(m_cameraDirection, 0));
+        updateCameraTransformMatrix();
+    }
 
     void Camera::resetPosition() {
         m_cameraPosition = glm::vec3(0,0,0);

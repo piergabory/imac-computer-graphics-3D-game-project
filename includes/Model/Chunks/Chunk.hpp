@@ -4,9 +4,9 @@
 
 #include <set>
 
-#include "Turn.hpp"
+#include "Animation.hpp"
 #include "Player.hpp"
-
+#include "Entity.hpp"
 
 class Chunk {
 private:
@@ -18,6 +18,7 @@ private:
     std::unique_ptr<Entity> left;
     std::unique_ptr<Entity> middle;
     std::unique_ptr<Entity> right;
+
 
     float m_orientation = 0;
 
@@ -33,12 +34,17 @@ public:
 
     void translate(glm::vec3 direction);
 
+
+    virtual void onEnter() {}
+
     // getter
     Entity* entityAt(Position position);
 
     // constructors
     Chunk(Entity* leftEntity, Entity* middleEntity, Entity* rightEntity);
+
     Chunk(Entity* allEntities) : Chunk(allEntities, allEntities, allEntities) {}
+
     Chunk() : Chunk(new Entity(), new Entity(), new Entity()) {}
 
     // copy constructor

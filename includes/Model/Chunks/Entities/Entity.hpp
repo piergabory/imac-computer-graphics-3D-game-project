@@ -25,6 +25,8 @@ public:
 
     virtual void action() {};
 
+    virtual void onEnter() {};
+
     static void loadObject();
 
     Entity() {

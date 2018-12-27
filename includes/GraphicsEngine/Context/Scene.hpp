@@ -57,8 +57,12 @@ namespace GraphicsEngine {
         /// \brief constructors
         // initialize camera
         Scene() : Context<Object3D>(), m_camera(std::make_shared<Camera>()) {}
+
         // takes an existing camera
-        Scene(Camera &cameraPtr) : Context<Object3D>(), m_camera(std::make_shared<Camera>(cameraPtr)) {}
+        Scene(Camera &camera) : Context<Object3D>(), m_camera(std::make_shared<Camera>(camera)) {}
+        Scene(std::shared_ptr<Camera> &cameraPtr) : Context<Object3D>(), m_camera(cameraPtr) {}
+
+
 
         /// \brief destructor
         // deletes memory allocated on each pointer in the object vector.
