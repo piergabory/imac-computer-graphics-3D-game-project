@@ -22,10 +22,11 @@ namespace GraphicsEngine {
 
     class Animation {
     private:
-        const std::weak_ptr<Animatable> m_pObjectToMove;
+        const std::shared_ptr<Animatable> m_pObjectToMove;
         const unsigned int m_duration;
         const glm::vec3 m_targetPositon;
-        const std::function<void(const std::shared_ptr<Animatable>&,const glm::vec3&, const float, const float)> m_interpolationFunction;
+
+        const std::function<void(Animatable&,const glm::vec3&, const float, const float)> m_interpolationFunction;
         std::function<void(void)> m_callback;
 
         unsigned int m_currentFrame = 0;
@@ -42,7 +43,7 @@ namespace GraphicsEngine {
         }
 
         inline void cancel() {
-            m_callback();
+            if (m_callback) m_callback();
             m_currentFrame = 0;
             for (size_t i = 0; i < s_activeAnimations.size(); i++) {
                 if (s_activeAnimations[i] == this)
@@ -56,7 +57,7 @@ namespace GraphicsEngine {
 
         static void updateAnimations();
 
-        Animation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &position, const std::function<void(const std::shared_ptr<Animatable>&,const glm::vec3&,const  float, const float)> &interpolation);
+        Animation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &position, const std::function<void(Animatable& ,const glm::vec3&,const  float, const float)> &interpolation);
     };
 
     Animation makeLinearTranslation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &position);
@@ -67,7 +68,7 @@ namespace GraphicsEngine {
 
     Animation makeUnCrouchAnimation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const float fromHeight);
 
-    Animation makeCameraTurn(const std::shared_ptr<Animatable> &camera, unsigned int duration, const float angle);
+    Animation makeTurnAnimation(const std::shared_ptr<Animatable> &camera, unsigned int duration, const float angle);
 }
 
 

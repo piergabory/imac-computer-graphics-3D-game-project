@@ -5,8 +5,8 @@
 #include <set>
 
 #include "Animation.hpp"
-#include "Turn.hpp"
 #include "Player.hpp"
+#include "Entity.hpp"
 
 class Chunk {
 private:
@@ -42,7 +42,9 @@ public:
 
     // constructors
     Chunk(Entity* leftEntity, Entity* middleEntity, Entity* rightEntity);
+
     Chunk(Entity* allEntities) : Chunk(allEntities, allEntities, allEntities) {}
+
     Chunk() : Chunk(new Entity(), new Entity(), new Entity()) {}
 
     // copy constructor

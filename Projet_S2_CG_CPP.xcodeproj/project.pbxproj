@@ -316,6 +316,7 @@
 				D42A1DC921C7C4FF00B2F379 /* GUI */,
 				D4F56EF021AF345500767ECA /* Object */,
 				D46A4A4A21A0CD870096F02F /* GraphicsEngine.hpp */,
+				D479955F21CE2BA1000E11F3 /* Animation.hpp */,
 				D4F56ECD21AED12100767ECA /* Camera.hpp */,
 				D46A4A4B21A0CD870096F02F /* CommonStructs.hpp */,
 				D46A4A4D21A0CD870096F02F /* Frameworks.hpp */,
@@ -330,6 +331,7 @@
 				D4EA624F21C955B400CBFCAC /* GUI */,
 				D4F56EF121AF348C00767ECA /* Object */,
 				D46A4A6921A0CE110096F02F /* GraphicsEngine.cpp */,
+				D479955E21CE2BA1000E11F3 /* Animation.cpp */,
 				D46A4A6A21A0CE110096F02F /* CommonStructs.cpp */,
 				D46A4A6521A0CE110096F02F /* Exceptions.cpp */,
 				D4F56ECC21AED12100767ECA /* Camera.cpp */,
@@ -543,7 +545,6 @@
 		D4F56EF021AF345500767ECA /* Object */ = {
 			isa = PBXGroup;
 			children = (
-				D479955F21CE2BA1000E11F3 /* Animation.hpp */,
 				D4F56EEC21AF33F200767ECA /* Material */,
 				D42A1DD921C7D8FE00B2F379 /* Object */,
 				D4EA625321CA675D00CBFCAC /* Mesh */,
@@ -554,7 +555,6 @@
 		D4F56EF121AF348C00767ECA /* Object */ = {
 			isa = PBXGroup;
 			children = (
-				D479955E21CE2BA1000E11F3 /* Animation.cpp */,
 				D479956121CE490B000E11F3 /* Object */,
 				D4F56EF421AF34C400767ECA /* Material */,
 				D4EA626921CBB36F00CBFCAC /* Mesh */,

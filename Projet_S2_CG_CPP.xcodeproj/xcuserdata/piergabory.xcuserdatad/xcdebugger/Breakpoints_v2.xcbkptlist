@@ -6,81 +6,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "includes/Player.hpp"
-            timestampString = "567185062.556213"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "Player"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/Behaviors/Animation.cpp"
-            timestampString = "566949486.591103"
+            filePath = "includes/GraphicsEngine/Animation.hpp"
+            timestampString = "567639331.972515"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "7"
-            endingLineNumber = "7"
-            landmarkName = "Animation::nextFrame()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "includes/GraphicsEngine/Context/Context.hpp"
-            timestampString = "567525338.933019"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "remove(const std::shared_ptr&lt;ObjectType&gt; &amp;object)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GraphicsEngine::Context&lt;GraphicsEngine::Object3D&gt;::render()"
-                  moduleName = "product"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/piergabory/Developer/IMAC/Projet%20CG%20CPP/IMAC2_CG_CPP_Game_Project/./includes/GraphicsEngine/Context/Context.hpp"
-                  timestampString = "567158287.827547"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72"
-                  offsetFromSymbolStart = "2542">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GraphicsEngine::Context&lt;GraphicsEngine::Object2D&gt;::render()"
-                  moduleName = "product"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/piergabory/Developer/IMAC/Projet%20CG%20CPP/IMAC2_CG_CPP_Game_Project/./includes/GraphicsEngine/Context/Context.hpp"
-                  timestampString = "567158287.829621"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72"
-                  offsetFromSymbolStart = "2542">
-               </Location>
-            </Locations>
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "Animatable"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
