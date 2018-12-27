@@ -16,6 +16,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Animation.hpp"
+
 namespace GraphicsEngine {
 
 
@@ -26,7 +28,17 @@ namespace GraphicsEngine {
      * provides the camera's projection matrix
      * and attributes to rotate and move the simulated camera
      */
-    class Camera {
+
+//    struct Animatable {
+//        virtual inline const glm::vec3 position() const = 0;
+//        virtual void translate(const glm::vec3& direction) = 0;
+//        virtual void place(const glm::vec3& direction) = 0;
+//        virtual void rotate(const float angle, const glm::vec3 &direction) = 0;
+//        virtual void scale(const glm::vec3 &scalingVector) = 0;
+//        virtual ~Animatable() {}
+//    };
+//
+    class Camera : Animatable {
         
     private:
         // camera lense properties
@@ -66,9 +78,11 @@ namespace GraphicsEngine {
         ~Camera() {}
 
         // isometric transformations
-        // changes the projection matrix and saves the modifications
-        void move(const glm::vec3 &to);
-        void pan(const glm::vec3 &orientation, const float angle);
+        // changes the projection matrix and saves the modification
+        inline const glm::vec3 position() const override;
+        void translate(const glm::vec3& direction) override;
+        void place(const glm::vec3& direction) override;
+        void rotate(const float angle, const glm::vec3 &direction) override;
 
         // reset camera to the world center.
         void resetPosition();
