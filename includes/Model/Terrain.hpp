@@ -9,6 +9,7 @@
 #include <list>
 
 #include "Chunk.hpp"
+#include "TurningChunk.hpp"
 
 class Terrain {
 private:
@@ -21,7 +22,7 @@ public:
 
     void testAction(Player &player);
 
-    void loadChunk(Entity* left, Entity* middle, Entity* right);
+    void loadChunk(Chunk *chunkToLoad);
 
     void progress(const float progress);
 

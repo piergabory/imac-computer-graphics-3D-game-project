@@ -2,6 +2,8 @@
 #ifndef Chunk_hpp
 #define Chunk_hpp
 
+#include <set>
+
 #include "Turn.hpp"
 #include "Player.hpp"
 
@@ -21,7 +23,10 @@ private:
 public:
     inline const float orientation() const { return m_orientation; }
 
+    std::set< std::shared_ptr<GraphicsEngine::Object3D> > objects();
+
     void rotate(float &angle);
+
     void translate(glm::vec3 direction);
 
     // getter

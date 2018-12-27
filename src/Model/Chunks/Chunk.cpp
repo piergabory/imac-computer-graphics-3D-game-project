@@ -10,6 +10,15 @@ Entity* Chunk::entityAt(Position position) {
     }
 }
 
+std::set< std::shared_ptr<GraphicsEngine::Object3D> >  Chunk::objects() {
+    std::set< std::shared_ptr<GraphicsEngine::Object3D> > returnedSet;
+    returnedSet.insert(left->object());
+    returnedSet.insert(middle->object());
+    returnedSet.insert(right->object());
+
+    return returnedSet;
+}
+
 void Chunk::rotate(float &angle) {
     glm::vec3 up(0.f,1.f,0.f);
     left->object()->rotate(angle, up);

@@ -7,8 +7,8 @@ void Terrain::testAction(Player &player) {
     m_chunks.front()->entityAt(player.position())->action();
 }
 
-void Terrain::loadChunk(Entity* left, Entity* middle, Entity* right) {
-    m_chunks.emplace_back(new Chunk(left, middle, right));
+void Terrain::loadChunk(Chunk *chunkToLoad) {
+    m_chunks.emplace_back(chunkToLoad);
     m_chunks.back()->rotate(m_nextLoadedChunkOrientation);
     m_chunks.back()->translate(m_nextChunkPosition);
 }

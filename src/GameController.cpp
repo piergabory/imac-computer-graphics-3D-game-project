@@ -98,27 +98,19 @@ bool GameController::loop() {
 
 
 void GameController::loadNewChunk() {
-    Entity* left, *middle, *right;
+    Chunk* chunk;
     if (m_chunkCycle % 40 == 0) {
-        left = new Turn(TurnDirection::LEFT);
-        middle = new Turn(TurnDirection::LEFT);
-        right = new Turn(TurnDirection::LEFT);
+        chunk = new TurningChunk(TurnDirection::LEFT);
     } else if(m_chunkCycle % 50 == 0) {
-        left = new Turn(TurnDirection::RIGHT);
-        middle = new Turn(TurnDirection::RIGHT);
-        right = new Turn(TurnDirection::RIGHT);
+        chunk = new TurningChunk(TurnDirection::RIGHT);
     } else {
-        left = new Entity();
-        middle = new Entity();
-        right = new Entity();
+        chunk = new Chunk(new Entity(), new Entity(), new Entity());
     }
-
-
-
-    m_currentGame->terrain().loadChunk(left,middle, right);
-    GraphicsEngine::Controller::instance()->activeScene()->add(left->object());
-    GraphicsEngine::Controller::instance()->activeScene()->add(middle->object());
-    GraphicsEngine::Controller::instance()->activeScene()->add(right->object());
+    
+    m_currentGame->terrain().loadChunk(chunk);
+    for(std::shared_ptr<GraphicsEngine::Object3D> object : chunk->objects()) {
+        GraphicsEngine::Controller::instance()->activeScene()->add(object);
+    };
 }
 
 
