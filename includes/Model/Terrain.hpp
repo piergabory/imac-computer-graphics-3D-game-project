@@ -15,7 +15,7 @@ class Terrain {
 private:
     std::list< std::unique_ptr<Chunk> > m_chunks;
     float m_nextLoadedChunkOrientation = 0;
-    glm::vec3 m_nextChunkPosition = glm::vec3(0.f,0.f,0.f);
+    glm::vec3 m_nextLoadedChunkPosition = glm::vec3(0.f,0.f,0.f);
 
 public:
     inline void nextChunk() { m_chunks.pop_front(); }
@@ -26,9 +26,8 @@ public:
 
     void progress(const float progress);
 
-    Terrain() {
-        m_chunks.emplace_front(new Chunk(new Entity(),new Entity(),new Entity())); 
-    }
+    Terrain() {}
+    
     ~Terrain() {}
 };
 

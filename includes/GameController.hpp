@@ -41,7 +41,7 @@ private:
 
 
     /// \brief defines the game rythm
-    const uint m_CHUNK_PRELOADING_COUNT = 60;
+    const uint m_CHUNK_PRELOADING_COUNT = 30;
     const uint m_CHUNK_FRAME_DURATION = 10;
     const float m_CHUNK_LENGTH = -2.f;
 

@@ -34,8 +34,6 @@ void Chunk::rotate(float &angle) {
     left->object()->rotate(angle, up);
     right->object()->rotate(angle, up);
 
-
-
     m_orientation += angle;
 }
 

@@ -22,6 +22,7 @@ private:
     float m_orientation = 0;
 
 public:
+
     inline const float orientation() const { return m_orientation; }
     inline virtual const glm::vec3 exitPosition() const { return glm::vec3(0,0,2);}
     inline virtual const float exitOrientation() const { return 0; }
@@ -35,8 +36,10 @@ public:
     // getter
     Entity* entityAt(Position position);
 
-    // constructor
+    // constructors
     Chunk(Entity* leftEntity, Entity* middleEntity, Entity* rightEntity);
+    Chunk(Entity* allEntities) : Chunk(allEntities, allEntities, allEntities) {}
+    Chunk() : Chunk(new Entity(), new Entity(), new Entity()) {}
 
     // copy constructor
     Chunk(Chunk& source);

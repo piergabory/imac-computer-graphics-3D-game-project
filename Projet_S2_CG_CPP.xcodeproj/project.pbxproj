@@ -112,6 +112,7 @@
 		D48A89F621D3C1FC00EF985C /* Turn.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Turn.hpp; sourceTree = "<group>"; };
 		D48A89F921D3F31200EF985C /* TurningChunk.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TurningChunk.cpp; sourceTree = "<group>"; };
 		D48A89FA21D3F31200EF985C /* TurningChunk.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TurningChunk.hpp; sourceTree = "<group>"; };
+		D48A89FD21D5203A00EF985C /* turn.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = turn.obj; sourceTree = "<group>"; };
 		D4A0E2BB21D0E0A100A1E24C /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		D4A0E2BC21D0E0A100A1E24C /* cubemap_skybox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cubemap_skybox.png; sourceTree = "<group>"; };
 		D4A0E2BD21D0E0A100A1E24C /* cubemap_skybox.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cubemap_skybox.jpg; sourceTree = "<group>"; };
@@ -476,6 +477,7 @@
 		D4A0E2D521D0E0A100A1E24C /* models */ = {
 			isa = PBXGroup;
 			children = (
+				D48A89FD21D5203A00EF985C /* turn.obj */,
 				D4A0E2D621D0E0A100A1E24C /* cube.obj */,
 				D4A0E2D721D0E0A100A1E24C /* skyboxtest.obj */,
 				D4A0E2D821D0E0A100A1E24C /* monkey1.obj */,

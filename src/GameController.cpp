@@ -42,11 +42,13 @@ void GameController::setup() {
     // create scene
     initializeScene();
 
-
-    // preload terrain
-    for (size_t i = 0; i < m_CHUNK_PRELOADING_COUNT; i++) {
-        loadNewChunk();
-        m_currentGame->terrain().progress(m_CHUNK_LENGTH/m_CHUNK_FRAME_DURATION);
+    Chunk* preloadedChunk;
+    for (uint i = 0; i < m_CHUNK_PRELOADING_COUNT; ++i) {
+        preloadedChunk = new Chunk();
+        for(std::shared_ptr<GraphicsEngine::Object3D> object : preloadedChunk->objects()) {
+            GraphicsEngine::Controller::instance()->activeScene()->add(object);
+        };
+        m_currentGame->terrain().loadChunk(preloadedChunk);
     }
 
     // subscribe event manager
