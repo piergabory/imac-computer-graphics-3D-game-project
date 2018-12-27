@@ -4,9 +4,9 @@
 
 #include <set>
 
+#include "Animation.hpp"
 #include "Turn.hpp"
 #include "Player.hpp"
-
 
 class Chunk {
 private:
@@ -18,6 +18,7 @@ private:
     std::unique_ptr<Entity> left;
     std::unique_ptr<Entity> middle;
     std::unique_ptr<Entity> right;
+
 
     float m_orientation = 0;
 
@@ -32,6 +33,9 @@ public:
     void rotate(float &angle);
 
     void translate(glm::vec3 direction);
+
+
+    virtual void onEnter() {}
 
     // getter
     Entity* entityAt(Position position);

@@ -55,3 +55,4 @@ Chunk::Chunk(Chunk& source) {
     middle = std::move(source.middle);
     right = std::move(source.right);
 }
+

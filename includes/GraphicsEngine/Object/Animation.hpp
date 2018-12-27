@@ -66,6 +66,8 @@ namespace GraphicsEngine {
     Animation makeCrouchAnimation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const float toHeight);
 
     Animation makeUnCrouchAnimation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const float fromHeight);
+
+    Animation makeCameraTurn(const std::shared_ptr<Animatable> &camera, unsigned int duration, const float angle);
 }
 
 

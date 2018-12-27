@@ -28,17 +28,7 @@ namespace GraphicsEngine {
      * provides the camera's projection matrix
      * and attributes to rotate and move the simulated camera
      */
-
-//    struct Animatable {
-//        virtual inline const glm::vec3 position() const = 0;
-//        virtual void translate(const glm::vec3& direction) = 0;
-//        virtual void place(const glm::vec3& direction) = 0;
-//        virtual void rotate(const float angle, const glm::vec3 &direction) = 0;
-//        virtual void scale(const glm::vec3 &scalingVector) = 0;
-//        virtual ~Animatable() {}
-//    };
-//
-    class Camera : Animatable {
+    class Camera : public Animatable {
         
     private:
         // camera lense properties

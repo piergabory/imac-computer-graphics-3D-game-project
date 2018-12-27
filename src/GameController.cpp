@@ -102,9 +102,9 @@ bool GameController::loop() {
 void GameController::loadNewChunk() {
     Chunk* chunk;
     if (m_chunkCycle % 40 == 0) {
-        chunk = new TurningChunk(TurnDirection::LEFT);
+        chunk = new TurningChunk(TurnDirection::LEFT, std::make_shared<GraphicsEngine::Camera>(m_playerPointOfView));
     } else if(m_chunkCycle % 50 == 0) {
-        chunk = new TurningChunk(TurnDirection::RIGHT);
+        chunk = new TurningChunk(TurnDirection::RIGHT, std::make_shared<GraphicsEngine::Camera>(m_playerPointOfView));
     } else {
         chunk = new Chunk(new Entity(), new Entity(), new Entity());
     }

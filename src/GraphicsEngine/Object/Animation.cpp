@@ -41,15 +41,21 @@ namespace GraphicsEngine {
 
 
     Animation makeCrouchAnimation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const float toHeight) {
-        return Animation(object, duration, glm::vec3(0,toHeight,0), [](const std::shared_ptr<Animatable> &object, const glm::vec3 &position, const float step, const float progress) {
+        return Animation(object, duration, glm::vec3(toHeight), [](const std::shared_ptr<Animatable> &object, const glm::vec3 &position, const float step, const float progress) {
             object->scale(glm::vec3(1, 1 - 0.01,1));
         });
     }
 
 
     Animation makeUnCrouchAnimation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const float fromHeight) {
-        return Animation(object, duration, glm::vec3(0,fromHeight,0), [](const std::shared_ptr<Animatable> &object, const glm::vec3 &position, const float step, const float progress) {
+        return Animation(object, duration, glm::vec3(fromHeight), [](const std::shared_ptr<Animatable> &object, const glm::vec3 &position, const float step, const float progress) {
             object->scale(glm::vec3(1, 1 + 0.01,1));
+        });
+    }
+
+    Animation makeCameraTurn(const std::shared_ptr<Animatable> &camera, unsigned int duration, const float angle) {
+        return Animation(camera, duration, glm::vec3(angle), [](const std::shared_ptr<Animatable> &camera, const glm::vec3 &angle, const float step, const float progress) {
+            camera->rotate(angle.x, glm::vec3(0.f,1.f,0.f));
         });
     }
 
