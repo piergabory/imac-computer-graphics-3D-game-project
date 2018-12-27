@@ -1,5 +1,5 @@
 /**
- * Cameras.hpp
+ * \file Cameras.hpp
  *
  * IMAC 2 Project CG CPP
  *
@@ -16,16 +16,16 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-/**
- * CAMERA CLASS
- *
- * Facade to the glm projection matrix
- * provides the camera's projection matrix
- * and attributes to rotate and move the simulated camera
- */
-
 namespace GraphicsEngine {
-    
+
+
+    /**
+     * CAMERA CLASS
+     *
+     * \brief Facade to the glm projection matrix
+     * provides the camera's projection matrix
+     * and attributes to rotate and move the simulated camera
+     */
     class Camera {
         
     private:

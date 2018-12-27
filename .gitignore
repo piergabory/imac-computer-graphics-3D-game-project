@@ -1,10 +1,6 @@
 obj/
 bin/
 build/
-
-# doxygen
-html/
-*.tag
-.vscode
+Projet_S2_CG_CPP.xcodeproj/
+.vscode/
 DoxygenGenerated
-*.xcuserstate

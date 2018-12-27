@@ -1,3 +1,7 @@
+/**
+ * \file GameController.cpp
+ */
+
 #include "GameController.hpp"
 
 
@@ -5,17 +9,21 @@
 void GameController::initializeScene() {
     initializeDebugGrid();
 
+    // 2D context
     std::unique_ptr<GraphicsEngine::Canvas> canvas(new GraphicsEngine::Canvas());
     GraphicsEngine::Controller::instance()->loadGUI(canvas);
 
-    std::unique_ptr<GraphicsEngine::Scene>  scene(new GraphicsEngine::Scene(m_playerPointOfView));
+    // 3D context
+    std::unique_ptr<GraphicsEngine::Scene> scene(new GraphicsEngine::Scene(m_playerPointOfView));
     GraphicsEngine::Controller::instance()->loadScene(scene);
-
 
     // create objects
     std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
     m_skybox = createSkyBox();
     m_chunk = createChunk();
+
+    // skybox max scale before clipping out of far-field
+    m_skybox->scale(glm::vec3(3.14f));
 
     // adds objects in the scene
     GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
@@ -30,11 +38,19 @@ void GameController::setup() {
     GraphicsEngine::Controller::instance()->setup();
     GraphicsEngine::Controller::instance()->printInfos();
 
+    Entity::loadObject();
 
     m_currentGame = std::unique_ptr<Game>(new Game);
 
     // create scene
     initializeScene();
+
+
+    // preload terrain
+    for (size_t i = 0; i < m_CHUNK_PRELOADING_COUNT; i++) {
+        loadNewChunk();
+        m_currentGame->terrain().progress(m_CHUNK_LENGTH/m_CHUNK_FRAME_DURATION);
+    }
 
     // subscribe event manager
     Events::Manager::instance()->subscribe((QuitEventObserver*) this);
@@ -46,11 +62,24 @@ void GameController::setup() {
 
 // game loop
 bool GameController::loop() {
+    // read the time at the start of the game loop
+    Uint32 startTime = SDL_GetTicks();
+
     // framerate 60 frames per seconds
     const float FRAMERATE = 60;
 
-    // read the time at the start of the game loop
-    Uint32 startTime = SDL_GetTicks();
+    // compute current chunk progress
+    m_chunkframe ++;
+    m_chunkframe %= m_CHUNK_FRAME_DURATION;
+
+    if(m_chunkframe == 0) {
+        loadNewChunk();
+        m_currentGame->terrain().nextChunk();
+    }
+
+    m_currentGame->terrain().progress(m_CHUNK_LENGTH/m_CHUNK_FRAME_DURATION);
+
+    GraphicsEngine::Animation::updateAnimations();
 
     // start new render cycle
     GraphicsEngine::Controller::instance()->render();
@@ -70,6 +99,19 @@ bool GameController::loop() {
 
 
 
+void GameController::loadNewChunk() {
+    Entity* left = new Entity();
+    Entity* middle = new Entity();
+    Entity* right = new Entity();
+
+    m_currentGame->terrain().loadChunk(left,middle, right, -m_CHUNK_LENGTH * m_CHUNK_PRELOADING_COUNT);
+    GraphicsEngine::Controller::instance()->activeScene()->add(left->object());
+    GraphicsEngine::Controller::instance()->activeScene()->add(middle->object());
+    GraphicsEngine::Controller::instance()->activeScene()->add(right->object());
+}
+
+
+
 void GameController::quitEventHandler() {
     m_isRunning = false;
     GraphicsEngine::Controller::instance()->close();
@@ -83,21 +125,20 @@ void GameController::keyRealeaseHandler(unsigned char keycode) {
             // we ignore Shift and Ctrl
         case 224: case 225: break;
 
+        case 'z': m_currentGame->callInput(Controls::UP); break;
+        case 'q': m_currentGame->callInput(Controls::LEFT); break;
+        case 'd': m_currentGame->callInput(Controls::RIGHT); break;
+        case 's': m_currentGame->callInput(Controls::DOWN); break;
+
         case 'g':
-            std::cout << "Toggling Grid " << (m_isDebugGridActive? "off" : "on") << std::endl;
+            std::cout << "Toggling Grid " << (m_debugGrid? "off" : "on") << std::endl;
             if (m_debugGrid){
                 m_debugGrid.reset();
-                GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
+                // GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
             } else {
                 m_debugGrid = initializeDebugGrid();
                 GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
             }
-            m_isDebugGridActive = !m_isDebugGridActive;
-            break;
-
-        default:
-            std::cout << "DEBUG! ";
-            std::cout << "char: " << keycode << " int: " << (int) keycode << std::endl;
             break;
     }
 };
@@ -107,27 +148,7 @@ void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
     const float KEYBOARD_CAMERA_CONTROL_SPEED = 0.1;
     for (unsigned char key : pressedKeys) {
         switch (key) {
-            case 224: case 225: break;
 
-                // Forward
-            case 'z':
-                m_playerPointOfView.move(glm::vec3(0,0,-KEYBOARD_CAMERA_CONTROL_SPEED));
-                break;
-
-                // Left
-            case 'q':
-                m_playerPointOfView.move(glm::vec3(-KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
-                break;
-
-                // Backward
-            case 's':
-                m_playerPointOfView.move(glm::vec3(0,0,KEYBOARD_CAMERA_CONTROL_SPEED));
-                break;
-
-                // Right
-            case 'd':
-                m_playerPointOfView.move(glm::vec3(KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
-                break;
 
                 // Up
             case 'w':
@@ -136,7 +157,7 @@ void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
 
                 // Down
             case 'x':
-                m_playerPointOfView.move(glm::vec3(0,KEYBOARD_CAMERA_CONTROL_SPEED,0));
+            m_playerPointOfView.move(glm::vec3(0,KEYBOARD_CAMERA_CONTROL_SPEED,0));
                 break;
 
                 // Rotate right
@@ -170,10 +191,13 @@ void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
                 SDL_ShowCursor(SDL_ENABLE);
                 break;
 
-            default: std::cout << "char: " << key << " int: " << (int) key << std::endl; break;
+            default:
+                //std::cout << "char: " << key << " int: " << (int) key << std::endl;
+                break;
         }
     }
 }
+
 
 
 void GameController::mouseMoveHandler(float relativeXMovement,float relativeYMovement) {
@@ -188,11 +212,17 @@ void GameController::mouseWheelHandler(float deltaX, float deltaY) {
     m_playerPointOfView.move(glm::vec3(MOUSEWHEEL_SCALING * deltaX, 0, MOUSEWHEEL_SCALING * deltaY));
 }
 
+
 void GameController::mouseReleaseHandler(unsigned char button) {
     SDL_CaptureMouse(SDL_TRUE);
     SDL_ShowCursor(SDL_DISABLE);
 }
 
+
+
+
+
+// make grid
 std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() {
     float gridScale = 5;
     uint gridsize = 30;
@@ -211,14 +241,14 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() 
     try {
         // create debug object
         return std::make_shared<GraphicsEngine::Object3D>(
-                                                          std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES),
-                                                          std::make_shared<GraphicsEngine::Material>(
-                                                                                                     std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(
-                                                                                                                                                                GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"),
-                                                                                                                                                                GraphicsEngine::LocalFilePath("shaders/flatColor.fs.glsl")
-                                                                                                                                                                )
-                                                                                                     )
-                                                          );
+            std::make_shared<GraphicsEngine::Mesh3D>(grid , GL_LINES),
+            std::make_shared<GraphicsEngine::Material>(
+            std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(
+               GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"),
+               GraphicsEngine::LocalFilePath("shaders/flatColor.fs.glsl")
+            )
+          )
+       );
     } catch(GraphicsEngine::InitialisationException error) {
         std::cerr << error.what() << std::endl;
         return nullptr;
@@ -226,15 +256,28 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() 
 }
 
 
+// make skybox
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createSkyBox() {
-    try {
-        return std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::ImportedMesh>(GraphicsEngine::LocalFilePath("assets/skyboxtest.obj")), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/flatTexture.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/cubemap_skybox.png"))));
-    } catch(GraphicsEngine::InitialisationException error) {
-        std::cout << error.what();
-        return nullptr;
-    }
+    GraphicsEngine::LocalFilePath chunkmesh("assets/models/skyboxtest.obj");
+    GraphicsEngine::LocalFilePath chunktex("assets/textures/cubemap_skybox.png");
+    GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
+    GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
+    return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
 }
 
+
+// make chunk
+std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
+    GraphicsEngine::LocalFilePath chunkmesh("assets/models/cube.obj");
+    GraphicsEngine::LocalFilePath chunktex("assets/textures/cubemap_a.png");
+    GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
+    GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
+
+    return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
+}
+
+
+// singleton
 
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
     try {
@@ -253,4 +296,24 @@ GameController* GameController::instance() {
     return s_controllerInstance;
 }
 
+
+
+//Loading assets and shaders from relative filepaths to create a 3D object
+std::shared_ptr<GraphicsEngine::Object3D> GameController::createObject3D(GraphicsEngine::LocalFilePath &meshPath, GraphicsEngine::LocalFilePath &textureImagePath,GraphicsEngine::LocalFilePath &vertexShaderPath, GraphicsEngine::LocalFilePath &fragmentShaderPath) {
+    try {
+        return std::make_shared<GraphicsEngine::Object3D>
+        (
+         std::make_shared<GraphicsEngine::ImportedMesh>(meshPath),
+         std::make_shared<GraphicsEngine::Material>(
+            std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(vertexShaderPath, fragmentShaderPath,"uMVPMatrix", "uMVMatrix", "uNormalMatrix"), std::make_shared<GraphicsEngine::Texture>(textureImagePath)
+            )
+         );
+    } catch(GraphicsEngine::InitialisationException error) {
+        std::cout << error.what();
+        return nullptr;
+    }
+}
+
+
+//CONSTRUCTOR
 GameController::GameController() {}

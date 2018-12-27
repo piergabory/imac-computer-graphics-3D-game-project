@@ -59,6 +59,8 @@ namespace GraphicsEngine {
 
         // link the desired camera matrices (projection and world->view)
         void setViewMatrices(const std::shared_ptr<glm::mat4> &projection,  const std::shared_ptr<glm::mat4> &sceneModel);
+
+        int debug = 0;
     };
     
 }
