@@ -77,7 +77,7 @@ bool GameController::loop() {
         m_currentGame->terrain().nextChunk();
     }
 
-    m_currentGame->terrain().progress(m_CHUNK_LENGTH/m_CHUNK_FRAME_DURATION);
+    m_currentGame->terrain().progress(1.f/m_CHUNK_FRAME_DURATION);
 
     GraphicsEngine::Animation::updateAnimations();
 
