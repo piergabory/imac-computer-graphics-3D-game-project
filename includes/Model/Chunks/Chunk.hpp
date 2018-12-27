@@ -10,8 +10,9 @@
 
 class Chunk {
 private:
-    // static const floats can only be initialized in source file (https://stackoverflow.com/a/2454082)
+    // static const floats can only be initialized in source file ( https://stackoverflow.com/a/2454082 )
     static const float s_ENTITY_WIDTH;
+    static const float s_ENTITY_LENGTH;
 
     // properties
     std::unique_ptr<Entity> left;
@@ -22,6 +23,8 @@ private:
 
 public:
     inline const float orientation() const { return m_orientation; }
+    inline virtual const glm::vec3 exitPosition() const { return glm::vec3(0,0,2);}
+    inline virtual const float exitOrientation() const { return 0; }
 
     std::set< std::shared_ptr<GraphicsEngine::Object3D> > objects();
 
@@ -39,7 +42,7 @@ public:
     Chunk(Chunk& source);
 
     // destructor
-    ~Chunk() {}
+    virtual ~Chunk() {}
 };
 
 #endif /* Chunk_hpp */

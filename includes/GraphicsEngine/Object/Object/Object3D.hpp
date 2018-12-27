@@ -38,6 +38,9 @@ namespace GraphicsEngine {
         /// \brief apply a 3D translation on the object
         void translate(const glm::vec3 &translationVector);
 
+        /// \brief translate the object relative to the world origin (not local)
+        void globalTranslate(const glm::vec3 &translationVector);
+
         /// \brief apply a 3D rotation on the object
         void rotate(const float angle, const glm::vec3 &direction);
 

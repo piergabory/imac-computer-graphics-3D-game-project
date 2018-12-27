@@ -4,7 +4,7 @@
 #include "Entity.hpp"
 
 enum class TurnDirection : int {
-    LEFT = 90, RIGHT = -90
+    LEFT = -90, RIGHT = 90
 };
 
 class Turn : public Entity {
@@ -21,7 +21,7 @@ public:
     Turn(TurnDirection direction): Entity(), m_direction(direction) {
         if (s_turnObjectLeftVariant == nullptr || s_turnObjectRightVariant == nullptr) loadObjects();
 
-        switch (direction) {
+        switch (m_direction) {
             case TurnDirection::LEFT:
                 m_entityObject = std::make_shared<GraphicsEngine::Object3D>(*s_turnObjectLeftVariant);
                 break;

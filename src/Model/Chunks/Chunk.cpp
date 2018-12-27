@@ -1,6 +1,7 @@
 #include "Chunk.hpp"
 
 const float Chunk::s_ENTITY_WIDTH = 2;
+const float Chunk::s_ENTITY_LENGTH = 2;
 
 Entity* Chunk::entityAt(Position position) {
     switch(position) {
@@ -21,16 +22,27 @@ std::set< std::shared_ptr<GraphicsEngine::Object3D> >  Chunk::objects() {
 
 void Chunk::rotate(float &angle) {
     glm::vec3 up(0.f,1.f,0.f);
-    left->object()->rotate(angle, up);
+    glm::vec3 leftOffset(middle->object()->position() - left->object()->position());
+    glm::vec3 rightOffset(middle->object()->position() - right->object()->position());
+
+    glm::mat4 rotation(glm::rotate(glm::mat4(1), angle, up));
+
+    left->object()->translate(leftOffset + glm::vec3(rotation * glm::vec4(leftOffset, 1)));
+    right->object()->translate(rightOffset + glm::vec3(rotation * glm::vec4(rightOffset, 1)));
+
     middle->object()->rotate(angle, up);
+    left->object()->rotate(angle, up);
     right->object()->rotate(angle, up);
+
+
+
     m_orientation += angle;
 }
 
 void Chunk::translate(glm::vec3 direction) {
-    left->object()->translate(direction);
-    middle->object()->translate(direction);
-    right->object()->translate(direction);
+    left->object()->globalTranslate(direction);
+    middle->object()->globalTranslate(direction);
+    right->object()->globalTranslate(direction);
 }
 
 Chunk::Chunk(Entity* leftEntity, Entity* middleEntity, Entity* rightEntity):

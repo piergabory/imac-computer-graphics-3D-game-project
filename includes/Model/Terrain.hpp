@@ -26,7 +26,9 @@ public:
 
     void progress(const float progress);
 
-    Terrain() {}
+    Terrain() {
+        m_chunks.emplace_front(new Chunk(new Entity(),new Entity(),new Entity())); 
+    }
     ~Terrain() {}
 };
 
