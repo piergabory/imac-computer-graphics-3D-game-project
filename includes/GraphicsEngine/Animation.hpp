@@ -60,6 +60,8 @@ namespace GraphicsEngine {
         Animation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &position, const std::function<void(Animatable& ,const glm::vec3&,const  float, const float)> &interpolation);
     };
 
+    Animation makeLinearPlace(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &position);
+
     Animation makeLinearTranslation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &position);
 
     Animation makeBounceAnimation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const float height);

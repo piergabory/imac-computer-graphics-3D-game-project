@@ -34,7 +34,6 @@ public:
 
     void translate(glm::vec3 direction);
 
-
     virtual void onEnter() {}
 
     // getter

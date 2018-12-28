@@ -46,8 +46,11 @@ public:
     }
 
     inline void nextChunk() {
+        CardinalDirections previousOrientation = m_terrain.facing();
         m_terrain.nextChunk();
         m_terrain.enterChunk(m_player);
+        if (previousOrientation != m_terrain.facing())
+            m_player.resetPosition();
     }
 
     /// \brief Redirects controller inputs on player movements, attacks, bonuses etc...

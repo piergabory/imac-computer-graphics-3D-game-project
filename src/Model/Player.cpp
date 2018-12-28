@@ -35,6 +35,8 @@ void Player::crouch() {
 
 
 void Player::move(const Direction &direction) {
+    if (m_status == Status::TURNING_RIGHT || m_status == Status::TURNING_LEFT) return;
+
     // check if direction is a valid enumeration
     assert((direction != Direction::LEFT ||  direction != Direction::RIGHT) && "Unknown Position");
 
@@ -43,18 +45,31 @@ void Player::move(const Direction &direction) {
     switch (m_position) {
         case Position::LEFT:
             if(direction == Direction::RIGHT) {
+                m_status = Status::TURNING_RIGHT;
+                m_moveToRightLaneAnimation.whenDone([=]()->void{
+                    m_status = Status::STANDING;
+                });
+
                 m_position = Position::MIDDLE;
-                m_moveToMiddleLaneAnimation.begin();
+                m_moveToRightLaneAnimation.begin();
             }
             break;
 
         case Position::MIDDLE:
             if(direction == Direction::LEFT) {
                 m_position = Position::LEFT;
+                m_status = Status::TURNING_LEFT;
+                m_moveToLeftLaneAnimation.whenDone([=]()->void{
+                    m_status = Status::STANDING;
+                });
                 m_moveToLeftLaneAnimation.begin();
             }
             if(direction == Direction::RIGHT) {
                 m_position = Position::RIGHT;
+                m_status = Status::TURNING_RIGHT;
+                m_moveToRightLaneAnimation.whenDone([=]()->void{
+                    m_status = Status::STANDING;
+                });
                 m_moveToRightLaneAnimation.begin();
             }
             break;
@@ -62,7 +77,11 @@ void Player::move(const Direction &direction) {
         case Position::RIGHT:
             if(direction == Direction::LEFT) {
                 m_position = Position::MIDDLE;
-                m_moveToMiddleLaneAnimation.begin();
+                m_status = Status::TURNING_LEFT;
+                m_moveToLeftLaneAnimation.whenDone([=]()->void{
+                    m_status = Status::STANDING;
+                });
+                m_moveToLeftLaneAnimation.begin();
             }
             break;
 
@@ -71,6 +90,11 @@ void Player::move(const Direction &direction) {
     }
 }
 
+
+void Player::resetPosition() {
+    m_position = Position::MIDDLE;
+    m_resetPosition.begin();
+}
 
 
 // constructor
@@ -87,8 +111,9 @@ m_standingAnimation(GraphicsEngine::makeUnCrouchAnimation(m_characterModel, CROU
 
 // movement animations
 m_moveToLeftLaneAnimation(GraphicsEngine::makeLinearTranslation(m_characterModel, TRANSLATE_FRAMETIME, glm::vec3(-LANE_WIDTH,0.f,0.f))),
-m_moveToMiddleLaneAnimation(GraphicsEngine::makeLinearTranslation(m_characterModel, TRANSLATE_FRAMETIME, glm::vec3(0.f,0.f,0.f))),
-m_moveToRightLaneAnimation(GraphicsEngine::makeLinearTranslation(m_characterModel, TRANSLATE_FRAMETIME, glm::vec3(LANE_WIDTH,0.f,0.f)))
+m_moveToRightLaneAnimation(GraphicsEngine::makeLinearTranslation(m_characterModel, TRANSLATE_FRAMETIME, glm::vec3(LANE_WIDTH,0.f,0.f))),
+
+m_resetPosition(GraphicsEngine::makeLinearPlace(m_characterModel, 10, glm::vec3(0)))
 {}
 
 

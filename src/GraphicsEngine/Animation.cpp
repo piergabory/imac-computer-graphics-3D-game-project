@@ -22,10 +22,15 @@ namespace GraphicsEngine {
     }
 
 
-    Animation makeLinearTranslation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &position) {
-        return Animation(object, duration, position, [](Animatable& object, const glm::vec3 &position, const float step, const float progress) -> void {
-            glm::vec3 newPosition = (position - object.position()) * step;
-            object.translate(newPosition);
+    Animation makeLinearPlace(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &newPosition) {
+        return Animation(object, duration, newPosition, [](Animatable& object, const glm::vec3 &newPosition, const float step, const float progress) -> void {
+            object.place((object.position() - newPosition) * step);
+        });
+    }
+
+    Animation makeLinearTranslation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &translation) {
+        return Animation(object, duration, translation, [](Animatable& object, const glm::vec3 &translation, const float step, const float progress) -> void {
+            object.translate(translation * step);
         });
     }
 

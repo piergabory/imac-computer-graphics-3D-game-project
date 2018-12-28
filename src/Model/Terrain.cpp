@@ -31,3 +31,8 @@ void Terrain::progress(const float progress){
     
     m_nextLoadedChunkPosition += translationVector;
 }
+
+const CardinalDirections Terrain::facing() const {
+    int orientation = ((int)glm::degrees(activeChunk()->orientation()) % 180);
+    return CardinalDirections(orientation);
+}

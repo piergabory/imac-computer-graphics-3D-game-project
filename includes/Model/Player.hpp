@@ -16,7 +16,7 @@
 // Player characteristics enumerations.
 enum class Direction: char { LEFT, RIGHT};
 enum class Position { LEFT, MIDDLE, RIGHT };
-enum class Status { STANDING, JUMPING, CROUCHING };
+enum class Status { STANDING, JUMPING, CROUCHING, TURNING_LEFT, TURNING_RIGHT };
 
 /**
  * PLAYER CLASS
@@ -38,8 +38,8 @@ private:
     const float CROUCH_HEIGHT = 0.8;
 
     ///\brief Animations frame count. Game runs at 60 FPS.
-    const uint TRANSLATE_FRAMETIME = 30;
-    const uint JUMP_FRAMETIME = 90;
+    const uint TRANSLATE_FRAMETIME = 20;
+    const uint JUMP_FRAMETIME = 30;
     const uint CROUCH_FRAMETIME = 10;
 
     ///\brief Lane the player is currently running in
@@ -58,9 +58,8 @@ private:
     GraphicsEngine::Animation m_crouchingAnimation;
     GraphicsEngine::Animation m_standingAnimation;
     GraphicsEngine::Animation m_moveToLeftLaneAnimation;
-    GraphicsEngine::Animation m_moveToMiddleLaneAnimation;
     GraphicsEngine::Animation m_moveToRightLaneAnimation;
-
+    GraphicsEngine::Animation m_resetPosition;
 
 public:
     ///\brief constructor
@@ -82,6 +81,9 @@ public:
 
     ///\brief Moves player to the adjacent lane. Ignored if there are no lanes to go to.
     void move(const Direction &direction);
+
+
+    void resetPosition();
 
     inline const Position position() const { return m_position; }
  };
