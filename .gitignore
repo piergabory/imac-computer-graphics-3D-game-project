@@ -1,10 +1,6 @@
 obj/
 bin/
 build/
-
-# doxygen
-html/
-*.tag
-.vscode
-DoxygenGenerated
-*.xcuserstate
+.vscode/
+DoxygenGenerated/
+Projet_S2_CG_CPP.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad/UserInterfaceState.xcuserstate

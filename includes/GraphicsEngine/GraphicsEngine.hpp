@@ -1,6 +1,6 @@
 
 /**
- * Object.hpp
+ * \file Object.hpp
  *
  * IMAC 2 Project CG CPP
  *
@@ -21,7 +21,7 @@
  * GRAPHIC ENGINE CONTROLLER CLASS
  *
  * Singleton, controller class of all things graphical
- * Initialize graphics frameworks, instanciate the window, launches event fetchs, launches scenes renders.
+ * \brief Initialize graphics frameworks, instanciate the window, launches event fetchs, launches scenes renders.
  */
 
 namespace GraphicsEngine {

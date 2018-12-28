@@ -1,5 +1,5 @@
 /**
- * EventObservers.hpp
+ * \file EventObservers.hpp
  *
  * IMAC 2 Project CG CPP
  *
@@ -14,8 +14,7 @@ namespace Events {
     /**
      * QuitEventObserver Interface
      *
-     * Classes implementing this interface can
-     * subscribe to window event in EventManager
+     * \brief Classes implementing this interface can subscribe to window event in EventManager
      */
     struct QuitEventObserver {
         // handles user request to quit the application
@@ -33,8 +32,7 @@ namespace Events {
     /**
      * KeyboardEventObserver Interface
      *
-     * Classes implementing this interface can
-     * subscribe to key events in EventManager
+     * \brief Classes implementing this interface can subscribe to key events in EventManager
      */
     struct KeyboardEventObserver {
         // handles a key release from the user
@@ -54,8 +52,7 @@ namespace Events {
     /**
      * MouseEventObserver Interface
      *
-     * Classes implementing this interface can
-     * subscribe to mouse events in EventManager
+     * \brief Classes implementing this interface can subscribe to mouse events in EventManager
      */
     struct MouseEventObserver {
         // handles a mouse release from the user
