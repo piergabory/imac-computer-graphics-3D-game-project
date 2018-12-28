@@ -36,12 +36,12 @@ namespace Events {
      */
     struct KeyboardEventObserver {
         // handles a key release from the user
-        virtual void keyRealeaseHandler(unsigned char keycode) {}
+        virtual void keyRealeaseHandler(const SDL_Keycode keycode) {}
         // handles a key press from the user
-        virtual void keyDownHandler(unsigned char keycode) {}
+        virtual void keyDownHandler(const SDL_Keycode keycode) {}
         
         // handles a set of keys
-        virtual void keyPressHandler(std::set<unsigned char> &pressedKeys) {}
+        virtual void keyPressHandler(const std::set<const SDL_Keycode> &pressedKeys) {}
 
         // destructor
         virtual ~KeyboardEventObserver() {}
@@ -56,10 +56,10 @@ namespace Events {
      */
     struct MouseEventObserver {
         // handles a mouse release from the user
-        virtual void mouseReleaseHandler(unsigned char button) {}
+        virtual void mouseReleaseHandler(const unsigned char button) {}
 
         // handles a mouse down from the user
-        virtual void mouseDownHandler(unsigned char button) {}
+        virtual void mouseDownHandler(const unsigned char button) {}
 
         // handles a mouse movement from the user
         virtual void mouseMoveHandler(float relativeXMovement,float relativeYMovement) {}

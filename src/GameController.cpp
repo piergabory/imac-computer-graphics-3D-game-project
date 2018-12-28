@@ -14,6 +14,9 @@ void GameController::initializeScene() {
     GraphicsEngine::Controller::instance()->loadGUI(canvas);
 
     // 3D context
+    m_playerPointOfView = std::make_shared<GraphicsEngine::Camera>();
+    m_playerPointOfView->place(glm::vec3(0,2,0));
+    m_playerPointOfView->rotate(glm::radians(10.f), glm::vec3(1,0,0));
     std::unique_ptr<GraphicsEngine::Scene> scene(new GraphicsEngine::Scene(m_playerPointOfView));
     GraphicsEngine::Controller::instance()->loadScene(scene);
 
@@ -37,18 +40,18 @@ void GameController::setup() {
     GraphicsEngine::Controller::instance()->setup();
     GraphicsEngine::Controller::instance()->printInfos();
 
-    Entity::loadObject();
-
     m_currentGame = std::unique_ptr<Game>(new Game);
 
     // create scene
     initializeScene();
 
-
-    // preload terrain
-    for (size_t i = 0; i < m_CHUNK_PRELOADING_COUNT; i++) {
-        loadNewChunk();
-        m_currentGame->terrain().progress(m_CHUNK_LENGTH/m_CHUNK_FRAME_DURATION);
+    Chunk* preloadedChunk;
+    for (uint i = 0; i < m_CHUNK_PRELOADING_COUNT; ++i) {
+        preloadedChunk = new Chunk();
+        for(std::shared_ptr<GraphicsEngine::Object3D> object : preloadedChunk->objects()) {
+            GraphicsEngine::Controller::instance()->activeScene()->add(object);
+        };
+        m_currentGame->terrain().loadChunk(preloadedChunk);
     }
 
     // subscribe event manager
@@ -72,11 +75,12 @@ bool GameController::loop() {
     m_chunkframe %= m_CHUNK_FRAME_DURATION;
 
     if(m_chunkframe == 0) {
+        m_chunkCycle ++;
         loadNewChunk();
-        m_currentGame->terrain().nextChunk();
+        m_currentGame->nextChunk();
     }
 
-    m_currentGame->terrain().progress(m_CHUNK_LENGTH/m_CHUNK_FRAME_DURATION);
+    m_currentGame->terrain().progress(1.f/m_CHUNK_FRAME_DURATION);
 
     GraphicsEngine::Animation::updateAnimations();
 
@@ -99,14 +103,24 @@ bool GameController::loop() {
 
 
 void GameController::loadNewChunk() {
-    Entity* left = new Entity();
-    Entity* middle = new Entity();
-    Entity* right = new Entity();
+    Chunk* chunk;
 
-    m_currentGame->terrain().loadChunk(left,middle, right, -m_CHUNK_LENGTH * m_CHUNK_PRELOADING_COUNT);
-    GraphicsEngine::Controller::instance()->activeScene()->add(left->object());
-    GraphicsEngine::Controller::instance()->activeScene()->add(middle->object());
-    GraphicsEngine::Controller::instance()->activeScene()->add(right->object());
+    if (m_chunkCycle % 40 == 0) {
+        chunk = new TurningChunk(TurnDirection::LEFT,
+                                 static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_playerPointOfView),
+                                 static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_currentGame->playerModel()));
+    } else if(m_chunkCycle % 50 == 0) {
+        chunk = new TurningChunk(TurnDirection::RIGHT,
+                                 static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_playerPointOfView),
+                                 static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_currentGame->playerModel()));
+    } else {
+        chunk = new Chunk(new Entity(), new Entity(), new Entity());
+    }
+    
+    m_currentGame->terrain().loadChunk(chunk);
+    for(std::shared_ptr<GraphicsEngine::Object3D> object : chunk->objects()) {
+        GraphicsEngine::Controller::instance()->activeScene()->add(object);
+    };
 }
 
 
@@ -118,18 +132,42 @@ void GameController::quitEventHandler() {
 
 
 // a déolacer dans l'EventManager
-void GameController::keyRealeaseHandler(unsigned char keycode) {
+void GameController::keyRealeaseHandler(const SDL_Keycode keycode) {
     // check if debug shortcuts is activated (CTRL-SHIFT):
     switch (keycode) {
-            // we ignore Shift and Ctrl
-        case 224: case 225: break;
+            // escape key
+        case SDLK_ESCAPE:
+            SDL_CaptureMouse(SDL_FALSE);
+            SDL_ShowCursor(SDL_ENABLE);
+            break;
 
-        case 'z': m_currentGame->callInput(Controls::UP); break;
-        case 'q': m_currentGame->callInput(Controls::LEFT); break;
-        case 'd': m_currentGame->callInput(Controls::RIGHT); break;
-        case 's': m_currentGame->callInput(Controls::DOWN); break;
+        case SDLK_z: m_currentGame->callInput(Controls::UP); break;
+        case SDLK_q: m_currentGame->callInput(Controls::LEFT); break;
+        case SDLK_d: m_currentGame->callInput(Controls::RIGHT); break;
+        case SDLK_s: m_currentGame->callInput(Controls::DOWN); break;
 
-        case 'g':
+        case SDLK_c:
+            switch (m_cameraBehavior) {
+                case CameraBehaviors::LOCKED:
+                    m_cameraBehavior = CameraBehaviors::FOLOW_PLAYER;
+                    std::cout << "Camera set to FOLOW PLAYER" << std::endl;
+                    break;
+
+                case CameraBehaviors::FOLOW_PLAYER:
+                    m_cameraBehavior = CameraBehaviors::FREE;
+                    std::cout << "Camera set to LOCKED" << std::endl;
+                    break;
+
+                case CameraBehaviors::FREE:
+                    m_cameraBehavior = CameraBehaviors::LOCKED;
+                    std::cout << "Camera set to FREE" << std::endl;
+                    break;
+
+                default: assert(false && "Bad CameraBehavior enum");
+            }
+            break;
+
+        case SDLK_g:
             std::cout << "Toggling Grid " << (m_debugGrid? "off" : "on") << std::endl;
             if (m_debugGrid){
                 m_debugGrid.reset();
@@ -143,57 +181,9 @@ void GameController::keyRealeaseHandler(unsigned char keycode) {
 };
 
 
-void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
-    const float KEYBOARD_CAMERA_CONTROL_SPEED = 0.1;
-    for (unsigned char key : pressedKeys) {
-        switch (key) {
-
-
-                // Up
-            case 'w':
-                m_playerPointOfView.move(glm::vec3(0,-KEYBOARD_CAMERA_CONTROL_SPEED,0));
-                break;
-
-                // Down
-            case 'x':
-            m_playerPointOfView.move(glm::vec3(0,KEYBOARD_CAMERA_CONTROL_SPEED,0));
-                break;
-
-                // Rotate right
-            case 'e':
-                m_playerPointOfView.pan(glm::vec3(0,1,0), KEYBOARD_CAMERA_CONTROL_SPEED);
-                break;
-
-                // Rotate left
-            case 'a':
-                m_playerPointOfView.pan(glm::vec3(0,-1,0), KEYBOARD_CAMERA_CONTROL_SPEED);
-                break;
-
-                // Rotate up
-            case 'r':
-                m_playerPointOfView.pan(glm::vec3(1,0,0), KEYBOARD_CAMERA_CONTROL_SPEED);
-                break;
-
-                // rotate down
-            case 'f':
-                m_playerPointOfView.pan(glm::vec3(-1,0,0), KEYBOARD_CAMERA_CONTROL_SPEED);
-                break;
-
-                // '0' key (not the numpad)
-            case '0':
-                m_playerPointOfView.resetPosition();
-                break;
-
-                // escape key
-            case 27:
-                SDL_CaptureMouse(SDL_FALSE);
-                SDL_ShowCursor(SDL_ENABLE);
-                break;
-
-            default:
-                //std::cout << "char: " << key << " int: " << (int) key << std::endl;
-                break;
-        }
+void GameController::keyPressHandler(const std::set<const SDL_Keycode> &pressedKeys) {
+    for (SDL_Keycode key : pressedKeys) {
+        cameraMoves(key);
     }
 }
 
@@ -201,24 +191,73 @@ void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
 
 void GameController::mouseMoveHandler(float relativeXMovement,float relativeYMovement) {
     const float MOUSEMOVE_SCALING = 0.006;
-    m_playerPointOfView.pan(glm::vec3(0,-1,0), relativeXMovement * MOUSEMOVE_SCALING);
-    m_playerPointOfView.pan(glm::vec3(1,0,0), relativeYMovement * MOUSEMOVE_SCALING);
+    m_playerPointOfView->rotate(relativeXMovement * MOUSEMOVE_SCALING, glm::vec3(0,-1,0));
+    m_playerPointOfView->rotate(relativeYMovement * MOUSEMOVE_SCALING, glm::vec3(1,0,0));
 }
 
 
 void GameController::mouseWheelHandler(float deltaX, float deltaY) {
     const float MOUSEWHEEL_SCALING = 0.1;
-    m_playerPointOfView.move(glm::vec3(MOUSEWHEEL_SCALING * deltaX, 0, MOUSEWHEEL_SCALING * deltaY));
+    m_playerPointOfView->translate(glm::vec3(MOUSEWHEEL_SCALING * deltaX, 0, MOUSEWHEEL_SCALING * deltaY));
 }
 
 
-void GameController::mouseReleaseHandler(unsigned char button) {
+void GameController::mouseReleaseHandler(const unsigned char button) {
     SDL_CaptureMouse(SDL_TRUE);
     SDL_ShowCursor(SDL_DISABLE);
 }
 
 
+void GameController::cameraMoves(const SDL_Keycode key) {
+    const float KEYBOARD_CAMERA_CONTROL_SPEED = 0.1;
+    if (m_cameraBehavior == CameraBehaviors::FREE) switch(key) {
+            // Up
+        case 'i':
+            m_playerPointOfView->translate(glm::vec3(0,-KEYBOARD_CAMERA_CONTROL_SPEED,0));
+            break;
 
+            // Down
+        case 'k':
+            m_playerPointOfView->translate(glm::vec3(0,KEYBOARD_CAMERA_CONTROL_SPEED,0));
+            break;
+
+            // left
+        case 'j':
+            m_playerPointOfView->translate(glm::vec3(-KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
+            break;
+
+            // right
+        case 'l':
+            m_playerPointOfView->translate(glm::vec3(KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
+            break;
+
+            // Rotate right
+        case 'u':
+            m_playerPointOfView->rotate(KEYBOARD_CAMERA_CONTROL_SPEED, glm::vec3(0,1,0));
+            break;
+
+            // Rotate left
+        case 'o':
+            m_playerPointOfView->rotate(KEYBOARD_CAMERA_CONTROL_SPEED, glm::vec3(0,-1,0));
+            break;
+
+            // Rotate up
+        case 'p':
+            m_playerPointOfView->rotate(KEYBOARD_CAMERA_CONTROL_SPEED, glm::vec3(1,0,0));
+            break;
+
+            // rotate down
+        case 'm':
+            m_playerPointOfView->rotate(KEYBOARD_CAMERA_CONTROL_SPEED, glm::vec3(-1,0,0));
+            break;
+
+            // '0' key (not the numpad)
+        case '0':
+            // replace to origin
+            m_playerPointOfView->resetPosition();
+            break;
+    }
+}
 
 
 // make grid

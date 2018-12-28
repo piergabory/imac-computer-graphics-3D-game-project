@@ -11,6 +11,7 @@
 #include <iostream>
 #include "Object.hpp"
 #include "PerspectiveShaderProgram.hpp"
+#include "Animation.hpp"
 
 namespace GraphicsEngine {
 
@@ -24,7 +25,7 @@ namespace GraphicsEngine {
      * is hable to handle 3D Projection and perspective shaders
      * Adds transformations methods to move around objects in the scene
      */
-    class Object3D : public Object<Vertex3D> {
+    class Object3D : public Object<Vertex3D>, public Animatable {
 
     private:
         /// \brief Model-View Matrix, represents the position/rotation/scale of the object in the scene.
@@ -33,16 +34,19 @@ namespace GraphicsEngine {
     public:
 
         /// \brief places move the object to coordinates
-        void place(const glm::vec3 &newPosition);
+        void place(const glm::vec3 &newPosition) override;
 
         /// \brief apply a 3D translation on the object
-        void translate(const glm::vec3 &translationVector);
+        void translate(const glm::vec3 &translationVector) override;
+
+        /// \brief translate the object relative to the world origin (not local)
+        void globalTranslate(const glm::vec3 &translationVector);
 
         /// \brief apply a 3D rotation on the object
-        void rotate(const float angle, const glm::vec3 &direction);
+        void rotate(const float angle, const glm::vec3 &direction) override;
 
         /// \brief apply a 3D scale on the object
-        void scale(const glm::vec3 &scalingVector);
+        void scale(const glm::vec3 &scalingVector) override;
 
         /// \brief link the scene camera's matrices to the perspective shader.
         void setProjection(const std::shared_ptr<glm::mat4> &projectionMatrix, const std::shared_ptr<glm::mat4> &sceneModel);
@@ -51,7 +55,7 @@ namespace GraphicsEngine {
         void project();
 
         /// \brief position getter
-        inline const glm::vec3 position() const {
+        inline const glm::vec3 position() const override{
             return glm::vec3(m_modelViewMatrix * glm::vec4(0,0,0,1));
         }
 

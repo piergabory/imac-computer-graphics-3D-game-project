@@ -17,6 +17,12 @@ namespace GraphicsEngine {
     void Object3D::translate(const glm::vec3 &translationVector) {
         m_modelViewMatrix = glm::translate(m_modelViewMatrix, translationVector);
     }
+
+    void Object3D::globalTranslate(const glm::vec3 &translationVector) {
+        const float modelViewHomogenous = m_modelViewMatrix[3][3];
+        m_modelViewMatrix[3] += glm::vec4(translationVector, 0);
+        m_modelViewMatrix[3][3] = modelViewHomogenous;
+    }
     
     
     void Object3D::rotate(const float angle, const glm::vec3 &direction) {

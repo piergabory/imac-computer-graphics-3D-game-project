@@ -12,7 +12,7 @@
 #include "ImportedMesh.hpp"
 
 /// game controls, to be mapped on keyboard or game controller in GameController
-enum class Controls : unsigned char { LEFT, RIGHT, UP, DOWN };
+enum class Controls { LEFT, RIGHT, UP, DOWN };
 
 /**
  * GAME CLASS
@@ -43,6 +43,14 @@ public:
 
     inline const Terrain& terrain() const {
         return m_terrain;
+    }
+
+    inline void nextChunk() {
+        CardinalDirections previousOrientation = m_terrain.facing();
+        m_terrain.nextChunk();
+        m_terrain.enterChunk(m_player);
+        if (previousOrientation != m_terrain.facing())
+            m_player.resetPosition();
     }
 
     /// \brief Redirects controller inputs on player movements, attacks, bonuses etc...
