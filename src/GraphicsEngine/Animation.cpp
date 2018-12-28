@@ -1,13 +1,24 @@
+/**
+ * \file Animation.cpp
+ */
+
 #include "Animation.hpp"
 
 namespace GraphicsEngine {
+
+    // static animation container
     std::vector<Animation*> Animation::s_activeAnimations;
+
+    // static
+    // calls nxt frame on each animation
     void Animation::updateAnimations() {
         size_t i = 0;
         while(i < s_activeAnimations.size()) {
             if (s_activeAnimations[i]->animateNextFrame()) i++;
         }
     };
+
+
 
     bool Animation::animateNextFrame() {
         if (m_currentFrame == 0) {
@@ -22,17 +33,52 @@ namespace GraphicsEngine {
     }
 
 
+
+    void Animation::begin() {
+        m_currentFrame = m_duration;
+        s_activeAnimations.push_back(this);
+    }
+
+
+
+    void Animation::cancel() {
+        if (m_callback) m_callback();
+        m_currentFrame = 0;
+        for (size_t i = 0; i < s_activeAnimations.size(); i++) {
+            if (s_activeAnimations[i] == this)
+                s_activeAnimations.erase(s_activeAnimations.begin() + i);
+        }
+    }
+
+
+    // constructor
+    Animation::Animation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &position, const std::function<void(Animatable&,const glm::vec3&, const float, const float)> &interpolation):
+    m_pObjectToMove(object),
+    m_duration(duration),
+    m_targetPositon(position),
+    m_interpolationFunction(interpolation),
+    m_callback([](void) -> void {})
+    { assert(m_interpolationFunction); }
+
+
+
+
+    // factories
+
     Animation makeLinearPlace(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &newPosition) {
         return Animation(object, duration, newPosition, [](Animatable& object, const glm::vec3 &newPosition, const float step, const float progress) -> void {
             object.place((object.position() - newPosition) * step);
         });
     }
 
+
+
     Animation makeLinearTranslation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &translation) {
         return Animation(object, duration, translation, [](Animatable& object, const glm::vec3 &translation, const float step, const float progress) -> void {
             object.translate(translation * step);
         });
     }
+
 
 
     Animation makeBounceAnimation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const float height) {
@@ -43,11 +89,13 @@ namespace GraphicsEngine {
     }
 
 
+
     Animation makeCrouchAnimation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const float toHeight) {
         return Animation(object, duration, glm::vec3(toHeight), [](Animatable &object, const glm::vec3 &position, const float step, const float progress) {
             object.scale(glm::vec3(1, 1 - 0.01,1));
         });
     }
+
 
 
     Animation makeUnCrouchAnimation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const float fromHeight) {
@@ -56,20 +104,13 @@ namespace GraphicsEngine {
         });
     }
 
+
+
     Animation makeTurnAnimation(const std::shared_ptr<Animatable> &camera, unsigned int duration, const float angle) {
         return Animation(camera, duration, glm::vec3(angle), [](Animatable &camera, const glm::vec3 &angle, const float step, const float progress) {
             camera.rotate(angle.x * step, glm::vec3(0.f,1.f,0.f));
         });
     }
-
-
-    Animation::Animation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &position, const std::function<void(Animatable&,const glm::vec3&, const float, const float)> &interpolation):
-    m_pObjectToMove(object),
-    m_duration(duration),
-    m_targetPositon(position),
-    m_interpolationFunction(interpolation),
-    m_callback([](void) -> void {})
-    { assert(m_interpolationFunction); }
 
 }
 

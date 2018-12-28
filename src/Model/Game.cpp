@@ -3,6 +3,8 @@
  */
 #include "Game.hpp"
 
+namespace GameModel {
+
 // static method generating player character models
 std::shared_ptr<GraphicsEngine::Object3D> Game::loadPlayerObject() {
 
@@ -43,9 +45,18 @@ void Game::callInput(Controls control) {
     }
 }
 
+void Game::nextChunk() {
+    CardinalDirections previousOrientation = m_terrain.facing();
+    m_terrain.nextChunk();
+    m_terrain.enterChunk(m_player);
+    if (previousOrientation != m_terrain.facing())
+        m_player.resetPosition();
+}
 
-// constructor
-Game::Game() : m_player(loadPlayerObject()) {}
 
-// destructor
-Game::~Game() {}
+    // constructor
+    Game::Game() : m_player(loadPlayerObject()) {}
+
+    // destructor
+    Game::~Game() {}
+}

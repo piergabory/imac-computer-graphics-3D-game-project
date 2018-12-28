@@ -40,14 +40,14 @@ void GameController::setup() {
     GraphicsEngine::Controller::instance()->setup();
     GraphicsEngine::Controller::instance()->printInfos();
 
-    m_currentGame = std::unique_ptr<Game>(new Game);
+    m_currentGame = std::unique_ptr<GameModel::Game>(new GameModel::Game);
 
     // create scene
     initializeScene();
 
-    Chunk* preloadedChunk;
+    GameModel::Chunk* preloadedChunk;
     for (uint i = 0; i < m_CHUNK_PRELOADING_COUNT; ++i) {
-        preloadedChunk = new Chunk();
+        preloadedChunk = new GameModel::Chunk();
         for(std::shared_ptr<GraphicsEngine::Object3D> object : preloadedChunk->objects()) {
             GraphicsEngine::Controller::instance()->activeScene()->add(object);
         };
@@ -103,18 +103,18 @@ bool GameController::loop() {
 
 
 void GameController::loadNewChunk() {
-    Chunk* chunk;
+    GameModel::Chunk* chunk;
 
     if (m_chunkCycle % 40 == 0) {
-        chunk = new TurningChunk(TurnDirection::LEFT,
+        chunk = new GameModel::TurningChunk(GameModel::TurnDirection::LEFT,
                                  static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_playerPointOfView),
                                  static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_currentGame->playerModel()));
     } else if(m_chunkCycle % 50 == 0) {
-        chunk = new TurningChunk(TurnDirection::RIGHT,
+        chunk = new GameModel::TurningChunk(GameModel::TurnDirection::RIGHT,
                                  static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_playerPointOfView),
                                  static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_currentGame->playerModel()));
     } else {
-        chunk = new Chunk(new Entity(), new Entity(), new Entity());
+        chunk = new GameModel::Chunk(new GameModel::Entity(), new GameModel::Entity(), new GameModel::Entity());
     }
     
     m_currentGame->terrain().loadChunk(chunk);
@@ -141,10 +141,10 @@ void GameController::keyRealeaseHandler(const SDL_Keycode keycode) {
             SDL_ShowCursor(SDL_ENABLE);
             break;
 
-        case SDLK_z: m_currentGame->callInput(Controls::UP); break;
-        case SDLK_q: m_currentGame->callInput(Controls::LEFT); break;
-        case SDLK_d: m_currentGame->callInput(Controls::RIGHT); break;
-        case SDLK_s: m_currentGame->callInput(Controls::DOWN); break;
+        case SDLK_z: m_currentGame->callInput(GameModel::Controls::UP); break;
+        case SDLK_q: m_currentGame->callInput(GameModel::Controls::LEFT); break;
+        case SDLK_d: m_currentGame->callInput(GameModel::Controls::RIGHT); break;
+        case SDLK_s: m_currentGame->callInput(GameModel::Controls::DOWN); break;
 
         case SDLK_c:
             switch (m_cameraBehavior) {

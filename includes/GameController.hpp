@@ -66,7 +66,7 @@ private:
 
 
     // Model instance
-    std::unique_ptr<Game> m_currentGame;
+    std::unique_ptr<GameModel::Game> m_currentGame;
 
 
     // METHODS
