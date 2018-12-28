@@ -265,7 +265,6 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createSkyBox() {
     return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
 }
 
-
 // make chunk
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
     GraphicsEngine::LocalFilePath chunkmesh("assets/models/cube.obj");
@@ -278,7 +277,7 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
 
 
 // singleton
-
+/*
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
     try {
         return std::make_shared<GraphicsEngine::Object3D>(std::make_shared<GraphicsEngine::ImportedMesh>(GraphicsEngine::LocalFilePath("assets/cube.obj")), std::make_shared<GraphicsEngine::Material>(std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(GraphicsEngine::LocalFilePath("shaders/perspective.vs.glsl"), GraphicsEngine::LocalFilePath("shaders/flatTexture.fs.glsl"), "uMVPMatrix", "uMVMatrix", "uNormalMatrix"), std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("textures/cubemap_a.png"))));
@@ -287,7 +286,7 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
         return nullptr;
     }
 }
-
+*/
 GameController* GameController::s_controllerInstance = nullptr;
 
 GameController* GameController::instance() {

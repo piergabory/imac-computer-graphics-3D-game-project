@@ -8,29 +8,18 @@ uniform sampler2D uMainTextureSampler;
 
 out vec3 fFragColor;
 
-float prodScal(vec3 vect1, vec3 vect2) {
-  float prod = dot(normalize(vect1), normalize(vect2));
-  if(prod <= 0) return 0;
-  else return prod;
-}
-
 void main() {
     //tmp
     vec3 uLightPos = vec3(15,15,15);
-    vec3 uKd = vec3(100,100,255); //couleur de l'obj (diffus)
-    vec3 uKs = vec3(255,255,255); //couleur du reflet(speculaire)
     vec3 uLightIntensity = vec3(8,8,8);
-    float uShininess =32;
+    vec3 uLightColor = vec3(255,255,255);
+    float ambiantStrength = 0.1;
 
-    float distanceLight = distance(vPosition, uLightPos);
-    vec3 wi = normalize(uLightPos - vPosition);
-    vec3 w0 = normalize(-vPosition);
-    vec3 half= normalize( (w0+wi)/2);
-    
-    vec3 KD = ukd * prodScal(wi, vNormal);
-    vec3 KS = uKs * pow(prodScal(half, vNormal), uShininess);
-
-    vec3 objcolor= (uLightIntensity/(distanceLight*distanceLight))*(KD+KS);
-    //vec3 objcolor = texture(uMainTextureSampler, vTexCoord).rgb;
-    fFragColor= objcolor;
+    vec3 ambiant= ambiantStrength * uLightColor;
+    vec3 norm = normalize(vNormal);
+    vec3 lightDir = normalize(uLightPos-vPosition);
+    float diff = max(dot(norm,lightDir),0.0);
+    vec3 diffuse = diff * uLightColor;
+    vec3 objcolor = texture(uMainTextureSampler, vTexCoord).rgb;
+    fFragColor = (ambiant + diffuse) * objcolor;
 }
