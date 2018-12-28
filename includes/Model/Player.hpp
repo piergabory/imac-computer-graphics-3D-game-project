@@ -84,9 +84,10 @@ namespace GameModel {
         ///\brief Moves player to the adjacent lane. Ignored if there are no lanes to go to.
         void move(const Direction &direction);
 
-
+        /// \brief Recenter the player to the center of the scene
         void resetPosition();
 
+        ///\brief Position (Terrain lane) getter
         inline const Position position() const { return m_position; }
      };
 }

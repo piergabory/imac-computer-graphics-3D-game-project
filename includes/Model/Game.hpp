@@ -35,28 +35,21 @@ namespace GameModel {
 
     public:
         /// \brief getter on the character model
-        inline std::shared_ptr<GraphicsEngine::Object3D> playerModel() const {
-            return m_player.model();
-        }
+        inline std::shared_ptr<GraphicsEngine::Object3D> playerModel() const { return m_player.model(); }
 
-        inline Terrain& terrain() {
-            return m_terrain;
-        }
+        /// \brief getter on the terrain
+        inline Terrain& terrain() { return m_terrain; }
+        inline const Terrain& terrain() const { return m_terrain; }
 
-        inline const Terrain& terrain() const {
-            return m_terrain;
-        }
 
-        inline void nextChunk() {
-            CardinalDirections previousOrientation = m_terrain.facing();
-            m_terrain.nextChunk();
-            m_terrain.enterChunk(m_player);
-            if (previousOrientation != m_terrain.facing())
-                m_player.resetPosition();
-        }
+        /// \brief shifts the terrain to the next chunk.
+        /// Moves the player back to the center on each turn.
+        void nextChunk();
+
 
         /// \brief Redirects controller inputs on player movements, attacks, bonuses etc...
         void callInput(Controls control);
+        
 
         /// \brief constructor
         Game();
