@@ -11,43 +11,46 @@
 #include "Chunk.hpp"
 #include "TurningChunk.hpp"
 
-enum class CardinalDirections : int {
-    NORTH = 0,
-    EAST = 90,
-    SOUTH = 180,
-    WEST = -90
-};
+namespace GameModel {
 
-class Terrain {
-private:
-    const uint m_CHUNK_COUNT_AFTER_PLAYER = 5;
-    std::deque< std::unique_ptr<Chunk> > m_chunks;
-    float m_nextLoadedChunkOrientation = 0;
-    glm::vec3 m_nextLoadedChunkPosition = glm::vec3(0.f,0.f,0.f);
+    enum class CardinalDirections : int {
+        NORTH = 0,
+        EAST = 90,
+        SOUTH = 180,
+        WEST = -90
+    };
 
-    inline const std::unique_ptr<Chunk>& activeChunk() const { return m_chunks[m_CHUNK_COUNT_AFTER_PLAYER]; }
+    class Terrain {
+    private:
+        const uint m_CHUNK_COUNT_AFTER_PLAYER = 5;
+        std::deque< std::unique_ptr<Chunk> > m_chunks;
+        float m_nextLoadedChunkOrientation = 0;
+        glm::vec3 m_nextLoadedChunkPosition = glm::vec3(0.f,0.f,0.f);
 
-    inline std::unique_ptr<Chunk>& activeChunk() { return m_chunks[m_CHUNK_COUNT_AFTER_PLAYER]; }
+        inline const std::unique_ptr<Chunk>& activeChunk() const { return m_chunks[m_CHUNK_COUNT_AFTER_PLAYER]; }
 
-public:
-    inline void nextChunk() {
-        m_chunks.pop_front();
-        activeChunk()->onEnter();
-    }
+        inline std::unique_ptr<Chunk>& activeChunk() { return m_chunks[m_CHUNK_COUNT_AFTER_PLAYER]; }
 
-    const CardinalDirections facing() const;
+    public:
+        inline void nextChunk() {
+            m_chunks.pop_front();
+            activeChunk()->onEnter();
+        }
 
-    void enterChunk(Player &player);
-    void testAction(Player &player);
+        const CardinalDirections facing() const;
 
-    void loadChunk(Chunk *chunkToLoad);
+        void enterChunk(Player &player);
+        void testAction(Player &player);
 
-    void progress(const float progress);
+        void loadChunk(Chunk *chunkToLoad);
 
-    Terrain() {}
-    
-    ~Terrain() {}
-};
+        void progress(const float progress);
 
+        Terrain() {}
+        
+        ~Terrain() {}
+    };
+
+}
 
 #endif /* Terrain_hpp */

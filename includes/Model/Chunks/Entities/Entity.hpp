@@ -6,35 +6,37 @@
 #include "Object3D.hpp"
 #include "ImportedMesh.hpp"
 
-class Entity {
-private:
+namespace GameModel {
 
-    static std::unique_ptr<GraphicsEngine::Object3D> s_entityObject;
+    class Entity {
+    private:
 
-    // todo check for use?
-    const glm::vec3 position() const { return m_entityObject->position(); }
+        static std::unique_ptr<GraphicsEngine::Object3D> s_entityObject;
 
-protected:
-    std::shared_ptr<GraphicsEngine::Object3D> m_entityObject;
+        // todo check for use?
+        const glm::vec3 position() const { return m_entityObject->position(); }
 
-    static GraphicsEngine::Object3D* makeObject(const char* meshPath, const char* texturePath, const char* vertexShaderProgram, const char* fragmentShaderProgram);
+    protected:
+        std::shared_ptr<GraphicsEngine::Object3D> m_entityObject;
 
-public:
+        static GraphicsEngine::Object3D* makeObject(const char* meshPath, const char* texturePath, const char* vertexShaderProgram, const char* fragmentShaderProgram);
 
-    inline const std::shared_ptr<GraphicsEngine::Object3D>& object() const { return m_entityObject; };
+    public:
 
-    virtual void action() {};
+        inline const std::shared_ptr<GraphicsEngine::Object3D>& object() const { return m_entityObject; };
 
-    virtual void onEnter() {};
+        virtual void action() {};
 
-    static void loadObject();
+        virtual void onEnter() {};
 
-    Entity() {
-        if (!s_entityObject) loadObject();
-        m_entityObject =  std::make_shared<GraphicsEngine::Object3D>(*s_entityObject);
-    }
+        static void loadObject();
 
-    virtual ~Entity() {}
-};
+        Entity() {
+            if (!s_entityObject) loadObject();
+            m_entityObject =  std::make_shared<GraphicsEngine::Object3D>(*s_entityObject);
+        }
 
+        virtual ~Entity() {}
+    };
+}
 #endif /* Entity_hpp */

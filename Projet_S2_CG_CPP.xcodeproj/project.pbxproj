@@ -130,7 +130,6 @@
 		D4948B5521D641C40081C29E /* Frameworks.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Frameworks.hpp; sourceTree = "<group>"; };
 		D4948B5821D641C40081C29E /* ImportedMesh.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ImportedMesh.hpp; sourceTree = "<group>"; };
 		D4948B5921D641C40081C29E /* Mesh.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mesh.hpp; sourceTree = "<group>"; };
-		D4948B5A21D641C40081C29E /* MooveObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MooveObject.hpp; sourceTree = "<group>"; };
 		D4948B5B21D641C40081C29E /* Object.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Object.hpp; sourceTree = "<group>"; };
 		D4948B5D21D641C40081C29E /* Object3D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Object3D.hpp; sourceTree = "<group>"; };
 		D4948B5E21D641C40081C29E /* Object2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Object2D.hpp; sourceTree = "<group>"; };
@@ -445,7 +444,6 @@
 			isa = PBXGroup;
 			children = (
 				D4948B5721D641C40081C29E /* Mesh */,
-				D4948B5A21D641C40081C29E /* MooveObject.hpp */,
 				D4948B5B21D641C40081C29E /* Object.hpp */,
 				D4948B5C21D641C40081C29E /* Object */,
 				D4948B6021D641C40081C29E /* Material */,
