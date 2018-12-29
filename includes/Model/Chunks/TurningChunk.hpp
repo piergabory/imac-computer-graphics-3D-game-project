@@ -1,3 +1,8 @@
+/**
+ * \file TurningChunk.hpp
+ *
+ * IMAC 2 Project CG CPP
+ */
 #ifndef TurningChunk_hpp
 #define TurningChunk_hpp
 
