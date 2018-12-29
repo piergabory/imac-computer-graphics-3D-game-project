@@ -47,6 +47,7 @@ namespace GameModel {
         void translate(glm::vec3 direction);
 
         /// \brief observer function called when a player enters the chunk
+        /// \todo check of usefulness
         virtual void onEnter() {}
 
 

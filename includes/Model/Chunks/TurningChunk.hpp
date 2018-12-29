@@ -6,16 +6,26 @@
 #ifndef TurningChunk_hpp
 #define TurningChunk_hpp
 
-#include "Camera.hpp"
 #include "Chunk.hpp"
 #include "Turn.hpp"
 
 namespace GameModel {
 
+    /**
+     *  TURNING CHUNK CLASS
+     *
+     * \brief Specialzed chunk for terrain rotations
+     * Handles animation of objects at rotation points
+     *  Chunk Subclass
+     */
+
     class TurningChunk : public Chunk {
+        /// \brief direction of the turning chunk (LEFT, RIGHT)
         const TurnDirection m_direction;
 
     public:
+        // getters
+        /// \brief point coordinates of where the next chunk can connect to
         inline virtual const glm::vec3 exitPosition() const {
             switch(m_direction) {
                 case TurnDirection::LEFT: return glm::vec3(-3,0,3);
@@ -23,10 +33,16 @@ namespace GameModel {
             }
         }
 
+
+        /// \brief Radians angle value of the orientation of the next chunk relative to this chunk.
         inline virtual const float exitOrientation() const { return glm::radians((float)m_direction); }
 
+
+        /// \brief observer function called when a player enters the chunk
+        /// \todo check of usefulness
         inline virtual void onEnter() {  }
 
+        
         // constructor
         TurningChunk(TurnDirection direction, std::shared_ptr<GraphicsEngine::Animatable> cameraAnimatable, std::shared_ptr<GraphicsEngine::Animatable> playerAnimatable):
         Chunk(new Turn(direction, cameraAnimatable, playerAnimatable), new Turn(direction, cameraAnimatable, playerAnimatable), new Turn(direction, cameraAnimatable, playerAnimatable)),
