@@ -7,6 +7,7 @@
 
 #ifndef Animation_hpp
 #define Animation_hpp
+#pragma once
 
 #include <memory>
 #include <functional>

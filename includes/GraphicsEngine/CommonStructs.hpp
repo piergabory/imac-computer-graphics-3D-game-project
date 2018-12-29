@@ -6,6 +6,7 @@
  */
 #ifndef CommonStructs_hpp
 #define CommonStructs_hpp
+#pragma once
 
 #include <string>
 #include <glm/glm.hpp>

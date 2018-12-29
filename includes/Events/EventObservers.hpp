@@ -7,6 +7,7 @@
 
 #ifndef EventObservers_hpp
 #define EventObservers_hpp
+#pragma once
 
 namespace Events {
     // EVENT OBSERVERS

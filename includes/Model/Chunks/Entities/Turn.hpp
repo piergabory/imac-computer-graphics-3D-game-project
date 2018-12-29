@@ -5,6 +5,7 @@
  */
 #ifndef Turn_hpp
 #define Turn_hpp
+#pragma once
 
 #include "Entity.hpp"
 #include "Animation.hpp"

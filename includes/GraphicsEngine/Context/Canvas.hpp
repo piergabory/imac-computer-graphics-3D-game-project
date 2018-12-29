@@ -7,6 +7,7 @@
 
 #ifndef Canvas_hpp
 #define Canvas_hpp
+#pragma once
 
 #include "Context.hpp"
 #include "Object2D.hpp"

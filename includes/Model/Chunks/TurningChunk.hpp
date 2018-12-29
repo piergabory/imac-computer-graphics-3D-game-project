@@ -5,6 +5,7 @@
  */
 #ifndef TurningChunk_hpp
 #define TurningChunk_hpp
+#pragma once
 
 #include "Chunk.hpp"
 #include "Turn.hpp"

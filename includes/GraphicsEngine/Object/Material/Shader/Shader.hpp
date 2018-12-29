@@ -6,6 +6,7 @@
  */
 #ifndef Shader_hpp
 #define Shader_hpp
+#pragma once
 
 #include <fstream>
 #include <sstream>

@@ -7,6 +7,7 @@
 
 #ifndef ImageData_hpp
 #define ImageData_hpp
+#pragma once
 
 #include "Frameworks.hpp"
 #include "Exceptions.hpp"

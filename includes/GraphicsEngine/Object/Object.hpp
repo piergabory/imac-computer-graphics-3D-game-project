@@ -7,6 +7,7 @@
 
 #ifndef Object_hpp
 #define Object_hpp
+#pragma once
 
 #include <memory>
 

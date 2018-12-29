@@ -7,6 +7,7 @@
 
 #ifndef PerspectiveShaderProgram_hpp
 #define PerspectiveShaderProgram_hpp
+#pragma once
 
 #include "Frameworks.hpp"
 #include "ShaderProgram.hpp"

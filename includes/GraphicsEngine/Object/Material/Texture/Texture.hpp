@@ -7,6 +7,7 @@
 
 #ifndef Texture_hpp
 #define Texture_hpp
+#pragma once
 
 #include "Frameworks.hpp"
 #include "ImageData.hpp"

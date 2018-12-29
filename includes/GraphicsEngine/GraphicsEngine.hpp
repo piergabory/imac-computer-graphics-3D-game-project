@@ -8,6 +8,7 @@
 
 #ifndef GraphicEngine_hpp
 #define GraphicEngine_hpp
+#pragma once
 
 #include <iostream>
 #include <vector>

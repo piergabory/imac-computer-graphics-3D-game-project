@@ -7,6 +7,7 @@
 
 #ifndef Object2D_hpp
 #define Object2D_hpp
+#pragma once
 
 #include "Object.hpp"
 

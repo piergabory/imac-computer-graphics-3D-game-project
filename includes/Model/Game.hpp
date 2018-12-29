@@ -5,6 +5,7 @@
  */
 #ifndef Game_hpp
 #define Game_hpp
+#pragma once
 
 #include "Player.hpp"
 #include "Terrain.hpp"

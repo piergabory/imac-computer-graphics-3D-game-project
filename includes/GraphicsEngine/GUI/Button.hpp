@@ -7,6 +7,7 @@
 
 #ifndef Button_hpp
 #define Button_hpp
+#pragma once
 
 #include <functional>
 

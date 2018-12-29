@@ -6,6 +6,7 @@
 
 #ifndef Terrain_hpp
 #define Terrain_hpp
+#pragma once
 
 #include <deque>
 

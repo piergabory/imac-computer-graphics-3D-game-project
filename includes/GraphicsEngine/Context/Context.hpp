@@ -6,6 +6,7 @@
 
 #ifndef Context_hpp
 #define Context_hpp
+#pragma once
 
 #include <memory>
 

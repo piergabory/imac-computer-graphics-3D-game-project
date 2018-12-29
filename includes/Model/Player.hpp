@@ -5,6 +5,7 @@
  */
 #ifndef Player_hpp
 #define Player_hpp
+#pragma once
 
 #include <memory>
 #include <glm/glm.hpp>

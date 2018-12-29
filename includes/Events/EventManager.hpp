@@ -9,6 +9,7 @@
  */
 #ifndef EventManager_hpp
 #define EventManager_hpp
+#pragma once
 
 #include <vector>
 #include <memory>

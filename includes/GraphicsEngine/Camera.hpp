@@ -7,6 +7,7 @@
 
 #ifndef Camera_hpp
 #define Camera_hpp
+#pragma once
 
 #include <memory>
 #include <iostream>

@@ -5,6 +5,7 @@
  */
 #ifndef Entity_hpp
 #define Entity_hpp
+#pragma once
 
 #include <memory>
 

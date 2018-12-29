@@ -8,6 +8,7 @@
 
 #ifndef Object_h
 #define Object_h
+#pragma once
 
 #include <memory>
 

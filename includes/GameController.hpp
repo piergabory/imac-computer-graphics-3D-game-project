@@ -6,6 +6,7 @@
 
 #ifndef GameController_hpp
 #define GameController_hpp
+#pragma once
 
 #include <iostream>
 #include <memory>

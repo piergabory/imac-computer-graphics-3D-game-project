@@ -6,6 +6,7 @@
  */
 #ifndef Material_hpp
 #define Material_hpp
+#pragma once
 
 #include <memory>
 

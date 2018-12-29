@@ -5,6 +5,7 @@
  */
 #ifndef Chunk_hpp
 #define Chunk_hpp
+#pragma once
 
 #include <set>
 

@@ -7,6 +7,7 @@
 
 #ifndef Mesh_hpp
 #define Mesh_hpp
+#pragma once
 
 #include <vector>
 

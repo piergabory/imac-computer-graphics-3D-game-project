@@ -7,6 +7,7 @@
 
 #ifndef IMPORTEDMESH_H
 #define IMPORTEDMESH_H
+#pragma once
 
 //include all assimp functions
 #include <assimp/Importer.hpp>
@@ -17,7 +18,7 @@
 #include "Mesh.hpp"
 #include "CommonStructs.hpp"
 
-// TODO check if useful
+/// \todo check if useful
 #include <vector>
 
 #include <string>

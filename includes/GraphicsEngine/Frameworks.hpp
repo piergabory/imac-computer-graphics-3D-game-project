@@ -7,6 +7,7 @@
 
 #ifndef Frameworks_hpp
 #define Frameworks_hpp
+#pragma once
 
 
 /**

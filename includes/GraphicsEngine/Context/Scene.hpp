@@ -7,6 +7,7 @@
 
 #ifndef Scene_hpp
 #define Scene_hpp
+#pragma once
 
 #include "Object3D.hpp"
 #include "Camera.hpp"
