@@ -65,7 +65,9 @@ private:
     std::shared_ptr<GraphicsEngine::Object3D> m_skybox;
     std::shared_ptr<GraphicsEngine::Object3D> m_chunk;
     std::shared_ptr<GraphicsEngine::Object2D> m_menuoverlay;
-    std::shared_ptr<GraphicsEngine::Button> m_button;
+    std::shared_ptr<GraphicsEngine::Button> m_resumebutton;
+    std::shared_ptr<GraphicsEngine::Button> m_restartbutton;
+    std::shared_ptr<GraphicsEngine::Button> m_quitbutton;
 
 
     // Model instance
