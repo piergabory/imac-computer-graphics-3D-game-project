@@ -26,6 +26,7 @@ void GameController::initializeScene() {
     m_skybox = createSkyBox();
     m_chunk = createChunk();
     createMenu();
+    createCursor();
 
     // skybox max scale before clipping out of far-field
     m_skybox->scale(glm::vec3(3.14f));
@@ -34,7 +35,8 @@ void GameController::initializeScene() {
     GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
     
-    GraphicsEngine::Controller::instance()->activeGUI()->add(m_resumebutton);
+    //GraphicsEngine::Controller::instance()->activeGUI()->add(m_resumebutton);
+    GraphicsEngine::Controller::instance()->activeGUI()->add(m_menucursor);
     
     
 
@@ -349,6 +351,13 @@ void GameController::createMenu(){
 //
 //    GraphicsEngine::Controller::instance()->activeGUI()->add(m_quitbutton);
     
+}
+
+void GameController::createCursor(){
+    
+    m_menucursor =  std::make_shared<GraphicsEngine::Object2D>(glm::vec2(-0.05, 0.05),
+                                               glm::vec2(0.1, -0.1),
+                                               std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/cursor.png")));
 }
 
 
