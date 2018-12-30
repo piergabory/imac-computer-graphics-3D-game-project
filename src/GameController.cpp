@@ -355,8 +355,8 @@ void GameController::createMenu(){
 
 void GameController::createCursor(){
     
-    m_menucursor =  std::make_shared<GraphicsEngine::Object2D>(glm::vec2(-0.05, 0.05),
-                                               glm::vec2(0.1, -0.1),
+    m_menucursor =  std::make_shared<GraphicsEngine::Object2D>(glm::vec2(-0.1, 0.1),
+                                               glm::vec2(0.2, -0.2),
                                                std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/cursor.png")));
 }
 
