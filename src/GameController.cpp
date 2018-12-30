@@ -35,7 +35,7 @@ void GameController::initializeScene() {
     GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
     
-    //GraphicsEngine::Controller::instance()->activeGUI()->add(m_resumebutton);
+    GraphicsEngine::Controller::instance()->activeGUI()->add(m_resumebutton);
     GraphicsEngine::Controller::instance()->activeGUI()->add(m_menucursor);
     
     
@@ -213,7 +213,7 @@ void GameController::mouseWheelHandler(float deltaX, float deltaY) {
 
 void GameController::mouseReleaseHandler(const unsigned char button) {
     SDL_CaptureMouse(SDL_TRUE);
-    SDL_ShowCursor(SDL_DISABLE);
+    SDL_ShowCursor(SDL_ENABLE); ///TODO - put back to disable
 }
 
 
