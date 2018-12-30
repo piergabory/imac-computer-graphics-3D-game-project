@@ -64,6 +64,8 @@ private:
     std::shared_ptr<GraphicsEngine::Object3D> m_debugGrid;
     std::shared_ptr<GraphicsEngine::Object3D> m_skybox;
     std::shared_ptr<GraphicsEngine::Object3D> m_chunk;
+    std::shared_ptr<GraphicsEngine::Object2D> m_menuoverlay;
+    std::shared_ptr<GraphicsEngine::Button> m_button;
 
 
     // Model instance
@@ -82,7 +84,9 @@ private:
     static std::shared_ptr<GraphicsEngine::Object3D> initializeDebugGrid();
     static std::shared_ptr<GraphicsEngine::Object3D> createSkyBox();
     static std::shared_ptr<GraphicsEngine::Object3D> createChunk();
+    void createMenu();
     static std::shared_ptr<GraphicsEngine::Object3D> createObject3D(GraphicsEngine::LocalFilePath &meshPath, GraphicsEngine::LocalFilePath &textureImagePath,GraphicsEngine::LocalFilePath &vertexShaderPath, GraphicsEngine::LocalFilePath &fragmentShaderPath);
+    
 
     // control action
     void cameraMoves(const SDL_Keycode key);

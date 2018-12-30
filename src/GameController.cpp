@@ -9,9 +9,10 @@
 void GameController::initializeScene() {
     initializeDebugGrid();
 
-    // 2D context
+   // 2D context
     std::unique_ptr<GraphicsEngine::Canvas> canvas(new GraphicsEngine::Canvas());
     GraphicsEngine::Controller::instance()->loadGUI(canvas);
+    
 
     // 3D context
     m_playerPointOfView = std::make_shared<GraphicsEngine::Camera>();
@@ -24,6 +25,7 @@ void GameController::initializeScene() {
     std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
     m_skybox = createSkyBox();
     m_chunk = createChunk();
+    createMenu();
 
     // skybox max scale before clipping out of far-field
     m_skybox->scale(glm::vec3(3.14f));
@@ -31,6 +33,9 @@ void GameController::initializeScene() {
     // adds objects in the scene
     GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
+    GraphicsEngine::Controller::instance()->activeGUI()->add(m_button);
+    
+    
 }
 
 
@@ -312,6 +317,20 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
     GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
 
     return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
+}
+
+void GameController::createMenu(){
+    
+    std::function<void(GraphicsEngine::Button*, unsigned char)> callback = [](GraphicsEngine::Button* target, unsigned char mouseButton) -> void {
+        std::cout << "you clicked the button" << std::endl;
+    };
+    
+    m_button = std::make_shared<GraphicsEngine::Button>(
+                                                            glm::vec2(0, 0),
+                                                            glm::vec2(0.5, -0.5),
+                                                            std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/test.png")),
+                                                            callback
+                                                            );
 }
 
 
