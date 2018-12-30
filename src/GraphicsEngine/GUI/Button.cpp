@@ -19,9 +19,9 @@ namespace GraphicsEngine {
 
         // check bounds
         return mousePosition.x > m_boundingBoxTopLeftCorner.x
-            && mousePosition.x < m_boundingBoxBottomRightCorner.y
-            && mousePosition.y > m_boundingBoxTopLeftCorner.x
-            && mousePosition.y < m_boundingBoxBottomRightCorner.y;
+            && mousePosition.x < m_boundingBoxBottomRightCorner.x
+            && mousePosition.y < m_boundingBoxTopLeftCorner.y
+            && mousePosition.y > m_boundingBoxBottomRightCorner.y;
     }
 
 

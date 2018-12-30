@@ -330,26 +330,26 @@ void GameController::createMenu(){
     };
     
     m_resumebutton = std::make_shared<GraphicsEngine::Button>(
-                                                              glm::vec2(-0.5, 0.5),
-                                                              glm::vec2(0.5, -0.5),
+                                                              glm::vec2(-0.5, 0.6),
+                                                              glm::vec2(1, -0.5),
                                                               std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/test.png")),
                                                               resumeClick
                                                               );
     
  
     
-//    std::function<void(GraphicsEngine::Button*, unsigned char)> quitClick = [](GraphicsEngine::Button* target, unsigned char mouseButton) -> void {
-//        std::cout << "you clicked the quitbutton" << std::endl;
-//    };
-//
-//    m_quitbutton = std::make_shared<GraphicsEngine::Button>(
-//                                                            glm::vec2(-0.5, 0),
-//                                                            glm::vec2(1, -0.5),
-//                                                            std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/test.png")),
-//                                                            quitClick
-//                                                            );
-//
-//    GraphicsEngine::Controller::instance()->activeGUI()->add(m_quitbutton);
+    std::function<void(GraphicsEngine::Button*, unsigned char)> quitClick = [](GraphicsEngine::Button* target, unsigned char mouseButton) -> void {
+        std::cout << "you clicked the quitbutton" << std::endl;
+    };
+
+    m_quitbutton = std::make_shared<GraphicsEngine::Button>(
+                                                            glm::vec2(-0.5, 0),
+                                                            glm::vec2(1, -0.5),
+                                                            std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/test.png")),
+                                                            quitClick
+                                                            );
+
+    GraphicsEngine::Controller::instance()->activeGUI()->add(m_quitbutton);
     
 }
 
