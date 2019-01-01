@@ -41,9 +41,9 @@ namespace GameModel {
         const float CROUCH_HEIGHT = 0.8;
 
         ///\brief Animations frame count. Game runs at 60 FPS.
-        const uint TRANSLATE_FRAMETIME = 20;
-        const uint JUMP_FRAMETIME = 30;
-        const uint CROUCH_FRAMETIME = 10;
+        const unsigned int TRANSLATE_FRAMETIME = 20;
+        const unsigned int JUMP_FRAMETIME = 30;
+        const unsigned int CROUCH_FRAMETIME = 10;
 
         ///\brief Lane the player is currently running in
         Position m_position = Position::MIDDLE;
@@ -51,6 +51,10 @@ namespace GameModel {
         ///\brief Status of the player (running, jumping, crouching)
         /// the player cant jump if jumping or crouching. It can only crouch if standing
         Status m_status = Status::STANDING;
+
+        ///\brief life describes the ability of the player to continue playing the game
+        /// Game should stop when this value reaches zero
+        unsigned int m_life = 100;
 
         ///\brief pointer to the character 3D object.
         /// This is the main handle on the model, if it's released, the model should be destroyed
@@ -75,6 +79,12 @@ namespace GameModel {
         inline const std::shared_ptr<GraphicsEngine::Object3D>& model() const {
             return m_characterModel;
         }
+
+        ///\brief status getter
+        inline Status& status() { return m_status; }
+
+        ///\brief changes the player's life. Game over when life reaches zero
+        void incrementLife(int amount);
 
         ///\brief makes the player jump. ignored if called while jumping
         void jump();

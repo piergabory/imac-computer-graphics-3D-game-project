@@ -38,7 +38,7 @@ namespace GameModel {
     public:
         // Entities overrides
         /// \brief repeated tests on the player on each frame
-        void action() override {}
+        void action(Player& player) override {}
 
         /// \brief one-time tests on the player on first visit
         void onEnter() override { m_playerTurnAnimation.begin(); m_cameraTurnAnimation.begin(); }

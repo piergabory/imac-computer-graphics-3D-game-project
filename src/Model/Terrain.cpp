@@ -12,7 +12,7 @@ namespace GameModel {
 
 
     void Terrain::testAction(Player &player) {
-        activeChunk()->entityAt(player.position())->action();
+        activeChunk()->entityAt(player.position())->action(player);
     }
 
 

@@ -11,6 +11,7 @@
 
 #include "Object3D.hpp"
 #include "ImportedMesh.hpp"
+#include "Player.hpp"
 
 namespace GameModel {
 
@@ -45,7 +46,7 @@ namespace GameModel {
 
 
         /// \brief repeated tests on the player on each frame
-        virtual void action() {};
+        virtual void action(Player& player) {};
 
 
         /// \brief one-time tests on the player on first visit
