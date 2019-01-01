@@ -4,14 +4,24 @@
 
 namespace GameModel
 {
-	class Wall : public Entity
-	{
+    class Wall final : public Entity {
+
+    private:
+        /// \brief static default entity object.
+        /// use this instance to clone new objects
+        static std::unique_ptr<GraphicsEngine::Object3D> s_entityObject;
+
 	public:
-		//Constructor / destructor
-		Wall() {}
-		~Wall() {}
+
+        /// \brief object factory caller with parameters for an empty object
+        /// automagically called on first instanciation of Entity
+        static void loadObject();
 
 		//Methods
-		void action(Player& player) override;
+		void firstVisit(Player& player) override;
+
+        //Constructor / destructor
+        Wall() {}
+        ~Wall() {}
 	};
 }

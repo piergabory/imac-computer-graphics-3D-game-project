@@ -167,6 +167,14 @@
 		D4A0BD1521DBB46B00BC650B /* Jump.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Jump.cpp; sourceTree = "<group>"; };
 		D4A0BD1621DBB46B00BC650B /* Slide.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Slide.cpp; sourceTree = "<group>"; };
 		D4A0BD1821DBB46B00BC650B /* Wall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wall.cpp; sourceTree = "<group>"; };
+		D4A0BD2021DBE63900BC650B /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
+		D4A0BD2421DBF05C00BC650B /* cube_slide.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube_slide.obj; sourceTree = "<group>"; };
+		D4A0BD2521DBF05C00BC650B /* cube_wall.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube_wall.obj; sourceTree = "<group>"; };
+		D4A0BD2621DBF05C00BC650B /* cube.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube.obj; sourceTree = "<group>"; };
+		D4A0BD2721DBF05C00BC650B /* skyboxtest.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = skyboxtest.obj; sourceTree = "<group>"; };
+		D4A0BD2821DBF05C00BC650B /* turn.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = turn.obj; sourceTree = "<group>"; };
+		D4A0BD2921DBF05C00BC650B /* monkey1.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = monkey1.obj; sourceTree = "<group>"; };
+		D4A0BD2A21DBF05C00BC650B /* cube_jump.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube_jump.obj; sourceTree = "<group>"; };
 		D4EA624A21C938FF00CBFCAC /* 2D.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2D.fs.glsl; sourceTree = "<group>"; };
 		D4EA624B21C938FF00CBFCAC /* 2D.vs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2D.vs.glsl; sourceTree = "<group>"; };
 		D4EA626221CB93A200CBFCAC /* monkey1.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = monkey1.obj; sourceTree = "<group>"; };
@@ -384,9 +392,10 @@
 			isa = PBXGroup;
 			children = (
 				D4948B3F21D641C40081C29E /* Player.cpp */,
-				D4948B4021D641C40081C29E /* Chunks */,
 				D4948B4621D641C40081C29E /* Terrain.cpp */,
 				D4948B4721D641C40081C29E /* Game.cpp */,
+				D4A0BD2021DBE63900BC650B /* Scene.cpp */,
+				D4948B4021D641C40081C29E /* Chunks */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -551,13 +560,8 @@
 		D4948B7321D641C40081C29E /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				D4A0BD0E21DBB41C00BC650B /* Coin.hpp */,
 				D4A0BD0C21DBB41C00BC650B /* Entity.hpp */,
-				D4A0BD1021DBB41C00BC650B /* Jump.hpp */,
-				D4A0BD0D21DBB41C00BC650B /* PowerUp.hpp */,
-				D4A0BD1121DBB41C00BC650B /* Slide.hpp */,
-				D4A0BD0F21DBB41C00BC650B /* Turn.hpp */,
-				D4A0BD0B21DBB41C00BC650B /* Wall.hpp */,
+				D4A0BD2221DBEE9700BC650B /* Entities subclasses */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -571,9 +575,37 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
+		D4A0BD2221DBEE9700BC650B /* Entities subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				D4A0BD0E21DBB41C00BC650B /* Coin.hpp */,
+				D4A0BD1021DBB41C00BC650B /* Jump.hpp */,
+				D4A0BD0D21DBB41C00BC650B /* PowerUp.hpp */,
+				D4A0BD1121DBB41C00BC650B /* Slide.hpp */,
+				D4A0BD0F21DBB41C00BC650B /* Turn.hpp */,
+				D4A0BD0B21DBB41C00BC650B /* Wall.hpp */,
+			);
+			name = "Entities subclasses";
+			sourceTree = "<group>";
+		};
+		D4A0BD2321DBF05C00BC650B /* models */ = {
+			isa = PBXGroup;
+			children = (
+				D4A0BD2421DBF05C00BC650B /* cube_slide.obj */,
+				D4A0BD2521DBF05C00BC650B /* cube_wall.obj */,
+				D4A0BD2621DBF05C00BC650B /* cube.obj */,
+				D4A0BD2721DBF05C00BC650B /* skyboxtest.obj */,
+				D4A0BD2821DBF05C00BC650B /* turn.obj */,
+				D4A0BD2921DBF05C00BC650B /* monkey1.obj */,
+				D4A0BD2A21DBF05C00BC650B /* cube_jump.obj */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		D4EA626121CB93A200CBFCAC /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				D4A0BD2321DBF05C00BC650B /* models */,
 				D46A4A2E21A0C5130096F02F /* textures */,
 				D4EA626221CB93A200CBFCAC /* monkey1.obj */,
 			);

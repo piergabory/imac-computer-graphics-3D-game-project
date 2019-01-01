@@ -4,6 +4,14 @@
 #include "Entity.hpp"
 
 namespace GameModel {
+
+    void Entity::test(Player& player) {
+        if (m_visited) firstVisit(player);
+        m_visited = true;
+        check(player);
+    };
+    
+
     // redefinition static member
     std::unique_ptr<GraphicsEngine::Object3D> Entity::s_entityObject;
 

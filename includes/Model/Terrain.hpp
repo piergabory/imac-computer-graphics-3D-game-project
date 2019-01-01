@@ -61,15 +61,14 @@ namespace GameModel {
             activeChunk()->onEnter();
         }
 
+        /// \brief getter for the entity on the active chunk under a position
+        Entity* entityAt(Position playerPosition);
+
+
         /// \brief orientation getter
         /// Converts radian degree to Cardinal direction
         const CardinalDirections facing() const;
-
-        /// \brief test player when entering the chunk.
-        void enterChunk(Player &player);
-
-        /// \brief test player on current chunk.
-        void testAction(Player &player);
+        
 
         /// \brief push new chunks in the container
         /// Places the objects in the scene.

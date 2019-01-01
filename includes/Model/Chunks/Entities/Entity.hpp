@@ -38,19 +38,26 @@ namespace GameModel {
         /// \brief static object factory method
         static GraphicsEngine::Object3D* makeObject(const char* meshPath, const char* texturePath, const char* vertexShaderProgram, const char* fragmentShaderProgram);
 
+        /// \brief set to true after the first player's visit
+        bool m_visited = false;
 
+        /// \brief first player visit callback
+        virtual void firstVisit(Player& player) {}
+
+        /// \brief new player visit callback
+        virtual void check(Player& player) {}
 
     public:
         /// \brief object instance getter
-        inline const std::shared_ptr<GraphicsEngine::Object3D>& object() const { return m_entityObject; };
+        inline const std::shared_ptr<GraphicsEngine::Object3D>& object() const { return m_entityObject; }
 
 
         /// \brief repeated tests on the player on each frame
-        virtual void action(Player& player) {};
+        void test(Player& player);
 
 
         /// \brief one-time tests on the player on first visit
-        virtual void onEnter() {};
+        virtual void onEnter() {}
 
 
         /// \brief object factory caller with parameters for an empty object

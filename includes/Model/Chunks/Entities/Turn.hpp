@@ -25,7 +25,7 @@ namespace GameModel {
      *  \brief Describe entity specialisation for turning chunks of the terrain
      *  \brief turning entities should only appear inside turning chunks
      */
-    class Turn : public Entity {
+    class Turn final : public Entity {
     private:
         // static reference to 3D object of left and right turns
         static std::unique_ptr<GraphicsEngine::Object3D> s_turnObjectLeftVariant;
@@ -38,7 +38,7 @@ namespace GameModel {
     public:
         // Entities overrides
         /// \brief repeated tests on the player on each frame
-        void action(Player& player) override {}
+        void firstVisit(Player& player) override {}
 
         /// \brief one-time tests on the player on first visit
         void onEnter() override { m_playerTurnAnimation.begin(); m_cameraTurnAnimation.begin(); }
@@ -53,5 +53,6 @@ namespace GameModel {
         Turn(TurnDirection direction, std::shared_ptr<GraphicsEngine::Animatable> &playerAnimatable, std::shared_ptr<GraphicsEngine::Animatable> &cameraAnimatable);
         ~Turn() override {};
     };
+
 }
 #endif /* Turn_hpp */

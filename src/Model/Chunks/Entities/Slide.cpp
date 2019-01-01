@@ -1,12 +1,19 @@
 #include "Slide.hpp"
 
 namespace GameModel {
-	void Slide::action(Player& player) {
+
+	void Slide::firstVisit(Player& player) {
         //Player lose half of his life if he hits an arch
-        std::cout << "Vous arrivez devant une arche !" << std::endl;
-        
         if ( player.status() != Status::CROUCHING) {
 			player.incrementLife(-50);
 		};
 	}
+
+
+    std::unique_ptr<GraphicsEngine::Object3D> Slide::s_entityObject;
+
+    void Slide::loadObject() {
+        s_entityObject = std::unique_ptr<GraphicsEngine::Object3D>(makeObject("assets/models/cube_slide.obj", "assets/textures/cubemap_slide.png", "shaders/perspective.vs.glsl", "shaders/flatTexture.fs.glsl"));
+    }
+    
 }

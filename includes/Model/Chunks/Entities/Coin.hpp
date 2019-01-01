@@ -4,15 +4,25 @@
 
 namespace GameModel
 {
-	class Coin : public Entity
+	class Coin final : public Entity
 	{
-	public:
-		//Constructor / destructor
-		Coin() {}
-		~Coin() {}
-		
+    private:
+        /// \brief static default entity object.
+        /// use this instance to clone new objects
+        static std::unique_ptr<GraphicsEngine::Object3D> s_entityObject;
+        
+    public:
+
+        /// \brief object factory caller with parameters for an empty object
+        /// automagically called on first instanciation of Entity
+        static void loadObject();
+
 		//Methods
-		void action(Player &player) const override;
-        std::string display() const override;
+		void firstVisit(Player &player) override;
+
+        //Constructor / destructor
+        Coin() {}
+        ~Coin() {}
+
 	};
 }

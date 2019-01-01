@@ -4,14 +4,25 @@
 
 namespace GameModel
 {
-	class PowerUp : public Entity
+	class PowerUp final : public Entity
 	{
-	public:
-		//Constructor / destructor
-		PowerUp() {}
-		~PowerUp() {}
+    private:
+        /// \brief static default entity object.
+        /// use this instance to clone new objects
+        static std::unique_ptr<GraphicsEngine::Object3D> s_entityObject;
+
+    public:
+
+        /// \brief object factory caller with parameters for an empty object
+        /// automagically called on first instanciation of Entity
+        static void loadObject();
 
 		//Methods
-		void action(Player& player) override;
+		void firstVisit(Player& player) override;
+
+        //Constructor / destructor
+        PowerUp() {}
+        ~PowerUp() {}
+
 	};
 }

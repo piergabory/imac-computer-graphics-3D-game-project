@@ -55,6 +55,7 @@ namespace GameModel {
         ///\brief life describes the ability of the player to continue playing the game
         /// Game should stop when this value reaches zero
         unsigned int m_life = 100;
+        unsigned int m_score = 0;
 
         ///\brief pointer to the character 3D object.
         /// This is the main handle on the model, if it's released, the model should be destroyed
@@ -84,7 +85,10 @@ namespace GameModel {
         inline Status& status() { return m_status; }
 
         ///\brief changes the player's life. Game over when life reaches zero
-        void incrementLife(int amount);
+        inline void incrementLife(int amount) { m_life += amount; };
+
+        ///\brief updates the player's score.
+        inline void incrementScore(unsigned int points) { m_score += points; }
 
         ///\brief makes the player jump. ignored if called while jumping
         void jump();

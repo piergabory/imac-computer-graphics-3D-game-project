@@ -5,16 +5,9 @@
 
 namespace GameModel {
 
-    void Terrain::enterChunk(Player &player) {
-        activeChunk()->entityAt(player.position())->onEnter();
+    Entity* Terrain::entityAt(Position playerPosition) {
+        return activeChunk()->entityAt(playerPosition);
     }
-
-
-
-    void Terrain::testAction(Player &player) {
-        activeChunk()->entityAt(player.position())->action(player);
-    }
-
 
 
     void Terrain::loadChunk(Chunk *chunkToLoad) {
