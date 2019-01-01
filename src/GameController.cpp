@@ -113,8 +113,12 @@ void GameController::loadNewChunk() {
         chunk = new GameModel::TurningChunk(GameModel::TurnDirection::RIGHT,
                                  static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_playerPointOfView),
                                  static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_currentGame->playerModel()));
+    } else if(m_chunkCycle % 7 == 0) {
+        chunk = new GameModel::Chunk(new GameModel::Coin(), new GameModel::PowerUp(), new GameModel::Wall());
+    } else if(m_chunkCycle % 4 == 0) {
+        chunk = new GameModel::Chunk(new GameModel::Jump(), new GameModel::Entity(), new GameModel::Slide());
     } else {
-        chunk = new GameModel::Chunk(new GameModel::Entity(), new GameModel::Entity(), new GameModel::Entity());
+        chunk = new GameModel::Chunk();
     }
     
     m_currentGame->terrain().loadChunk(chunk);

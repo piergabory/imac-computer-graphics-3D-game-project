@@ -21,7 +21,11 @@ namespace GameModel
 		void firstVisit(Player &player) override;
 
         //Constructor / destructor
-        Coin() {}
+        Coin() {
+            if (!s_entityObject) loadObject();
+            m_entityObject =  std::make_shared<GraphicsEngine::Object3D>(*s_entityObject);
+        }
+        
         ~Coin() {}
 
 	};

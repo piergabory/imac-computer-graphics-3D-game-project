@@ -17,11 +17,15 @@ namespace GameModel
         /// automagically called on first instanciation of Entity
         static void loadObject();
 
-		//Methods
+		// Methods
 		void firstVisit(Player& player) override;
 
-        //Constructor / destructor
-        Wall() {}
+        // Constructor / destructor
+        Wall() {
+            if (!s_entityObject) loadObject();
+            m_entityObject =  std::make_shared<GraphicsEngine::Object3D>(*s_entityObject);
+        }
+
         ~Wall() {}
 	};
 }

@@ -20,7 +20,11 @@ namespace GameModel {
 		void firstVisit(Player& player) override;
 
         //Constructor / destructor
-        Slide() {}
+        Slide() {
+            if (!s_entityObject) loadObject();
+            m_entityObject =  std::make_shared<GraphicsEngine::Object3D>(*s_entityObject);
+        }
+        
         ~Slide() {}
 	};
     
