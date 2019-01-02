@@ -38,6 +38,11 @@ void GameController::initializeScene() {
     GraphicsEngine::Controller::instance()->activeGUI()->add(m_resumebutton);
     GraphicsEngine::Controller::instance()->activeGUI()->add(m_menucursor);
     
+    std::shared_ptr<GraphicsEngine::Texture> overlaytexture = std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/overlaytest.png"));
+    m_menu = std::make_shared<GraphicsEngine::Menu>(overlaytexture);
+    
+    GraphicsEngine::Controller::instance()->activeGUI()->add(m_menu);
+    
     
 
 }
@@ -325,30 +330,27 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
 
 void GameController::createMenu(){
     
-    std::function<void(GraphicsEngine::Button*, unsigned char)> resumeClick = [](GraphicsEngine::Button* target, unsigned char mouseButton) -> void {
+    std::function<void(GraphicsEngine::Button*, unsigned char)> click = [](GraphicsEngine::Button* target, unsigned char mouseButton) -> void {
         std::cout << "you clicked the resumebutton :" << target << std::endl;
-        std::shared_ptr<GraphicsEngine::Texture> resumeClickTexture = std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/test2.png"));
-        target->texture(resumeClickTexture);
+        std::shared_ptr<GraphicsEngine::Texture> clickTexture = std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/test2.png"));
+        target->texture(clickTexture);
     };
     
     m_resumebutton = std::make_shared<GraphicsEngine::Button>(
                                                               glm::vec2(-0.5, 0.6),
                                                               glm::vec2(1, -0.5),
                                                               std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/test.png")),
-                                                              resumeClick
+                                                              click
                                                               );
     
  
-    
-    std::function<void(GraphicsEngine::Button*, unsigned char)> quitClick = [](GraphicsEngine::Button* target, unsigned char mouseButton) -> void {
-        std::cout << "you clicked the quitbutton" << std::endl;
-    };
+
 
     m_quitbutton = std::make_shared<GraphicsEngine::Button>(
                                                             glm::vec2(-0.5, 0),
                                                             glm::vec2(1, -0.5),
                                                             std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/test.png")),
-                                                            quitClick
+                                                            click
                                                             );
 
     GraphicsEngine::Controller::instance()->activeGUI()->add(m_quitbutton);
