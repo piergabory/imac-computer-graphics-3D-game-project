@@ -7,6 +7,8 @@
 #define Game_hpp
 #pragma once
 
+#include <queue>
+
 #include "Player.hpp"
 #include "Terrain.hpp"
 
@@ -31,20 +33,30 @@ namespace GameModel {
         /// \brief Terrain instance
         Terrain m_terrain;
 
+        std::shared_ptr<GraphicsEngine::Object3D> m_enemy;
+
+        std::queue<glm::vec3> m_enemyOffset;
+
         /// \brief Static method generating the player's character object.
         static std::shared_ptr<GraphicsEngine::Object3D> loadPlayerObject();
+
+        /// \brief Static method generating the enemy object
+        static std::shared_ptr<GraphicsEngine::Object3D> loadEnemyObject();
+
 
     public:
 
         /// \brief getter on the character model
         inline std::shared_ptr<GraphicsEngine::Object3D> playerModel() const { return m_player.model(); }
+        /// \brief getter on the enemy model
+        inline std::shared_ptr<GraphicsEngine::Object3D> enemyModel() const { return m_enemy; }
 
         /// \brief getter on the terrain
         inline Terrain& terrain() { return m_terrain; }
         inline const Terrain& terrain() const { return m_terrain; }
 
         /// \brief frame, gameloop update
-        void update();
+        void update(float chunkProgress);
 
         /// \brief shifts the terrain to the next chunk.
         /// Moves the player back to the center on each turn.

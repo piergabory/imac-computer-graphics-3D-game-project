@@ -6,7 +6,7 @@
 namespace GameModel {
 
     void Entity::test(Player& player) {
-        if (m_visited) firstVisit(player);
+        if (m_visited == false) this->firstVisit(player);
         m_visited = true;
         check(player);
     };

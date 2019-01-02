@@ -21,7 +21,6 @@ void GameController::initializeScene() {
     GraphicsEngine::Controller::instance()->loadScene(scene);
 
     // create objects
-    std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
     m_skybox = createSkyBox();
     m_chunk = createChunk();
 
@@ -29,7 +28,8 @@ void GameController::initializeScene() {
     m_skybox->scale(glm::vec3(3.14f));
 
     // adds objects in the scene
-    GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
+    GraphicsEngine::Controller::instance()->activeScene()->add(m_currentGame->playerModel());
+    GraphicsEngine::Controller::instance()->activeScene()->add(m_currentGame->enemyModel());
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
 }
 
@@ -80,7 +80,7 @@ bool GameController::loop() {
         m_currentGame->nextChunk();
     }
 
-    m_currentGame->terrain().progress(1.f/m_CHUNK_FRAME_DURATION);
+    m_currentGame->update(1.f/m_CHUNK_FRAME_DURATION);
 
     GraphicsEngine::Animation::updateAnimations();
 

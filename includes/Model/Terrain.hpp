@@ -76,7 +76,7 @@ namespace GameModel {
 
         /// \brief displaces all objects in the scene in the direction of the active chunk.
         /// Creates the illusion of movement under the player.
-        void progress(const float progress);
+        glm::vec3 progress(const float progress);
 
 
         // constructor

@@ -316,8 +316,8 @@
 				D4948B2721D641C40081C29E /* Camera.cpp */,
 				D4948B2821D641C40081C29E /* Animation.cpp */,
 				D4948B2921D641C40081C29E /* GraphicsEngine.cpp */,
-				D4948B2A21D641C40081C29E /* Object */,
 				D4948B3A21D641C40081C29E /* CommonStructs.cpp */,
+				D4948B2A21D641C40081C29E /* Object */,
 				D4948B3B21D641C40081C29E /* GUI */,
 			);
 			path = GraphicsEngine;

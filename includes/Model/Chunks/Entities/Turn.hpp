@@ -38,10 +38,10 @@ namespace GameModel {
     public:
         // Entities overrides
         /// \brief repeated tests on the player on each frame
-        void firstVisit(Player& player) override {}
-
-        /// \brief one-time tests on the player on first visit
-        void onEnter() override { m_playerTurnAnimation.begin(); m_cameraTurnAnimation.begin(); }
+        void firstVisit(Player& player) override {
+            m_playerTurnAnimation.begin();
+            m_cameraTurnAnimation.begin();
+        }
 
         /// \brief object factory caller with parameters for an empty object
         /// automagically called on first instanciation of Entity

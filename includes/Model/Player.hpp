@@ -104,6 +104,8 @@ namespace GameModel {
 
         ///\brief Position (Terrain lane) getter
         inline const Position position() const { return m_position; }
+
+        inline const unsigned int life() const { return m_life; }
      };
 }
 #endif

@@ -57,7 +57,7 @@ namespace GameModel {
 
 
         /// \brief one-time tests on the player on first visit
-        virtual void onEnter() {}
+        virtual void parentChunkIsActive() {}
 
 
         /// \brief object factory caller with parameters for an empty object
