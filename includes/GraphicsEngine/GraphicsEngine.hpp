@@ -1,6 +1,6 @@
 
 /**
- * \file Object.hpp
+ * \file GraphicsEngine.hpp
  *
  * IMAC 2 Project CG CPP
  *

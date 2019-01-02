@@ -1,5 +1,5 @@
 /**
- * \file Object.cpp
+ * \file GraphicsEngine.cpp
  */
 
 #include "GraphicsEngine.hpp"

@@ -31,7 +31,7 @@ namespace GraphicsEngine {
         if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
         {
             std::cout << "ERROR::ASSIMP:: " << importer.GetErrorString() << std::endl;
-            //TODO - catch error;
+            /// \todo - catch error;
         }
         
         
