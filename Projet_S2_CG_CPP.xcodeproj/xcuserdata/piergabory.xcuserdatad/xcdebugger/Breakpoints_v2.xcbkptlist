@@ -56,7 +56,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Model/Chunks/Entities/Wall.cpp"
-            timestampString = "568141415.953884"
+            timestampString = "568158039.622213"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "8"
@@ -71,13 +71,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "includes/Model/Chunks/Entities/Turn.hpp"
-            timestampString = "568144273.09235"
+            filePath = "src/GraphicsEngine/Animation.cpp"
+            timestampString = "568158039.622261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "firstVisit(Player&amp; player)"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "makeDeathFallAnimation(const std::shared_ptr&lt;Animatable&gt; &amp;object, unsigned int duration, const float speed)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/GraphicsEngine/Animation.cpp"
+            timestampString = "568158039.622299"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "makeDamageBlinkAnimation(const std::shared_ptr&lt;Animatable&gt; &amp;object, unsigned int duration)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

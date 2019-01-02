@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Entity.hpp"
+#include "Obstacle.hpp"
 
 namespace GameModel
 {
-	class Jump final : public Entity
+	class Jump final : public Obstacle
 	{
     private:
         /// \brief static default entity object.
@@ -21,9 +21,11 @@ namespace GameModel
 		void firstVisit(Player& player) override;
 
         //Constructor / destructor
-        Jump() {
+        Jump(std::shared_ptr<GraphicsEngine::Animatable> playerAnimatable, std::shared_ptr<GraphicsEngine::Animatable> cameraAnimatable) :
+        Obstacle(playerAnimatable, cameraAnimatable) {
             if (!s_entityObject) loadObject();
             m_entityObject =  std::make_shared<GraphicsEngine::Object3D>(*s_entityObject);
+            GraphicsEngine::Animation m_playerDamageAnimation(GraphicsEngine::makeDeathFallAnimation(playerAnimatable, 30, 10));
         }
         
         ~Jump() {}

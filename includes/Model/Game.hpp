@@ -33,8 +33,11 @@ namespace GameModel {
         /// \brief Terrain instance
         Terrain m_terrain;
 
+        /// \brief scene enemy object handle
         std::shared_ptr<GraphicsEngine::Object3D> m_enemy;
 
+        /// \brief contains all the transformations the enemy has to perform to catch up with the player
+        /// If size is zero, the enemy is on the player model
         std::queue<glm::vec3> m_enemyOffset;
 
         /// \brief Static method generating the player's character object.

@@ -6,14 +6,17 @@
 namespace GameModel {
 
     void Game::update(float chunkProgress) {
-        m_enemyOffset.push(m_terrain.progress(chunkProgress));
-        m_terrain.entityAt(m_player.position())->test(m_player);
+        if(m_player.life() > 0) {
+            m_enemyOffset.push(m_terrain.progress(chunkProgress));
+            m_terrain.entityAt(m_player.position())->test(m_player);
 
-        if (m_enemyOffset.size() > m_player.life()) do {
-            m_enemy->globalTranslate(m_enemyOffset.back() - m_enemyOffset.front());
-            m_enemyOffset.pop();
-        } while(m_enemyOffset.size() < m_player.life());
-
+            if (m_enemyOffset.size() > m_player.life()) do {
+                m_enemy->globalTranslate(m_enemyOffset.back() - m_enemyOffset.front());
+                m_enemyOffset.pop();
+            } while(m_enemyOffset.size() < m_player.life());
+        } else {
+            std::cout << "game over!";
+        }
     }
 
     void Game::nextChunk() {

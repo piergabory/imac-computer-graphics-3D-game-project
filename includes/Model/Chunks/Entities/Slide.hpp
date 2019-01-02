@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Entity.hpp"
+#include "Obstacle.hpp"
 
 namespace GameModel {
 
-	class Slide final : public Entity {
+	class Slide final : public Obstacle {
     private:
         /// \brief static default entity object.
         /// use this instance to clone new objects
@@ -20,7 +20,8 @@ namespace GameModel {
 		void firstVisit(Player& player) override;
 
         //Constructor / destructor
-        Slide() {
+        Slide(std::shared_ptr<GraphicsEngine::Animatable> playerAnimatable, std::shared_ptr<GraphicsEngine::Animatable> cameraAnimatable) :
+        Obstacle(playerAnimatable, cameraAnimatable) {
             if (!s_entityObject) loadObject();
             m_entityObject =  std::make_shared<GraphicsEngine::Object3D>(*s_entityObject);
         }

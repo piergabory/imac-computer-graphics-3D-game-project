@@ -10,6 +10,7 @@
 		D46A4A7521A0CE860096F02F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A3621A0C5960096F02F /* OpenGL.framework */; };
 		D46A4A7621A0CE940096F02F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A3A21A0C5CA0096F02F /* Cocoa.framework */; };
 		D46A4A7F21A0CFC50096F02F /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A7821A0CEEC0096F02F /* libGLEW.2.1.0.dylib */; };
+		D47A9D4F21DD48D1002F5815 /* Obstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D47A9D4D21DD48D1002F5815 /* Obstacle.cpp */; };
 		D4948B7A21D647020081C29E /* GameController.hpp in Sources */ = {isa = PBXBuildFile; fileRef = D4948B4C21D641C40081C29E /* GameController.hpp */; };
 		D4948B7B21D647020081C29E /* Canvas.hpp in Sources */ = {isa = PBXBuildFile; fileRef = D4948B5121D641C40081C29E /* Canvas.hpp */; };
 		D4948B7C21D647020081C29E /* Animation.hpp in Sources */ = {isa = PBXBuildFile; fileRef = D4948B5221D641C40081C29E /* Animation.hpp */; };
@@ -99,6 +100,8 @@
 		D46A4A7E21A0CF120096F02F /* glew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glew.h; sourceTree = "<group>"; };
 		D46A4B8C21A2FDF90096F02F /* perspective.vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = perspective.vs.glsl; sourceTree = "<group>"; };
 		D46A4B8D21A2FE020096F02F /* flatTexture.fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = flatTexture.fs.glsl; sourceTree = "<group>"; };
+		D47A9D4D21DD48D1002F5815 /* Obstacle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Obstacle.cpp; sourceTree = "<group>"; };
+		D47A9D4E21DD48D1002F5815 /* Obstacle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Obstacle.hpp; sourceTree = "<group>"; };
 		D4948B2621D641C40081C29E /* Exceptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = Exceptions.cpp; sourceTree = "<group>"; };
 		D4948B2721D641C40081C29E /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = Camera.cpp; sourceTree = "<group>"; };
 		D4948B2821D641C40081C29E /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = Animation.cpp; sourceTree = "<group>"; };
@@ -297,6 +300,17 @@
 			path = GL;
 			sourceTree = "<group>";
 		};
+		D47A9D4C21DD48A3002F5815 /* Obstacle */ = {
+			isa = PBXGroup;
+			children = (
+				D4A0BD1021DBB41C00BC650B /* Jump.hpp */,
+				D4A0BD1121DBB41C00BC650B /* Slide.hpp */,
+				D4A0BD0F21DBB41C00BC650B /* Turn.hpp */,
+				D4A0BD0B21DBB41C00BC650B /* Wall.hpp */,
+			);
+			name = Obstacle;
+			sourceTree = "<group>";
+		};
 		D4948B2421D641C40081C29E /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +427,7 @@
 		D4948B4321D641C40081C29E /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				D47A9D4D21DD48D1002F5815 /* Obstacle.cpp */,
 				D4A0BD1421DBB46B00BC650B /* Coin.cpp */,
 				D4A0BD1221DBB46B00BC650B /* Entity.cpp */,
 				D4A0BD1521DBB46B00BC650B /* Jump.cpp */,
@@ -560,7 +575,9 @@
 		D4948B7321D641C40081C29E /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				D47A9D4C21DD48A3002F5815 /* Obstacle */,
 				D4A0BD0C21DBB41C00BC650B /* Entity.hpp */,
+				D47A9D4E21DD48D1002F5815 /* Obstacle.hpp */,
 				D4A0BD2221DBEE9700BC650B /* Entities subclasses */,
 			);
 			path = Entities;
@@ -579,11 +596,7 @@
 			isa = PBXGroup;
 			children = (
 				D4A0BD0E21DBB41C00BC650B /* Coin.hpp */,
-				D4A0BD1021DBB41C00BC650B /* Jump.hpp */,
 				D4A0BD0D21DBB41C00BC650B /* PowerUp.hpp */,
-				D4A0BD1121DBB41C00BC650B /* Slide.hpp */,
-				D4A0BD0F21DBB41C00BC650B /* Turn.hpp */,
-				D4A0BD0B21DBB41C00BC650B /* Wall.hpp */,
 			);
 			name = "Entities subclasses";
 			sourceTree = "<group>";
@@ -719,6 +732,7 @@
 				D4948B8021D647020081C29E /* ImageData.hpp in Sources */,
 				D4948B8121D647020081C29E /* PerspectiveShaderProgram.hpp in Sources */,
 				D4948B8221D647020081C29E /* ShaderProgram.hpp in Sources */,
+				D47A9D4F21DD48D1002F5815 /* Obstacle.cpp in Sources */,
 				D4948BD321D64B450081C29E /* Player.cpp in Sources */,
 				D4948BD221D64B450081C29E /* Button.cpp in Sources */,
 				D4948BCD21D64B450081C29E /* Shader.cpp in Sources */,

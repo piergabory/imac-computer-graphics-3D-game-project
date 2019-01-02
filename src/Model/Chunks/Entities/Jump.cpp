@@ -8,6 +8,7 @@ namespace GameModel
         
          if ( player.status() != Status::JUMPING) {
 			player.incrementLife(-10000);
+             callDamageAnimations();
 		};
 	}
 

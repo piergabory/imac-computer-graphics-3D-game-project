@@ -35,6 +35,7 @@ namespace GraphicsEngine {
         virtual void place(const glm::vec3& direction) = 0;
         virtual void rotate(const float angle, const glm::vec3 &direction) = 0;
         virtual void scale(const glm::vec3 &scalingVector) {};
+        virtual void setScale(const glm::vec3 &scalingVector) {};
 
         // virtual destructor
         virtual ~Animatable() {}
@@ -102,6 +103,13 @@ namespace GraphicsEngine {
         /// \brief constructor
         Animation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &position, const std::function<void(Animatable& ,const glm::vec3&,const  float, const float)> &interpolation);
 
+        /// \brief default
+        Animation(): m_duration(0) {}
+
+        /// \brief copy constructor
+        Animation(const Animation& source) = default;
+
+
     };
 
 
@@ -112,7 +120,8 @@ namespace GraphicsEngine {
     Animation makeCrouchAnimation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const float toHeight);
     Animation makeUnCrouchAnimation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const float fromHeight);
     Animation makeTurnAnimation(const std::shared_ptr<Animatable> &camera, unsigned int duration, const float angle);
-
+    Animation makeDeathFallAnimation(const std::shared_ptr<Animatable> &object, unsigned int duration, const float speed);
+    Animation makeDamageBlinkAnimation(const std::shared_ptr<Animatable> &object, unsigned int duration);
 }
 
 

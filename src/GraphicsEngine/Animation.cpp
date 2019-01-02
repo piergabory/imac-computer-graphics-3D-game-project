@@ -112,5 +112,24 @@ namespace GraphicsEngine {
         });
     }
 
+
+    Animation makeDeathFallAnimation(const std::shared_ptr<Animatable> &object, unsigned int duration, const float speed) {
+        return Animation(object, duration, glm::vec3(speed), [](Animatable &object, const glm::vec3 &speed, const float step, const float progress) {
+            object.translate(glm::vec3(0.f, progress * speed.x, 0.f));
+        });
+    }
+
+
+    Animation makeDamageBlinkAnimation(const std::shared_ptr<Animatable> &object, unsigned int duration) {
+        return Animation(object, duration, glm::vec3(), [](Animatable &object, const glm::vec3 &unused, const float step, const float progress) {
+            const unsigned int NUMBER_OF_BLINKS = 6;
+            if (int(1000 * progress) % int(1000.f/NUMBER_OF_BLINKS) < NUMBER_OF_BLINKS / 2) {
+                object.setScale(glm::vec3(10000));
+            } else {
+                object.setScale(glm::vec3(1.0/10000));
+            }
+        });
+    }
+
 }
 

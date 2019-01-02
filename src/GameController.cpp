@@ -104,19 +104,21 @@ bool GameController::loop() {
 
 void GameController::loadNewChunk() {
     GameModel::Chunk* chunk;
+    std::shared_ptr<GraphicsEngine::Animatable> cameraAnimatable(m_playerPointOfView);
+    std::shared_ptr<GraphicsEngine::Animatable> playerAnimatable(m_currentGame->playerModel());
 
     if (m_chunkCycle % 40 == 0) {
-        chunk = new GameModel::TurningChunk(GameModel::TurnDirection::LEFT,
-                                 static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_playerPointOfView),
-                                 static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_currentGame->playerModel()));
+        chunk = new GameModel::TurningChunk(GameModel::TurnDirection::LEFT, playerAnimatable, cameraAnimatable);
     } else if(m_chunkCycle % 50 == 0) {
-        chunk = new GameModel::TurningChunk(GameModel::TurnDirection::RIGHT,
-                                 static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_playerPointOfView),
-                                 static_cast< std::shared_ptr<GraphicsEngine::Animatable> >(m_currentGame->playerModel()));
+        chunk = new GameModel::TurningChunk(GameModel::TurnDirection::RIGHT, playerAnimatable, cameraAnimatable);
     } else if(m_chunkCycle % 7 == 0) {
-        chunk = new GameModel::Chunk(new GameModel::Coin(), new GameModel::PowerUp(), new GameModel::Wall());
+        chunk = new GameModel::Chunk(new GameModel::Coin(),
+                                     new GameModel::PowerUp(),
+                                     new GameModel::Wall(playerAnimatable, cameraAnimatable));
     } else if(m_chunkCycle % 4 == 0) {
-        chunk = new GameModel::Chunk(new GameModel::Jump(), new GameModel::Entity(), new GameModel::Slide());
+        chunk = new GameModel::Chunk(new GameModel::Jump(playerAnimatable, cameraAnimatable),
+                                     new GameModel::Entity(),
+                                     new GameModel::Slide(playerAnimatable, cameraAnimatable));
     } else {
         chunk = new GameModel::Chunk();
     }

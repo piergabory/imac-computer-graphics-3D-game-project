@@ -6,6 +6,7 @@ namespace GameModel {
         //Player lose half of his life if he hits an arch
         if ( player.status() != Status::CROUCHING) {
 			player.incrementLife(-50);
+            callDamageAnimations();
 		};
 	}
 

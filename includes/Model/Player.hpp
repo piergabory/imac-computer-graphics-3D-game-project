@@ -54,7 +54,7 @@ namespace GameModel {
 
         ///\brief life describes the ability of the player to continue playing the game
         /// Game should stop when this value reaches zero
-        unsigned int m_life = 100;
+        int m_life = 100;
         unsigned int m_score = 0;
 
         ///\brief pointer to the character 3D object.
@@ -105,7 +105,7 @@ namespace GameModel {
         ///\brief Position (Terrain lane) getter
         inline const Position position() const { return m_position; }
 
-        inline const unsigned int life() const { return m_life; }
+        inline const unsigned int life() const { return m_life > 0 ? m_life : 0; }
      };
 }
 #endif
