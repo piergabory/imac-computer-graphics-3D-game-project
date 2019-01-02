@@ -49,7 +49,12 @@ namespace GraphicsEngine {
             // render
             glDrawArrays(m_mesh->mode(), 0, m_mesh->vertexCount());
         }
-
+        
+        //change material of the object
+        void material(std::shared_ptr<Material> mat){
+            m_material = mat;
+        }
+        
 
         /// \brief Object constructor
         /// initialise mesh and material. Assumes that both are not NULL pointers 

@@ -45,6 +45,9 @@ namespace GraphicsEngine {
     public:
         /// \brief sets the common shader. Needs to be called before any class instanciation
         static void initialize2DShaderProgram(LocalFilePath vertexShaderPath, LocalFilePath  framgmentShaderPath);
+        
+        //change texture of the object
+        void texture(std::shared_ptr<Texture> newtex);
 
         /// \brief constructor using a file path.
         Object2D(const glm::vec2 &position, const glm::vec2 &size, const LocalFilePath image) : Object<Vertex2D>(createBoundingBox(position, size), createMaterial(image)) { }

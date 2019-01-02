@@ -326,7 +326,9 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
 void GameController::createMenu(){
     
     std::function<void(GraphicsEngine::Button*, unsigned char)> resumeClick = [](GraphicsEngine::Button* target, unsigned char mouseButton) -> void {
-        std::cout << "you clicked the resumebutton" << std::endl;
+        std::cout << "you clicked the resumebutton :" << target << std::endl;
+        std::shared_ptr<GraphicsEngine::Texture> resumeClickTexture = std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/test2.png"));
+        target->texture(resumeClickTexture);
     };
     
     m_resumebutton = std::make_shared<GraphicsEngine::Button>(
