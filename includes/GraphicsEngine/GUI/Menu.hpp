@@ -22,15 +22,22 @@ namespace GraphicsEngine {
      *
      */
 
-    class Menu : public Object2D {
+    class Menu {
         public :
+            std::vector< std::shared_ptr<Object2D> > elements();
+        
             ///\brief  constructor
             Menu(std::shared_ptr<Texture> sprite);
             ~Menu();
+        
             
         
         private :
-            std::vector< std::shared_ptr<Button> > boutons;
+            std::vector< std::shared_ptr<Object2D> > m_buttons;
+            std::shared_ptr<Object2D> m_overlay;
+        
+            void initializeButtons();
+           
     };
 }
 

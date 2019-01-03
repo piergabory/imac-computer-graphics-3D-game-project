@@ -65,9 +65,11 @@ private:
     std::shared_ptr<GraphicsEngine::Object3D> m_skybox;
     std::shared_ptr<GraphicsEngine::Object3D> m_chunk;
     
-    std::shared_ptr<GraphicsEngine::Menu> m_menu;
+    std::shared_ptr<GraphicsEngine::Menu> m_menucontroller;
+    std::vector <std::shared_ptr<GraphicsEngine::Object2D> > m_menu;
     std::shared_ptr<GraphicsEngine::Object2D> m_menuoverlay;
     std::shared_ptr<GraphicsEngine::Object2D> m_menucursor;
+   
     std::shared_ptr<GraphicsEngine::Button> m_resumebutton;
     std::shared_ptr<GraphicsEngine::Button> m_restartbutton;
     std::shared_ptr<GraphicsEngine::Button> m_quitbutton;
@@ -90,6 +92,7 @@ private:
     static std::shared_ptr<GraphicsEngine::Object3D> createSkyBox();
     static std::shared_ptr<GraphicsEngine::Object3D> createChunk();
     void createMenu();
+    void createMenuClass(); ///TODO remove if not used
     void createCursor();
     static std::shared_ptr<GraphicsEngine::Object3D> createObject3D(GraphicsEngine::LocalFilePath &meshPath, GraphicsEngine::LocalFilePath &textureImagePath,GraphicsEngine::LocalFilePath &vertexShaderPath, GraphicsEngine::LocalFilePath &fragmentShaderPath);
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F8E63A721DD05A10064E6B8 /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F8E63A521DD05A10064E6B8 /* Menu.cpp */; };
 		D46A4A7521A0CE860096F02F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A3621A0C5960096F02F /* OpenGL.framework */; };
 		D46A4A7621A0CE940096F02F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A3A21A0C5CA0096F02F /* Cocoa.framework */; };
 		D46A4A7F21A0CFC50096F02F /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A4A7821A0CEEC0096F02F /* libGLEW.2.1.0.dylib */; };
@@ -79,6 +80,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2F0E62D121DCF09900F0CA09 /* Menu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Menu.hpp; sourceTree = "<group>"; };
+		2F8E63A521DD05A10064E6B8 /* Menu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Menu.cpp; sourceTree = "<group>"; };
 		D44D288821C081E400492876 /* flatColor.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = flatColor.fs.glsl; sourceTree = "<group>"; };
 		D46A496521A0C5130096F02F /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
 		D46A496D21A0C5130096F02F /* product.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = product.dSYM; sourceTree = "<group>"; };
@@ -361,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				D4948B3C21D641C40081C29E /* Button.cpp */,
+				2F8E63A521DD05A10064E6B8 /* Menu.cpp */,
 			);
 			path = GUI;
 			sourceTree = "<group>";
@@ -503,6 +507,7 @@
 			isa = PBXGroup;
 			children = (
 				D4948B6A21D641C40081C29E /* Button.hpp */,
+				2F0E62D121DCF09900F0CA09 /* Menu.hpp */,
 			);
 			path = GUI;
 			sourceTree = "<group>";
@@ -651,6 +656,7 @@
 				D4948B7E21D647020081C29E /* Frameworks.hpp in Sources */,
 				D4948B7F21D647020081C29E /* Material.hpp in Sources */,
 				D4948BC621D64B450081C29E /* GraphicsEngine.cpp in Sources */,
+				2F8E63A721DD05A10064E6B8 /* Menu.cpp in Sources */,
 				D4948BC921D64B450081C29E /* Object3D.cpp in Sources */,
 				D4948BD921D64B450081C29E /* Game.cpp in Sources */,
 				D4948BC721D64B450081C29E /* Mesh.cpp in Sources */,
