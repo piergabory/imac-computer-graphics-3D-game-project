@@ -31,6 +31,8 @@ namespace GameModel {
         // compute current chunk progress
         m_chunkframe = (m_chunkframe + 1) % m_UPDATES_PER_CHUNK;
 
+        m_player.update();
+
         // when chunk frame loops back to 0, we move to the next chunk
         if(m_player.life() > 0) {
             if (m_chunkframe == 0) {

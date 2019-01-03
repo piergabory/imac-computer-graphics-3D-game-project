@@ -98,6 +98,20 @@ namespace GameModel {
     }
 
 
+    void Player::incrementLife(int amount) {
+        if(m_invicibility == 0)
+            m_life += amount;
+        if(amount < 0)
+            m_invicibility = DAMAGE_INVICIBLITY_DURATION;
+    };
+
+
+    void Player::update() {
+        if (m_invicibility > 0)
+            m_invicibility--;
+    }
+
+
     // constructor
     Player::Player(std::shared_ptr<GraphicsEngine::Object3D> obj):
     // init model
@@ -111,8 +125,8 @@ namespace GameModel {
     m_standingAnimation(GraphicsEngine::makeUnCrouchAnimation(m_characterModel, CROUCH_FRAMETIME, CROUCH_HEIGHT)),
 
     // movement animations
-    m_moveToLeftLaneAnimation(GraphicsEngine::makeLinearTranslation(m_characterModel, TRANSLATE_FRAMETIME, glm::vec3(-LANE_WIDTH,0.f,0.f))),
-    m_moveToRightLaneAnimation(GraphicsEngine::makeLinearTranslation(m_characterModel, TRANSLATE_FRAMETIME, glm::vec3(LANE_WIDTH,0.f,0.f))),
+    m_moveToLeftLaneAnimation(GraphicsEngine::makeLinearTranslation(m_characterModel, TRANSLATE_FRAMETIME, glm::vec3(LANE_WIDTH,0.f,0.f))),
+    m_moveToRightLaneAnimation(GraphicsEngine::makeLinearTranslation(m_characterModel, TRANSLATE_FRAMETIME, glm::vec3(-LANE_WIDTH,0.f,0.f))),
 
     m_resetPosition(GraphicsEngine::makeLinearPlace(m_characterModel, 10, glm::vec3(0)))
     {}

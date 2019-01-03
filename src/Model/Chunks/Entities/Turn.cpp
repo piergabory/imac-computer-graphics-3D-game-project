@@ -7,7 +7,7 @@ namespace GameModel {
 
     void Turn::lastVisit(Player& player) {
         if (!m_hasPlayerSuccessfullyPassed) {
-            player.incrementLife(-10000);
+            player.incrementLife(-m_DAMAGE);
             callDamageAnimations();
         }
     }

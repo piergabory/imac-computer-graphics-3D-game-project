@@ -7,6 +7,8 @@ namespace GameModel
 	class Jump final : public Obstacle
 	{
     private:
+        const int m_DAMAGE = 1;
+
         /// \brief static default entity object.
         /// use this instance to clone new objects
         static std::unique_ptr<GraphicsEngine::Object3D> s_entityObject;

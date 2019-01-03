@@ -127,15 +127,13 @@ namespace GraphicsEngine {
 
     Animation makeDamageBlinkAnimation(const std::shared_ptr<Animatable> &object, unsigned int duration) {
         return Animation(object, duration, glm::vec3(), [](Animatable &object, const glm::vec3 &unused, const float step, const float progress) {
-            const unsigned int NUMBER_OF_BLINKS = 6;
-            const float SCALING = 10000;
-            if (int(1000 * progress) % int(1000.f/NUMBER_OF_BLINKS) < NUMBER_OF_BLINKS / 2) {
-                object.scale(glm::vec3(SCALING));
-            } else {
-                object.scale(glm::vec3(1.0/SCALING));
+            const glm::vec3 HIDE_TRANSLATION(1000);
+            unsigned int frameIndex = round(progress / step);
+            if (frameIndex % 3 == 0) {
+                const float direction = (frameIndex % 6 == 0) ? 1.f : -1.f;
+                object.globalTranslate(direction * HIDE_TRANSLATION);
             }
         });
-    }
-
+     }
 }
 

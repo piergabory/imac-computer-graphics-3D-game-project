@@ -41,7 +41,7 @@ namespace GraphicsEngine {
         void translate(const glm::vec3 &translationVector) override;
 
         /// \brief translate the object relative to the world origin (not local)
-        void globalTranslate(const glm::vec3 &translationVector);
+        void globalTranslate(const glm::vec3 &translationVector) override;
 
         /// \brief apply a 3D rotation on the object
         void rotate(const float angle, const glm::vec3 &direction) override;

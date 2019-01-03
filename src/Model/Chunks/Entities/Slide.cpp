@@ -5,7 +5,7 @@ namespace GameModel {
 	void Slide::firstVisit(Player& player) {
         //Player lose half of his life if he hits an arch
         if ( player.status() != Status::CROUCHING) {
-			player.incrementLife(-50);
+			player.incrementLife(-m_DAMAGE);
             callDamageAnimations();
 		};
 	}

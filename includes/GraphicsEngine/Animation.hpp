@@ -32,6 +32,7 @@ namespace GraphicsEngine {
 
         // transformation methods
         virtual void translate(const glm::vec3& direction) = 0;
+        virtual void globalTranslate(const glm::vec3& direction) {}
         virtual void place(const glm::vec3& direction) = 0;
         virtual void rotate(const float angle, const glm::vec3 &direction) = 0;
         virtual void scale(const glm::vec3 &scalingVector) {};

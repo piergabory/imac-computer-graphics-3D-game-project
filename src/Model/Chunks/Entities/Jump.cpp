@@ -7,7 +7,7 @@ namespace GameModel
         std::cout << "Vous arrivez devant une fosse !" << std::endl;
         
          if ( player.status() != Status::JUMPING) {
-			player.incrementLife(-10000);
+			player.incrementLife(-m_DAMAGE);
              callDamageAnimations();
 		};
 	}

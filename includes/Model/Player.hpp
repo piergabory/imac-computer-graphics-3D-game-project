@@ -40,6 +40,9 @@ namespace GameModel {
         ///\brief Size reduction of the player when crouching (Y scaling)
         const float CROUCH_HEIGHT = 0.8;
 
+        ///\brief number of framew during wich the player is invicible after taking on damage.
+        const unsigned int DAMAGE_INVICIBLITY_DURATION = 300;
+
         ///\brief Animations frame count. Game runs at 60 FPS.
         const unsigned int TRANSLATE_FRAMETIME = 20;
         const unsigned int JUMP_FRAMETIME = 30;
@@ -56,6 +59,9 @@ namespace GameModel {
         /// Game should stop when this value reaches zero
         int m_life = 100;
         unsigned int m_score = 0;
+
+        ///\brief inviciblity cooldown in frames. When 0, the player is vulnerable again.
+        unsigned int m_invicibility = 0;
 
         ///\brief pointer to the character 3D object.
         /// This is the main handle on the model, if it's released, the model should be destroyed
@@ -85,7 +91,7 @@ namespace GameModel {
         inline Status& status() { return m_status; }
 
         ///\brief changes the player's life. Game over when life reaches zero
-        inline void incrementLife(int amount) { m_life += amount; };
+        void incrementLife(int amount);
 
         ///\brief updates the player's score.
         inline void incrementScore(unsigned int points) { m_score += points; }
@@ -101,6 +107,9 @@ namespace GameModel {
 
         /// \brief Recenter the player to the center of the scene
         void resetPosition();
+
+
+        void update();
 
         ///\brief Position (Terrain lane) getter
         inline const Position position() const { return m_position; }

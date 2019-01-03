@@ -5,7 +5,7 @@ namespace GameModel {
 	void Wall::firstVisit(Player& player) {
         //Player lose half of his life if he hits a wall
         if ( player.status() != Status::JUMPING) {
-			player.incrementLife(-50);
+			player.incrementLife(-m_DAMAGE);
             callDamageAnimations();
 		};
 	}
