@@ -72,7 +72,7 @@ private:
     std::shared_ptr<GraphicsEngine::Button> m_restartbutton;
     std::shared_ptr<GraphicsEngine::Button> m_quitbutton;
     
-    bool isPaused = true;
+    bool isPaused = false;
 
 
     // Model instance
@@ -91,8 +91,11 @@ private:
     static std::shared_ptr<GraphicsEngine::Object3D> initializeDebugGrid();
     static std::shared_ptr<GraphicsEngine::Object3D> createSkyBox();
     static std::shared_ptr<GraphicsEngine::Object3D> createChunk();
+    
     void createMenu();
+    void toggleMenu();
     void createCursor();
+    
     static std::shared_ptr<GraphicsEngine::Object3D> createObject3D(GraphicsEngine::LocalFilePath &meshPath, GraphicsEngine::LocalFilePath &textureImagePath,GraphicsEngine::LocalFilePath &vertexShaderPath, GraphicsEngine::LocalFilePath &fragmentShaderPath);
     
 

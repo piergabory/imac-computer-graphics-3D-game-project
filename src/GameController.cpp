@@ -35,10 +35,6 @@ void GameController::initializeScene() {
     GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
     
-    GraphicsEngine::Controller::instance()->activeGUI()->add(m_menu->elements());
-
-    
-
 }
 
 
@@ -148,7 +144,7 @@ void GameController::keyRealeaseHandler(const SDL_Keycode keycode) {
         case SDLK_ESCAPE:
             SDL_CaptureMouse(SDL_FALSE);
             SDL_ShowCursor(SDL_ENABLE);
-            isPaused = !isPaused;
+            toggleMenu();
             break;
 
         case SDLK_z: m_currentGame->callInput(GameModel::Controls::UP); break;
@@ -329,6 +325,15 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
 void GameController::createMenu(){
     m_menu = std::make_shared<GraphicsEngine::Menu>(std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/overlaytest.png")));
     
+}
+
+void GameController::toggleMenu(){
+    isPaused = !isPaused;
+    if (isPaused) {
+        GraphicsEngine::Controller::instance()->activeGUI()->add(m_menu->elements());
+    } else {
+        GraphicsEngine::Controller::instance()->activeGUI()->remove(m_menu->elements());
+    }
 }
 
 
