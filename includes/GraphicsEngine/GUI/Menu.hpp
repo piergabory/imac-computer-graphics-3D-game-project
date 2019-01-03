@@ -38,6 +38,10 @@ namespace GraphicsEngine {
             std::vector< std::shared_ptr<Object2D> > m_buttons;
             std::shared_ptr<Object2D> m_overlay;
         
+            double btn_height = 0.3;
+            double btn_width = 1.0;
+            double btn_margin = 0.1;
+        
             void initializeButtons();
            
     };

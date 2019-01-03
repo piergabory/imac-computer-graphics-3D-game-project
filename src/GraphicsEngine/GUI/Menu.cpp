@@ -27,9 +27,11 @@ namespace GraphicsEngine {
             func();
         };
         
+        double ypos = 0.6 - ((double)(m_buttons.size()) * (btn_height+btn_margin));
+        
         m_buttons.push_back(std::make_shared<Button>(
-                                                     glm::vec2(-0.5, 0.6),
-                                                     glm::vec2(1, -0.3),
+                                                     glm::vec2(-(btn_width/2), ypos),
+                                                     glm::vec2(btn_width, -btn_height),
                                                      std::make_shared<Texture>(LocalFilePath("assets/textures/test.png")),
                                                      click
                                                      ));
