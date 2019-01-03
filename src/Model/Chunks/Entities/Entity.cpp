@@ -5,10 +5,10 @@
 
 namespace GameModel {
 
-    void Entity::test(Player& player) {
+    void Entity::action(Player& player) {
         if (m_visited == false) this->firstVisit(player);
         m_visited = true;
-        check(player);
+        test(player);
     };
     
 

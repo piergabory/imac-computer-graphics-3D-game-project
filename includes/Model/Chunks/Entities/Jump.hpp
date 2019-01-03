@@ -25,7 +25,6 @@ namespace GameModel
         Obstacle(playerAnimatable, cameraAnimatable) {
             if (!s_entityObject) loadObject();
             m_entityObject =  std::make_shared<GraphicsEngine::Object3D>(*s_entityObject);
-            GraphicsEngine::Animation m_playerDamageAnimation(GraphicsEngine::makeDeathFallAnimation(playerAnimatable, 30, 1));
         }
         
         ~Jump() {}

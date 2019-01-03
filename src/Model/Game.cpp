@@ -5,28 +5,45 @@
 
 namespace GameModel {
 
-    void Game::update(float chunkProgress) {
-        if(m_player.life() > 0) {
-            m_enemyOffset.push(m_terrain.progress(chunkProgress));
-            m_terrain.entityAt(m_player.position())->test(m_player);
-
-            if (m_enemyOffset.size() > m_player.life()) do {
-                m_enemy->globalTranslate(m_enemyOffset.back() - m_enemyOffset.front());
-                m_enemyOffset.pop();
-            } while(m_enemyOffset.size() < m_player.life());
-        } else {
-            std::cout << "game over!";
-        }
-    }
-
-    void Game::nextChunk(Chunk* newChunk) {
-        m_terrain.loadChunk(newChunk);
+    void Game::nextChunk() {
+        m_chunkBuffer.front()->translate(-BUFFER_CHUNK_HIDING_PLACE);
+        m_terrain.loadChunk(m_chunkBuffer.front());
+        m_chunkBuffer.pop();
         CardinalDirections previousOrientation = m_terrain.facing();
         m_terrain.nextChunk();
-        
+
         if (previousOrientation != m_terrain.facing())
             m_player.resetPosition();
+        m_chunkCycle ++;
     }
+
+
+    void Game::updateEnemy(const glm::vec3 &terrainMovement) {
+        m_enemyOffset.push(terrainMovement);
+        if (m_enemyOffset.size() > m_player.life()) do {
+            m_enemy->globalTranslate(m_enemyOffset.back() - m_enemyOffset.front());
+            m_enemyOffset.pop();
+        } while(m_enemyOffset.size() < m_player.life());
+    }
+
+
+    void Game::update() {
+        // compute current chunk progress
+        m_chunkframe = (m_chunkframe + 1) % m_UPDATES_PER_CHUNK;
+
+        // when chunk frame loops back to 0, we move to the next chunk
+        if(m_player.life() > 0) {
+            if (m_chunkframe == 0) {
+                m_terrain.entityAt(m_player.position())->lastVisit(m_player);
+                nextChunk();
+            }
+            updateEnemy(m_terrain.progress(1.f/m_UPDATES_PER_CHUNK));
+        }
+
+        m_terrain.entityAt(m_player.position())->action(m_player);
+    }
+
+
 
     /// \brief Redirects controller inputs on player movements, attacks, bonuses etc...
     void Game::callInput(Controls control) {
@@ -49,15 +66,24 @@ namespace GameModel {
         }
     }
 
+
+    void Game::loadInChunkBuffer(Chunk* newBufferChunk) {
+        newBufferChunk->translate(BUFFER_CHUNK_HIDING_PLACE);
+        m_chunkBuffer.push(newBufferChunk);
+    }
+
+
     // constructor
     Game::Game() :
         m_player(loadPlayerObject()),
         m_enemy(loadEnemyObject())
     {}
 
+    
     // destructor
     Game::~Game() {}
 
+    
 
     // static method generating player character models
     std::shared_ptr<GraphicsEngine::Object3D> Game::loadPlayerObject() {
@@ -76,6 +102,7 @@ namespace GameModel {
         std::shared_ptr<GraphicsEngine::Mesh3D> playerMesh = std::make_shared<GraphicsEngine::ImportedMesh>(PLAYER_MESH);
         return std::make_shared<GraphicsEngine::Object3D>(playerMesh, playerMaterial);
     }
+
 
 
     // static method generating player character models

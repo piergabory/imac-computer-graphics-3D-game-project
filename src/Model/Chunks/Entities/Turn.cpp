@@ -5,14 +5,21 @@
 
 namespace GameModel {
 
-    void Turn::firstVisit(Player& player) {
-        if ((player.status() == Status::TURNING_LEFT && m_direction == TurnDirection::LEFT)
-        ||  (player.status() == Status::TURNING_RIGHT && m_direction == TurnDirection::RIGHT)) {
-            m_playerTurnAnimation.begin();
-            m_cameraTurnAnimation.begin();
-        } else {
+    void Turn::lastVisit(Player& player) {
+        if (!m_hasPlayerSuccessfullyPassed) {
             player.incrementLife(-10000);
             callDamageAnimations();
+        }
+    }
+
+    void Turn::test(Player& player) {
+        if(m_hasPlayerSuccessfullyPassed) return;
+        if ((player.status() == Status::TURNING_LEFT && m_direction == TurnDirection::LEFT)
+            ||  (player.status() == Status::TURNING_RIGHT && m_direction == TurnDirection::RIGHT)) {
+            m_playerTurnAnimation.begin();
+            m_cameraTurnAnimation.begin();
+
+            m_hasPlayerSuccessfullyPassed = true;
         }
     }
 
@@ -40,6 +47,8 @@ namespace GameModel {
                 m_entityObject = std::make_shared<GraphicsEngine::Object3D>(*s_turnObjectRightVariant);
                 break;
         }
+
+        m_playerDamageAnimation = GraphicsEngine::makeDeathFallAnimation(playerAnimatable, 120);
     }
 
     void Turn::loadObjects() {

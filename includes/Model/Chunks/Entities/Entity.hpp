@@ -45,7 +45,7 @@ namespace GameModel {
         virtual void firstVisit(Player& player) {}
 
         /// \brief new player visit callback
-        virtual void check(Player& player) {}
+        virtual void test(Player& player) {}
 
     public:
         /// \brief object instance getter
@@ -53,8 +53,10 @@ namespace GameModel {
 
 
         /// \brief repeated tests on the player on each frame
-        void test(Player& player);
+        void action(Player& player);
 
+        /// \brief last player visit
+        virtual void lastVisit(Player& player) {}
 
         /// \brief one-time tests on the player on first visit
         virtual void parentChunkIsActive() {}

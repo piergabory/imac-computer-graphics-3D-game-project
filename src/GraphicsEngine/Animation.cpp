@@ -113,9 +113,14 @@ namespace GraphicsEngine {
     }
 
 
-    Animation makeDeathFallAnimation(const std::shared_ptr<Animatable> &object, unsigned int duration, const float speed) {
-        return Animation(object, duration, glm::vec3(speed), [](Animatable &object, const glm::vec3 &speed, const float step, const float progress) {
-            object.translate(glm::vec3(0.f, - progress * speed.x, 0.f));
+    Animation makeDeathFallAnimation(const std::shared_ptr<Animatable> &object, unsigned int duration) {
+        return Animation(object, duration, glm::vec3(), [](Animatable &object, const glm::vec3 &unused, const float step, const float progress) {
+            const float FALL_DISTANCE = 32.0;
+            const float START_FALLING = 0.3;
+
+            glm::vec3 movement;
+            movement = (progress < START_FALLING)? glm::vec3(0,0,step) : glm::vec3(0, -step * 2 * (progress - START_FALLING), step);
+            object.translate(FALL_DISTANCE * movement);
         });
     }
 
@@ -123,10 +128,11 @@ namespace GraphicsEngine {
     Animation makeDamageBlinkAnimation(const std::shared_ptr<Animatable> &object, unsigned int duration) {
         return Animation(object, duration, glm::vec3(), [](Animatable &object, const glm::vec3 &unused, const float step, const float progress) {
             const unsigned int NUMBER_OF_BLINKS = 6;
+            const float SCALING = 10000;
             if (int(1000 * progress) % int(1000.f/NUMBER_OF_BLINKS) < NUMBER_OF_BLINKS / 2) {
-                object.setScale(glm::vec3(10000));
+                object.scale(glm::vec3(SCALING));
             } else {
-                object.setScale(glm::vec3(1.0/10000));
+                object.scale(glm::vec3(1.0/SCALING));
             }
         });
     }
