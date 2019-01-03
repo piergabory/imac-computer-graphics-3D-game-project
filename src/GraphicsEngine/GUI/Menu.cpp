@@ -18,29 +18,36 @@ namespace GraphicsEngine {
         return elements;
     };
     
-    void Menu::initializeButtons(){
+    void Menu::add(std::function<void()> func){
         
-        std::function<void(GraphicsEngine::Button*, unsigned char)> click = [](GraphicsEngine::Button* target, unsigned char mouseButton) -> void {
+        std::function<void(Button*, unsigned char)> click = [func](Button* target, unsigned char mouseButton) -> void {
             std::cout << "you clicked the resumebutton :" << target << std::endl;
-            std::shared_ptr<GraphicsEngine::Texture> clickTexture = std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/test2.png"));
+            std::shared_ptr<Texture> clickTexture = std::make_shared<Texture>(LocalFilePath("assets/textures/test2.png"));
             target->texture(clickTexture);
+            func();
         };
         
-        m_buttons.push_back(std::make_shared<GraphicsEngine::Button>(
-                                                                  glm::vec2(-0.5, 0.6),
-                                                                  glm::vec2(1, -0.3),
-                                                                  std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/test.png")),
-                                                                  click
-                                                                     ));
+        m_buttons.push_back(std::make_shared<Button>(
+                                                     glm::vec2(-0.5, 0.6),
+                                                     glm::vec2(1, -0.3),
+                                                     std::make_shared<Texture>(LocalFilePath("assets/textures/test.png")),
+                                                     click
+                                                     ));
+
+    }
+    
+    void Menu::initializeButtons(){
         
+
+        std::function <void()> quit = [](){
+            std::cout << "quit game" << std::endl;
+        };
+        add(quit);
         
+        std::function <void()> resume = [](){
+            std::cout << "resume game" << std::endl;
+        };
+        add(resume);
         
-        
-        m_buttons.push_back (std::make_shared<GraphicsEngine::Button>(
-                                                                glm::vec2(-0.5, 0.2),
-                                                                glm::vec2(1, -0.3),
-                                                                std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/test.png")),
-                                                                click
-                                                                ));
     }
 }
