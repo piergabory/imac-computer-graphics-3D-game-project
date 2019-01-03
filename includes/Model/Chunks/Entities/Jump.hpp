@@ -17,15 +17,15 @@ namespace GameModel
         /// automagically called on first instanciation of Entity
         static void loadObject();
 
-		//Methods
+		// Methods
 		void firstVisit(Player& player) override;
 
-        //Constructor / destructor
+        // Constructor / destructor
         Jump(std::shared_ptr<GraphicsEngine::Animatable> playerAnimatable, std::shared_ptr<GraphicsEngine::Animatable> cameraAnimatable) :
         Obstacle(playerAnimatable, cameraAnimatable) {
             if (!s_entityObject) loadObject();
             m_entityObject =  std::make_shared<GraphicsEngine::Object3D>(*s_entityObject);
-            GraphicsEngine::Animation m_playerDamageAnimation(GraphicsEngine::makeDeathFallAnimation(playerAnimatable, 30, 10));
+            GraphicsEngine::Animation m_playerDamageAnimation(GraphicsEngine::makeDeathFallAnimation(playerAnimatable, 30, 1));
         }
         
         ~Jump() {}

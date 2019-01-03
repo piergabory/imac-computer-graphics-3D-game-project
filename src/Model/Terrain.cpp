@@ -36,10 +36,34 @@ namespace GameModel {
         return translationVector;
     }
 
+    std::set< std::shared_ptr<GraphicsEngine::Object3D> > Terrain::preloadInitialChunks() {
+        std::set< std::shared_ptr<GraphicsEngine::Object3D> > objectsToBeAddedInScene;
+        std::set< std::shared_ptr<GraphicsEngine::Object3D> > objectsInNewChunk;
+        Chunk* newChunkPointer;
+
+        for (int i = -m_CHUNK_COUNT_AFTER_PLAYER; i < m_CHUNK_COUNT_BEFORE_PLAYER; ++i) {
+            newChunkPointer = new Chunk();
+            // collect 3D objects and insert them in the set
+            objectsInNewChunk = newChunkPointer->objects();
+            for (std::shared_ptr<GraphicsEngine::Object3D> object : objectsInNewChunk) {
+                objectsToBeAddedInScene.insert(object);
+            }
+
+            // insert new chunk
+            loadChunk(newChunkPointer);
+
+            // if there isn't enough chunks behind the player, move the terrain forward one chunk.
+            if (i < 0) progress(1.0);
+        }
+
+        return objectsToBeAddedInScene;
+    }
+
+
 
 
     const CardinalDirections Terrain::facing() const {
-        int orientation = ((int)glm::degrees(activeChunk()->orientation()) % 180);
+        int orientation = ((int) glm::degrees(activeChunk()->orientation()) % 180);
         return CardinalDirections(orientation);
     }
 

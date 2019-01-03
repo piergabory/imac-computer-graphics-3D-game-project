@@ -19,7 +19,8 @@ namespace GameModel {
         }
     }
 
-    void Game::nextChunk() {
+    void Game::nextChunk(Chunk* newChunk) {
+        m_terrain.loadChunk(newChunk);
         CardinalDirections previousOrientation = m_terrain.facing();
         m_terrain.nextChunk();
         

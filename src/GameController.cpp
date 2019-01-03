@@ -45,13 +45,8 @@ void GameController::setup() {
     // create scene
     initializeScene();
 
-    GameModel::Chunk* preloadedChunk;
-    for (uint i = 0; i < m_CHUNK_PRELOADING_COUNT; ++i) {
-        preloadedChunk = new GameModel::Chunk();
-        for(std::shared_ptr<GraphicsEngine::Object3D> object : preloadedChunk->objects()) {
-            GraphicsEngine::Controller::instance()->activeScene()->add(object);
-        };
-        m_currentGame->terrain().loadChunk(preloadedChunk);
+    for (std::shared_ptr<GraphicsEngine::Object3D> object : m_currentGame->terrain().preloadInitialChunks()) {
+        GraphicsEngine::Controller::instance()->activeScene()->add(object);
     }
 
     // subscribe event manager
@@ -77,7 +72,6 @@ bool GameController::loop() {
     if(m_chunkframe == 0) {
         m_chunkCycle ++;
         loadNewChunk();
-        m_currentGame->nextChunk();
     }
 
     m_currentGame->update(1.f/m_CHUNK_FRAME_DURATION);
@@ -123,7 +117,7 @@ void GameController::loadNewChunk() {
         chunk = new GameModel::Chunk();
     }
     
-    m_currentGame->terrain().loadChunk(chunk);
+    m_currentGame->nextChunk(chunk);
     for(std::shared_ptr<GraphicsEngine::Object3D> object : chunk->objects()) {
         GraphicsEngine::Controller::instance()->activeScene()->add(object);
     };

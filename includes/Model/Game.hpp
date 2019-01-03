@@ -63,11 +63,11 @@ namespace GameModel {
 
         /// \brief shifts the terrain to the next chunk.
         /// Moves the player back to the center on each turn.
-        void nextChunk();
+        /// \param takes the next chunk to be pushed at the end of the terrain.
+        void nextChunk(Chunk* newChunk);
 
         /// \brief Redirects controller inputs on player movements, attacks, bonuses etc...
         void callInput(Controls control);
-        
 
         /// \brief constructor
         Game();

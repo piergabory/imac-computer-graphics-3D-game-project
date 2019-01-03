@@ -115,7 +115,7 @@ namespace GraphicsEngine {
 
     Animation makeDeathFallAnimation(const std::shared_ptr<Animatable> &object, unsigned int duration, const float speed) {
         return Animation(object, duration, glm::vec3(speed), [](Animatable &object, const glm::vec3 &speed, const float step, const float progress) {
-            object.translate(glm::vec3(0.f, progress * speed.x, 0.f));
+            object.translate(glm::vec3(0.f, - progress * speed.x, 0.f));
         });
     }
 
