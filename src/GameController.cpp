@@ -79,18 +79,19 @@ bool GameController::loop() {
     const float FRAMERATE = 60;
 
     // compute current chunk progress
-    m_chunkframe ++;
-    m_chunkframe %= m_CHUNK_FRAME_DURATION;
+    if (!isPaused) {
+        m_chunkframe ++;
+        m_chunkframe %= m_CHUNK_FRAME_DURATION;
 
-    if(m_chunkframe == 0) {
-        m_chunkCycle ++;
-        loadNewChunk();
-        m_currentGame->nextChunk();
+        if(m_chunkframe == 0) {
+            m_chunkCycle ++;
+            loadNewChunk();
+            m_currentGame->nextChunk();
+        }
+
+        m_currentGame->terrain().progress(1.f/m_CHUNK_FRAME_DURATION);
+        GraphicsEngine::Animation::updateAnimations();
     }
-
-    m_currentGame->terrain().progress(1.f/m_CHUNK_FRAME_DURATION);
-
-    GraphicsEngine::Animation::updateAnimations();
 
     // start new render cycle
     GraphicsEngine::Controller::instance()->render();
@@ -147,6 +148,7 @@ void GameController::keyRealeaseHandler(const SDL_Keycode keycode) {
         case SDLK_ESCAPE:
             SDL_CaptureMouse(SDL_FALSE);
             SDL_ShowCursor(SDL_ENABLE);
+            isPaused = !isPaused;
             break;
 
         case SDLK_z: m_currentGame->callInput(GameModel::Controls::UP); break;

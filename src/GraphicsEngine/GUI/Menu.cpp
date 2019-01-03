@@ -21,7 +21,6 @@ namespace GraphicsEngine {
     void Menu::add(std::function<void()> func, LocalFilePath texture_main, LocalFilePath texture_over){
         
         std::function<void(Button*, unsigned char)> click = [func, texture_over](Button* target, unsigned char mouseButton) -> void {
-            std::cout << "you clicked the resumebutton :" << target << std::endl;
             std::shared_ptr<Texture> clickTexture = std::make_shared<Texture>(texture_over);
             target->texture(clickTexture);
             func();
@@ -49,6 +48,7 @@ namespace GraphicsEngine {
         std::function <void()> resume = [](){
             std::cout << "resume game" << std::endl;
         };
+        
         add(resume,LocalFilePath("assets/textures/test.png"), LocalFilePath("assets/textures/test2.png"));
         
     }

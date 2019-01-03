@@ -71,6 +71,8 @@ private:
     std::shared_ptr<GraphicsEngine::Button> m_resumebutton;
     std::shared_ptr<GraphicsEngine::Button> m_restartbutton;
     std::shared_ptr<GraphicsEngine::Button> m_quitbutton;
+    
+    bool isPaused = true;
 
 
     // Model instance
