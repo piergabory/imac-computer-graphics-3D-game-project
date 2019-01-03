@@ -25,8 +25,7 @@ void GameController::initializeScene() {
     std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
     m_skybox = createSkyBox();
     m_chunk = createChunk();
-    //createMenu();
-    createMenuClass();
+    createMenu();
     createCursor();
 
     // skybox max scale before clipping out of far-field
@@ -36,7 +35,7 @@ void GameController::initializeScene() {
     GraphicsEngine::Controller::instance()->activeScene()->add(playerModel);
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
     
-    GraphicsEngine::Controller::instance()->activeGUI()->add(m_menu);
+    GraphicsEngine::Controller::instance()->activeGUI()->add(m_menu->elements());
 
     
 
@@ -323,41 +322,11 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
     return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
 }
 
+
+
 void GameController::createMenu(){
+    m_menu = std::make_shared<GraphicsEngine::Menu>(std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/overlaytest.png")));
     
-    m_menu.push_back ( std::make_shared<GraphicsEngine::Object2D>(glm::vec2(-1,1), glm::vec2(2,-2), std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/overlaytest.png")))
-    );
-    
-    std::function<void(GraphicsEngine::Button*, unsigned char)> click = [](GraphicsEngine::Button* target, unsigned char mouseButton) -> void {
-        std::cout << "you clicked the resumebutton :" << target << std::endl;
-        std::shared_ptr<GraphicsEngine::Texture> clickTexture = std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/test2.png"));
-        target->texture(clickTexture);
-    };
-    
-    m_menu.push_back(
-                     std::make_shared<GraphicsEngine::Button>(
-                                                              glm::vec2(-0.5, 0.6),
-                                                              glm::vec2(1, -0.3),
-                                                              std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/test.png")),
-                                                              click
-                                                              )
-                     );
-    
- 
-
-    m_menu.push_back(
-                     std::make_shared<GraphicsEngine::Button>(
-                                                            glm::vec2(-0.5, 0.2),
-                                                            glm::vec2(1, -0.3),
-                                                            std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/test.png")),
-                                                            click
-                                                            )
-                     );    
-}
-
-void GameController::createMenuClass(){
-    m_menucontroller = std::make_shared<GraphicsEngine::Menu>(std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/overlaytest.png")));
-    m_menu = m_menucontroller->elements();
 }
 
 
