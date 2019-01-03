@@ -65,16 +65,8 @@ bool GameController::loop() {
     // framerate 60 frames per seconds
     const float FRAMERATE = 60;
 
-    // compute current chunk progress
-    m_chunkframe ++;
-    m_chunkframe %= m_CHUNK_FRAME_DURATION;
-
-    if(m_chunkframe == 0) {
-        m_chunkCycle ++;
-        loadNewChunk();
-    }
-
-    m_currentGame->update(1.f/m_CHUNK_FRAME_DURATION);
+    if(m_framecount % 100 == 0) loadNewChunks(100);
+    m_currentGame->update();
 
     GraphicsEngine::Animation::updateAnimations();
 
@@ -83,6 +75,7 @@ bool GameController::loop() {
 
     // fetches new events
     Events::Manager::instance()->pollEvents();
+    m_framecount ++;
 
     // calculate the time spent since the start of the game loop
     Uint32 elapsedTime = SDL_GetTicks() - startTime;
@@ -90,37 +83,38 @@ bool GameController::loop() {
         // wait a while before the next frame, in order to keep a consistent framerate.
         SDL_Delay(1000 / FRAMERATE - elapsedTime);
     }
-
     return m_isRunning;
 }
 
 
 
-void GameController::loadNewChunk() {
-    GameModel::Chunk* chunk;
-    std::shared_ptr<GraphicsEngine::Animatable> cameraAnimatable(m_playerPointOfView);
-    std::shared_ptr<GraphicsEngine::Animatable> playerAnimatable(m_currentGame->playerModel());
+void GameController::loadNewChunks(unsigned int chunkCount) {
+    for (unsigned int i = 0; i < chunkCount; ++i) {
+        GameModel::Chunk* chunk;
+        std::shared_ptr<GraphicsEngine::Animatable> cameraAnimatable(m_playerPointOfView);
+        std::shared_ptr<GraphicsEngine::Animatable> playerAnimatable(m_currentGame->playerModel());
 
-    if (m_chunkCycle % 40 == 0) {
-        chunk = new GameModel::TurningChunk(GameModel::TurnDirection::LEFT, playerAnimatable, cameraAnimatable);
-    } else if(m_chunkCycle % 50 == 0) {
-        chunk = new GameModel::TurningChunk(GameModel::TurnDirection::RIGHT, playerAnimatable, cameraAnimatable);
-    } else if(m_chunkCycle % 7 == 0) {
-        chunk = new GameModel::Chunk(new GameModel::Coin(),
-                                     new GameModel::PowerUp(),
-                                     new GameModel::Wall(playerAnimatable, cameraAnimatable));
-    } else if(m_chunkCycle % 4 == 0) {
-        chunk = new GameModel::Chunk(new GameModel::Jump(playerAnimatable, cameraAnimatable),
-                                     new GameModel::Entity(),
-                                     new GameModel::Slide(playerAnimatable, cameraAnimatable));
-    } else {
-        chunk = new GameModel::Chunk();
+        if (i % 40 == 0) {
+            chunk = new GameModel::TurningChunk(GameModel::TurnDirection::LEFT, playerAnimatable, cameraAnimatable);
+        } else if(i % 50 == 0) {
+            chunk = new GameModel::TurningChunk(GameModel::TurnDirection::RIGHT, playerAnimatable, cameraAnimatable);
+        } else if(i % 7 == 0) {
+            chunk = new GameModel::Chunk(new GameModel::Coin(),
+                                         new GameModel::PowerUp(),
+                                         new GameModel::Wall(playerAnimatable, cameraAnimatable));
+        } else if(i % 4 == 0) {
+            chunk = new GameModel::Chunk(new GameModel::Jump(playerAnimatable, cameraAnimatable),
+                                         new GameModel::Entity(),
+                                         new GameModel::Slide(playerAnimatable, cameraAnimatable));
+        } else {
+            chunk = new GameModel::Chunk();
+        }
+
+        m_currentGame->loadInChunkBuffer(chunk);
+        for(std::shared_ptr<GraphicsEngine::Object3D> object : chunk->objects()) {
+            GraphicsEngine::Controller::instance()->activeScene()->add(object);
+        }
     }
-    
-    m_currentGame->nextChunk(chunk);
-    for(std::shared_ptr<GraphicsEngine::Object3D> object : chunk->objects()) {
-        GraphicsEngine::Controller::instance()->activeScene()->add(object);
-    };
 }
 
 

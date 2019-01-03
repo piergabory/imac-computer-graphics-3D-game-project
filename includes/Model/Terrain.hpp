@@ -40,7 +40,7 @@ namespace GameModel {
         const int m_CHUNK_COUNT_AFTER_PLAYER = 5;
 
         /// \brief Number of chunks preloaded in front of the player
-        const int m_CHUNK_COUNT_BEFORE_PLAYER = 100;
+        const int m_CHUNK_COUNT_BEFORE_PLAYER = 30;
 
         /// \brief Chunk container
         /// Dequeue allows random access (to get active chunk) and quick front/back edits

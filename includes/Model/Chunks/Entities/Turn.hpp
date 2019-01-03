@@ -32,6 +32,7 @@ namespace GameModel {
         static std::unique_ptr<GraphicsEngine::Object3D> s_turnObjectRightVariant;
 
         TurnDirection m_direction;
+        bool m_hasPlayerSuccessfullyPassed = false;
 
         // rotation animations of player and camera.
         GraphicsEngine::Animation m_playerTurnAnimation;
@@ -40,7 +41,9 @@ namespace GameModel {
     public:
         // Entities overrides
         /// \brief repeated tests on the player on each frame
-        void firstVisit(Player& player) override;
+        void lastVisit(Player& player) override;
+
+        void test(Player& player) override;
 
         /// \brief object factory caller with parameters for an empty object
         /// automagically called on first instanciation of Entity

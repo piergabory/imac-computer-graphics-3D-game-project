@@ -36,6 +36,8 @@ namespace GameModel {
         return translationVector;
     }
 
+
+    
     std::set< std::shared_ptr<GraphicsEngine::Object3D> > Terrain::preloadInitialChunks() {
         std::set< std::shared_ptr<GraphicsEngine::Object3D> > objectsToBeAddedInScene;
         std::set< std::shared_ptr<GraphicsEngine::Object3D> > objectsInNewChunk;

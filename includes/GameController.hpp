@@ -40,17 +40,7 @@ private:
     /// \brief when false, cleans the memory and close the game.
     bool m_isRunning = true;
 
-
-    /// \brief defines the game rythm
-    const uint m_CHUNK_PRELOADING_COUNT = 30;
-    const uint m_CHUNK_FRAME_DURATION = 10;
-
-    // progress in the current chunk
-    uint m_chunkframe = 0;
-
-    // passed chunk count
-    unsigned long m_chunkCycle = 0;
-
+    unsigned long m_framecount = 0;
 
     /// \brief player point of view / scene camera.
     std::shared_ptr<GraphicsEngine::Camera> m_playerPointOfView;
@@ -75,7 +65,7 @@ private:
     // setup
     void initializeScene();
 
-    void loadNewChunk();
+    void loadNewChunks(unsigned int chunkCount);
 
     /// \brief static methods for object initialization
     /// Loading assets and shaders from relative filepaths to create a 3D object
