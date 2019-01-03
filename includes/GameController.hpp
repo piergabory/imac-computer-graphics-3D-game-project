@@ -40,6 +40,9 @@ private:
     /// \brief when false, cleans the memory and close the game.
     bool m_isRunning = true;
 
+    /// \brief if true, locks the game loop
+    bool m_isPaused = false;
+
     unsigned long m_framecount = 0;
 
     /// \brief player point of view / scene camera.

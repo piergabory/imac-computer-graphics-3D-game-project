@@ -65,10 +65,12 @@ bool GameController::loop() {
     // framerate 60 frames per seconds
     const float FRAMERATE = 60;
 
-    if(m_framecount % 100 == 0) loadNewChunks(100);
-    m_currentGame->update();
+    if (!m_isPaused) {
+        if(m_framecount % 100 == 0) loadNewChunks(100);
+        m_currentGame->update();
 
-    GraphicsEngine::Animation::updateAnimations();
+        GraphicsEngine::Animation::updateAnimations();
+    }
 
     // start new render cycle
     GraphicsEngine::Controller::instance()->render();
@@ -170,6 +172,12 @@ void GameController::keyRealeaseHandler(const SDL_Keycode keycode) {
                 m_debugGrid = initializeDebugGrid();
                 GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
             }
+            break;
+
+
+        case SDLK_p:
+            // freeze
+            m_isPaused = !m_isPaused;
             break;
     }
 };
