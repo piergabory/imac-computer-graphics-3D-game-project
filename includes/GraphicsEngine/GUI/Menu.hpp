@@ -26,7 +26,7 @@ namespace GraphicsEngine {
         public :
             std::vector< std::shared_ptr<Object2D> > elements();
         
-            void add(std::function<void()> func); ///TODO check if can be optimized (reference)
+            void add(std::function<void()> func, LocalFilePath texture_main, LocalFilePath texture_over); ///TODO check if can be optimized (reference)
         
             ///\brief  constructor
             Menu(std::shared_ptr<Texture> sprite);

@@ -18,11 +18,11 @@ namespace GraphicsEngine {
         return elements;
     };
     
-    void Menu::add(std::function<void()> func){
+    void Menu::add(std::function<void()> func, LocalFilePath texture_main, LocalFilePath texture_over){
         
-        std::function<void(Button*, unsigned char)> click = [func](Button* target, unsigned char mouseButton) -> void {
+        std::function<void(Button*, unsigned char)> click = [func, texture_over](Button* target, unsigned char mouseButton) -> void {
             std::cout << "you clicked the resumebutton :" << target << std::endl;
-            std::shared_ptr<Texture> clickTexture = std::make_shared<Texture>(LocalFilePath("assets/textures/test2.png"));
+            std::shared_ptr<Texture> clickTexture = std::make_shared<Texture>(texture_over);
             target->texture(clickTexture);
             func();
         };
@@ -32,7 +32,7 @@ namespace GraphicsEngine {
         m_buttons.push_back(std::make_shared<Button>(
                                                      glm::vec2(-(btn_width/2), ypos),
                                                      glm::vec2(btn_width, -btn_height),
-                                                     std::make_shared<Texture>(LocalFilePath("assets/textures/test.png")),
+                                                     std::make_shared<Texture>(texture_main),
                                                      click
                                                      ));
 
@@ -44,12 +44,12 @@ namespace GraphicsEngine {
         std::function <void()> quit = [](){
             std::cout << "quit game" << std::endl;
         };
-        add(quit);
+        add(quit, LocalFilePath("assets/textures/test2.png"),LocalFilePath("assets/textures/test.png") );
         
         std::function <void()> resume = [](){
             std::cout << "resume game" << std::endl;
         };
-        add(resume);
+        add(resume,LocalFilePath("assets/textures/test.png"), LocalFilePath("assets/textures/test2.png"));
         
     }
 }
