@@ -128,7 +128,7 @@ namespace GameModel {
     m_moveToLeftLaneAnimation(GraphicsEngine::makeLinearTranslation(m_characterModel, TRANSLATE_FRAMETIME, glm::vec3(LANE_WIDTH,0.f,0.f))),
     m_moveToRightLaneAnimation(GraphicsEngine::makeLinearTranslation(m_characterModel, TRANSLATE_FRAMETIME, glm::vec3(-LANE_WIDTH,0.f,0.f))),
 
-    m_resetPosition(GraphicsEngine::makeLinearPlace(m_characterModel, 10, glm::vec3(0)))
+    m_resetPosition(GraphicsEngine::makeLinearPlace(m_characterModel, 10, glm::vec3(0,0,0)))
     {}
 
 }

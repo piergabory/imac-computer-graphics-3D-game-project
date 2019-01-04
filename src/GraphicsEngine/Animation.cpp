@@ -67,7 +67,7 @@ namespace GraphicsEngine {
 
     Animation makeLinearPlace(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &newPosition) {
         return Animation(object, duration, newPosition, [](Animatable& object, const glm::vec3 &newPosition, const float step, const float progress) -> void {
-            object.place((object.position() - newPosition) * step);
+            object.place(object.position() * ( 1 - progress) + newPosition * progress);
         });
     }
 

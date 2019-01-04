@@ -67,8 +67,10 @@ bool GameController::loop() {
 
     if (!m_isPaused) {
         if(m_framecount % 100 == 0) loadNewChunks(100);
-        m_currentGame->update();
-
+        std::set<std::shared_ptr<GraphicsEngine::Object3D>> newObjects = m_currentGame->update();
+        for(std::shared_ptr<GraphicsEngine::Object3D> object : newObjects) {
+            GraphicsEngine::Controller::instance()->activeScene()->add(object);
+        }
         GraphicsEngine::Animation::updateAnimations();
     }
 
@@ -113,9 +115,9 @@ void GameController::loadNewChunks(unsigned int chunkCount) {
         }
 
         m_currentGame->loadInChunkBuffer(chunk);
-        for(std::shared_ptr<GraphicsEngine::Object3D> object : chunk->objects()) {
-            GraphicsEngine::Controller::instance()->activeScene()->add(object);
-        }
+//        for(std::shared_ptr<GraphicsEngine::Object3D> object : chunk->objects()) {
+//            GraphicsEngine::Controller::instance()->activeScene()->add(object);
+//        }
     }
 }
 

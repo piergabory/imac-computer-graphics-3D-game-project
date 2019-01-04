@@ -5,16 +5,20 @@
 
 namespace GameModel {
 
-    void Game::nextChunk() {
+    std::set<std::shared_ptr<GraphicsEngine::Object3D>> Game::nextChunk() {
+        std::set<std::shared_ptr<GraphicsEngine::Object3D>> newObjectsToLoadInScene;
         m_chunkBuffer.front()->translate(-BUFFER_CHUNK_HIDING_PLACE);
+        newObjectsToLoadInScene = m_chunkBuffer.front()->objects();
         m_terrain.loadChunk(m_chunkBuffer.front());
         m_chunkBuffer.pop();
+        
         CardinalDirections previousOrientation = m_terrain.facing();
         m_terrain.nextChunk();
 
         if (previousOrientation != m_terrain.facing())
             m_player.resetPosition();
         m_chunkCycle ++;
+        return newObjectsToLoadInScene;
     }
 
 
@@ -27,7 +31,9 @@ namespace GameModel {
     }
 
 
-    void Game::update() {
+    std::set<std::shared_ptr<GraphicsEngine::Object3D>> Game::update() {
+        std::set<std::shared_ptr<GraphicsEngine::Object3D>> newObjectsToLoadInScene;
+
         // compute current chunk progress
         m_chunkframe = (m_chunkframe + 1) % m_UPDATES_PER_CHUNK;
 
@@ -37,12 +43,13 @@ namespace GameModel {
         if(m_player.life() > 0) {
             if (m_chunkframe == 0) {
                 m_terrain.entityAt(m_player.position())->lastVisit(m_player);
-                nextChunk();
+                newObjectsToLoadInScene = nextChunk();
             }
             updateEnemy(m_terrain.progress(1.f/m_UPDATES_PER_CHUNK));
         }
 
         m_terrain.entityAt(m_player.position())->action(m_player);
+        return newObjectsToLoadInScene;
     }
 
 
