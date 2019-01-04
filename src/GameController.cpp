@@ -214,47 +214,47 @@ void GameController::cameraMoves(const SDL_Keycode key) {
     const float KEYBOARD_CAMERA_CONTROL_SPEED = 0.1;
     if (m_cameraBehavior == CameraBehaviors::FREE) switch(key) {
             // Up
-        case 'i':
+        case SDLK_i:
             m_playerPointOfView->translate(glm::vec3(0,-KEYBOARD_CAMERA_CONTROL_SPEED,0));
             break;
 
             // Down
-        case 'k':
+        case SDLK_k:
             m_playerPointOfView->translate(glm::vec3(0,KEYBOARD_CAMERA_CONTROL_SPEED,0));
             break;
 
             // left
-        case 'j':
+        case SDLK_j:
             m_playerPointOfView->translate(glm::vec3(-KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
             break;
 
             // right
-        case 'l':
+        case SDLK_l:
             m_playerPointOfView->translate(glm::vec3(KEYBOARD_CAMERA_CONTROL_SPEED,0,0));
             break;
 
             // Rotate right
-        case 'u':
+        case SDLK_u:
             m_playerPointOfView->rotate(KEYBOARD_CAMERA_CONTROL_SPEED, glm::vec3(0,1,0));
             break;
 
             // Rotate left
-        case 'o':
+        case SDLK_o:
             m_playerPointOfView->rotate(KEYBOARD_CAMERA_CONTROL_SPEED, glm::vec3(0,-1,0));
             break;
 
             // Rotate up
-        case 'p':
+        case SDLK_p:
             m_playerPointOfView->rotate(KEYBOARD_CAMERA_CONTROL_SPEED, glm::vec3(1,0,0));
             break;
 
             // rotate down
-        case 'm':
+        case SDLK_m:
             m_playerPointOfView->rotate(KEYBOARD_CAMERA_CONTROL_SPEED, glm::vec3(-1,0,0));
             break;
 
-            // '0' key (not the numpad)
-        case '0':
+            // '0' key 
+        case SDLK_0: case SDLK_KP_0:
             // replace to origin
             m_playerPointOfView->resetPosition();
             break;
