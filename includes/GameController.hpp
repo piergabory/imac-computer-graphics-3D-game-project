@@ -21,8 +21,11 @@
 
 
 /// \brief describe camera behaviors states
-enum class CameraBehaviors {
-    FIRST_PERSON, THIRD_PERSON, FREE, LOCKED
+enum class CameraBehaviors : int {
+    FIRST_PERSON = 0,
+    THIRD_PERSON = 1,
+    FREE = 2,
+    LOCKED = 3
 };
 
 /**
@@ -50,7 +53,7 @@ private:
 
 
     // todo doc
-    CameraBehaviors m_cameraBehavior = CameraBehaviors::FOLOW_PLAYER;
+    CameraBehaviors m_cameraBehavior = CameraBehaviors::THIRD_PERSON;
 
 
     /// \brief object instances handles

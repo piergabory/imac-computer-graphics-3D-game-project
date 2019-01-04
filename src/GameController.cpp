@@ -15,8 +15,8 @@ void GameController::initializeScene() {
 
     // 3D context
     m_playerPointOfView = std::make_shared<GraphicsEngine::Camera>();
-    m_playerPointOfView->place(glm::vec3(0,2,0));
-    m_playerPointOfView->rotate(glm::radians(10.f), glm::vec3(1,0,0));
+    m_playerPointOfView->switchMode(GraphicsEngine::CameraControl::TURNTABLE);
+    m_playerPointOfView->place(glm::vec3(0,2,3));
     std::unique_ptr<GraphicsEngine::Scene> scene(new GraphicsEngine::Scene(m_playerPointOfView));
     GraphicsEngine::Controller::instance()->loadScene(scene);
 
@@ -143,23 +143,14 @@ void GameController::keyRealeaseHandler(const SDL_Keycode keycode) {
         case SDLK_s: m_currentGame->callInput(GameModel::Controls::DOWN); break;
 
         case SDLK_c:
-            switch (m_cameraBehavior) {
-                case CameraBehaviors::LOCKED:
-                    m_cameraBehavior = CameraBehaviors::FOLOW_PLAYER;
-                    std::cout << "Camera set to FOLOW PLAYER" << std::endl;
-                    break;
-
-                case CameraBehaviors::FOLOW_PLAYER:
-                    m_cameraBehavior = CameraBehaviors::FREE;
-                    std::cout << "Camera set to LOCKED" << std::endl;
-                    break;
-
-                case CameraBehaviors::FREE:
-                    m_cameraBehavior = CameraBehaviors::LOCKED;
-                    std::cout << "Camera set to FREE" << std::endl;
-                    break;
-
-                default: assert(false && "Bad CameraBehavior enum");
+            m_cameraBehavior = static_cast<CameraBehaviors>(((int)m_cameraBehavior + 1) % 4);
+            if (m_cameraBehavior == CameraBehaviors::FIRST_PERSON) {
+                m_playerPointOfView->switchMode(GraphicsEngine::CameraControl::TURNTABLE);
+                m_playerPointOfView->place(glm::vec3(0,2,3));
+            } else {
+                m_playerPointOfView->switchMode(GraphicsEngine::CameraControl::FLY);
+                m_playerPointOfView->place(glm::vec3(0,0,1));
+                m_playerPointOfView->rotate(-10, glm::vec3(1,0,0));
             }
             break;
 
@@ -199,6 +190,7 @@ void GameController::mouseMoveHandler(float relativeXMovement,float relativeYMov
 
 
 void GameController::mouseWheelHandler(float deltaX, float deltaY) {
+    if (m_cameraBehavior != CameraBehaviors::FREE) return;
     const float MOUSEWHEEL_SCALING = 0.1;
     m_playerPointOfView->translate(glm::vec3(MOUSEWHEEL_SCALING * deltaX, 0, MOUSEWHEEL_SCALING * deltaY));
 }
@@ -211,8 +203,9 @@ void GameController::mouseReleaseHandler(const unsigned char button) {
 
 
 void GameController::cameraMoves(const SDL_Keycode key) {
+    if (m_cameraBehavior != CameraBehaviors::FREE) return;
     const float KEYBOARD_CAMERA_CONTROL_SPEED = 0.1;
-    if (m_cameraBehavior == CameraBehaviors::FREE) switch(key) {
+    switch(key) {
             // Up
         case SDLK_i:
             m_playerPointOfView->translate(glm::vec3(0,-KEYBOARD_CAMERA_CONTROL_SPEED,0));

@@ -81,7 +81,6 @@ namespace GraphicsEngine {
         void place(const glm::vec3& direction) override;
         void rotate(const float angle, const glm::vec3 &direction) override;
 
-        /// \deprecated use switch Mode
         // reset camera to the world center.
         void resetPosition();
 
