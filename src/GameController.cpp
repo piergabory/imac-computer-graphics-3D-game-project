@@ -181,7 +181,7 @@ void GameController::keyRealeaseHandler(const SDL_Keycode keycode) {
 };
 
 
-void GameController::keyPressHandler(const std::set<const SDL_Keycode> &pressedKeys) {
+void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
     for (SDL_Keycode key : pressedKeys) {
         cameraMoves(key);
     }

@@ -98,7 +98,7 @@ private:
     /// \brief observer methods called by the event manager when a key is engaged
     /// Add/Removes the pressed key from the pressedKeys set.
     void keyRealeaseHandler(const SDL_Keycode keycode) override;
-    void keyPressHandler(const std::set<const SDL_Keycode> &pressedKeys) override;
+    void keyPressHandler(std::set<unsigned char> &pressedKeys) override;
 
     /// \brief observer methods called by the event manager when a mouse event is fired
     /// controls the camera orientation
