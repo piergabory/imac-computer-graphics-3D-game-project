@@ -42,7 +42,7 @@ namespace Events {
         virtual void keyDownHandler(const SDL_Keycode keycode) {}
         
         // handles a set of keys
-        virtual void keyPressHandler(const std::set<const unsigned char> &pressedKeys) {}
+        virtual void keyPressHandler(const std::set<unsigned char> &pressedKeys) {}
 
         // destructor
         virtual ~KeyboardEventObserver() {}
