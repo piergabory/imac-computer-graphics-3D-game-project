@@ -7,7 +7,7 @@ namespace GameModel {
 
     void Turn::lastVisit(Player& player) {
         if (!m_hasPlayerSuccessfullyPassed) {
-            player.incrementLife(-m_DAMAGE);
+            player.kill();
             callDamageAnimations();
         }
     }
@@ -49,6 +49,7 @@ namespace GameModel {
         }
 
         m_playerDamageAnimation = GraphicsEngine::makeDeathFallAnimation(playerAnimatable, 120);
+        m_playerTurnAnimation.whenDone([=](void)->void { playerAnimatable->place(glm::vec3(0,0,0));});
     }
 
     void Turn::loadObjects() {

@@ -35,7 +35,7 @@ namespace GameModel {
         const float LANE_WIDTH = 2.f;
 
         ///\brief Maximum height of the jump (Parabolic curve)
-        const float JUMP_HEIGHT = 6.f;
+        const float JUMP_HEIGHT = 1.5f;
 
         ///\brief Size reduction of the player when crouching (Y scaling)
         const float CROUCH_HEIGHT = 0.8;
@@ -45,7 +45,7 @@ namespace GameModel {
 
         ///\brief Animations frame count. Game runs at 60 FPS.
         const unsigned int TRANSLATE_FRAMETIME = 20;
-        const unsigned int JUMP_FRAMETIME = 30;
+        const unsigned int JUMP_FRAMETIME = 60;
         const unsigned int CROUCH_FRAMETIME = 10;
 
         ///\brief Lane the player is currently running in

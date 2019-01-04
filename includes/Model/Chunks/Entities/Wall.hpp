@@ -7,7 +7,6 @@ namespace GameModel
     class Wall final : public Obstacle {
 
     private:
-        const int m_DAMAGE = 33;
 
         /// \brief static default entity object.
         /// use this instance to clone new objects

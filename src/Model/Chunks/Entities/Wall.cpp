@@ -4,7 +4,7 @@ namespace GameModel {
 
 	void Wall::firstVisit(Player& player) {
         //Player lose half of his life if he hits a wall
-        player.incrementLife(-m_DAMAGE);
+        player.kill();
         callDamageAnimations();
 	}
 

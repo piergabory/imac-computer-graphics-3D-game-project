@@ -16,7 +16,7 @@ void GameController::initializeScene() {
     // 3D context
     m_playerPointOfView = std::make_shared<GraphicsEngine::Camera>();
     m_playerPointOfView->switchMode(GraphicsEngine::CameraControl::TURNTABLE);
-    m_playerPointOfView->place(glm::vec3(0,2,3));
+    m_playerPointOfView->place(glm::vec3(0,4,8));
     std::unique_ptr<GraphicsEngine::Scene> scene(new GraphicsEngine::Scene(m_playerPointOfView));
     GraphicsEngine::Controller::instance()->loadScene(scene);
 
@@ -108,11 +108,11 @@ void GameController::loadNewChunks(unsigned int chunkCount) {
             chunk = new GameModel::TurningChunk(GameModel::TurnDirection::LEFT, playerAnimatable, cameraAnimatable);
         } else if(i % 50 == 0) {
             chunk = new GameModel::TurningChunk(GameModel::TurnDirection::RIGHT, playerAnimatable, cameraAnimatable);
-        } else if(i % 7 == 0) {
+        } else if(i % 15 == 0) {
             chunk = new GameModel::Chunk(new GameModel::Coin(),
                                          new GameModel::PowerUp(),
                                          new GameModel::Wall(playerAnimatable, cameraAnimatable));
-        } else if(i % 4 == 0) {
+        } else if(i % 10 == 0) {
             chunk = new GameModel::Chunk(new GameModel::Jump(playerAnimatable, cameraAnimatable),
                                          new GameModel::Entity(),
                                          new GameModel::Slide(playerAnimatable, cameraAnimatable));
@@ -152,9 +152,9 @@ void GameController::keyRealeaseHandler(const SDL_Keycode keycode) {
 
         case SDLK_c:
             m_cameraBehavior = static_cast<CameraBehaviors>(((int)m_cameraBehavior + 1) % 4);
-            if (m_cameraBehavior == CameraBehaviors::FIRST_PERSON) {
+            if (m_cameraBehavior == CameraBehaviors::THIRD_PERSON) {
                 m_playerPointOfView->switchMode(GraphicsEngine::CameraControl::TURNTABLE);
-                m_playerPointOfView->place(glm::vec3(0,2,3));
+                m_playerPointOfView->place(glm::vec3(0,4,8));
             } else {
                 m_playerPointOfView->switchMode(GraphicsEngine::CameraControl::FLY);
                 m_playerPointOfView->place(glm::vec3(0,0,1));
@@ -191,6 +191,7 @@ void GameController::keyPressHandler(const std::set<const SDL_Keycode> &pressedK
 
 
 void GameController::mouseMoveHandler(float relativeXMovement,float relativeYMovement) {
+    if (m_cameraBehavior != CameraBehaviors::FREE) return;
     const float MOUSEMOVE_SCALING = 0.006;
     m_playerPointOfView->rotate(relativeXMovement * MOUSEMOVE_SCALING, glm::vec3(0,-1,0));
     m_playerPointOfView->rotate(relativeYMovement * MOUSEMOVE_SCALING, glm::vec3(1,0,0));

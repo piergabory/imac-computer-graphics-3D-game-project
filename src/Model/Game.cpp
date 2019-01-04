@@ -23,11 +23,18 @@ namespace GameModel {
 
 
     void Game::updateEnemy(const glm::vec3 &terrainMovement) {
-        m_enemyOffset.push(terrainMovement);
-        if (m_enemyOffset.size() > m_player.life()) do {
-            m_enemy->globalTranslate(m_enemyOffset.back() - m_enemyOffset.front());
-            m_enemyOffset.pop();
-        } while(m_enemyOffset.size() < m_player.life());
+        // the enemy follows the terrain
+        m_enemy->globalTranslate(terrainMovement);
+
+        // the terrain movement is added to the list of moves the enemy needs to do to catch up to the player
+        // the vector is reversed so the enemy works against the terrain movement.
+        m_enemyMoves.push(-terrainMovement);
+
+        // if the enemy is not far enough, it moves forward until it reached sufficient distance
+        // using up the moves stored in list
+        if (m_enemyMoves.size() * 2 > m_player.life()) do {
+            m_enemy->globalTranslate(m_enemyMoves.front());
+        } while(m_enemyMoves.size() * 2 < m_player.life());
     }
 
 

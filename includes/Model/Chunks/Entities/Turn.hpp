@@ -27,7 +27,6 @@ namespace GameModel {
      */
     class Turn final : public Obstacle {
     private:
-        const int m_DAMAGE = 10000;
 
         // static reference to 3D object of left and right turns
         static std::unique_ptr<GraphicsEngine::Object3D> s_turnObjectLeftVariant;

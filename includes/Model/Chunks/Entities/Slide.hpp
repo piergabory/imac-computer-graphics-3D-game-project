@@ -6,7 +6,7 @@ namespace GameModel {
 
 	class Slide final : public Obstacle {
     private:
-        const int m_DAMAGE = 33;
+        const int m_DAMAGE = 30;
 
         /// \brief static default entity object.
         /// use this instance to clone new objects

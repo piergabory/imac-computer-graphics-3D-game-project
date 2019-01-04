@@ -70,8 +70,7 @@ namespace GraphicsEngine {
     }
 
     void Camera::switchMode(CameraControl mode) {
-        m_cameraPosition = glm::vec3(0,0,0);
-        m_cameraDirection = glm::vec3(0,0,-1);
+        m_controlMode = mode;
         updateProjectionMatrix();
     }
 
