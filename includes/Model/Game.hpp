@@ -69,7 +69,7 @@ namespace GameModel {
 
         /// \brief shifts the terrain to the next chunk.
         /// Moves the player back to the center on each turn.
-        void nextChunk();
+        std::set<std::shared_ptr<GraphicsEngine::Object3D>> nextChunk();
 
 
         /// \todo doc
@@ -89,7 +89,7 @@ namespace GameModel {
         // public methods
 
         /// \brief frame, gameloop update
-        void update();
+        std::set<std::shared_ptr<GraphicsEngine::Object3D>> update();
 
         /// \brief Redirects controller inputs on player movements, attacks, bonuses etc...
         void callInput(Controls control);
