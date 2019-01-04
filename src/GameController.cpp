@@ -41,6 +41,12 @@ void GameController::setup() {
     GraphicsEngine::Controller::instance()->printInfos();
 
     m_currentGame = std::unique_ptr<GameModel::Game>(new GameModel::Game);
+    m_currentGame->onPlayerDeath([=](void) -> void {
+        // wait for all animations to terminate
+        if (GraphicsEngine::Animation::activeCount() > 0) return;
+        m_isPaused = true;
+        /// \todo reinit the game
+    });
 
     // create scene
     initializeScene();

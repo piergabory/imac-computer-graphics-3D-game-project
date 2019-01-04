@@ -101,6 +101,13 @@ namespace GraphicsEngine {
         /// To be called in each game loop call
         static void updateAnimations();
 
+
+        /// \brief returns the number of animation currently running.
+        static const size_t activeCount() {
+            return s_activeAnimations.size();
+        }
+
+
         /// \brief constructor
         Animation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &position, const std::function<void(Animatable& ,const glm::vec3&,const  float, const float)> &interpolation);
 

@@ -92,6 +92,7 @@ namespace GameModel {
 
         ///\brief changes the player's life. Game over when life reaches zero
         void incrementLife(int amount);
+        void kill();
 
         ///\brief updates the player's score.
         inline void incrementScore(unsigned int points) { m_score += points; }

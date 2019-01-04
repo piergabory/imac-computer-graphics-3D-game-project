@@ -46,6 +46,8 @@ namespace GameModel {
                 newObjectsToLoadInScene = nextChunk();
             }
             updateEnemy(m_terrain.progress(1.f/m_UPDATES_PER_CHUNK));
+        } else {
+            if (m_playerDeathCallback) m_playerDeathCallback();
         }
 
         m_terrain.entityAt(m_player.position())->action(m_player);

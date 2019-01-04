@@ -55,6 +55,11 @@ namespace GameModel {
         std::shared_ptr<GraphicsEngine::Object3D> m_enemy;
 
 
+
+        // callbacks
+        std::function<void(void)> m_playerDeathCallback;
+
+
         // buffers
 
         /// \brief contains all the transformations the enemy has to perform to catch up with the player
@@ -96,6 +101,7 @@ namespace GameModel {
 
         void loadInChunkBuffer(Chunk* newBufferChunk);
 
+        
         // getter
 
         /// \brief getter on the character model
@@ -108,6 +114,11 @@ namespace GameModel {
         inline Terrain& terrain() { return m_terrain; }
         inline const Terrain& terrain() const { return m_terrain; }
 
+
+        // setter
+        inline void onPlayerDeath(std::function<void(void)> callback) {
+            m_playerDeathCallback = callback;
+        }
 
         // constructor
 

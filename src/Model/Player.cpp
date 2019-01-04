@@ -111,6 +111,10 @@ namespace GameModel {
             m_invicibility--;
     }
 
+    void Player::kill() {
+        m_life = 0;
+    }
+
 
     // constructor
     Player::Player(std::shared_ptr<GraphicsEngine::Object3D> obj):
