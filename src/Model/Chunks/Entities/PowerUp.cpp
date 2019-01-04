@@ -4,7 +4,7 @@ namespace GameModel
 {
 	void PowerUp::firstVisit(Player& player) {
         //Player regains life if he catches a power up
-		player.incrementLife(50);
+		//player.incrementLife(50);
 	}
 
 

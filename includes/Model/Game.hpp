@@ -8,6 +8,7 @@
 #pragma once
 
 #include <queue>
+#include <deque>
 
 #include "Player.hpp"
 #include "Terrain.hpp"
@@ -64,7 +65,7 @@ namespace GameModel {
 
         /// \brief contains all the transformations the enemy has to perform to catch up with the player
         /// If size is zero, the enemy is on the player model
-        std::queue<glm::vec3> m_enemyMoves;
+        std::deque<glm::vec3> m_enemyMoves;
 
         /// \brief pile of chunks to be loaded in terrain
         std::queue<Chunk*> m_chunkBuffer;
