@@ -22,7 +22,7 @@
 
 /// \brief describe camera behaviors states
 enum class CameraBehaviors {
-    FOLOW_PLAYER, FREE, LOCKED
+    FIRST_PERSON, THIRD_PERSON, FREE, LOCKED
 };
 
 /**

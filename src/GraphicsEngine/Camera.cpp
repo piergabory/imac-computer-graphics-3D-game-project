@@ -34,7 +34,14 @@ namespace GraphicsEngine {
     }
 
     void Camera::translate(const glm::vec3& direction) {
-        m_cameraPosition += glm::vec3(glm::inverse(*m_cameraTransform) * glm::vec4(direction,0));
+        switch (m_controlMode) {
+            case CameraControl::FLY:
+                m_cameraPosition += glm::vec3(glm::inverse(*m_cameraTransform) * glm::vec4(direction,0));
+                break;
+            case CameraControl::TURNTABLE:
+                m_cameraPosition += glm::vec3(glm::inverse(*m_cameraTransform) * glm::vec4(direction,0));
+                break;
+        }
         updateCameraTransformMatrix();
     }
 
@@ -48,14 +55,34 @@ namespace GraphicsEngine {
     }
 
     void Camera::rotate(const float angle, const glm::vec3 &direction) {
-        m_cameraDirection = glm::vec3(glm::rotate(glm::mat4(1), angle, direction) * glm::vec4(m_cameraDirection, 0));
+        switch (m_controlMode) {
+            case CameraControl::FLY :
+                m_cameraDirection = glm::vec3(glm::rotate(glm::mat4(1), angle, direction) * glm::vec4(m_cameraDirection, 0));
+                break;
+
+            case CameraControl::TURNTABLE :
+                m_cameraPosition = glm::vec3(glm::rotate(glm::mat4(1), angle, direction) * glm::vec4(m_cameraPosition, 0));
+                break;
+        }
         updateCameraTransformMatrix();
     }
 
     void Camera::resetPosition() {
-        m_cameraPosition = glm::vec3(0,0,0);
-        m_cameraDirection = glm::vec3(0,0,-1);
+        switchMode(m_controlMode);
         updateCameraTransformMatrix();
+    }
+
+    void Camera::switchMode(CameraControl mode) {
+        m_controlMode = mode;
+        switch(mode) {
+        case CameraControl::FLY:
+            m_cameraPosition = glm::vec3(0,0,0);
+            m_cameraDirection = glm::vec3(0,0,-1);
+        case CameraControl::TURNTABLE:
+            m_cameraPosition = glm::vec3(0,2,3);
+            m_cameraDirection = glm::vec3(0,0,0);
+            break;
+        }
     }
 
 }
