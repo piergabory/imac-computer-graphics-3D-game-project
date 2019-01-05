@@ -16,11 +16,11 @@ namespace GraphicsEngine {
         return m_elements;
     };
     
-    void Menu::add(std::function<void()> func, LocalFilePath texture_main, LocalFilePath texture_over){
+    void Menu::add(std::function<void()> func, LocalFilePath texture_main, LocalFilePath texture_hover){
         
-        std::function<void(Button*, unsigned char)> click = [func, texture_over](Button* target, unsigned char mouseButton) -> void {
-            std::shared_ptr<Texture> clickTexture = std::make_shared<Texture>(texture_over);
-            target->texture(clickTexture);
+        std::function<void(Button*, unsigned char)> click = [func](Button* target, unsigned char mouseButton) -> void {
+            
+            target->hover();
             func();
         };
         
@@ -28,7 +28,7 @@ namespace GraphicsEngine {
         std::shared_ptr<Button> button = std::make_shared<Button>(
                                  glm::vec2(-(btn_width/2), ypos),
                                  glm::vec2(btn_width, -btn_height),
-                                 std::make_shared<Texture>(texture_main),
+                                 std::make_shared<Texture>(texture_main),std::make_shared<Texture>(texture_hover),
                                  click
                                                                   );
         m_buttons.push_back(button);

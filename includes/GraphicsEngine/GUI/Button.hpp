@@ -41,22 +41,28 @@ namespace GraphicsEngine {
         /// Records the object's bounds defining points
         const glm::vec2 m_boundingBoxTopLeftCorner;
         const glm::vec2 m_boundingBoxBottomRightCorner;
+        
+        std::vector < std::shared_ptr<Texture> > m_textures;
+        std::shared_ptr<Texture> m_texture_next;
+        
 
         ///\brief  MouseUp handler, checks the bounds and calls the callback if true
         void mouseReleaseHandler(unsigned char button) override;
 
         ///\brief  returns true if the SDL mouse position is above the object
         bool checkBounds() const;
+        
+        bool isActive = false;
 
         /// Static integer vector keeping the window pixels dimentions, used to compute the mouse position.
         static glm::ivec2 s_windowPixelSize;
 
     public:
         ///\brief  constructor with image
-        Button(const glm::vec2 &position, const glm::vec2 &size, const LocalFilePath image, const std::function<void(Button*, unsigned char)> &callback);
+        Button(const glm::vec2 &position, const glm::vec2 &size, const LocalFilePath image_main, const LocalFilePath image_hover, const std::function<void(Button*, unsigned char)> &callback);
 
         ///\brief  constructor with texture
-        Button(const glm::vec2 &position, const glm::vec2 &size, const std::shared_ptr<Texture> sprite, const std::function<void(Button*, unsigned char)> &callback);
+        Button(const glm::vec2 &position, const glm::vec2 &size, const std::shared_ptr<Texture> sprite_main, const std::shared_ptr<Texture> sprite_hover, const std::function<void(Button*, unsigned char)> &callback);
 
         ///\brief  default constructor by copy
         Button(const Button &copy) = default;
@@ -65,6 +71,8 @@ namespace GraphicsEngine {
         static void initializeButtons(const glm::ivec2 &windowPixelSize);
         
         void click();
+        
+        void hover();
 
     };
 }
