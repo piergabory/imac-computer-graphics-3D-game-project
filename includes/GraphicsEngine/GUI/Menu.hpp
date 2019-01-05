@@ -50,6 +50,7 @@ namespace GraphicsEngine {
             double btn_margin = 0.1;
         
             void initializeButtons();
+            void select();
            
     };
 }

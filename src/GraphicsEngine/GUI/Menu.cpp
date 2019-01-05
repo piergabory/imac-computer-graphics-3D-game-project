@@ -8,6 +8,7 @@ namespace GraphicsEngine {
     Menu::Menu(std::shared_ptr<Texture> background) {
         m_elements.push_back(std::make_shared<Object2D>(glm::vec2(-1,1), glm::vec2(2,-2), background));
             initializeButtons();
+        select();
     };
     
     Menu::~Menu(){};
@@ -20,11 +21,10 @@ namespace GraphicsEngine {
         
         std::function<void(Button*, unsigned char)> click = [func](Button* target, unsigned char mouseButton) -> void {
             
-            target->hover();
             func();
         };
         
-        double ypos = 0.6 - ((double)(m_buttons.size()) * (btn_height+btn_margin));
+        double ypos = 0.8 - ((double)(m_buttons.size()) * (btn_height+btn_margin));
         std::shared_ptr<Button> button = std::make_shared<Button>(
                                  glm::vec2(-(btn_width/2), ypos),
                                  glm::vec2(btn_width, -btn_height),
@@ -37,33 +37,61 @@ namespace GraphicsEngine {
     }
     
     void Menu::next(){
-        m_currentButton++;
-        m_currentButton = std::min(m_currentButton, (int)m_buttons.size()-1);
+        if (m_currentButton >= m_buttons.size()-1){
+            m_currentButton = (int)m_buttons.size()-1;
+        } else {
+            select();
+            m_currentButton++;
+            select();
+        }
     }
     
     void Menu::previous(){
-        m_currentButton--;
-        m_currentButton = std::max( 0, m_currentButton);
+        if (m_currentButton <= 0){
+            m_currentButton = 0;
+        } else {
+            select();
+            m_currentButton--;
+            select();
+        }
     }
+    
     
     void Menu::enter(){
         std::shared_ptr<Button> button =  m_buttons[m_currentButton];
         button ->click();
     }
     
+    void Menu::select(){
+        m_buttons[m_currentButton]->hover();
+    };
+    
     void Menu::initializeButtons(){
         
-
-        std::function <void()> quit = [](){
-            std::cout << "quit game" << std::endl;
-        };
-        add(quit, LocalFilePath("assets/textures/test2.png"),LocalFilePath("assets/textures/test.png") );
-        
+        //RESUME
         std::function <void()> resume = [](){
             std::cout << "resume game" << std::endl;
         };
-        
         add(resume,LocalFilePath("assets/textures/test.png"), LocalFilePath("assets/textures/test2.png"));
+        
+        //SAVE
+        std::function <void()> save = [](){
+            std::cout << "save game" << std::endl;
+        };
+        add(save, LocalFilePath("assets/textures/test.png"),LocalFilePath("assets/textures/test2.png") );
+        
+        //LOAD
+        std::function <void()> load = [](){
+            std::cout << "load game" << std::endl;
+        };
+        add(load, LocalFilePath("assets/textures/test.png"),LocalFilePath("assets/textures/test2.png") );
+        
+        //QUIT
+        std::function <void()> quit = [](){
+            std::cout << "quit game" << std::endl;
+        };
+        add(quit, LocalFilePath("assets/textures/test.png"),LocalFilePath("assets/textures/test2.png") );
+
         
     }
 }
