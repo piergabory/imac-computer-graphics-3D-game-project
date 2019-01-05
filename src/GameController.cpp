@@ -138,52 +138,89 @@ void GameController::quitEventHandler() {
 
 // a déolacer dans l'EventManager
 void GameController::keyRealeaseHandler(const SDL_Keycode keycode) {
-    // check if debug shortcuts is activated (CTRL-SHIFT):
-    switch (keycode) {
-            // escape key
-        case SDLK_ESCAPE:
-            SDL_CaptureMouse(SDL_FALSE);
-            SDL_ShowCursor(SDL_ENABLE);
-            toggleMenu();
-            break;
-
-        case SDLK_z: m_currentGame->callInput(GameModel::Controls::UP); break;
-        case SDLK_q: m_currentGame->callInput(GameModel::Controls::LEFT); break;
-        case SDLK_d: m_currentGame->callInput(GameModel::Controls::RIGHT); break;
-        case SDLK_s: m_currentGame->callInput(GameModel::Controls::DOWN); break;
-
-        case SDLK_c:
-            switch (m_cameraBehavior) {
-                case CameraBehaviors::LOCKED:
-                    m_cameraBehavior = CameraBehaviors::FOLOW_PLAYER;
-                    std::cout << "Camera set to FOLOW PLAYER" << std::endl;
+    if (isPaused){
+        switch (keycode) {
+                case SDLK_RETURN:
+                    m_menu->enter();
                     break;
-
-                case CameraBehaviors::FOLOW_PLAYER:
-                    m_cameraBehavior = CameraBehaviors::FREE;
-                    std::cout << "Camera set to LOCKED" << std::endl;
+                
+                // escape key
+                case SDLK_ESCAPE:
+                    SDL_CaptureMouse(SDL_TRUE);
+                    SDL_ShowCursor(SDL_DISABLE);
+                    toggleMenu();
                     break;
-
-                case CameraBehaviors::FREE:
-                    m_cameraBehavior = CameraBehaviors::LOCKED;
-                    std::cout << "Camera set to FREE" << std::endl;
+                
+                case SDLK_z:
+                    m_menu->previous();
                     break;
-
-                default: assert(false && "Bad CameraBehavior enum");
-            }
-            break;
-
-        case SDLK_g:
-            std::cout << "Toggling Grid " << (m_debugGrid? "off" : "on") << std::endl;
-            if (m_debugGrid){
-                m_debugGrid.reset();
-                // GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
-            } else {
-                m_debugGrid = initializeDebugGrid();
-                GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
-            }
-            break;
+                
+            case SDLK_q:
+                    m_menu->previous();
+                    break;
+                
+                case SDLK_d:
+                    m_menu->next();
+                    break;
+               
+            case SDLK_s:
+                    m_menu->next();
+                    break;
+        }
     }
+    
+    else {
+        
+        // check if debug shortcuts is activated (CTRL-SHIFT):
+        switch (keycode) {
+            
+            // escape key
+            case SDLK_ESCAPE:
+                SDL_CaptureMouse(SDL_FALSE);
+                SDL_ShowCursor(SDL_ENABLE);
+                toggleMenu();
+                break;
+
+            case SDLK_z:
+                    m_currentGame->callInput(GameModel::Controls::UP);break;
+            case SDLK_q:
+                    m_currentGame->callInput(GameModel::Controls::LEFT);break;
+            case SDLK_d: m_currentGame->callInput(GameModel::Controls::RIGHT); break;
+            case SDLK_s: m_currentGame->callInput(GameModel::Controls::DOWN); break;
+
+            case SDLK_c:
+                switch (m_cameraBehavior) {
+                    case CameraBehaviors::LOCKED:
+                        m_cameraBehavior = CameraBehaviors::FOLOW_PLAYER;
+                        std::cout << "Camera set to FOLOW PLAYER" << std::endl;
+                        break;
+
+                    case CameraBehaviors::FOLOW_PLAYER:
+                        m_cameraBehavior = CameraBehaviors::FREE;
+                        std::cout << "Camera set to LOCKED" << std::endl;
+                        break;
+
+                    case CameraBehaviors::FREE:
+                        m_cameraBehavior = CameraBehaviors::LOCKED;
+                        std::cout << "Camera set to FREE" << std::endl;
+                        break;
+
+                    default: assert(false && "Bad CameraBehavior enum");
+                }
+                break;
+
+            case SDLK_g:
+                std::cout << "Toggling Grid " << (m_debugGrid? "off" : "on") << std::endl;
+                if (m_debugGrid){
+                    m_debugGrid.reset();
+                    // GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
+                } else {
+                    m_debugGrid = initializeDebugGrid();
+                    GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
+                }
+                break;
+            } //end of SWITCH
+        } //end of ELSE
 };
 
 

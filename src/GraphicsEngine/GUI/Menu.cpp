@@ -38,7 +38,7 @@ namespace GraphicsEngine {
     
     void Menu::next(){
         m_currentButton++;
-        m_currentButton = std::min(m_currentButton, (int)m_buttons.size());
+        m_currentButton = std::min(m_currentButton, (int)m_buttons.size()-1);
     }
     
     void Menu::previous(){

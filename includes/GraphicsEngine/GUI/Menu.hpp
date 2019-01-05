@@ -43,7 +43,7 @@ namespace GraphicsEngine {
         private :
             std::vector< std::shared_ptr<Button> > m_buttons;
             std::vector< std::shared_ptr<Object2D> > m_elements;
-            int m_currentButton;
+            int m_currentButton = 0;
         
             double btn_height = 0.3;
             double btn_width = 1.0;
