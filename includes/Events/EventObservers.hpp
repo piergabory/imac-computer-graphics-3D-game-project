@@ -37,9 +37,9 @@ namespace Events {
      */
     struct KeyboardEventObserver {
         // handles a key release from the user
-        virtual void keyRealeaseHandler(const SDL_Keycode keycode) {}
+        virtual void keyRealeaseHandler(const unsigned char keycode) {}
         // handles a key press from the user
-        virtual void keyDownHandler(const SDL_Keycode keycode) {}
+        virtual void keyDownHandler(const unsigned char keycode) {}
         
         // handles a set of keys
         virtual void keyPressHandler(const std::set<unsigned char> &pressedKeys) {}

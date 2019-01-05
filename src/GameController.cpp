@@ -132,7 +132,7 @@ void GameController::quitEventHandler() {
 
 
 // a déolacer dans l'EventManager
-void GameController::keyRealeaseHandler(const SDL_Keycode keycode) {
+void GameController::keyRealeaseHandler(const unsigned char keycode) {
     // check if debug shortcuts is activated (CTRL-SHIFT):
     switch (keycode) {
             // escape key
@@ -181,8 +181,8 @@ void GameController::keyRealeaseHandler(const SDL_Keycode keycode) {
 };
 
 
-void GameController::keyPressHandler(std::set<unsigned char> &pressedKeys) {
-    for (SDL_Keycode key : pressedKeys) {
+void GameController::keyPressHandler(const std::set<unsigned char> &pressedKeys) {
+    for (unsigned char key : pressedKeys) {
         cameraMoves(key);
     }
 }
@@ -208,7 +208,7 @@ void GameController::mouseReleaseHandler(const unsigned char button) {
 }
 
 
-void GameController::cameraMoves(const SDL_Keycode key) {
+void GameController::cameraMoves(const unsigned char key) {
     const float KEYBOARD_CAMERA_CONTROL_SPEED = 0.1;
     if (m_cameraBehavior == CameraBehaviors::FREE) switch(key) {
             // Up

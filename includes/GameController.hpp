@@ -85,7 +85,7 @@ private:
     static std::shared_ptr<GraphicsEngine::Object3D> createObject3D(GraphicsEngine::LocalFilePath &meshPath, GraphicsEngine::LocalFilePath &textureImagePath,GraphicsEngine::LocalFilePath &vertexShaderPath, GraphicsEngine::LocalFilePath &fragmentShaderPath);
 
     // control action
-    void cameraMoves(const SDL_Keycode key);
+    void cameraMoves(const unsigned char key);
 
 
 
@@ -97,8 +97,8 @@ private:
 
     /// \brief observer methods called by the event manager when a key is engaged
     /// Add/Removes the pressed key from the pressedKeys set.
-    void keyRealeaseHandler(const SDL_Keycode keycode) override;
-    void keyPressHandler(std::set<unsigned char> &pressedKeys) override;
+    void keyRealeaseHandler(const unsigned char keycode) override;
+    void keyPressHandler(const std::set<unsigned char> &pressedKeys)override;
 
     /// \brief observer methods called by the event manager when a mouse event is fired
     /// controls the camera orientation
