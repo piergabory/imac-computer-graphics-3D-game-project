@@ -11,6 +11,7 @@
 
 #include <memory>
 #include <vector>
+#include <algorithm> //for clamp
 #include "Button.hpp"
 
 namespace GraphicsEngine {
@@ -28,6 +29,11 @@ namespace GraphicsEngine {
         
             void add(std::function<void()> func, LocalFilePath texture_main, LocalFilePath texture_over); ///TODO check if can be optimized (reference)
         
+            void next();
+            void previous();
+        
+            void enter();
+        
             ///\brief  constructor
             Menu(std::shared_ptr<Texture> sprite);
             ~Menu();
@@ -35,8 +41,9 @@ namespace GraphicsEngine {
             
         
         private :
-            std::vector< std::shared_ptr<Object2D> > m_buttons;
-            std::shared_ptr<Object2D> m_overlay;
+            std::vector< std::shared_ptr<Button> > m_buttons;
+            std::vector< std::shared_ptr<Object2D> > m_elements;
+            int m_currentButton;
         
             double btn_height = 0.3;
             double btn_width = 1.0;

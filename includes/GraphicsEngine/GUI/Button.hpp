@@ -63,6 +63,8 @@ namespace GraphicsEngine {
 
         ///\brief  Sets the static member s_windowPixelSize, needs to be called before any instantiations
         static void initializeButtons(const glm::ivec2 &windowPixelSize);
+        
+        void click();
 
     };
 }

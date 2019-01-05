@@ -30,7 +30,11 @@ namespace GraphicsEngine {
         // if in bounds, calls the callback
         if (checkBounds()) m_onClickCallback(this, button);
     }
-
+    
+    
+    void Button::click(){
+        m_onClickCallback(this, (unsigned char) 0);
+    };
 
 
     Button::Button(const glm::vec2 &position, const glm::vec2 &size, const LocalFilePath image, const std::function<void(Button*, const unsigned char)> &callback):

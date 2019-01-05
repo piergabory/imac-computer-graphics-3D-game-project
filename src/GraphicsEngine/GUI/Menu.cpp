@@ -6,16 +6,14 @@
 
 namespace GraphicsEngine {
     Menu::Menu(std::shared_ptr<Texture> background) {
-        m_overlay = std::make_shared<Object2D>(glm::vec2(-1,1), glm::vec2(2,-2), background);
+        m_elements.push_back(std::make_shared<Object2D>(glm::vec2(-1,1), glm::vec2(2,-2), background));
             initializeButtons();
     };
     
     Menu::~Menu(){};
     
     std::vector< std::shared_ptr<Object2D> > Menu::elements(){
-            std::vector< std::shared_ptr<Object2D> > elements = m_buttons;
-            elements.push_back(m_overlay);
-        return elements;
+        return m_elements;
     };
     
     void Menu::add(std::function<void()> func, LocalFilePath texture_main, LocalFilePath texture_over){
@@ -27,14 +25,30 @@ namespace GraphicsEngine {
         };
         
         double ypos = 0.6 - ((double)(m_buttons.size()) * (btn_height+btn_margin));
-        
-        m_buttons.push_back(std::make_shared<Button>(
-                                                     glm::vec2(-(btn_width/2), ypos),
-                                                     glm::vec2(btn_width, -btn_height),
-                                                     std::make_shared<Texture>(texture_main),
-                                                     click
-                                                     ));
+        std::shared_ptr<Button> button = std::make_shared<Button>(
+                                 glm::vec2(-(btn_width/2), ypos),
+                                 glm::vec2(btn_width, -btn_height),
+                                 std::make_shared<Texture>(texture_main),
+                                 click
+                                                                  );
+        m_buttons.push_back(button);
+        m_elements.push_back(button);
 
+    }
+    
+    void Menu::next(){
+        m_currentButton++;
+        m_currentButton = std::min(m_currentButton, (int)m_buttons.size());
+    }
+    
+    void Menu::previous(){
+        m_currentButton--;
+        m_currentButton = std::max( 0, m_currentButton);
+    }
+    
+    void Menu::enter(){
+        std::shared_ptr<Button> button =  m_buttons[m_currentButton];
+        button ->click();
     }
     
     void Menu::initializeButtons(){
