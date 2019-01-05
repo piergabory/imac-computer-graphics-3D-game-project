@@ -18,25 +18,34 @@ namespace GameModel {
         if (previousOrientation != m_terrain.facing())
             m_player.resetPosition();
         m_chunkCycle ++;
+
+        m_enemyMoves.back().w = glm::radians((float)previousOrientation - (float)m_terrain.facing()) / m_UPDATES_PER_CHUNK;
+
         return newObjectsToLoadInScene;
     }
 
 
 
     void Game::updateEnemy(const glm::vec3 &terrainMovement) {
-        if(m_enemyMoves.size() * 2 < m_player.life()) m_enemyMoves.push_back(terrainMovement);
-        if(m_enemyMoves.size() * 2 > m_player.life()) m_enemyMoves.pop_front();
+        if(m_enemyMoves.empty()) return;
 
+        if(m_enemyMoves.size() * 2 < m_player.life()) {
+            m_enemyMoves.push_back(glm::vec4(terrainMovement,m_enemyMoves.back().w));
+        }
+
+        if(m_enemyMoves.size() * 2 >= m_player.life()) m_enemyMoves.pop_front();
 
         // place enemy on player
         m_enemy->place(glm::vec3(0,0,0));
 
         // move back in place using the move pile
         // dirty but robust technique. the position is reset relative to the player every time.
-        for (glm::vec3 move : m_enemyMoves) {
-            m_enemy->globalTranslate(move);
+        for (glm::vec4 move : m_enemyMoves) {
+            m_enemy->globalTranslate(glm::vec3(move));
         }
 
+        // rotates the enemy in turns.
+        m_enemy->rotate(m_enemyMoves.front().w , glm::vec3(0,1,0));
     }
 
 
@@ -49,12 +58,12 @@ namespace GameModel {
         m_player.update();
 
         // when chunk frame loops back to 0, we move to the next chunk
+        updateEnemy(m_terrain.progress(1.f/m_UPDATES_PER_CHUNK));
         if(m_player.life() > 0) {
             if (m_chunkframe == 0) {
                 m_terrain.entityAt(m_player.position())->lastVisit(m_player);
                 newObjectsToLoadInScene = nextChunk();
             }
-            updateEnemy(m_terrain.progress(1.f/m_UPDATES_PER_CHUNK));
         } else {
             if (m_playerDeathCallback) m_playerDeathCallback();
         }
@@ -97,7 +106,9 @@ namespace GameModel {
     Game::Game() :
         m_player(loadPlayerObject()),
         m_enemy(loadEnemyObject())
-    {}
+    {
+        m_enemyMoves.emplace_back(0);
+    }
 
     
     // destructor
