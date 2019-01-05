@@ -12,6 +12,12 @@
 #include "Player.hpp"
 #include "Entity.hpp"
 
+#include "Jump.hpp"
+#include "Slide.hpp"
+#include "Wall.hpp"
+#include "PowerUp.hpp"
+#include "Coin.hpp"
+
 namespace GameModel {
 
     /**

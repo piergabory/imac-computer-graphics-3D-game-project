@@ -15,7 +15,19 @@ namespace GraphicsEngine {
 
 
     void Camera::updateCameraTransformMatrix() {
-        *m_cameraTransform = glm::lookAt(m_cameraPosition + m_cameraDirection, m_cameraPosition, glm::vec3(0,1,0));
+        switch (m_controlMode) {
+            case CameraControl::FLY:
+                *m_cameraTransform = glm::lookAt(m_cameraPosition, m_cameraPosition + m_cameraDirection, glm::vec3(0,1,0));
+                break;
+
+            case CameraControl::TURNTABLE:
+                glm::vec3 eye(m_cameraDirection.x * (1 + m_cameraPosition.z),
+                              m_cameraPosition.y,
+                              m_cameraDirection.z * (1 + m_cameraPosition.z));
+
+                *m_cameraTransform = glm::lookAt(eye, glm::vec3(0), glm::vec3(0,1,0));
+                break;
+        }
     }
 
 
@@ -53,9 +65,13 @@ namespace GraphicsEngine {
     }
 
     void Camera::resetPosition() {
-        m_cameraPosition = glm::vec3(0,0,0);
-        m_cameraDirection = glm::vec3(0,0,-1);
+        switchMode(m_controlMode);
         updateCameraTransformMatrix();
+    }
+
+    void Camera::switchMode(CameraControl mode) {
+        m_controlMode = mode;
+        updateProjectionMatrix();
     }
 
 }

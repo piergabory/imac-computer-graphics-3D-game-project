@@ -5,16 +5,9 @@
 
 namespace GameModel {
 
-    void Terrain::enterChunk(Player &player) {
-        activeChunk()->entityAt(player.position())->onEnter();
+    Entity* Terrain::entityAt(Position playerPosition) {
+        return activeChunk()->entityAt(playerPosition);
     }
-
-
-
-    void Terrain::testAction(Player &player) {
-        activeChunk()->entityAt(player.position())->action();
-    }
-
 
 
     void Terrain::loadChunk(Chunk *chunkToLoad) {
@@ -30,9 +23,9 @@ namespace GameModel {
 
 
 
-    void Terrain::progress(const float progress){
+    glm::vec3 Terrain::progress(const float progress){
         // creates a rotation matrix from the front's chunk orientation and creates the translation vector
-        glm::vec3 translationVector = glm::vec3(glm::rotate(glm::mat4(1), m_chunks.front()->orientation(), glm::vec3(0,1,0)) * glm::vec4(-progress * m_chunks.front()->exitPosition(), 1.f));
+        glm::vec3 translationVector = glm::vec3(glm::rotate(glm::mat4(1), activeChunk()->orientation(), glm::vec3(0,1,0)) * glm::vec4(-progress * activeChunk()->exitPosition(), 1.f));
 
         // applies translation on all entities
         for (std::deque<std::unique_ptr<Chunk>>::iterator chunkIterator = m_chunks.begin(); chunkIterator != m_chunks.end(); ++chunkIterator) {
@@ -40,12 +33,42 @@ namespace GameModel {
         }
 
         m_nextLoadedChunkPosition += translationVector;
+        return translationVector;
+    }
+
+
+    
+    std::set< std::shared_ptr<GraphicsEngine::Object3D> > Terrain::preloadInitialChunks() {
+        std::set< std::shared_ptr<GraphicsEngine::Object3D> > objectsToBeAddedInScene;
+        std::set< std::shared_ptr<GraphicsEngine::Object3D> > objectsInNewChunk;
+        Chunk* newChunkPointer;
+
+        for (int i = -m_CHUNK_COUNT_AFTER_PLAYER; i < m_CHUNK_COUNT_BEFORE_PLAYER; ++i) {
+            newChunkPointer = new Chunk();
+            // collect 3D objects and insert them in the set
+            objectsInNewChunk = newChunkPointer->objects();
+            for (std::shared_ptr<GraphicsEngine::Object3D> object : objectsInNewChunk) {
+                objectsToBeAddedInScene.insert(object);
+            }
+
+            // insert new chunk
+            loadChunk(newChunkPointer);
+        }
+
+        // if there isn't enough chunks behind the player, move the terrain forward one chunk.
+        // cant just do progress(m_chunkcountafter..) because preloaded chunks might eventually contain turn chunks
+        for (int i = 0; i < m_CHUNK_COUNT_AFTER_PLAYER; ++i) {
+            progress(1.0);
+        }
+
+        return objectsToBeAddedInScene;
     }
 
 
 
+
     const CardinalDirections Terrain::facing() const {
-        int orientation = ((int)glm::degrees(activeChunk()->orientation()) % 180);
+        int orientation = ((int) glm::degrees(activeChunk()->orientation()) % 180);
         return CardinalDirections(orientation);
     }
 

@@ -67,7 +67,7 @@ namespace GraphicsEngine {
 
     Animation makeLinearPlace(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &newPosition) {
         return Animation(object, duration, newPosition, [](Animatable& object, const glm::vec3 &newPosition, const float step, const float progress) -> void {
-            object.place((object.position() - newPosition) * step);
+            object.place(object.position() * ( 1 - progress) + newPosition * progress);
         });
     }
 
@@ -112,5 +112,28 @@ namespace GraphicsEngine {
         });
     }
 
+
+    Animation makeDeathFallAnimation(const std::shared_ptr<Animatable> &object, unsigned int duration) {
+        return Animation(object, duration, glm::vec3(), [](Animatable &object, const glm::vec3 &unused, const float step, const float progress) {
+            const float FALL_DISTANCE = 32.0;
+            const float START_FALLING = 0.3;
+
+            glm::vec3 movement;
+            movement = (progress < START_FALLING)? glm::vec3(0,0,step) : glm::vec3(0, -step * 2 * (progress - START_FALLING), step);
+            object.translate(FALL_DISTANCE * movement);
+        });
+    }
+
+
+    Animation makeDamageBlinkAnimation(const std::shared_ptr<Animatable> &object, unsigned int duration) {
+        return Animation(object, duration, glm::vec3(), [](Animatable &object, const glm::vec3 &unused, const float step, const float progress) {
+            const glm::vec3 HIDE_TRANSLATION(1000);
+            unsigned int frameIndex = round(progress / step);
+            if (frameIndex % 3 == 0) {
+                const float direction = (frameIndex % 6 == 0) ? 1.f : -1.f;
+                object.globalTranslate(direction * HIDE_TRANSLATION);
+            }
+        });
+     }
 }
 

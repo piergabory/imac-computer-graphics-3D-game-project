@@ -21,6 +21,9 @@
 
 namespace GraphicsEngine {
 
+    enum class CameraControl {
+        TURNTABLE, FLY
+    };
 
     /**
      * CAMERA CLASS
@@ -40,6 +43,9 @@ namespace GraphicsEngine {
         // also defines the sampling of the zbuffer
         float m_minRenderingDistance;
         float m_maxRenderingDistance;
+
+        // define the rotation and translation behavior
+        CameraControl m_controlMode = CameraControl::TURNTABLE;
         
         // keeps the matrix around so we only have to
         // compute it when the camera moves
@@ -77,6 +83,9 @@ namespace GraphicsEngine {
 
         // reset camera to the world center.
         void resetPosition();
+
+        // change camera control mode
+        void switchMode(CameraControl mode);
         
         // getter
         inline const std::shared_ptr<glm::mat4> projectionMatrix() const {
