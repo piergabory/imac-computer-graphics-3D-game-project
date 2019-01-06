@@ -72,25 +72,25 @@ namespace GraphicsEngine {
         std::function <void()> resume = [](){
             std::cout << "resume game" << std::endl;
         };
-        add(resume,LocalFilePath("assets/textures/test.png"), LocalFilePath("assets/textures/test2.png"));
+        add(resume,LocalFilePath("assets/textures/button_start1.png"), LocalFilePath("assets/textures/button_start2.png"));
         
         //SAVE
         std::function <void()> save = [](){
             std::cout << "save game" << std::endl;
         };
-        add(save, LocalFilePath("assets/textures/test.png"),LocalFilePath("assets/textures/test2.png") );
+        add(save, LocalFilePath("assets/textures/button_load1.png"),LocalFilePath("assets/textures/button_load2.png") );
         
         //LOAD
         std::function <void()> load = [](){
             std::cout << "load game" << std::endl;
         };
-        add(load, LocalFilePath("assets/textures/test.png"),LocalFilePath("assets/textures/test2.png") );
+        add(load, LocalFilePath("assets/textures/button_start1.png"),LocalFilePath("assets/textures/button_start2.png") );
         
         //QUIT
         std::function <void()> quit = [](){
             std::cout << "quit game" << std::endl;
         };
-        add(quit, LocalFilePath("assets/textures/test.png"),LocalFilePath("assets/textures/test2.png") );
+        add(quit, LocalFilePath("assets/textures/button_start1.png"),LocalFilePath("assets/textures/button_start2.png") );
 
         
     }

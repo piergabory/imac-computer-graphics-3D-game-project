@@ -45,9 +45,9 @@ namespace GraphicsEngine {
             std::vector< std::shared_ptr<Object2D> > m_elements;
             int m_currentButton = 0;
         
-            double btn_height = 0.3;
+            double btn_height = 0.33;
             double btn_width = 1.0;
-            double btn_margin = 0.1;
+            double btn_margin = 0.05;
         
             void initializeButtons();
             void select();
