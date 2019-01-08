@@ -84,15 +84,12 @@ namespace Events {
                         m_pKeyboardEventsObserver[i]->keyDownHandler(event.key.keysym.sym);
                       }
                       m_pressedKeys.insert(event.key.keysym.sym);
-
-                      //m_pKeyboardEventsObserver->keyDownHandler(event.key.keysym.sym);
                       break;
                     case SDL_KEYUP:
                       for(unsigned int i=0; i<m_pKeyboardEventsObserver.size(); i++){
                         m_pKeyboardEventsObserver[i]->keyRealeaseHandler(event.key.keysym.sym);
                       }
                       m_pressedKeys.erase(event.key.keysym.sym);
-                      //m_pKeyboardEventsObserver->keyRealeaseHandler(event.key.keysym.sym);
                       break;
                     default: break;
                 }
