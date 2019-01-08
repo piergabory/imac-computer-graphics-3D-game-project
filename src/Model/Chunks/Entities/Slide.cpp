@@ -14,7 +14,7 @@ namespace GameModel {
     std::unique_ptr<GraphicsEngine::Object3D> Slide::s_entityObject;
 
     void Slide::loadObject() {
-        s_entityObject = std::unique_ptr<GraphicsEngine::Object3D>(makeObject("assets/models/cube_slide.obj", "assets/textures/cubemap_slide.png", "shaders/perspective.vs.glsl", "shaders/flatTexture.fs.glsl"));
+        s_entityObject = std::unique_ptr<GraphicsEngine::Object3D>(makeObject("assets/models/road_crouch.obj", "assets/textures/road_crouch.png", "shaders/perspective.vs.glsl", "shaders/flatTexture.fs.glsl"));
     }
     
 }

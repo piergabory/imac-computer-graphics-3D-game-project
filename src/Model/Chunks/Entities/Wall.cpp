@@ -12,7 +12,7 @@ namespace GameModel {
     std::unique_ptr<GraphicsEngine::Object3D> Wall::s_entityObject;
 
     void Wall::loadObject() {
-        s_entityObject = std::unique_ptr<GraphicsEngine::Object3D>(makeObject("assets/models/cube_wall.obj", "assets/textures/cubemap_wall.png", "shaders/perspective.vs.glsl", "shaders/flatTexture.fs.glsl"));
+        s_entityObject = std::unique_ptr<GraphicsEngine::Object3D>(makeObject("assets/models/road_wall.obj", "assets/textures/road.png", "shaders/perspective.vs.glsl", "shaders/flatTexture.fs.glsl"));
     }
     
 }

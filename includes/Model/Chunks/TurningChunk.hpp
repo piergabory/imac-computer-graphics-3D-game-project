@@ -24,13 +24,16 @@ namespace GameModel {
         /// \brief direction of the turning chunk (LEFT, RIGHT)
         const TurnDirection m_direction;
 
+        const float m_ENTITY_WIDTH = 2;
+        const float m_ENTITY_LENGTH = 6;
+
     public:
         // getters
         /// \brief point coordinates of where the next chunk can connect to
         inline virtual const glm::vec3 exitPosition() const {
             switch(m_direction) {
-                case TurnDirection::LEFT: return glm::vec3(-3,0,3);
-                case TurnDirection::RIGHT: return glm::vec3(3,0,3);
+                case TurnDirection::LEFT: return glm::vec3(-m_ENTITY_LENGTH/m_ENTITY_WIDTH,0,m_ENTITY_LENGTH/m_ENTITY_WIDTH);
+                case TurnDirection::RIGHT: return glm::vec3(m_ENTITY_LENGTH/m_ENTITY_WIDTH,0,m_ENTITY_LENGTH/m_ENTITY_WIDTH);
             }
         }
 

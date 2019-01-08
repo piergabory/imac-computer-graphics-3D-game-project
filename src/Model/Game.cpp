@@ -121,8 +121,8 @@ namespace GameModel {
 
         // define resources paths
         const GraphicsEngine::LocalFilePath
-        PLAYER_MESH("assets/models/monkey1.obj"),
-        PLAYER_TEXTURE("assets/textures/test.png"),
+        PLAYER_MESH("assets/models/player.obj"),
+        PLAYER_TEXTURE("assets/textures/player.png"),
         VERTEX_SHADER("shaders/perspective.vs.glsl"),
         FRAGMENT_SHADER("shaders/flatTexture.fs.glsl");
 
@@ -141,8 +141,8 @@ namespace GameModel {
 
         // define resources paths
         const GraphicsEngine::LocalFilePath
-        PLAYER_MESH("assets/models/monkey1.obj"),
-        PLAYER_TEXTURE("assets/textures/test.png"),
+        PLAYER_MESH("assets/models/enemy.obj"),
+        PLAYER_TEXTURE("assets/textures/enemy.png"),
         VERTEX_SHADER("shaders/perspective.vs.glsl"),
         FRAGMENT_SHADER("shaders/flatTexture.fs.glsl");
 
