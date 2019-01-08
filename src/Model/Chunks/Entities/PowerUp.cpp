@@ -11,6 +11,6 @@ namespace GameModel
     std::unique_ptr<GraphicsEngine::Object3D> PowerUp::s_entityObject;
 
     void PowerUp::loadObject() {
-        s_entityObject = std::unique_ptr<GraphicsEngine::Object3D>(makeObject("assets/models/cube_powerup.obj", "assets/textures/cubemap_powerup.png", "shaders/perspective.vs.glsl", "shaders/flatTexture.fs.glsl"));
+        s_entityObject = std::unique_ptr<GraphicsEngine::Object3D>(makeObject("assets/models/road.obj", "assets/textures/legacy/cubemap_powerup.png", "shaders/perspective.vs.glsl", "shaders/flatTexture.fs.glsl"));
     }
 }

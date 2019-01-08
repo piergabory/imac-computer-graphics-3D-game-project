@@ -2,12 +2,6 @@
 
 namespace GameModel {
 
-  // static const floats can only be initialized in source file ( https://stackoverflow.com/a/2454082 )
-    const float Chunk::s_ENTITY_WIDTH = 2;
-    const float Chunk::s_ENTITY_LENGTH = 2;
-
-
-
     Entity* Chunk::entityAt(Position position) {
         switch(position) {
             case Position::LEFT: return left.get();
@@ -64,9 +58,9 @@ namespace GameModel {
 
     Chunk::Chunk(Entity* leftEntity, Entity* middleEntity, Entity* rightEntity):
     left(leftEntity), middle(middleEntity), right(rightEntity) {
-        left->object()->translate(glm::vec3(-s_ENTITY_WIDTH, 0.f, 0.f));
+        left->object()->translate(glm::vec3(-m_ENTITY_WIDTH, 0.f, 0.f));
         middle->object()->translate(glm::vec3(0.f, 0.f, 0.f));
-        right->object()->translate(glm::vec3(s_ENTITY_WIDTH, 0.f, 0.f));
+        right->object()->translate(glm::vec3(m_ENTITY_WIDTH, 0.f, 0.f));
     }
 
 

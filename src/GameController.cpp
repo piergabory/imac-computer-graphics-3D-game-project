@@ -300,8 +300,8 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() 
 
 // make skybox
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createSkyBox() {
-    GraphicsEngine::LocalFilePath chunkmesh("assets/models/skyboxtest.obj");
-    GraphicsEngine::LocalFilePath chunktex("assets/textures/cubemap_skybox.png");
+    GraphicsEngine::LocalFilePath chunkmesh("assets/models/legacy/skyboxtest.obj");
+    GraphicsEngine::LocalFilePath chunktex("assets/textures/legacy/cubemap_skybox.png");
     GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
     GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
     return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
@@ -310,8 +310,8 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createSkyBox() {
 
 // make chunk
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
-    GraphicsEngine::LocalFilePath chunkmesh("assets/models/cube.obj");
-    GraphicsEngine::LocalFilePath chunktex("assets/textures/cubemap_a.png");
+    GraphicsEngine::LocalFilePath chunkmesh("assets/models/legacy/cube.obj");
+    GraphicsEngine::LocalFilePath chunktex("assets/textures/legacy/cubemap_a.png");
     GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
     GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
 

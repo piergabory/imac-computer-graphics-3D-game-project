@@ -31,9 +31,8 @@ namespace GameModel {
     private:
         /// \brief Entity dimentions
         /// \todo replace with dynamically determined value from the Entity class
-        // static const floats can only be initialized in source file ( https://stackoverflow.com/a/2454082 )
-        static const float s_ENTITY_WIDTH;
-        static const float s_ENTITY_LENGTH;
+        const float m_ENTITY_WIDTH = 2;
+        const float m_ENTITY_LENGTH = 6;
 
         // properties
         /// \brief Entity reference pointers.
@@ -70,7 +69,7 @@ namespace GameModel {
         std::set< std::shared_ptr<GraphicsEngine::Object3D> > objects();
 
         /// \brief point coordinates of where the next chunk can connect to
-        inline virtual const glm::vec3 exitPosition() const { return glm::vec3(0, 0, s_ENTITY_WIDTH);}
+        inline virtual const glm::vec3 exitPosition() const { return glm::vec3(0, 0, m_ENTITY_LENGTH);}
 
         /// \brief Radians angle value of the orientation of the next chunk relative to this chunk.
         inline virtual const float exitOrientation() const { return 0; }
