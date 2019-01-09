@@ -25,7 +25,7 @@ void GameController::initializeScene() {
     std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
     m_skybox = createSkyBox();
     m_chunk = createChunk();
-    createMenu();
+ 
     createCursor();
 
     // skybox max scale before clipping out of far-field
@@ -75,7 +75,7 @@ bool GameController::loop() {
     const float FRAMERATE = 60;
 
     // compute current chunk progress
-    if (!isPaused) {
+    if (m_menu == nullptr) {
         m_chunkframe ++;
         m_chunkframe %= m_CHUNK_FRAME_DURATION;
 
@@ -138,7 +138,8 @@ void GameController::quitEventHandler() {
 
 // a déolacer dans l'EventManager
 void GameController::keyRealeaseHandler(const SDL_Keycode keycode) {
-    if (isPaused){
+    if (m_menu != nullptr){
+        
         switch (keycode) {
                 case SDLK_RETURN:
                     m_menu->enter();
@@ -174,6 +175,7 @@ void GameController::keyRealeaseHandler(const SDL_Keycode keycode) {
         // check if debug shortcuts is activated (CTRL-SHIFT):
         switch (keycode) {
             
+                
             // escape key
             case SDLK_ESCAPE:
                 SDL_CaptureMouse(SDL_FALSE);
@@ -360,16 +362,15 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
 
 
 void GameController::createMenu(){
-    m_menu = std::make_shared<GraphicsEngine::Menu>(std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/overlaytest.png")));
-    
+    m_menu.reset(new GraphicsEngine::Menu(std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/overlaytest.png"))));
 }
 
 void GameController::toggleMenu(){
-    isPaused = !isPaused;
-    if (isPaused) {
+    if (!m_menu) {
+        createMenu();
         GraphicsEngine::Controller::instance()->activeGUI()->add(m_menu->elements());
     } else {
-        GraphicsEngine::Controller::instance()->activeGUI()->remove(m_menu->elements());
+        m_menu.reset(nullptr);
     }
 }
 

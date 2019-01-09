@@ -65,14 +65,8 @@ private:
     std::shared_ptr<GraphicsEngine::Object3D> m_skybox;
     std::shared_ptr<GraphicsEngine::Object3D> m_chunk;
     
-    std::shared_ptr<GraphicsEngine::Menu> m_menu;
+    std::unique_ptr<GraphicsEngine::Menu> m_menu = nullptr;
     std::shared_ptr<GraphicsEngine::Object2D> m_menucursor;
-   
-    std::shared_ptr<GraphicsEngine::Button> m_resumebutton;
-    std::shared_ptr<GraphicsEngine::Button> m_restartbutton;
-    std::shared_ptr<GraphicsEngine::Button> m_quitbutton;
-    
-    bool isPaused = false;
 
 
     // Model instance
