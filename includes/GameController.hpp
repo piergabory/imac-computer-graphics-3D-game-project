@@ -60,7 +60,7 @@ private:
     std::shared_ptr<GraphicsEngine::Object3D> m_debugGrid;
     std::shared_ptr<GraphicsEngine::Object3D> m_skybox;
     std::shared_ptr<GraphicsEngine::Object3D> m_chunk;
-    std::shared_ptr<GraphicsEngine::Object3D> m_water;
+
 
 
     // Model instance

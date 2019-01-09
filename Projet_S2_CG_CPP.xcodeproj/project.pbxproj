@@ -84,6 +84,47 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D41DC3BA21E67D1F00218DED /* road_crouch.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_crouch.obj; sourceTree = "<group>"; };
+		D41DC3BB21E67D1F00218DED /* road.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road.obj; sourceTree = "<group>"; };
+		D41DC3BC21E67D1F00218DED /* road_jump.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_jump.obj; sourceTree = "<group>"; };
+		D41DC3BD21E67D1F00218DED /* road_wall.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_wall.obj; sourceTree = "<group>"; };
+		D41DC3BE21E67D1F00218DED /* player.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = player.obj; sourceTree = "<group>"; };
+		D41DC3BF21E67D1F00218DED /* water.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = water.obj; sourceTree = "<group>"; };
+		D41DC3C121E67D1F00218DED /* cube_coin.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube_coin.obj; sourceTree = "<group>"; };
+		D41DC3C221E67D1F00218DED /* cube_slide.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube_slide.obj; sourceTree = "<group>"; };
+		D41DC3C321E67D1F00218DED /* cube_wall.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube_wall.obj; sourceTree = "<group>"; };
+		D41DC3C421E67D1F00218DED /* cube_powerup.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube_powerup.obj; sourceTree = "<group>"; };
+		D41DC3C521E67D1F00218DED /* cube.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube.obj; sourceTree = "<group>"; };
+		D41DC3C621E67D1F00218DED /* skyboxtest.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = skyboxtest.obj; sourceTree = "<group>"; };
+		D41DC3C721E67D1F00218DED /* turn.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = turn.obj; sourceTree = "<group>"; };
+		D41DC3C821E67D1F00218DED /* monkey1.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = monkey1.obj; sourceTree = "<group>"; };
+		D41DC3C921E67D1F00218DED /* cube_jump.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube_jump.obj; sourceTree = "<group>"; };
+		D41DC3CA21E67D1F00218DED /* road_left.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_left.obj; sourceTree = "<group>"; };
+		D41DC3CB21E67D1F00218DED /* wall.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = wall.obj; sourceTree = "<group>"; };
+		D41DC3CC21E67D1F00218DED /* enemy.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = enemy.obj; sourceTree = "<group>"; };
+		D41DC3CD21E67D2000218DED /* skybox.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = skybox.obj; sourceTree = "<group>"; };
+		D41DC3CE21E67D2000218DED /* turn.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = turn.obj; sourceTree = "<group>"; };
+		D41DC3CF21E67D2000218DED /* turn_left.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = turn_left.obj; sourceTree = "<group>"; };
+		D41DC3D021E67D2000218DED /* turn_right.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = turn_right.obj; sourceTree = "<group>"; };
+		D41DC3D121E67D5600218DED /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
+		D41DC3D421E67D5600218DED /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
+		D41DC3D521E67D5600218DED /* road_turn_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road_turn_right.png; sourceTree = "<group>"; };
+		D41DC3D621E67D5600218DED /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road.png; sourceTree = "<group>"; };
+		D41DC3D821E67D5600218DED /* road_crouch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road_crouch.png; sourceTree = "<group>"; };
+		D41DC3D921E67D5600218DED /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
+		D41DC3DA21E67D5600218DED /* road_turn_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road_turn_left.png; sourceTree = "<group>"; };
+		D41DC3E421E67D5600218DED /* cubemap_jump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cubemap_jump.png; sourceTree = "<group>"; };
+		D41DC3E521E67D5600218DED /* cubemap_powerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cubemap_powerup.png; sourceTree = "<group>"; };
+		D41DC3E621E67D5600218DED /* cubemap_slide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cubemap_slide.png; sourceTree = "<group>"; };
+		D41DC3E721E67D5600218DED /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		D41DC3E821E67D5600218DED /* cubemap_skybox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cubemap_skybox.png; sourceTree = "<group>"; };
+		D41DC3E921E67D5600218DED /* cubemap_skybox.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cubemap_skybox.jpg; sourceTree = "<group>"; };
+		D41DC3EA21E67D5600218DED /* cubemap_coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cubemap_coin.png; sourceTree = "<group>"; };
+		D41DC3EB21E67D5600218DED /* cubemap_right_turn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cubemap_right_turn.png; sourceTree = "<group>"; };
+		D41DC3EC21E67D5600218DED /* cubemap_left_turn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cubemap_left_turn.png; sourceTree = "<group>"; };
+		D41DC3ED21E67D5600218DED /* cubemap_wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cubemap_wall.png; sourceTree = "<group>"; };
+		D41DC3EE21E67D5600218DED /* cubemap_a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cubemap_a.png; sourceTree = "<group>"; };
+		D41DC3EF21E67D5600218DED /* skybox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skybox.png; sourceTree = "<group>"; };
 		D43BBE1221E5CDC70035A8CC /* lighting.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = lighting.fs.glsl; sourceTree = "<group>"; };
 		D44D288821C081E400492876 /* flatColor.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = flatColor.fs.glsl; sourceTree = "<group>"; };
 		D46A496521A0C5130096F02F /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
@@ -169,19 +210,11 @@
 		D4A0BD1521DBB46B00BC650B /* Jump.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Jump.cpp; sourceTree = "<group>"; };
 		D4A0BD1621DBB46B00BC650B /* Slide.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Slide.cpp; sourceTree = "<group>"; };
 		D4A0BD1821DBB46B00BC650B /* Wall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wall.cpp; sourceTree = "<group>"; };
-		D4A0BD2421DBF05C00BC650B /* cube_slide.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube_slide.obj; sourceTree = "<group>"; };
-		D4A0BD2521DBF05C00BC650B /* cube_wall.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube_wall.obj; sourceTree = "<group>"; };
-		D4A0BD2621DBF05C00BC650B /* cube.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube.obj; sourceTree = "<group>"; };
-		D4A0BD2721DBF05C00BC650B /* skyboxtest.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = skyboxtest.obj; sourceTree = "<group>"; };
 		D4A0BD2821DBF05C00BC650B /* turn.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = turn.obj; sourceTree = "<group>"; };
-		D4A0BD2921DBF05C00BC650B /* monkey1.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = monkey1.obj; sourceTree = "<group>"; };
-		D4A0BD2A21DBF05C00BC650B /* cube_jump.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube_jump.obj; sourceTree = "<group>"; };
 		D4EA624A21C938FF00CBFCAC /* 2D.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2D.fs.glsl; sourceTree = "<group>"; };
 		D4EA624B21C938FF00CBFCAC /* 2D.vs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2D.vs.glsl; sourceTree = "<group>"; };
-		D4EA626221CB93A200CBFCAC /* monkey1.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = monkey1.obj; sourceTree = "<group>"; };
 		D4EA626A21CBB56000CBFCAC /* libassimp.4.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.4.1.0.dylib; path = ../../../../../../usr/local/Cellar/assimp/4.1.0/lib/libassimp.4.1.0.dylib; sourceTree = "<group>"; };
 		D4F56EC521AEB29400767ECA /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
-		D4F56ED221AEE46500767ECA /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		D4F56EE721AF25F300767ECA /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		D4F56EF721AF37BF00767ECA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,6 +236,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D41DC3C021E67D1F00218DED /* legacy */ = {
+			isa = PBXGroup;
+			children = (
+				D41DC3C121E67D1F00218DED /* cube_coin.obj */,
+				D41DC3C221E67D1F00218DED /* cube_slide.obj */,
+				D41DC3C321E67D1F00218DED /* cube_wall.obj */,
+				D41DC3C421E67D1F00218DED /* cube_powerup.obj */,
+				D41DC3C521E67D1F00218DED /* cube.obj */,
+				D41DC3C621E67D1F00218DED /* skyboxtest.obj */,
+				D41DC3C721E67D1F00218DED /* turn.obj */,
+				D41DC3C821E67D1F00218DED /* monkey1.obj */,
+				D41DC3C921E67D1F00218DED /* cube_jump.obj */,
+			);
+			path = legacy;
+			sourceTree = "<group>";
+		};
+		D41DC3E321E67D5600218DED /* legacy */ = {
+			isa = PBXGroup;
+			children = (
+				D41DC3E421E67D5600218DED /* cubemap_jump.png */,
+				D41DC3E521E67D5600218DED /* cubemap_powerup.png */,
+				D41DC3E621E67D5600218DED /* cubemap_slide.png */,
+				D41DC3E721E67D5600218DED /* test.png */,
+				D41DC3E821E67D5600218DED /* cubemap_skybox.png */,
+				D41DC3E921E67D5600218DED /* cubemap_skybox.jpg */,
+				D41DC3EA21E67D5600218DED /* cubemap_coin.png */,
+				D41DC3EB21E67D5600218DED /* cubemap_right_turn.png */,
+				D41DC3EC21E67D5600218DED /* cubemap_left_turn.png */,
+				D41DC3ED21E67D5600218DED /* cubemap_wall.png */,
+				D41DC3EE21E67D5600218DED /* cubemap_a.png */,
+			);
+			path = legacy;
+			sourceTree = "<group>";
+		};
 		D46A487C21A0C3F10096F02F = {
 			isa = PBXGroup;
 			children = (
@@ -252,7 +319,15 @@
 		D46A4A2E21A0C5130096F02F /* textures */ = {
 			isa = PBXGroup;
 			children = (
-				D4F56ED221AEE46500767ECA /* test.png */,
+				D41DC3D421E67D5600218DED /* enemy.png */,
+				D41DC3E321E67D5600218DED /* legacy */,
+				D41DC3D121E67D5600218DED /* player.png */,
+				D41DC3D821E67D5600218DED /* road_crouch.png */,
+				D41DC3DA21E67D5600218DED /* road_turn_left.png */,
+				D41DC3D521E67D5600218DED /* road_turn_right.png */,
+				D41DC3D621E67D5600218DED /* road.png */,
+				D41DC3EF21E67D5600218DED /* skybox.png */,
+				D41DC3D921E67D5600218DED /* water.png */,
 			);
 			path = textures;
 			sourceTree = "<group>";
@@ -601,13 +676,21 @@
 		D4A0BD2321DBF05C00BC650B /* models */ = {
 			isa = PBXGroup;
 			children = (
-				D4A0BD2421DBF05C00BC650B /* cube_slide.obj */,
-				D4A0BD2521DBF05C00BC650B /* cube_wall.obj */,
-				D4A0BD2621DBF05C00BC650B /* cube.obj */,
-				D4A0BD2721DBF05C00BC650B /* skyboxtest.obj */,
+				D41DC3CC21E67D1F00218DED /* enemy.obj */,
+				D41DC3C021E67D1F00218DED /* legacy */,
+				D41DC3BE21E67D1F00218DED /* player.obj */,
+				D41DC3BA21E67D1F00218DED /* road_crouch.obj */,
+				D41DC3BC21E67D1F00218DED /* road_jump.obj */,
+				D41DC3CA21E67D1F00218DED /* road_left.obj */,
+				D41DC3BD21E67D1F00218DED /* road_wall.obj */,
+				D41DC3BB21E67D1F00218DED /* road.obj */,
+				D41DC3CD21E67D2000218DED /* skybox.obj */,
+				D41DC3CF21E67D2000218DED /* turn_left.obj */,
+				D41DC3D021E67D2000218DED /* turn_right.obj */,
+				D41DC3CE21E67D2000218DED /* turn.obj */,
+				D41DC3CB21E67D1F00218DED /* wall.obj */,
+				D41DC3BF21E67D1F00218DED /* water.obj */,
 				D4A0BD2821DBF05C00BC650B /* turn.obj */,
-				D4A0BD2921DBF05C00BC650B /* monkey1.obj */,
-				D4A0BD2A21DBF05C00BC650B /* cube_jump.obj */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -617,7 +700,6 @@
 			children = (
 				D4A0BD2321DBF05C00BC650B /* models */,
 				D46A4A2E21A0C5130096F02F /* textures */,
-				D4EA626221CB93A200CBFCAC /* monkey1.obj */,
 			);
 			path = assets;
 			sourceTree = "<group>";

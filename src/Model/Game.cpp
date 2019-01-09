@@ -19,7 +19,7 @@ namespace GameModel {
             m_player.resetPosition();
         m_chunkCycle ++;
 
-        m_enemyMoves.back().w = glm::radians((float)previousOrientation - (float)m_terrain.facing()) / m_UPDATES_PER_CHUNK;
+        m_enemyMoves.back().w = glm::radians((float)m_terrain.facing() - (float)previousOrientation) / m_UPDATES_PER_CHUNK;
 
         return newObjectsToLoadInScene;
     }
@@ -29,11 +29,11 @@ namespace GameModel {
     void Game::updateEnemy(const glm::vec3 &terrainMovement) {
         if(m_enemyMoves.empty()) return;
 
-        if(m_enemyMoves.size() * 2 < m_player.life()) {
+        if(m_enemyMoves.size() * 5 < m_player.life()) {
             m_enemyMoves.push_back(glm::vec4(terrainMovement,m_enemyMoves.back().w));
         }
 
-        if(m_enemyMoves.size() * 2 >= m_player.life()) m_enemyMoves.pop_front();
+        if(m_enemyMoves.size() * 5 >= m_player.life()) m_enemyMoves.pop_front();
 
         // place enemy on player
         m_enemy->place(glm::vec3(0,0,0));
@@ -57,8 +57,12 @@ namespace GameModel {
 
         m_player.update();
 
+        glm::vec3 move(0);
+        if (m_player.life() > 0)
+            move = m_terrain.progress(1.f/m_UPDATES_PER_CHUNK);
+
         // when chunk frame loops back to 0, we move to the next chunk
-        updateEnemy(m_terrain.progress(1.f/m_UPDATES_PER_CHUNK));
+        updateEnemy(move);
         if(m_player.life() > 0) {
             if (m_chunkframe == 0) {
                 m_terrain.entityAt(m_player.position())->lastVisit(m_player);

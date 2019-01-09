@@ -31,6 +31,7 @@ namespace GameModel {
         for (std::deque<std::unique_ptr<Chunk>>::iterator chunkIterator = m_chunks.begin(); chunkIterator != m_chunks.end(); ++chunkIterator) {
             (*chunkIterator)->translate(translationVector);
         }
+        m_ground->globalTranslate(translationVector);
 
         m_nextLoadedChunkPosition += translationVector;
         return translationVector;
@@ -61,6 +62,9 @@ namespace GameModel {
             progress(1.0);
         }
 
+        // swiftly adds the water while we're at it
+        objectsToBeAddedInScene.insert(m_ground);
+
         return objectsToBeAddedInScene;
     }
 
@@ -70,6 +74,27 @@ namespace GameModel {
     const CardinalDirections Terrain::facing() const {
         int orientation = ((int) glm::degrees(activeChunk()->orientation()) % 180);
         return CardinalDirections(orientation);
+    }
+
+    Terrain::Terrain() {
+        // make Water
+        const GraphicsEngine::LocalFilePath tex("assets/textures/water.png");
+        const GraphicsEngine::LocalFilePath vs("shaders/perspective.vs.glsl");
+        const GraphicsEngine::LocalFilePath fs("shaders/flatTexture.fs.glsl");
+
+        try {
+            std::shared_ptr<GraphicsEngine::Mesh3D> mesh = std::make_shared<GraphicsEngine::ImportedMesh>(GraphicsEngine::LocalFilePath("assets/models/water.obj"));
+            std::shared_ptr<GraphicsEngine::Texture> texture = std::make_shared<GraphicsEngine::Texture>(tex);
+            std::shared_ptr<GraphicsEngine::ShaderProgram> shaderProgram = std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(vs, fs);
+            std::shared_ptr<GraphicsEngine::Material> material = std::make_shared<GraphicsEngine::Material>(shaderProgram, texture);
+            m_ground = std::make_shared<GraphicsEngine::Object3D>(mesh, material);
+
+            m_ground->scale(glm::vec3(10));
+            m_ground->translate(glm::vec3(0,-0.5,0));
+
+        } catch(GraphicsEngine::InitialisationException error) {
+            std::cerr << error.what();
+        }
     }
 
 }

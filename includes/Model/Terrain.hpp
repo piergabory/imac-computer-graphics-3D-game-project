@@ -13,6 +13,7 @@
 
 #include "Chunk.hpp"
 #include "TurningChunk.hpp"
+#include "ImportedMesh.hpp"
 
 namespace GameModel {
 
@@ -52,6 +53,8 @@ namespace GameModel {
         /// \brief Position of the next chunk to be added
         glm::vec3 m_nextLoadedChunkPosition = glm::vec3(0.f,0.f,0.f);
 
+        std::shared_ptr<GraphicsEngine::Object3D> m_ground;
+
 
         /// \brief active chunk getter.
         inline const std::unique_ptr<Chunk>& activeChunk() const { return m_chunks[m_CHUNK_COUNT_AFTER_PLAYER]; }
@@ -63,6 +66,10 @@ namespace GameModel {
         inline void nextChunk() {
             m_chunks.pop_front();
             activeChunk()->onEnter();
+        }
+
+        inline std::shared_ptr<GraphicsEngine::Object3D>& ground() {
+            return m_ground;
         }
 
         /// \brief getter for the entity on the active chunk under a position
@@ -87,7 +94,7 @@ namespace GameModel {
         std::set< std::shared_ptr<GraphicsEngine::Object3D> > preloadInitialChunks();
         
         // constructor
-        Terrain() {}
+        Terrain();
 
         // destructor
         ~Terrain() {}

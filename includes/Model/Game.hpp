@@ -114,6 +114,9 @@ namespace GameModel {
         /// \brief getter on the terrain
         inline Terrain& terrain() { return m_terrain; }
         inline const Terrain& terrain() const { return m_terrain; }
+        inline std::shared_ptr<GraphicsEngine::Object3D> terrainGround() {
+            return m_terrain.ground();
+        }
 
 
         // setter
