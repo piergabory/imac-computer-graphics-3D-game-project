@@ -80,7 +80,7 @@ namespace GameModel {
         // make Water
         const GraphicsEngine::LocalFilePath tex("assets/textures/water.png");
         const GraphicsEngine::LocalFilePath vs("shaders/perspective.vs.glsl");
-        const GraphicsEngine::LocalFilePath fs("shaders/flatTexture.fs.glsl");
+        const GraphicsEngine::LocalFilePath fs("shaders/lighting.fs.glsl");
 
         try {
             std::shared_ptr<GraphicsEngine::Mesh3D> mesh = std::make_shared<GraphicsEngine::ImportedMesh>(GraphicsEngine::LocalFilePath("assets/models/water.obj"));
@@ -90,7 +90,7 @@ namespace GameModel {
             m_ground = std::make_shared<GraphicsEngine::Object3D>(mesh, material);
 
             m_ground->scale(glm::vec3(10));
-            m_ground->translate(glm::vec3(0,-2,0));
+            m_ground->translate(glm::vec3(0,-0.5,0));
 
         } catch(GraphicsEngine::InitialisationException error) {
             std::cerr << error.what();

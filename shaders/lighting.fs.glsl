@@ -4,6 +4,7 @@ in vec3 vPosition;
 in vec3 vNormal;
 in vec2 vTexCoord;
 in vec3 sunPosition;
+in float fog;
 
 uniform sampler2D uMainTextureSampler;
 
@@ -27,7 +28,7 @@ void main() {
 
 
     // diffuse
-    float intensity = max(dot(normal, sunPosition), 0.0);
+    float intensity = max(dot(normal, light), 0.0);
     intensity = intensity * 0.9 + 0.1;
     vec3 diffuse = texture(uMainTextureSampler, vTexCoord).rgb;
 
@@ -38,7 +39,8 @@ void main() {
         specular = specular * pow(specularAngle, shine);
     }
 
+    vec3 lighting = max(intensity * diffuse + specular, ambient);
 
     // final color
-    fFragColor = max(intensity * diffuse + specular, ambient);
+    fFragColor = mix(lighting, fogColor, fog);
 }

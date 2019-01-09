@@ -23,11 +23,10 @@ void main() {
     vec4 vertexPosition = (uMVMatrix * vec4(aVertexPosition, 1));
     // apply homogenous coord
     vPosition = vertexPosition.xyz / vertexPosition.w;
-
+    fog = length(vPosition) / FOG_START;
 
     vNormal = (uNormalMatrix * vec4(aVertexNormal, 0)).xyz;
     vTexCoord = aVertexTexUV;
-    fog = 0; //1 - (FOG_END - length(vPosition)) / (FOG_END - FOG_START);
     gl_Position = uMVPMatrix * vec4(aVertexPosition, 1);
 
     sunPosition = uSunPosition;

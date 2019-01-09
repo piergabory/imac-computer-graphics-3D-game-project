@@ -3,11 +3,15 @@
 in vec3 vPosition;
 in vec3 vNormal;
 in vec2 vTexCoord;
+in float fog;
+
+const vec3 fogColor = vec3(0.8);
 
 uniform sampler2D uMainTextureSampler;
 
 out vec3 fFragColor;
 
 void main() {
-    fFragColor = texture(uMainTextureSampler, vTexCoord).xyz;
+    vec3 texColor = texture(uMainTextureSampler, vTexCoord).xyz;
+    fFragColor = mix(texColor, fogColor, fog);
 }

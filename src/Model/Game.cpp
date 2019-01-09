@@ -19,7 +19,7 @@ namespace GameModel {
             m_player.resetPosition();
         m_chunkCycle ++;
 
-        m_enemyMoves.back().w = glm::radians((float)previousOrientation - (float)m_terrain.facing()) / m_UPDATES_PER_CHUNK;
+        m_enemyMoves.back().w = glm::radians((float)m_terrain.facing() - (float)previousOrientation) / m_UPDATES_PER_CHUNK;
 
         return newObjectsToLoadInScene;
     }

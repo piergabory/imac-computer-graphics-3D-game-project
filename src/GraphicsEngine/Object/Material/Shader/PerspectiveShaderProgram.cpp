@@ -45,7 +45,7 @@ namespace GraphicsEngine {
         // modelviewProjection = modelview * projection
         glUniformMatrix4fv(m_uniformModelViewProjectionMatrix, 1, false, glm::value_ptr(modelViewProjection));
 
-        glm::vec3 sun = glm::vec3(modelView * glm::vec4(1,1,-1,0));
+        glm::vec3 sun = glm::vec3(*m_sceneModelViewMatrix * glm::vec4(2,4,-3,0));
         glUniform3fv(m_uniformSunPosition, 1, glm::value_ptr(sun));
     }
 
