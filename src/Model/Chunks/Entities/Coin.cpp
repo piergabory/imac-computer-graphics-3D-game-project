@@ -12,6 +12,6 @@ namespace GameModel
     std::unique_ptr<GraphicsEngine::Object3D> Coin::s_entityObject;
 
     void Coin::loadObject() {
-        s_entityObject = std::unique_ptr<GraphicsEngine::Object3D>(makeObject("assets/models/road.obj", "assets/textures/legacy/cubemap_coin.png", "shaders/perspective.vs.glsl", "shaders/flatTexture.fs.glsl"));
+        s_entityObject = std::unique_ptr<GraphicsEngine::Object3D>(makeObject("assets/models/road.obj", "assets/textures/legacy/cubemap_coin.png", "shaders/perspective.vs.glsl", "shaders/lighting.fs.glsl"));
     }
 }

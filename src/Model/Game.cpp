@@ -124,7 +124,7 @@ namespace GameModel {
         PLAYER_MESH("assets/models/player.obj"),
         PLAYER_TEXTURE("assets/textures/player.png"),
         VERTEX_SHADER("shaders/perspective.vs.glsl"),
-        FRAGMENT_SHADER("shaders/flatTexture.fs.glsl");
+        FRAGMENT_SHADER("shaders/lighting.fs.glsl");
 
         // creates player character model
         std::shared_ptr<GraphicsEngine::ShaderProgram> playerShader = std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(VERTEX_SHADER, FRAGMENT_SHADER);
@@ -144,7 +144,7 @@ namespace GameModel {
         PLAYER_MESH("assets/models/enemy.obj"),
         PLAYER_TEXTURE("assets/textures/enemy.png"),
         VERTEX_SHADER("shaders/perspective.vs.glsl"),
-        FRAGMENT_SHADER("shaders/flatTexture.fs.glsl");
+        FRAGMENT_SHADER("shaders/lighting.fs.glsl");
 
         // creates player character model
         std::shared_ptr<GraphicsEngine::ShaderProgram> playerShader = std::make_shared<GraphicsEngine::PerspectiveShaderProgram>(VERTEX_SHADER, FRAGMENT_SHADER);

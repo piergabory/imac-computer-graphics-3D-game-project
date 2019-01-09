@@ -60,6 +60,7 @@ private:
     std::shared_ptr<GraphicsEngine::Object3D> m_debugGrid;
     std::shared_ptr<GraphicsEngine::Object3D> m_skybox;
     std::shared_ptr<GraphicsEngine::Object3D> m_chunk;
+    std::shared_ptr<GraphicsEngine::Object3D> m_water;
 
 
     // Model instance
@@ -78,6 +79,7 @@ private:
     static std::shared_ptr<GraphicsEngine::Object3D> initializeDebugGrid();
     static std::shared_ptr<GraphicsEngine::Object3D> createSkyBox();
     static std::shared_ptr<GraphicsEngine::Object3D> createChunk();
+    static std::shared_ptr<GraphicsEngine::Object3D> createWater();
     static std::shared_ptr<GraphicsEngine::Object3D> createObject3D(GraphicsEngine::LocalFilePath &meshPath, GraphicsEngine::LocalFilePath &textureImagePath,GraphicsEngine::LocalFilePath &vertexShaderPath, GraphicsEngine::LocalFilePath &fragmentShaderPath);
 
     // control action

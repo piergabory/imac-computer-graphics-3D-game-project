@@ -23,14 +23,17 @@ void GameController::initializeScene() {
     // create objects
     m_skybox = createSkyBox();
     m_chunk = createChunk();
+    m_water = createWater();
 
     // skybox max scale before clipping out of far-field
-    m_skybox->scale(glm::vec3(3.14f));
+    m_skybox->scale(glm::vec3(30.f));
+    m_water->scale(glm::vec3(10.f));
 
     // adds objects in the scene
     GraphicsEngine::Controller::instance()->activeScene()->add(m_currentGame->playerModel());
     GraphicsEngine::Controller::instance()->activeScene()->add(m_currentGame->enemyModel());
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
+    GraphicsEngine::Controller::instance()->activeScene()->add(m_water);
 }
 
 
@@ -256,7 +259,7 @@ void GameController::cameraMoves(const unsigned char key) {
             break;
 
             // '0' key 
-        case SDLK_0: case SDLK_KP_0:
+        case SDLK_0:
             // replace to origin
             m_playerPointOfView->resetPosition();
             break;
@@ -300,8 +303,8 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::initializeDebugGrid() 
 
 // make skybox
 std::shared_ptr<GraphicsEngine::Object3D> GameController::createSkyBox() {
-    GraphicsEngine::LocalFilePath chunkmesh("assets/models/legacy/skyboxtest.obj");
-    GraphicsEngine::LocalFilePath chunktex("assets/textures/legacy/cubemap_skybox.png");
+    GraphicsEngine::LocalFilePath chunkmesh("assets/models/skybox.obj");
+    GraphicsEngine::LocalFilePath chunktex("assets/textures/skybox.png");
     GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
     GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
     return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
@@ -313,7 +316,18 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
     GraphicsEngine::LocalFilePath chunkmesh("assets/models/legacy/cube.obj");
     GraphicsEngine::LocalFilePath chunktex("assets/textures/legacy/cubemap_a.png");
     GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
-    GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
+    GraphicsEngine::LocalFilePath chunkfs("shaders/lighting.fs.glsl");
+
+    return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
+}
+
+
+// make Water
+std::shared_ptr<GraphicsEngine::Object3D> GameController::createWater() {
+    GraphicsEngine::LocalFilePath chunkmesh("assets/models/water.obj");
+    GraphicsEngine::LocalFilePath chunktex("assets/textures/water.png");
+    GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
+    GraphicsEngine::LocalFilePath chunkfs("shaders/lighting.fs.glsl");
 
     return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
 }

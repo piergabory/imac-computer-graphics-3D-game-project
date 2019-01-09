@@ -84,6 +84,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D43BBE1221E5CDC70035A8CC /* lighting.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = lighting.fs.glsl; sourceTree = "<group>"; };
 		D44D288821C081E400492876 /* flatColor.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = flatColor.fs.glsl; sourceTree = "<group>"; };
 		D46A496521A0C5130096F02F /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
 		D46A496D21A0C5130096F02F /* product.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = product.dSYM; sourceTree = "<group>"; };
@@ -168,7 +169,6 @@
 		D4A0BD1521DBB46B00BC650B /* Jump.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Jump.cpp; sourceTree = "<group>"; };
 		D4A0BD1621DBB46B00BC650B /* Slide.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Slide.cpp; sourceTree = "<group>"; };
 		D4A0BD1821DBB46B00BC650B /* Wall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wall.cpp; sourceTree = "<group>"; };
-		D4A0BD2021DBE63900BC650B /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
 		D4A0BD2421DBF05C00BC650B /* cube_slide.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube_slide.obj; sourceTree = "<group>"; };
 		D4A0BD2521DBF05C00BC650B /* cube_wall.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube_wall.obj; sourceTree = "<group>"; };
 		D4A0BD2621DBF05C00BC650B /* cube.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = cube.obj; sourceTree = "<group>"; };
@@ -234,6 +234,7 @@
 				D4EA624B21C938FF00CBFCAC /* 2D.vs.glsl */,
 				D44D288821C081E400492876 /* flatColor.fs.glsl */,
 				D46A4B8C21A2FDF90096F02F /* perspective.vs.glsl */,
+				D43BBE1221E5CDC70035A8CC /* lighting.fs.glsl */,
 				D46A4B8D21A2FE020096F02F /* flatTexture.fs.glsl */,
 			);
 			path = shaders;
@@ -406,7 +407,6 @@
 				D4948B3F21D641C40081C29E /* Player.cpp */,
 				D4948B4621D641C40081C29E /* Terrain.cpp */,
 				D4948B4721D641C40081C29E /* Game.cpp */,
-				D4A0BD2021DBE63900BC650B /* Scene.cpp */,
 				D4948B4021D641C40081C29E /* Chunks */,
 			);
 			path = Model;

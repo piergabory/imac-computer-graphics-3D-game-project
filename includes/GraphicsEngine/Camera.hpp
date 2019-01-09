@@ -69,7 +69,7 @@ namespace GraphicsEngine {
         
     public:
         // constructor
-        Camera(const float fieldOfView = 60.f, const float aspect = 800.f/600.f, const float min = 0.1f, const float max = 100.f);
+        Camera(const float fieldOfView = 60.f, const float aspect = 800.f/600.f, const float min = 1.f, const float max = 1000.f);
         
         // destructor
         ~Camera() {}

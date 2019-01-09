@@ -33,7 +33,7 @@ namespace GameModel {
 
     // static
     void Entity::loadObject() {
-        s_entityObject = std::unique_ptr<GraphicsEngine::Object3D>(makeObject("assets/models/road.obj", "assets/textures/road.png", "shaders/perspective.vs.glsl", "shaders/flatTexture.fs.glsl"));
+        s_entityObject = std::unique_ptr<GraphicsEngine::Object3D>(makeObject("assets/models/road.obj", "assets/textures/road.png", "shaders/perspective.vs.glsl", "shaders/lighting.fs.glsl"));
     }
 
     // constructor
