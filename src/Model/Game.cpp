@@ -57,8 +57,12 @@ namespace GameModel {
 
         m_player.update();
 
+        glm::vec3 move(0);
+        if (m_player.life() > 0)
+            move = m_terrain.progress(1.f/m_UPDATES_PER_CHUNK);
+
         // when chunk frame loops back to 0, we move to the next chunk
-        updateEnemy(m_terrain.progress(1.f/m_UPDATES_PER_CHUNK));
+        updateEnemy(move);
         if(m_player.life() > 0) {
             if (m_chunkframe == 0) {
                 m_terrain.entityAt(m_player.position())->lastVisit(m_player);
