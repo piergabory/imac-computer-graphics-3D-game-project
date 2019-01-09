@@ -18,7 +18,8 @@ namespace GraphicsEngine {
     // members init
         m_uniformModelViewMatrix(glGetUniformLocation(m_glProgramIdentifier, uniformMVName)),
         m_uniformNormalMatrix(glGetUniformLocation(m_glProgramIdentifier, uniformNormName)),
-        m_uniformModelViewProjectionMatrix(glGetUniformLocation(m_glProgramIdentifier, uniformMVPName))
+        m_uniformModelViewProjectionMatrix(glGetUniformLocation(m_glProgramIdentifier, uniformMVPName)),
+        m_uniformSunPosition(glGetUniformLocation(m_glProgramIdentifier, "uSunPosition"))
 
     // nothing
     {}
@@ -43,6 +44,9 @@ namespace GraphicsEngine {
         
         // modelviewProjection = modelview * projection
         glUniformMatrix4fv(m_uniformModelViewProjectionMatrix, 1, false, glm::value_ptr(modelViewProjection));
+
+        glm::vec3 sun = glm::vec3(modelView * glm::vec4(1,1,-1,0));
+        glUniform3fv(m_uniformSunPosition, 1, glm::value_ptr(sun));
     }
 
     void PerspectiveShaderProgram::setViewMatrices(const std::shared_ptr<glm::mat4> &projection,  const std::shared_ptr<glm::mat4> &sceneModel) {

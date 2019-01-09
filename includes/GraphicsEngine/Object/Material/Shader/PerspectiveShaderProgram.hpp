@@ -36,6 +36,7 @@ namespace GraphicsEngine {
         GLuint m_uniformModelViewMatrix;
         GLuint m_uniformNormalMatrix;
         GLuint m_uniformModelViewProjectionMatrix;
+        GLuint m_uniformSunPosition;
         
         void findUniforms();
         

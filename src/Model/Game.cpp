@@ -29,11 +29,11 @@ namespace GameModel {
     void Game::updateEnemy(const glm::vec3 &terrainMovement) {
         if(m_enemyMoves.empty()) return;
 
-        if(m_enemyMoves.size() * 2 < m_player.life()) {
+        if(m_enemyMoves.size() * 5 < m_player.life()) {
             m_enemyMoves.push_back(glm::vec4(terrainMovement,m_enemyMoves.back().w));
         }
 
-        if(m_enemyMoves.size() * 2 >= m_player.life()) m_enemyMoves.pop_front();
+        if(m_enemyMoves.size() * 5 >= m_player.life()) m_enemyMoves.pop_front();
 
         // place enemy on player
         m_enemy->place(glm::vec3(0,0,0));

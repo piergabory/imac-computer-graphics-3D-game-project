@@ -27,7 +27,7 @@ void GameController::initializeScene() {
 
     // skybox max scale before clipping out of far-field
     m_skybox->scale(glm::vec3(30.f));
-    m_water->scale(glm::vec3(10.f));
+    m_water->translate(glm::vec3(0.f, -2.f, 0.f));
 
     // adds objects in the scene
     GraphicsEngine::Controller::instance()->activeScene()->add(m_currentGame->playerModel());
@@ -327,7 +327,7 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createWater() {
     GraphicsEngine::LocalFilePath chunkmesh("assets/models/water.obj");
     GraphicsEngine::LocalFilePath chunktex("assets/textures/water.png");
     GraphicsEngine::LocalFilePath chunkvs("shaders/perspective.vs.glsl");
-    GraphicsEngine::LocalFilePath chunkfs("shaders/lighting.fs.glsl");
+    GraphicsEngine::LocalFilePath chunkfs("shaders/flatTexture.fs.glsl");
 
     return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
 }

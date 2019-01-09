@@ -1,58 +1,44 @@
-//#version 330
-//
-//in vec3 vPosition;
-//in vec3 vNormal;
-//in vec2 vTexCoord;
-//
-//in float fog;
-//
-//uniform sampler2D uMainTextureSampler;
-//
-//out vec3 fFragColor;
-//
-//void main() {
-//    vec3 texColor = texture(uMainTextureSampler, vTexCoord).xyz;
-//    vec3 fogColor = vec3(1);
-//
-//    fFragColor = mix(texColor, fogColor, fog);
-//}
-
 #version 330
 
 in vec3 vPosition;
 in vec3 vNormal;
 in vec2 vTexCoord;
+in vec3 sunPosition;
 
 uniform sampler2D uMainTextureSampler;
 
 out vec3 fFragColor;
 
-float prodScal(vec3 vect1, vec3 vect2) {
-    float prod = dot(normalize(vect1), normalize(vect2));
-    if(prod <= 0) return 0;
-    else return prod;
-}
+// color constants
+const vec3 fogColor = vec3(0.8);
+const vec3 sunColor = vec3(1);
+const vec3 sunSpecular = vec3(1);
+const vec3 ambient = vec3(0,0,0.1);
+
+// light parameters constants
+const float shine = 40.0;
+
 
 void main() {
-    //// DIFFUSE IS BROKEN
+    vec3 specular = vec3(0);
+    vec3 normal = normalize(vNormal);
+    vec3 view = normalize(-vPosition);
+    vec3 light = normalize(sunPosition);
 
 
-    //tmp
-    vec3 uLightPos = vec3(15);
-    vec3 uKd = vec3(0,0,255);//texture(uMainTextureSampler, vTexCoord).rgb; //couleur de l'obj (diffus)
-    vec3 uKs = vec3(255); //couleur du reflet(speculaire)
-    vec3 uLightIntensity = vec3(8);
-    float uShininess =64;
+    // diffuse
+    float intensity = max(dot(normal, sunPosition), 0.0);
+    intensity = intensity * 0.9 + 0.1;
+    vec3 diffuse = texture(uMainTextureSampler, vTexCoord).rgb;
 
-    float distanceLight = distance(vPosition, uLightPos);
-    vec3 wi = normalize(uLightPos - vPosition);
-    vec3 w0 = normalize(-vPosition);
-    vec3 ahalf= normalize( (w0+wi)/2);
+    // specular
+    if (intensity > 0.0) {
+        vec3 halfVector = normalize(light + view);
+        float specularAngle = max(dot(halfVector, normal), 0.0);
+        specular = specular * pow(specularAngle, shine);
+    }
 
-    vec3 KD = uKd * prodScal(wi, vNormal);
-    vec3 KS = uKs * pow(prodScal(ahalf, vNormal), uShininess);
 
-    vec3 objcolor= (uLightIntensity/(distanceLight*distanceLight))* mix(KD, KS, 0.9);
-    //vec3 objcolor = ;
-    fFragColor= objcolor;
+    // final color
+    fFragColor = max(intensity * diffuse + specular, ambient);
 }
