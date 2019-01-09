@@ -13,5 +13,5 @@ out vec3 fFragColor;
 
 void main() {
     vec3 texColor = texture(uMainTextureSampler, vTexCoord).xyz;
-    fFragColor = mix(texColor, fogColor, fog);
+    fFragColor = texColor;//mix(texColor, fogColor, fog);
 }

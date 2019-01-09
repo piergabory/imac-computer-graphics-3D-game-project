@@ -80,7 +80,7 @@ namespace GameModel {
         // make Water
         const GraphicsEngine::LocalFilePath tex("assets/textures/water.png");
         const GraphicsEngine::LocalFilePath vs("shaders/perspective.vs.glsl");
-        const GraphicsEngine::LocalFilePath fs("shaders/lighting.fs.glsl");
+        const GraphicsEngine::LocalFilePath fs("shaders/flatTexture.fs.glsl");
 
         try {
             std::shared_ptr<GraphicsEngine::Mesh3D> mesh = std::make_shared<GraphicsEngine::ImportedMesh>(GraphicsEngine::LocalFilePath("assets/models/water.obj"));
