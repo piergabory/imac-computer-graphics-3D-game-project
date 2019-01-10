@@ -16,6 +16,7 @@
 #include "EventManager.hpp"
 #include "Animation.hpp"
 #include "Terrain.hpp"
+#include "Sound.hpp"
 
 #include <cmath>
 
@@ -63,11 +64,11 @@ private:
     
     std::unique_ptr<GraphicsEngine::Menu> m_menu = nullptr;
 
-
-
     // Model instance
     std::unique_ptr<GameModel::Game> m_currentGame;
 
+    //Sound
+    Sound m_soundManageur;
 
     // METHODS
 

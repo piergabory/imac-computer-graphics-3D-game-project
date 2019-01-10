@@ -21,7 +21,7 @@ namespace GraphicsEngine {
     // SDL Framework
     void Controller::initializeSDL() {
         // init and check
-        if(-1 == SDL_Init(SDL_INIT_VIDEO)) {
+        if(-1 == SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)) {
             throw InitialisationException("Failed to initialize SDL.", SDL_GetError());
         }
         
