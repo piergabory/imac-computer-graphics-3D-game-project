@@ -77,6 +77,10 @@ namespace GraphicsEngine {
         
         void hover();
 
+        inline void handler(std::function<void(Button*, unsigned char)> &callback) {
+            m_onClickCallback = callback;
+        }
+
     };
 }
 

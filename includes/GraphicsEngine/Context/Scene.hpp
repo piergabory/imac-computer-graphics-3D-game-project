@@ -40,8 +40,7 @@ namespace GraphicsEngine {
             glDepthFunc(GL_LESS);
             
             // enable blending for gradient tansparency
-            glEnable(GL_BLEND);
-            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //parameters for blending
+            glDisable(GL_BLEND);
         }
 
         /// \brief links the camera projection and work model matrices to the object's perspective shader

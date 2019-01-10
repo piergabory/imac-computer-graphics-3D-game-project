@@ -77,7 +77,7 @@ bool GameController::loop() {
     const float FRAMERATE = 60;
 
     // compute current chunk progress
-    if (m_menu == nullptr) {
+    if (m_menu == nullptr || m_framecount == 0) {
         if(m_framecount % 100 == 0) loadNewChunks(100);
         std::set<std::shared_ptr<GraphicsEngine::Object3D>> newObjects = m_currentGame->update();
         for(std::shared_ptr<GraphicsEngine::Object3D> object : newObjects) {
@@ -179,6 +179,7 @@ void GameController::keyRealeaseHandler(const unsigned char keycode) {
             case SDLK_ESCAPE:
                 SDL_CaptureMouse(SDL_FALSE);
                 SDL_ShowCursor(SDL_ENABLE);
+                toggleMenu();
                 break;
 
             case SDLK_z: m_currentGame->callInput(GameModel::Controls::UP); break;
@@ -364,6 +365,13 @@ void GameController::createMenu(){
 void GameController::toggleMenu(){
     if (!m_menu) {
         createMenu();
+        m_menu->initializeButtons(
+              [=]() -> void { /* resume */ toggleMenu(); },
+              [=]() -> void { /* save */ },
+              [=]() -> void { /* load */ },
+              [=]() -> void { /* quit */ m_isRunning = false; }
+          );
+        m_menu->select();
         GraphicsEngine::Controller::instance()->activeGUI()->add(m_menu->elements());
     } else {
         m_menu.reset(nullptr);

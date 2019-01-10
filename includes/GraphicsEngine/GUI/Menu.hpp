@@ -33,10 +33,20 @@ namespace GraphicsEngine {
             void previous();
         
             void enter();
+
+            void initializeButtons(
+                                   std::function <void()> resume,
+                                   std::function <void()> save,
+                                   std::function <void()> load,
+                                   std::function <void()> quit
+                                   );
+            void select();
         
             ///\brief  constructor
             Menu(std::shared_ptr<Texture> sprite);
             ~Menu();
+
+            
         
             
         
@@ -49,9 +59,7 @@ namespace GraphicsEngine {
             double btn_width = 1.0;
             double btn_margin = 0.05;
         
-            void initializeButtons();
-            void select();
-           
+
     };
 }
 

@@ -7,8 +7,6 @@
 namespace GraphicsEngine {
     Menu::Menu(std::shared_ptr<Texture> background) {
         m_elements.push_back(std::make_shared<Object2D>(glm::vec2(-1,1), glm::vec2(2,-2), background));
-            initializeButtons();
-        select();
     };
     
     Menu::~Menu(){};
@@ -66,30 +64,23 @@ namespace GraphicsEngine {
         m_buttons[m_currentButton]->hover();
     };
     
-    void Menu::initializeButtons(){
+    void Menu::initializeButtons(
+                                 std::function <void()> resume,
+                                 std::function <void()> save,
+                                 std::function <void()> load,
+                                 std::function <void()> quit
+    ){
         
-        //RESUME
-        std::function <void()> resume = [](){
-            std::cout << "resume game" << std::endl;
-        };
+
         add(resume,LocalFilePath("assets/textures/button_start1.png"), LocalFilePath("assets/textures/button_start2.png"));
-        
-        //SAVE
-        std::function <void()> save = [](){
-            std::cout << "save game" << std::endl;
-        };
+
         add(save, LocalFilePath("assets/textures/button_load1.png"),LocalFilePath("assets/textures/button_load2.png") );
         
         //LOAD
-        std::function <void()> load = [](){
-            std::cout << "load game" << std::endl;
-        };
+
         add(load, LocalFilePath("assets/textures/button_start1.png"),LocalFilePath("assets/textures/button_start2.png") );
         
         //QUIT
-        std::function <void()> quit = [](){
-            std::cout << "quit game" << std::endl;
-        };
         add(quit, LocalFilePath("assets/textures/button_start1.png"),LocalFilePath("assets/textures/button_start2.png") );
 
         
