@@ -11,7 +11,7 @@ uniform sampler2D uMainTextureSampler;
 out vec3 fFragColor;
 
 // color constants
-const vec3 fogColor = vec3(0.8);
+const vec3 fogColor = vec3(0.4,0.4,0.5);
 const vec3 sunColor = vec3(1);
 const vec3 sunSpecular = vec3(1);
 const vec3 ambient = vec3(0,0,0.1);

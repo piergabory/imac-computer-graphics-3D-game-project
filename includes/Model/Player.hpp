@@ -38,7 +38,7 @@ namespace GameModel {
         const float JUMP_HEIGHT = 1.5f;
 
         ///\brief Size reduction of the player when crouching (Y scaling)
-        const float CROUCH_HEIGHT = 0.8;
+        const float CROUCH_HEIGHT = 0.3;
 
         ///\brief number of framew during wich the player is invicible after taking on damage.
         const unsigned int DAMAGE_INVICIBLITY_DURATION = 300;
