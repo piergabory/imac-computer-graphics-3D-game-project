@@ -28,7 +28,7 @@ namespace GraphicsEngine {
      */
     struct Animatable {
         // getters
-        virtual inline const glm::vec3 position() const = 0;
+        virtual const glm::vec3 position() const = 0;
 
         // transformation methods
         virtual void translate(const glm::vec3& direction) = 0;

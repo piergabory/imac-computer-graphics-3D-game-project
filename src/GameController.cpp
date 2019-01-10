@@ -45,7 +45,7 @@ void GameController::initializeScene() {
 
 
 void GameController::setup() {
-    m_framecount == 0;
+    //m_framecount == 0;
     
     // initialize framworks and windows
     GraphicsEngine::Controller::instance()->setup();

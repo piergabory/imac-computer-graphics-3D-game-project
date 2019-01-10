@@ -35,7 +35,7 @@ namespace GraphicsEngine {
     }
     
     void Menu::next(){
-        if (m_currentButton >= m_buttons.size()-1){
+        if (m_currentButton >= (int)m_buttons.size()-1){
             m_currentButton = (int)m_buttons.size()-1;
         } else {
             select();
