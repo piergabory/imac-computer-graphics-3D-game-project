@@ -47,14 +47,14 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      customWorkingDirectory = "/Users/piergabory/Developer/IMAC/Projet CG CPP/IMAC2_CG_CPP_Game_Project/bin"
+      customWorkingDirectory = "."
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
       <PathRunnable
          runnableDebuggingMode = "0"
-         FilePath = "/Users/piergabory/Developer/IMAC/Projet CG CPP/IMAC2_CG_CPP_Game_Project/bin/product">
+         FilePath = "/Users/djaydnova/Developer/IMAC2_CG_CPP_Game_Project/bin/product">
       </PathRunnable>
       <MacroExpansion>
          <BuildableReference

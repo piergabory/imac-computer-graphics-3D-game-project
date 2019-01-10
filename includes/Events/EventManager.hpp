@@ -54,7 +54,6 @@ namespace Events {
         void subscribe(KeyboardEventObserver* keyboardObserver);
 
     };
-
 }
 
 #endif /* EventManager_hpp */
