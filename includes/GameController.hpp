@@ -16,6 +16,7 @@
 #include "EventManager.hpp"
 #include "Animation.hpp"
 #include "Terrain.hpp"
+#include "Sound.hpp"
 
 #include <cmath>
 
@@ -61,11 +62,11 @@ private:
     std::shared_ptr<GraphicsEngine::Object3D> m_skybox;
     std::shared_ptr<GraphicsEngine::Object3D> m_chunk;
 
-
-
     // Model instance
     std::unique_ptr<GameModel::Game> m_currentGame;
 
+    //Sound
+    Sound m_soundManageur;
 
     // METHODS
 

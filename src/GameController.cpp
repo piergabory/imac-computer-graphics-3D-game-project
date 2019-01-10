@@ -20,6 +20,9 @@ void GameController::initializeScene() {
     std::unique_ptr<GraphicsEngine::Scene> scene(new GraphicsEngine::Scene(m_playerPointOfView));
     GraphicsEngine::Controller::instance()->loadScene(scene);
 
+    //Musique
+    m_soundManageur.playWAVfile("assets/Musiques/43mozarts15a.wav");
+
     // create objects
     m_skybox = createSkyBox();
     m_chunk = createChunk();
