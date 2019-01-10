@@ -66,7 +66,6 @@ private:
     std::shared_ptr<GraphicsEngine::Object3D> m_chunk;
     
     std::unique_ptr<GraphicsEngine::Menu> m_menu = nullptr;
-    std::shared_ptr<GraphicsEngine::Object2D> m_menucursor;
 
 
     // Model instance
@@ -88,7 +87,6 @@ private:
     
     void createMenu();
     void toggleMenu();
-    void createCursor();
     
     static std::shared_ptr<GraphicsEngine::Object3D> createObject3D(GraphicsEngine::LocalFilePath &meshPath, GraphicsEngine::LocalFilePath &textureImagePath,GraphicsEngine::LocalFilePath &vertexShaderPath, GraphicsEngine::LocalFilePath &fragmentShaderPath);
     

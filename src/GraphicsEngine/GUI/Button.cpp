@@ -80,6 +80,10 @@ namespace GraphicsEngine {
         m_textures.push_back(sprite_main);
         m_textures.push_back(sprite_hover);
     }
+    
+    Button::~Button(){
+        Events::Manager::instance()->unsubscribe(this);
+    };
 
     // static setter
     void Button::initializeButtons(const glm::ivec2 &windowPixelSize) {

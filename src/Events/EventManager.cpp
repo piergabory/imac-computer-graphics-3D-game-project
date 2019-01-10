@@ -21,6 +21,7 @@ namespace Events {
 
 
     void Manager::pollEvents() {
+        
         // temporary variable holding each event
         SDL_Event event;
 
@@ -51,8 +52,8 @@ namespace Events {
                 switch (event.type) {
                     case SDL_MOUSEMOTION:
                       for(unsigned int i=0; i<m_pMouseEventsObserver.size(); i++){
-                        m_pMouseEventsObserver[i]->mouseMoveHandler(event.motion.xrel,event.motion.yrel);
-                      }
+                          m_pMouseEventsObserver[i]->mouseMoveHandler(event.motion.xrel,event.motion.yrel);
+                           }
                       //m_pMouseEventsObserver->mouseMoveHandler(event.motion.xrel,event.motion.yrel);
                       break;
                     case SDL_MOUSEBUTTONDOWN:
@@ -114,9 +115,21 @@ namespace Events {
         m_pQuitEventObserver.push_back(std::unique_ptr<QuitEventObserver>( quitObserver));
     }
 
-
     void Manager::subscribe(MouseEventObserver* mouseObserver) {
-        m_pMouseEventsObserver.push_back(std::unique_ptr<MouseEventObserver>( mouseObserver));
+        m_pMouseEventsObserver.push_back(std::unique_ptr<MouseEventObserver>(mouseObserver));
+    }
+    
+    
+    void Manager::unsubscribe(MouseEventObserver* mouseObserver){
+        size_t i = 0;
+        while (i < m_pMouseEventsObserver.size()){
+            if (m_pMouseEventsObserver[i].get()==mouseObserver){
+                m_pMouseEventsObserver[i].release(); m_pMouseEventsObserver.erase(m_pMouseEventsObserver.begin() + i);
+                
+            } else {
+                i++;
+            }
+        }
     }
 
 

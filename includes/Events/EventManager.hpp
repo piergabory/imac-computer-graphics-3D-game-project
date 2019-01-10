@@ -14,6 +14,7 @@
 #include <vector>
 #include <memory>
 #include <set>
+#include <iostream>
 
 #include "Frameworks.hpp"
 #include "EventObservers.hpp"
@@ -52,7 +53,9 @@ namespace Events {
         void subscribe(QuitEventObserver* quitObserver);
         void subscribe(MouseEventObserver* mouseObserver);
         void subscribe(KeyboardEventObserver* keyboardObserver);
-
+        
+        
+        void unsubscribe(MouseEventObserver* mouseObserver);
     };
 
 }

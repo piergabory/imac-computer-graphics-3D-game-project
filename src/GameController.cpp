@@ -25,8 +25,7 @@ void GameController::initializeScene() {
     std::shared_ptr<GraphicsEngine::Object3D> playerModel = m_currentGame->playerModel();
     m_skybox = createSkyBox();
     m_chunk = createChunk();
- 
-    createCursor();
+    toggleMenu();
 
     // skybox max scale before clipping out of far-field
     m_skybox->scale(glm::vec3(3.14f));
@@ -375,12 +374,6 @@ void GameController::toggleMenu(){
 }
 
 
-void GameController::createCursor(){
-    
-    m_menucursor =  std::make_shared<GraphicsEngine::Object2D>(glm::vec2(-0.1, 0.1),
-                                               glm::vec2(0.2, -0.2),
-                                               std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/cursor.png")));
-}
 
 
 // singleton

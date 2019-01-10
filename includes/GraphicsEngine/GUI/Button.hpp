@@ -66,6 +66,9 @@ namespace GraphicsEngine {
 
         ///\brief  default constructor by copy
         Button(const Button &copy) = default;
+        
+        ///\brief  default destructor
+        ~Button();
 
         ///\brief  Sets the static member s_windowPixelSize, needs to be called before any instantiations
         static void initializeButtons(const glm::ivec2 &windowPixelSize);
