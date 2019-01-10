@@ -8,6 +8,7 @@ namespace GameModel {
             case Position::MIDDLE: return middle.get();
             case Position::RIGHT: return right.get();
         }
+        return nullptr;//remove warning
     }
 
 

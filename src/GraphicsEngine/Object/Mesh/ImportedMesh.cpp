@@ -101,7 +101,7 @@ namespace GraphicsEngine {
         //TODO remove test
         std::cout << "Print vertices of " << bugLocation <<  std::endl;
         std::cout << "Vertices vector size : " << vertices.size() << std::endl;
-        for (int i=0; i < vertices.size(); i++){
+        for (unsigned int i=0; i < vertices.size(); i++){
             std::cout << "m_position : " << vertices[i].m_position[0] << " / " << vertices[i].m_position[1] << " / " << vertices[i].m_position[2] <<  std::endl;
             std::cout << "m_normal : " << vertices[i].m_normal[0] << " / " << vertices[i].m_normal[1] << " / " << vertices[i].m_normal[2] <<  std::endl;
             std::cout << "m_textureCoordinates : " << vertices[i].m_textureCoordinates[0] << " / " << vertices[i].m_textureCoordinates[1] <<  std::endl;
