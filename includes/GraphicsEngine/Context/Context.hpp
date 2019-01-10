@@ -57,6 +57,18 @@ namespace GraphicsEngine {
             // shared pointer is destroyed.
             // Value is own in the scope of Context::add() call, and linked here by a weak pointer in m_objects
         }
+        
+        void add(const std::vector< std::shared_ptr<ObjectType> > &newObjectlist) {
+            for(size_t i = 0; i < newObjectlist.size(); ++i){
+                add(newObjectlist[i]);
+            }
+        }
+        
+        void remove(const std::vector< std::shared_ptr<ObjectType> > &newObjectlist) {
+            for(size_t i = 0; i < newObjectlist.size(); ++i){
+                remove(newObjectlist[i]);
+            }
+        }
 
         /// \brief remove an object from the scenes.
         void remove(const std::shared_ptr<ObjectType> &object) {
