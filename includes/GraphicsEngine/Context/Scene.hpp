@@ -38,6 +38,9 @@ namespace GraphicsEngine {
             // enable z-buffer test
             glEnable(GL_DEPTH_TEST);
             glDepthFunc(GL_LESS);
+            
+            // enable blending for gradient tansparency
+            glDisable(GL_BLEND);
         }
 
         /// \brief links the camera projection and work model matrices to the object's perspective shader

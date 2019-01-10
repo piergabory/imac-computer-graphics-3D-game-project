@@ -19,9 +19,9 @@ namespace GraphicsEngine {
 
         // check bounds
         return mousePosition.x > m_boundingBoxTopLeftCorner.x
-            && mousePosition.x < m_boundingBoxBottomRightCorner.y
-            && mousePosition.y > m_boundingBoxTopLeftCorner.x
-            && mousePosition.y < m_boundingBoxBottomRightCorner.y;
+            && mousePosition.x < m_boundingBoxBottomRightCorner.x
+            && mousePosition.y < m_boundingBoxTopLeftCorner.y
+            && mousePosition.y > m_boundingBoxBottomRightCorner.y;
     }
 
 
@@ -30,12 +30,21 @@ namespace GraphicsEngine {
         // if in bounds, calls the callback
         if (checkBounds()) m_onClickCallback(this, button);
     }
+    
+    
+    void Button::click(){
+        m_onClickCallback(this, (unsigned char) 0);
+    };
+    
+    void Button::hover(){
+        if (isActive) {texture(m_textures[0]); isActive = false ;}
+        else {texture(m_textures[1]); isActive = true ;}
+    }
 
 
-
-    Button::Button(const glm::vec2 &position, const glm::vec2 &size, const LocalFilePath image, const std::function<void(Button*, const unsigned char)> &callback):
+    Button::Button(const glm::vec2 &position, const glm::vec2 &size, const LocalFilePath image_main, const LocalFilePath image_hover,const std::function<void(Button*, const unsigned char)> &callback):
         // superclass constructor
-        Object2D(position, size, image),
+        Object2D(position, size, image_main),
 
         // callback
         m_onClickCallback(callback),
@@ -50,12 +59,15 @@ namespace GraphicsEngine {
 
         // folows mouse events
         Events::Manager::instance()->subscribe(this);
+        
+        m_textures.push_back(std::make_shared<Texture>(image_main));
+        m_textures.push_back(std::make_shared<Texture>(image_hover));
     }
 
 
     // Same constructor, using textures instead of image paths.
-    Button::Button(const glm::vec2 &position, const glm::vec2 &size, const std::shared_ptr<Texture> sprite, const std::function<void(Button*, const unsigned char)> &callback):
-        Object2D(position, size, sprite),
+    Button::Button(const glm::vec2 &position, const glm::vec2 &size, const std::shared_ptr<Texture> sprite_main, const std::shared_ptr<Texture> sprite_hover, const std::function<void(Button*, const unsigned char)> &callback):
+        Object2D(position, size, sprite_main),
         m_onClickCallback(callback),
         m_boundingBoxTopLeftCorner(position),
         m_boundingBoxBottomRightCorner(position + size)
@@ -64,7 +76,14 @@ namespace GraphicsEngine {
         assert(s_windowPixelSize != glm::ivec2());
 
         Events::Manager::instance()->subscribe(this);
+        
+        m_textures.push_back(sprite_main);
+        m_textures.push_back(sprite_hover);
     }
+    
+    Button::~Button(){
+        Events::Manager::instance()->unsubscribe(this);
+    };
 
     // static setter
     void Button::initializeButtons(const glm::ivec2 &windowPixelSize) {

@@ -14,7 +14,7 @@
 #include "Frameworks.hpp"
 #include "CommonStructs.hpp"
 #include "Mesh.hpp"
-#include "ImportedMesh.hpp" //Remove this include (Debug for Imported Object)
+#include "ImportedMesh.hpp" /// TODO Remove this include (Debug for Imported Object)
 #include "Material.hpp"
 
 /**
@@ -56,6 +56,7 @@ namespace GraphicsEngine {
 
         // apply a 3D scale on the object
         void scale(const glm::vec3 &scalingVector);
+        
 
         /**
         * ask the material to update the MVP Matrix and Normal Matrix in the shader.

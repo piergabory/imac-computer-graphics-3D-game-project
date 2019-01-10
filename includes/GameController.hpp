@@ -60,6 +60,8 @@ private:
     std::shared_ptr<GraphicsEngine::Object3D> m_debugGrid;
     std::shared_ptr<GraphicsEngine::Object3D> m_skybox;
     std::shared_ptr<GraphicsEngine::Object3D> m_chunk;
+    
+    std::unique_ptr<GraphicsEngine::Menu> m_menu = nullptr;
 
 
 
@@ -79,8 +81,12 @@ private:
     static std::shared_ptr<GraphicsEngine::Object3D> initializeDebugGrid();
     static std::shared_ptr<GraphicsEngine::Object3D> createSkyBox();
     static std::shared_ptr<GraphicsEngine::Object3D> createChunk();
-    static std::shared_ptr<GraphicsEngine::Object3D> createWater();
+    
+    void createMenu();
+    void toggleMenu();
+    
     static std::shared_ptr<GraphicsEngine::Object3D> createObject3D(GraphicsEngine::LocalFilePath &meshPath, GraphicsEngine::LocalFilePath &textureImagePath,GraphicsEngine::LocalFilePath &vertexShaderPath, GraphicsEngine::LocalFilePath &fragmentShaderPath);
+    
 
     // control action
     void cameraMoves(const unsigned char key);

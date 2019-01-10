@@ -12,6 +12,7 @@
 #include "Context.hpp"
 #include "Object2D.hpp"
 #include "Button.hpp"
+#include "Menu.hpp"
 
 namespace GraphicsEngine {
 
@@ -29,6 +30,10 @@ namespace GraphicsEngine {
         void contextWillRender() const override{
             glDisable(GL_DEPTH_TEST);
             glDisable(GL_CULL_FACE);
+
+            // enable blending for gradient tansparency
+            glEnable(GL_BLEND);
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //parameters for blending
         }
 
     public:
