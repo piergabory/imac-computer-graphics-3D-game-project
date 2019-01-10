@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Shader.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>make run.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -28,6 +33,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>D46A495E21A0C4270096F02F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D46A4A4121A0CBEC0096F02F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

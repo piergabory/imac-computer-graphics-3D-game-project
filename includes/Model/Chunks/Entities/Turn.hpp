@@ -7,7 +7,7 @@
 #define Turn_hpp
 #pragma once
 
-#include "Entity.hpp"
+#include "Obstacle.hpp"
 #include "Animation.hpp"
 
 namespace GameModel {
@@ -15,7 +15,7 @@ namespace GameModel {
     /// \brief Directions enumeration Left or Right
     /// possible improvements: added UP, DOWN, 30°LEFT etc...
     enum class TurnDirection : int {
-        LEFT = -90, RIGHT = 90
+        LEFT = 90, RIGHT = -90
     };
 
     /**
@@ -25,11 +25,15 @@ namespace GameModel {
      *  \brief Describe entity specialisation for turning chunks of the terrain
      *  \brief turning entities should only appear inside turning chunks
      */
-    class Turn : public Entity {
+    class Turn final : public Obstacle {
     private:
+
         // static reference to 3D object of left and right turns
         static std::unique_ptr<GraphicsEngine::Object3D> s_turnObjectLeftVariant;
         static std::unique_ptr<GraphicsEngine::Object3D> s_turnObjectRightVariant;
+
+        TurnDirection m_direction;
+        bool m_hasPlayerSuccessfullyPassed = false;
 
         // rotation animations of player and camera.
         GraphicsEngine::Animation m_playerTurnAnimation;
@@ -38,10 +42,9 @@ namespace GameModel {
     public:
         // Entities overrides
         /// \brief repeated tests on the player on each frame
-        void action() override {}
+        void lastVisit(Player& player) override;
 
-        /// \brief one-time tests on the player on first visit
-        void onEnter() override { m_playerTurnAnimation.begin(); m_cameraTurnAnimation.begin(); }
+        void test(Player& player) override;
 
         /// \brief object factory caller with parameters for an empty object
         /// automagically called on first instanciation of Entity
@@ -53,5 +56,6 @@ namespace GameModel {
         Turn(TurnDirection direction, std::shared_ptr<GraphicsEngine::Animatable> &playerAnimatable, std::shared_ptr<GraphicsEngine::Animatable> &cameraAnimatable);
         ~Turn() override {};
     };
+
 }
 #endif /* Turn_hpp */

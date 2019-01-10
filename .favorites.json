@@ -1,0 +1,18 @@
+[
+    {
+        "type": "Directory",
+        "name": "/Users/piergabory/Developer/IMAC/Projet CG CPP/IMAC2_CG_CPP_Game_Project/includes",
+        "parent_id": null,
+        "workspaceRoot": "/Users/piergabory/Developer/IMAC/Projet CG CPP/IMAC2_CG_CPP_Game_Project",
+        "workspacePath": "includes",
+        "id": "Sv4yrfeBQTbHF9zq"
+    },
+    {
+        "type": "Directory",
+        "name": "/Users/piergabory/Developer/IMAC/Projet CG CPP/IMAC2_CG_CPP_Game_Project/src",
+        "parent_id": null,
+        "workspaceRoot": "/Users/piergabory/Developer/IMAC/Projet CG CPP/IMAC2_CG_CPP_Game_Project",
+        "workspacePath": "src",
+        "id": "kYcZDNSLsE28fJVd"
+    }
+]

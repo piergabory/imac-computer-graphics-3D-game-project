@@ -4,6 +4,14 @@
 #include "Entity.hpp"
 
 namespace GameModel {
+
+    void Entity::action(Player& player) {
+        if (m_visited == false) this->firstVisit(player);
+        m_visited = true;
+        test(player);
+    };
+    
+
     // redefinition static member
     std::unique_ptr<GraphicsEngine::Object3D> Entity::s_entityObject;
 
@@ -25,7 +33,7 @@ namespace GameModel {
 
     // static
     void Entity::loadObject() {
-        s_entityObject = std::unique_ptr<GraphicsEngine::Object3D>(makeObject("assets/models/cube.obj", "assets/textures/cubemap_a.png", "shaders/perspective.vs.glsl", "shaders/flatTexture.fs.glsl"));
+        s_entityObject = std::unique_ptr<GraphicsEngine::Object3D>(makeObject("assets/models/road.obj", "assets/textures/road.png", "shaders/perspective.vs.glsl", "shaders/lighting.fs.glsl"));
     }
 
     // constructor

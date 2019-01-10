@@ -21,8 +21,11 @@
 
 
 /// \brief describe camera behaviors states
-enum class CameraBehaviors {
-    FOLOW_PLAYER, FREE, LOCKED
+enum class CameraBehaviors : int {
+    FIRST_PERSON = 0,
+    THIRD_PERSON = 1,
+    FREE = 2,
+    LOCKED = 3
 };
 
 /**
@@ -40,24 +43,17 @@ private:
     /// \brief when false, cleans the memory and close the game.
     bool m_isRunning = true;
 
+    /// \brief if true, locks the game loop
+    bool m_isPaused = false;
 
-    /// \brief defines the game rythm
-    const uint m_CHUNK_PRELOADING_COUNT = 30;
-    const uint m_CHUNK_FRAME_DURATION = 10;
-
-    // progress in the current chunk
-    uint m_chunkframe = 0;
-
-    // passed chunk count
-    unsigned long m_chunkCycle = 0;
-
+    unsigned long m_framecount = 0;
 
     /// \brief player point of view / scene camera.
     std::shared_ptr<GraphicsEngine::Camera> m_playerPointOfView;
 
 
     // todo doc
-    CameraBehaviors m_cameraBehavior = CameraBehaviors::FOLOW_PLAYER;
+    CameraBehaviors m_cameraBehavior = CameraBehaviors::THIRD_PERSON;
 
 
     /// \brief object instances handles
@@ -66,6 +62,7 @@ private:
     std::shared_ptr<GraphicsEngine::Object3D> m_chunk;
     
     std::unique_ptr<GraphicsEngine::Menu> m_menu = nullptr;
+
 
 
     // Model instance
@@ -77,7 +74,7 @@ private:
     // setup
     void initializeScene();
 
-    void loadNewChunk();
+    void loadNewChunks(unsigned int chunkCount);
 
     /// \brief static methods for object initialization
     /// Loading assets and shaders from relative filepaths to create a 3D object
@@ -92,7 +89,7 @@ private:
     
 
     // control action
-    void cameraMoves(const SDL_Keycode key);
+    void cameraMoves(const unsigned char key);
 
 
 
@@ -104,8 +101,8 @@ private:
 
     /// \brief observer methods called by the event manager when a key is engaged
     /// Add/Removes the pressed key from the pressedKeys set.
-    void keyRealeaseHandler(const SDL_Keycode keycode) override;
-    void keyPressHandler(const std::set<const SDL_Keycode> &pressedKeys) override;
+    void keyRealeaseHandler(const unsigned char keycode) override;
+    void keyPressHandler(const std::set<unsigned char> &pressedKeys)override;
 
     /// \brief observer methods called by the event manager when a mouse event is fired
     /// controls the camera orientation

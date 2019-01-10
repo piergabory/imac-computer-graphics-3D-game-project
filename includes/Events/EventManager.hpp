@@ -40,7 +40,7 @@ namespace Events {
         std::vector<std::unique_ptr<KeyboardEventObserver> > m_pKeyboardEventsObserver;
 
         // contains all keycodes of currently pressed keyboard keys
-        std::set<const SDL_Keycode> m_pressedKeys;
+        std::set<unsigned char> m_pressedKeys;
 
     public:
         // instance getter

@@ -35,15 +35,18 @@ namespace GameModel {
         const float LANE_WIDTH = 2.f;
 
         ///\brief Maximum height of the jump (Parabolic curve)
-        const float JUMP_HEIGHT = 6.f;
+        const float JUMP_HEIGHT = 1.5f;
 
         ///\brief Size reduction of the player when crouching (Y scaling)
-        const float CROUCH_HEIGHT = 0.8;
+        const float CROUCH_HEIGHT = 0.3;
+
+        ///\brief number of framew during wich the player is invicible after taking on damage.
+        const unsigned int DAMAGE_INVICIBLITY_DURATION = 300;
 
         ///\brief Animations frame count. Game runs at 60 FPS.
-        const uint TRANSLATE_FRAMETIME = 20;
-        const uint JUMP_FRAMETIME = 30;
-        const uint CROUCH_FRAMETIME = 10;
+        const unsigned int TRANSLATE_FRAMETIME = 20;
+        const unsigned int JUMP_FRAMETIME = 60;
+        const unsigned int CROUCH_FRAMETIME = 10;
 
         ///\brief Lane the player is currently running in
         Position m_position = Position::MIDDLE;
@@ -51,6 +54,14 @@ namespace GameModel {
         ///\brief Status of the player (running, jumping, crouching)
         /// the player cant jump if jumping or crouching. It can only crouch if standing
         Status m_status = Status::STANDING;
+
+        ///\brief life describes the ability of the player to continue playing the game
+        /// Game should stop when this value reaches zero
+        int m_life = 100;
+        unsigned int m_score = 0;
+
+        ///\brief inviciblity cooldown in frames. When 0, the player is vulnerable again.
+        unsigned int m_invicibility = 0;
 
         ///\brief pointer to the character 3D object.
         /// This is the main handle on the model, if it's released, the model should be destroyed
@@ -76,6 +87,16 @@ namespace GameModel {
             return m_characterModel;
         }
 
+        ///\brief status getter
+        inline Status& status() { return m_status; }
+
+        ///\brief changes the player's life. Game over when life reaches zero
+        void incrementLife(int amount);
+        void kill();
+
+        ///\brief updates the player's score.
+        inline void incrementScore(unsigned int points) { m_score += points; }
+
         ///\brief makes the player jump. ignored if called while jumping
         void jump();
 
@@ -88,8 +109,13 @@ namespace GameModel {
         /// \brief Recenter the player to the center of the scene
         void resetPosition();
 
+
+        void update();
+
         ///\brief Position (Terrain lane) getter
         inline const Position position() const { return m_position; }
+
+        inline const unsigned int life() const { return m_life > 0 ? m_life : 0; }
      };
 }
 #endif

@@ -34,6 +34,11 @@ namespace GraphicsEngine {
         m_modelViewMatrix = glm::scale(m_modelViewMatrix, scalingVector);
     }
     
+
+    void Object3D::setScale(const glm::vec3 &scalingVector) {
+        // eh?
+    }
+    
     
     void Object3D::project() {
         static_cast<PerspectiveShaderProgram *>(m_material->shader())->setUniformMatrices(m_modelViewMatrix);

@@ -41,13 +41,16 @@ namespace GraphicsEngine {
         void translate(const glm::vec3 &translationVector) override;
 
         /// \brief translate the object relative to the world origin (not local)
-        void globalTranslate(const glm::vec3 &translationVector);
+        void globalTranslate(const glm::vec3 &translationVector) override;
 
         /// \brief apply a 3D rotation on the object
         void rotate(const float angle, const glm::vec3 &direction) override;
 
         /// \brief apply a 3D scale on the object
         void scale(const glm::vec3 &scalingVector) override;
+
+        /// \brief sets the 3D scale to a specific value relative to the original scale
+        void setScale(const glm::vec3 &scalingVector) override;
 
         /// \brief link the scene camera's matrices to the perspective shader.
         void setProjection(const std::shared_ptr<glm::mat4> &projectionMatrix, const std::shared_ptr<glm::mat4> &sceneModel);

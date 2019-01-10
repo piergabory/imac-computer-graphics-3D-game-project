@@ -32,9 +32,11 @@ namespace GraphicsEngine {
 
         // transformation methods
         virtual void translate(const glm::vec3& direction) = 0;
+        virtual void globalTranslate(const glm::vec3& direction) {}
         virtual void place(const glm::vec3& direction) = 0;
         virtual void rotate(const float angle, const glm::vec3 &direction) = 0;
         virtual void scale(const glm::vec3 &scalingVector) {};
+        virtual void setScale(const glm::vec3 &scalingVector) {};
 
         // virtual destructor
         virtual ~Animatable() {}
@@ -54,10 +56,10 @@ namespace GraphicsEngine {
         /// \brief Shared pointer on the Animatable object.
         /// \warning Animatable shouldn't have any reference to Animation (memory leak)
         /// Pointer is destroyed at the end of animation, if the object is forgotten during the animation, it will stay on screen until the animation reaches its end.
-        const std::shared_ptr<Animatable> m_pObjectToMove;
+        std::shared_ptr<Animatable> m_pObjectToMove;
 
         /// \brief duration of the animation in frames.
-        const unsigned int m_duration;
+        unsigned int m_duration;
 
         /// \brief progress of the animation in frames.
         /// counting down from the total frame count
@@ -65,11 +67,11 @@ namespace GraphicsEngine {
 
         /// \brief containers of informations of the final state of the animation.
         /// \todo this is never used as a position vector. but often contains angles, height targets, Y axis position targets, translation vector ect... Maybe should be changed to const std::vector<const float>
-        const glm::vec3 m_targetPositon;
+        glm::vec3 m_targetPositon;
 
         /// \brief interpolation function used to calculate the animatable transformation on each frame
         /// Recieves in paramerters, reference value of the animatable, informations for the final state, value of the progress of the animation (between 0 and 1) and stepping of the animation (on the same scale)
-        const std::function<void(Animatable&,const glm::vec3&, const float, const float)> m_interpolationFunction;
+        std::function<void(Animatable&,const glm::vec3&, const float, const float)> m_interpolationFunction;
 
         /// \brief optional callback called after the animation reaches its last frame.
         std::function<void(void)> m_callback;
@@ -99,9 +101,23 @@ namespace GraphicsEngine {
         /// To be called in each game loop call
         static void updateAnimations();
 
+
+        /// \brief returns the number of animation currently running.
+        static const size_t activeCount() {
+            return s_activeAnimations.size();
+        }
+
+
         /// \brief constructor
         Animation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const glm::vec3 &position, const std::function<void(Animatable& ,const glm::vec3&,const  float, const float)> &interpolation);
 
+        /// \brief default
+        Animation(): m_duration(0) {}
+
+        /// \brief copy constructor
+        Animation(const Animation& source) = default;
+
+        Animation& operator=(const Animation& source) = default;
     };
 
 
@@ -112,7 +128,8 @@ namespace GraphicsEngine {
     Animation makeCrouchAnimation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const float toHeight);
     Animation makeUnCrouchAnimation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const float fromHeight);
     Animation makeTurnAnimation(const std::shared_ptr<Animatable> &camera, unsigned int duration, const float angle);
-
+    Animation makeDeathFallAnimation(const std::shared_ptr<Animatable> &object, unsigned int duration);
+    Animation makeDamageBlinkAnimation(const std::shared_ptr<Animatable> &object, unsigned int duration);
 }
 
 
