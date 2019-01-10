@@ -9,9 +9,10 @@
 void GameController::initializeScene() {
     initializeDebugGrid();
 
-    // 2D context
+   // 2D context
     std::unique_ptr<GraphicsEngine::Canvas> canvas(new GraphicsEngine::Canvas());
     GraphicsEngine::Controller::instance()->loadGUI(canvas);
+    
 
     // 3D context
     m_playerPointOfView = std::make_shared<GraphicsEngine::Camera>();
@@ -23,6 +24,7 @@ void GameController::initializeScene() {
     // create objects
     m_skybox = createSkyBox();
     m_chunk = createChunk();
+    toggleMenu();
 
 
     // skybox max scale before clipping out of far-field
@@ -33,7 +35,7 @@ void GameController::initializeScene() {
     GraphicsEngine::Controller::instance()->activeScene()->add(m_currentGame->playerModel());
     GraphicsEngine::Controller::instance()->activeScene()->add(m_currentGame->enemyModel());
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
-
+    
 }
 
 
@@ -74,7 +76,8 @@ bool GameController::loop() {
     // framerate 60 frames per seconds
     const float FRAMERATE = 60;
 
-    if (!m_isPaused) {
+    // compute current chunk progress
+    if (m_menu == nullptr) {
         if(m_framecount % 100 == 0) loadNewChunks(100);
         std::set<std::shared_ptr<GraphicsEngine::Object3D>> newObjects = m_currentGame->update();
         for(std::shared_ptr<GraphicsEngine::Object3D> object : newObjects) {
@@ -140,47 +143,78 @@ void GameController::quitEventHandler() {
 
 // a déolacer dans l'EventManager
 void GameController::keyRealeaseHandler(const unsigned char keycode) {
-    // check if debug shortcuts is activated (CTRL-SHIFT):
-    switch (keycode) {
-            // escape key
-        case SDLK_ESCAPE:
-            SDL_CaptureMouse(SDL_FALSE);
-            SDL_ShowCursor(SDL_ENABLE);
-            break;
+    if (m_menu){
+        switch (keycode) {
+                case SDLK_RETURN:
+                    m_menu->enter();
+                    break;
+                
+                // escape key
+                case SDLK_ESCAPE:
+                    SDL_CaptureMouse(SDL_TRUE);
+                    SDL_ShowCursor(SDL_DISABLE);
+                    toggleMenu();
+                    break;
+                
+                case SDLK_z:
+                    m_menu->previous();
+                    break;
+                
+            case SDLK_q:
+                    m_menu->previous();
+                    break;
+                
+                case SDLK_d:
+                    m_menu->next();
+                    break;
+               
+            case SDLK_s:
+                    m_menu->next();
+                    break;
+        }
+    } else {
+        // check if debug shortcuts is activated (CTRL-SHIFT):
+        switch (keycode) {
+                // escape key
+            case SDLK_ESCAPE:
+                SDL_CaptureMouse(SDL_FALSE);
+                SDL_ShowCursor(SDL_ENABLE);
+                break;
 
-        case SDLK_z: m_currentGame->callInput(GameModel::Controls::UP); break;
-        case SDLK_q: m_currentGame->callInput(GameModel::Controls::LEFT); break;
-        case SDLK_d: m_currentGame->callInput(GameModel::Controls::RIGHT); break;
-        case SDLK_s: m_currentGame->callInput(GameModel::Controls::DOWN); break;
+            case SDLK_z: m_currentGame->callInput(GameModel::Controls::UP); break;
+            case SDLK_q: m_currentGame->callInput(GameModel::Controls::LEFT); break;
+            case SDLK_d: m_currentGame->callInput(GameModel::Controls::RIGHT); break;
+            case SDLK_s: m_currentGame->callInput(GameModel::Controls::DOWN); break;
 
-        case SDLK_c:
-            m_cameraBehavior = static_cast<CameraBehaviors>(((int)m_cameraBehavior + 1) % 4);
-            if (m_cameraBehavior == CameraBehaviors::THIRD_PERSON) {
-                m_playerPointOfView->switchMode(GraphicsEngine::CameraControl::TURNTABLE);
-                m_playerPointOfView->place(glm::vec3(0,4,8));
-            } else {
-                m_playerPointOfView->switchMode(GraphicsEngine::CameraControl::FLY);
-                m_playerPointOfView->place(glm::vec3(0,0,1));
-                m_playerPointOfView->rotate(-10, glm::vec3(1,0,0));
-            }
-            break;
+            case SDLK_c:
+                m_cameraBehavior = static_cast<CameraBehaviors>(((int)m_cameraBehavior + 1) % 4);
+                if (m_cameraBehavior == CameraBehaviors::THIRD_PERSON) {
+                    m_playerPointOfView->switchMode(GraphicsEngine::CameraControl::TURNTABLE);
+                    m_playerPointOfView->place(glm::vec3(0,4,8));
+                } else {
+                    m_playerPointOfView->switchMode(GraphicsEngine::CameraControl::FLY);
+                    m_playerPointOfView->place(glm::vec3(0,0,1));
+                    m_playerPointOfView->rotate(-10, glm::vec3(1,0,0));
+                }
+                break;
 
-        case SDLK_g:
-            std::cout << "Toggling Grid " << (m_debugGrid? "off" : "on") << std::endl;
-            if (m_debugGrid){
-                m_debugGrid.reset();
-                // GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
-            } else {
-                m_debugGrid = initializeDebugGrid();
-                GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
-            }
-            break;
+            case SDLK_g:
+                std::cout << "Toggling Grid " << (m_debugGrid? "off" : "on") << std::endl;
+                if (m_debugGrid){
+                    m_debugGrid.reset();
+                    // GraphicsEngine::Controller::instance()->activeScene()->remove(m_debugGrid);
+                } else {
+                    m_debugGrid = initializeDebugGrid();
+                    GraphicsEngine::Controller::instance()->activeScene()->add(m_debugGrid);
+                }
+                break;
 
 
-        case SDLK_p:
-            // freeze
-            m_isPaused = !m_isPaused;
-            break;
+            case SDLK_p:
+                // freeze
+                m_isPaused = !m_isPaused;
+                break;
+        }
     }
 };
 
@@ -210,7 +244,7 @@ void GameController::mouseWheelHandler(float deltaX, float deltaY) {
 
 void GameController::mouseReleaseHandler(const unsigned char button) {
     SDL_CaptureMouse(SDL_TRUE);
-    SDL_ShowCursor(SDL_DISABLE);
+    SDL_ShowCursor(SDL_ENABLE); ///TODO - put back to disable
 }
 
 
@@ -321,6 +355,20 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
     return createObject3D(chunkmesh, chunktex, chunkvs, chunkfs);
 }
 
+
+
+void GameController::createMenu(){
+    m_menu.reset(new GraphicsEngine::Menu(std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/overlaytest.png"))));
+}
+
+void GameController::toggleMenu(){
+    if (!m_menu) {
+        createMenu();
+        GraphicsEngine::Controller::instance()->activeGUI()->add(m_menu->elements());
+    } else {
+        m_menu.reset(nullptr);
+    }
+}
 
 
 

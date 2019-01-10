@@ -45,6 +45,10 @@ namespace GraphicsEngine {
         assert(s_2dShader->identifier() != 0);
         return std::make_shared<Material>(s_2dShader, texture);
     }
+    
+    void Object2D::texture(std::shared_ptr<Texture> newtex){
+        m_material = createMaterial(newtex);
+    };
 
 
     void Object2D::initialize2DShaderProgram(LocalFilePath vertexShaderPath, LocalFilePath fragementShaderPath) {
