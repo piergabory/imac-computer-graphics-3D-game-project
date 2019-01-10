@@ -45,6 +45,8 @@ void GameController::initializeScene() {
 
 
 void GameController::setup() {
+    m_framecount == 0;
+    
     // initialize framworks and windows
     GraphicsEngine::Controller::instance()->setup();
     GraphicsEngine::Controller::instance()->printInfos();
@@ -371,7 +373,10 @@ void GameController::toggleMenu(){
         createMenu();
         m_menu->initializeButtons(
               [=]() -> void { /* resume */ toggleMenu(); },
-              [=]() -> void { /* save */ },
+                                  [=]() -> void {
+                                      m_isRunning = false;
+                                      system(("\"" + GraphicsEngine::LocalFilePath("bin/product") + "\"").c_str());
+                                  },
               [=]() -> void { /* load */ },
               [=]() -> void { /* quit */ m_isRunning = false; }
           );

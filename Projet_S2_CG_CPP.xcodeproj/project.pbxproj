@@ -57,6 +57,7 @@
 		D4A0BD1C21DBB46B00BC650B /* Jump.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4A0BD1521DBB46B00BC650B /* Jump.cpp */; };
 		D4A0BD1D21DBB46B00BC650B /* Slide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4A0BD1621DBB46B00BC650B /* Slide.cpp */; };
 		D4A0BD1F21DBB46B00BC650B /* Wall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4A0BD1821DBB46B00BC650B /* Wall.cpp */; };
+		D4A1FF8021E7B56800A351F2 /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4A1FF7F21E7B56800A351F2 /* Sound.cpp */; };
 		D4EA626B21CBB56000CBFCAC /* libassimp.4.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D4EA626A21CBB56000CBFCAC /* libassimp.4.1.0.dylib */; };
 		D4F56EC621AEB29400767ECA /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F56EC521AEB29400767ECA /* SDL2_image.framework */; };
 		D4F56EE821AF25F300767ECA /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F56EE721AF25F300767ECA /* SDL2.framework */; };
@@ -85,9 +86,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-        2F0E62D121DCF09900F0CA09 /* Menu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Menu.hpp; sourceTree = "<group>"; };
-        2F8E63A521DD05A10064E6B8 /* Menu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Menu.cpp; sourceTree = "<group>"; };
-        D41DC3BA21E67D1F00218DED /* road_crouch.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_crouch.obj; sourceTree = "<group>"; };
+		2F0E62D121DCF09900F0CA09 /* Menu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Menu.hpp; sourceTree = "<group>"; };
+		2F8E63A521DD05A10064E6B8 /* Menu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Menu.cpp; sourceTree = "<group>"; };
+		D41DC3BA21E67D1F00218DED /* road_crouch.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_crouch.obj; sourceTree = "<group>"; };
 		D41DC3BB21E67D1F00218DED /* road.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road.obj; sourceTree = "<group>"; };
 		D41DC3BC21E67D1F00218DED /* road_jump.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_jump.obj; sourceTree = "<group>"; };
 		D41DC3BD21E67D1F00218DED /* road_wall.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = road_wall.obj; sourceTree = "<group>"; };
@@ -214,6 +215,8 @@
 		D4A0BD1621DBB46B00BC650B /* Slide.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Slide.cpp; sourceTree = "<group>"; };
 		D4A0BD1821DBB46B00BC650B /* Wall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wall.cpp; sourceTree = "<group>"; };
 		D4A0BD2821DBF05C00BC650B /* turn.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = turn.obj; sourceTree = "<group>"; };
+		D4A1FF7F21E7B56800A351F2 /* Sound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sound.cpp; sourceTree = "<group>"; };
+		D4A1FF8121E7B58500A351F2 /* Sound.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Sound.hpp; path = includes/Sound.hpp; sourceTree = SOURCE_ROOT; };
 		D4EA624A21C938FF00CBFCAC /* 2D.fs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2D.fs.glsl; sourceTree = "<group>"; };
 		D4EA624B21C938FF00CBFCAC /* 2D.vs.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2D.vs.glsl; sourceTree = "<group>"; };
 		D4EA626A21CBB56000CBFCAC /* libassimp.4.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.4.1.0.dylib; path = ../../../../../../usr/local/Cellar/assimp/4.1.0/lib/libassimp.4.1.0.dylib; sourceTree = "<group>"; };
@@ -403,6 +406,7 @@
 		D4948B2521D641C40081C29E /* GraphicsEngine */ = {
 			isa = PBXGroup;
 			children = (
+				D4A1FF7F21E7B56800A351F2 /* Sound.cpp */,
 				D4948B2621D641C40081C29E /* Exceptions.cpp */,
 				D4948B2721D641C40081C29E /* Camera.cpp */,
 				D4948B2821D641C40081C29E /* Animation.cpp */,
@@ -537,6 +541,7 @@
 		D4948B4D21D641C40081C29E /* GraphicsEngine */ = {
 			isa = PBXGroup;
 			children = (
+				D4A1FF8121E7B58500A351F2 /* Sound.hpp */,
 				D4948B4E21D641C40081C29E /* Context */,
 				D4948B5221D641C40081C29E /* Animation.hpp */,
 				D4948B5321D641C40081C29E /* GraphicsEngine.hpp */,
@@ -822,6 +827,7 @@
 				D4948BCD21D64B450081C29E /* Shader.cpp in Sources */,
 				D4948B8321D647020081C29E /* Shader.hpp in Sources */,
 				D4948BCF21D64B450081C29E /* ShaderProgram.cpp in Sources */,
+				D4A1FF8021E7B56800A351F2 /* Sound.cpp in Sources */,
 				D4948BC421D64B450081C29E /* Camera.cpp in Sources */,
 				D4948BC521D64B450081C29E /* Animation.cpp in Sources */,
 				D4948B8421D647020081C29E /* Camera.hpp in Sources */,

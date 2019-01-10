@@ -26,7 +26,8 @@ class Sound : Events::QuitEventObserver{
         //open audio device
         m_deviceId = SDL_OpenAudioDevice(nullptr,0,&m_wavSpec,nullptr,0);
         //play audio
-        int success=SDL_QueueAudio(m_deviceId, m_wavBuffer,m_wavLength);
+        // int success=
+        SDL_QueueAudio(m_deviceId, m_wavBuffer,m_wavLength);
         SDL_PauseAudioDevice(m_deviceId,0);
     };
 };
