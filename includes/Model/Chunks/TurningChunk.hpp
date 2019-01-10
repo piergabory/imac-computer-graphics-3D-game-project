@@ -35,6 +35,7 @@ namespace GameModel {
                 case TurnDirection::LEFT: return glm::vec3(-m_ENTITY_LENGTH/m_ENTITY_WIDTH,0,m_ENTITY_LENGTH/m_ENTITY_WIDTH);
                 case TurnDirection::RIGHT: return glm::vec3(m_ENTITY_LENGTH/m_ENTITY_WIDTH,0,m_ENTITY_LENGTH/m_ENTITY_WIDTH);
             }
+            return glm::vec3(0,0,0); //remoove warning
         }
 
 
