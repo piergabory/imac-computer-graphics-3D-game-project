@@ -29,7 +29,7 @@ void GameController::initializeScene() {
     m_skybox = createSkyBox();
     m_chunk = createChunk();
     createScore();
-    toggleMenu();
+    createMenu();
 
 
     // skybox max scale before clipping out of far-field
@@ -371,12 +371,25 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
 
 
 void GameController::createMenu(){
-    m_menu.reset(new GraphicsEngine::Menu(std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/overlay-menu.png"))));
+    m_menu.reset(new GraphicsEngine::Menu(std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/title_screen.png")),0.5));
+    
+    m_menu->initializeButtons(
+                              [=]() -> void { /* resume */ toggleMenu(); },
+                              [=]() -> void {
+                                  m_isRunning = false;
+                                  system(("\"" + GraphicsEngine::LocalFilePath("bin/product") + "\"").c_str());
+                              },
+                              [=]() -> void { /* load */ },
+                              [=]() -> void { /* quit */ m_isRunning = false; }
+                              );
+    m_menu->select();
+    GraphicsEngine::Controller::instance()->activeGUI()->add(m_menu->elements());
 }
 
 void GameController::toggleMenu(){
     if (!m_menu) {
-        createMenu();
+            m_menu.reset(new GraphicsEngine::Menu(std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/overlay-menu.png"))));
+        
         m_menu->initializeButtons(
               [=]() -> void { /* resume */ toggleMenu(); },
                                   [=]() -> void {
