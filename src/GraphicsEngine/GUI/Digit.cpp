@@ -20,7 +20,9 @@ namespace GraphicsEngine {
         texture(m_digitTextures[newDigit]);
     };
     
-    void Digit::iniatilizeDigit(){
+    void Digit::initializeDigit(){
+
+        
     m_digitTextures.push_back(
                                   std::make_shared<Texture>(LocalFilePath("assets/textures/digit_0.png"))
                                   );
@@ -59,5 +61,8 @@ namespace GraphicsEngine {
     m_digitTextures.push_back(
                                   std::make_shared<Texture>(LocalFilePath("assets/textures/digit_9.png"))
                                   );
+    std::cout << "Nombre de chiffres chargées" << m_digitTextures.size() << std::endl;
+    
     }
+    
 };

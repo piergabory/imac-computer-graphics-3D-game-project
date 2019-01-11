@@ -28,6 +28,7 @@ void GameController::initializeScene() {
     // create objects
     m_skybox = createSkyBox();
     m_chunk = createChunk();
+    createNumber();
     toggleMenu();
 
 
@@ -39,6 +40,7 @@ void GameController::initializeScene() {
     GraphicsEngine::Controller::instance()->activeScene()->add(m_currentGame->playerModel());
     GraphicsEngine::Controller::instance()->activeScene()->add(m_currentGame->enemyModel());
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
+    GraphicsEngine::Controller::instance()->activeGUI()->add(m_digit);
     
 }
 
@@ -400,6 +402,14 @@ GameController* GameController::instance() {
     return s_controllerInstance;
 }
 
+
+void GameController::createNumber(){
+    GraphicsEngine::Digit::initializeDigit();
+    m_digit = std::make_shared<GraphicsEngine::Digit>(glm::vec2(-1,1),glm::vec2(0.5,-0.5),std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/digit_0.png")));
+ 
+    
+    
+}
 
 
 //Loading assets and shaders from relative filepaths to create a 3D object

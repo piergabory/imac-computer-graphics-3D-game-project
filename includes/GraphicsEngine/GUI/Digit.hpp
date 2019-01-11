@@ -25,7 +25,7 @@ namespace GraphicsEngine {
         Digit(const glm::vec2 &position, const glm::vec2 &size, std::shared_ptr<Texture> image_main);
         ~Digit();
         
-        static void iniatilizeDigit();
+        static void initializeDigit();
         
         void update(char newDigit);
         
