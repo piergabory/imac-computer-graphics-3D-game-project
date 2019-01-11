@@ -92,7 +92,7 @@ namespace GraphicsEngine {
 
     Animation makeCrouchAnimation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const float toHeight) {
         return Animation(object, duration, glm::vec3(toHeight), [](Animatable &object, const glm::vec3 &position, const float step, const float progress) {
-            object.scale(glm::vec3(1, 1 - 0.01,1));
+            object.scale(glm::vec3(1, 1 - 0.03,1));
         });
     }
 
@@ -100,7 +100,7 @@ namespace GraphicsEngine {
 
     Animation makeUnCrouchAnimation(const std::shared_ptr<Animatable> &object, const unsigned int duration, const float fromHeight) {
         return Animation(object, duration, glm::vec3(fromHeight), [](Animatable &object, const glm::vec3 &position, const float step, const float progress) {
-            object.scale(glm::vec3(1, 1 + 0.01,1));
+            object.scale(glm::vec3(1, 1 + 0.03,1));
         });
     }
 
