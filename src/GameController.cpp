@@ -58,7 +58,7 @@ void GameController::setup() {
     m_currentGame->onPlayerDeath([=](void) -> void {
         // wait for all animations to terminate
         if (GraphicsEngine::Animation::activeCount() > 0) return;
-        m_isPaused = true;
+        toggleMenu();
         /// \todo reinit the game
     });
 
