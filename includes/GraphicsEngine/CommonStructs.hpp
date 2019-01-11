@@ -9,6 +9,7 @@
 #pragma once
 
 #include <string>
+#include <iostream>
 #include <glm/glm.hpp>
 
  namespace GraphicsEngine {
@@ -59,6 +60,7 @@
 
          LocalFilePath(std::string localPath) : std::string(s_absolutePathToExecutable + localPath) {
              assert(!s_absolutePathToExecutable.empty());
+             std::cout << c_str() << std::endl;
          }
      };
  }
