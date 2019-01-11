@@ -108,7 +108,10 @@ namespace GameModel {
 
         /// \brief Recenter the player to the center of the scene
         void resetPosition();
-
+        
+        inline unsigned int score(){
+            return m_score;
+        };
 
         void update();
 

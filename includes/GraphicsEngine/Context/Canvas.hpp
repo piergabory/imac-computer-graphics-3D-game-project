@@ -14,6 +14,9 @@
 #include "Button.hpp"
 #include "Menu.hpp"
 
+#include "Digit.hpp"
+#include "Number.hpp"
+
 namespace GraphicsEngine {
 
     /**

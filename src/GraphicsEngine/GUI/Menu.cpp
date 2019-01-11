@@ -72,16 +72,15 @@ namespace GraphicsEngine {
     ){
         
 
-        add(resume,LocalFilePath("assets/textures/button_start1.png"), LocalFilePath("assets/textures/button_start2.png"));
+        add(resume,LocalFilePath("assets/textures/button_play1.png"), LocalFilePath("assets/textures/button_play2.png"));
 
-        add(save, LocalFilePath("assets/textures/button_load1.png"),LocalFilePath("assets/textures/button_load2.png") );
+        add(save, LocalFilePath("assets/textures/button_start1.png"),LocalFilePath("assets/textures/button_start2.png") );
         
         //LOAD
-
-        add(load, LocalFilePath("assets/textures/button_start1.png"),LocalFilePath("assets/textures/button_start2.png") );
+        //add(load, LocalFilePath("assets/textures/button_load1.png"),LocalFilePath("assets/textures/button_load2.png") );
         
         //QUIT
-        add(quit, LocalFilePath("assets/textures/button_start1.png"),LocalFilePath("assets/textures/button_start2.png") );
+        add(quit, LocalFilePath("assets/textures/button_quit1.png"),LocalFilePath("assets/textures/button_quit2.png") );
 
         
     }

@@ -28,6 +28,7 @@ void GameController::initializeScene() {
     // create objects
     m_skybox = createSkyBox();
     m_chunk = createChunk();
+    createScore();
     toggleMenu();
 
 
@@ -39,6 +40,8 @@ void GameController::initializeScene() {
     GraphicsEngine::Controller::instance()->activeScene()->add(m_currentGame->playerModel());
     GraphicsEngine::Controller::instance()->activeScene()->add(m_currentGame->enemyModel());
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
+    
+    GraphicsEngine::Controller::instance()->activeGUI()->add(m_score->elements());
     
 }
 
@@ -94,6 +97,9 @@ bool GameController::loop() {
 
     // start new render cycle
     GraphicsEngine::Controller::instance()->render();
+    
+    //display score
+    m_score->update(m_currentGame->playerScore());
 
     // fetches new events
     Events::Manager::instance()->pollEvents();
@@ -365,7 +371,7 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
 
 
 void GameController::createMenu(){
-    m_menu.reset(new GraphicsEngine::Menu(std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/overlaytest.png"))));
+    m_menu.reset(new GraphicsEngine::Menu(std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/overlay-menu.png"))));
 }
 
 void GameController::toggleMenu(){
@@ -400,6 +406,14 @@ GameController* GameController::instance() {
     return s_controllerInstance;
 }
 
+
+void GameController::createScore(){
+    GraphicsEngine::Digit::initializeDigit();
+
+    
+    m_score =  std::make_shared<GraphicsEngine::Number>(187);
+    m_score->update(750);
+}
 
 
 //Loading assets and shaders from relative filepaths to create a 3D object

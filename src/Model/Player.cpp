@@ -114,6 +114,8 @@ namespace GameModel {
     void Player::kill() {
         m_life = 0;
     }
+    
+
 
 
     // constructor
