@@ -58,7 +58,7 @@ namespace GraphicsEngine {
     public:
         
         // calls initializers for uninitialized frameworks
-        void setup(const char* windowTitle = "", const uint viewportWidth = 800, const uint viewportHeight = 600);
+        void setup(const char* windowTitle = "MIAMImac", const uint viewportWidth = 800, const uint viewportHeight = 600);
 
         // replace existing scene with a given one
         void loadScene(std::unique_ptr<Scene> &newScene);
