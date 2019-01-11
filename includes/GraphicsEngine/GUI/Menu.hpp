@@ -44,6 +44,7 @@ namespace GraphicsEngine {
         
             ///\brief  constructor
             Menu(std::shared_ptr<Texture> sprite);
+            Menu(std::shared_ptr<Texture> sprite, double ypos);
             ~Menu();
 
             
@@ -55,6 +56,7 @@ namespace GraphicsEngine {
             std::vector< std::shared_ptr<Object2D> > m_elements;
             int m_currentButton = 0;
         
+        double btn_ypos = 0.8;
             double btn_height = 0.33;
             double btn_width = 1.0;
             double btn_margin = 0.05;

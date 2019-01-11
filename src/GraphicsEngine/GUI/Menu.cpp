@@ -9,6 +9,11 @@ namespace GraphicsEngine {
         m_elements.push_back(std::make_shared<Object2D>(glm::vec2(-1,1), glm::vec2(2,-2), background));
     };
     
+    Menu::Menu(std::shared_ptr<Texture> background, double ypos) {
+        m_elements.push_back(std::make_shared<Object2D>(glm::vec2(-1,1), glm::vec2(2,-2), background));
+            btn_ypos = ypos;
+    };
+    
     Menu::~Menu(){};
     
     std::vector< std::shared_ptr<Object2D> > Menu::elements(){
@@ -22,7 +27,7 @@ namespace GraphicsEngine {
             func();
         };
         
-        double ypos = 0.8 - ((double)(m_buttons.size()) * (btn_height+btn_margin));
+        double ypos = btn_ypos - ((double)(m_buttons.size()) * (btn_height+btn_margin));
         std::shared_ptr<Button> button = std::make_shared<Button>(
                                  glm::vec2(-(btn_width/2), ypos),
                                  glm::vec2(btn_width, -btn_height),
