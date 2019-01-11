@@ -28,7 +28,7 @@ void GameController::initializeScene() {
     // create objects
     m_skybox = createSkyBox();
     m_chunk = createChunk();
-    createNumber();
+    createScore();
     toggleMenu();
 
 
@@ -40,9 +40,8 @@ void GameController::initializeScene() {
     GraphicsEngine::Controller::instance()->activeScene()->add(m_currentGame->playerModel());
     GraphicsEngine::Controller::instance()->activeScene()->add(m_currentGame->enemyModel());
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
-    GraphicsEngine::Controller::instance()->activeGUI()->add(m_digit);
     
-    GraphicsEngine::Controller::instance()->activeGUI()->add(m_number->elements());
+    GraphicsEngine::Controller::instance()->activeGUI()->add(m_score->elements());
     
 }
 
@@ -405,11 +404,12 @@ GameController* GameController::instance() {
 }
 
 
-void GameController::createNumber(){
+void GameController::createScore(){
     GraphicsEngine::Digit::initializeDigit();
-    m_digit = std::make_shared<GraphicsEngine::Digit>(glm::vec2(-1,1),glm::vec2(0.5,-0.5),0);
+
     
-    m_number =  std::make_shared<GraphicsEngine::Number>(187);
+    m_score =  std::make_shared<GraphicsEngine::Number>(187);
+    m_score->update(750);
 }
 
 

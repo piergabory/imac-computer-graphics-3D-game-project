@@ -8,13 +8,13 @@
 
 namespace GraphicsEngine {
     Number::Number(unsigned int num) : m_num(num) {
-        update(num);
+        splitIntoDigits(num);
         initializeDigitsObjects();
     }
     
     Number::~Number(){}
     
-    void Number::update(unsigned int newNum){
+    void Number::splitIntoDigits(unsigned int newNum){
         m_num = newNum;
         m_digits.clear();
         
@@ -22,13 +22,32 @@ namespace GraphicsEngine {
             m_digits.push_back(newNum%10);
             newNum /= 10;
         }
-        
-        std::reverse(m_digits.begin(),m_digits.end());
 
+        std::reverse(m_digits.begin(),m_digits.end());
+        
+        for (size_t i = m_digits.size() ; i < m_size; i++){
+            m_digits.push_back(0);
+        }
+    }
+    
+    void Number::update(unsigned int newNum){
+        
+        splitIntoDigits(newNum);
+        
+        updateDigits();
+    }
+    
+    void Number::updateDigits(){
+        for (int i=0 ; i < m_digitsObjects.size(); i++){
+            if (m_digitsObjects[i]->current() != m_digits[i]){
+                m_digitsObjects[i]->update(m_digits[i]);
+            }
+        }
     }
     
     void Number::initializeDigitsObjects(){
-        std::cout << "Creation des chiffres : ";
+        m_digitsObjects.clear();
+        
         for (int i=0 ; i < m_digits.size(); i++){
             double x = m_posx+(m_width/m_digits.size())*i;
             

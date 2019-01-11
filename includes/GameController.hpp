@@ -62,8 +62,7 @@ private:
     std::shared_ptr<GraphicsEngine::Object3D> m_skybox;
     std::shared_ptr<GraphicsEngine::Object3D> m_chunk;
     
-    std::shared_ptr<GraphicsEngine::Digit> m_digit;
-    std::shared_ptr<GraphicsEngine::Number> m_number;
+    std::shared_ptr<GraphicsEngine::Number> m_score;
     
     std::unique_ptr<GraphicsEngine::Menu> m_menu = nullptr;
 
@@ -88,7 +87,7 @@ private:
     
     void createMenu();
     void toggleMenu();
-    void createNumber();
+    void createScore();
     
     static std::shared_ptr<GraphicsEngine::Object3D> createObject3D(GraphicsEngine::LocalFilePath &meshPath, GraphicsEngine::LocalFilePath &textureImagePath,GraphicsEngine::LocalFilePath &vertexShaderPath, GraphicsEngine::LocalFilePath &fragmentShaderPath);
     

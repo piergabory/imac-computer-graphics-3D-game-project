@@ -17,7 +17,7 @@
 namespace GraphicsEngine {
     class Digit : public Object2D {
     private:
-        char m_digit = 0;
+        char m_digit;
         
         
         
