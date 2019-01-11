@@ -97,6 +97,9 @@ bool GameController::loop() {
 
     // start new render cycle
     GraphicsEngine::Controller::instance()->render();
+    
+    //display score
+    m_score->update(m_currentGame->playerScore());
 
     // fetches new events
     Events::Manager::instance()->pollEvents();

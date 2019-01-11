@@ -107,6 +107,8 @@ namespace GameModel {
 
         /// \brief getter on the character model
         inline std::shared_ptr<GraphicsEngine::Object3D> playerModel() const { return m_player.model(); }
+        
+        unsigned int playerScore() { return m_player.score(); }
 
         /// \brief getter on the enemy model
         inline std::shared_ptr<GraphicsEngine::Object3D> enemyModel() const { return m_enemy; }

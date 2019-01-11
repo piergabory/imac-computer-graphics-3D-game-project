@@ -26,7 +26,7 @@ namespace GraphicsEngine {
         std::reverse(m_digits.begin(),m_digits.end());
         
         for (size_t i = m_digits.size() ; i < m_size; i++){
-            m_digits.push_back(0);
+            m_digits.insert(m_digits.begin(),0);
         }
     }
     
