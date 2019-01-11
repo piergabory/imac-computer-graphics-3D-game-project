@@ -65,6 +65,8 @@ namespace GameModel {
         updateEnemy(move);
         if(m_player.life() > 0) {
             if (m_chunkframe == 0) {
+                if (m_chunkCycle > 100)
+                    m_player.incrementScore(1);
                 m_terrain.entityAt(m_player.position())->lastVisit(m_player);
                 newObjectsToLoadInScene = nextChunk();
             }

@@ -5,7 +5,7 @@ namespace GameModel
 	void Coin::firstVisit(Player& player)
 	{
         //Player gains points if he catches a coin
-		player.incrementScore(5);
+		player.incrementScore(500);
 	}
 
     

@@ -15,6 +15,9 @@ namespace GameModel {
         // makes player
         m_status = Status::JUMPING;
         m_jumpingAnimation.begin();
+
+        if (m_life > 0)
+            m_score+=20;
     }
 
 
@@ -25,6 +28,9 @@ namespace GameModel {
             m_status = Status::CROUCHING;
             m_crouchingAnimation.begin();
         }
+
+        if (m_life > 0)
+            m_score+=100;
 
         // standing
         else if (m_status == Status::CROUCHING){
@@ -101,6 +107,8 @@ namespace GameModel {
     void Player::incrementLife(int amount) {
         if(m_invicibility == 0)
             m_life += amount;
+        if (m_life > 0)
+            m_score+=30;
         if(amount < 0)
             m_invicibility = DAMAGE_INVICIBLITY_DURATION;
     };

@@ -116,10 +116,8 @@
 		D4546DAF21E8A921000E652F /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		D4546DB121E8A921000E652F /* EventManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EventManager.cpp; sourceTree = "<group>"; };
 		D4546DB221E8A921000E652F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		D4546DB421E8A921000E652F /* haha */ = {isa = PBXFileReference; lastKnownFileType = text; path = haha; sourceTree = "<group>"; };
 		D4546DB521E8A921000E652F /* product.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = product.dSYM; sourceTree = "<group>"; };
 		D4546DB621E8A921000E652F /* product */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = product; sourceTree = "<group>"; };
-		D4546DB721E8A921000E652F /* test.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
 		D4546DB921E8A921000E652F /* GameController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameController.hpp; sourceTree = "<group>"; };
 		D4546DBC21E8A921000E652F /* Context.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Context.hpp; sourceTree = "<group>"; };
 		D4546DBD21E8A921000E652F /* Scene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Scene.hpp; sourceTree = "<group>"; };
@@ -375,10 +373,8 @@
 		D4546DB321E8A921000E652F /* bin */ = {
 			isa = PBXGroup;
 			children = (
-				D4546DB421E8A921000E652F /* haha */,
 				D4546DB521E8A921000E652F /* product.dSYM */,
 				D4546DB621E8A921000E652F /* product */,
-				D4546DB721E8A921000E652F /* test.txt */,
 			);
 			path = bin;
 			sourceTree = "<group>";
