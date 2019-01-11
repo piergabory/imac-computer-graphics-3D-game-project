@@ -410,6 +410,9 @@ void GameController::createNumber(){
     char number = 3;
     m_digit->update(number);
     
+    m_number =  std::make_shared<GraphicsEngine::Number>(187);
+    m_number->update(32);
+    
 }
 
 

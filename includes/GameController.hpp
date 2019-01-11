@@ -63,6 +63,7 @@ private:
     std::shared_ptr<GraphicsEngine::Object3D> m_chunk;
     
     std::shared_ptr<GraphicsEngine::Digit> m_digit;
+    std::shared_ptr<GraphicsEngine::Number> m_number;
     
     std::unique_ptr<GraphicsEngine::Menu> m_menu = nullptr;
 

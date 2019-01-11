@@ -14,6 +14,7 @@ namespace GraphicsEngine {
     
     void Number::update(unsigned int newNum){
         m_num = newNum;
+        m_digits.clear();
         
         while(newNum){
             m_digits.push_back(newNum%10);

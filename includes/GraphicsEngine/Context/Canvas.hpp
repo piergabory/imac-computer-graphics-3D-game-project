@@ -12,8 +12,10 @@
 #include "Context.hpp"
 #include "Object2D.hpp"
 #include "Button.hpp"
-#include "Digit.hpp"
 #include "Menu.hpp"
+
+#include "Digit.hpp"
+#include "Number.hpp"
 
 namespace GraphicsEngine {
 
