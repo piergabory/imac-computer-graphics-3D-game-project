@@ -206,8 +206,8 @@ void GameController::keyRealeaseHandler(const unsigned char keycode) {
                     m_playerPointOfView->place(glm::vec3(0,4,8));
                 } else {
                     m_playerPointOfView->switchMode(GraphicsEngine::CameraControl::FLY);
-                    m_playerPointOfView->place(glm::vec3(0,0,1));
-                    m_playerPointOfView->rotate(-10, glm::vec3(1,0,0));
+                    m_playerPointOfView->place(glm::vec3(0,1,0));
+                    m_playerPointOfView->rotate(glm::radians(10.f), glm::vec3(1,0,0));
                 }
                 break;
 

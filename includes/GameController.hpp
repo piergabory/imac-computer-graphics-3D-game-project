@@ -23,8 +23,8 @@
 
 /// \brief describe camera behaviors states
 enum class CameraBehaviors : int {
-    FIRST_PERSON = 0,
-    THIRD_PERSON = 1,
+    THIRD_PERSON = 0,
+    FIRST_PERSON = 1,
     FREE = 2,
     LOCKED = 3
 };

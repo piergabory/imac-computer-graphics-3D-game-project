@@ -39,8 +39,8 @@ namespace GraphicsEngine {
     m_minRenderingDistance(min),
     m_maxRenderingDistance(max),
     m_cameraTransform(new glm::mat4(1)),
-    m_cameraPosition(0,0,-1),
-    m_cameraDirection(0,0,-1.5){
+    m_cameraPosition(0,0,0),
+    m_cameraDirection(0,0,1) {
         // defines m_projectionMatrix
         updateProjectionMatrix();
     }
@@ -71,7 +71,11 @@ namespace GraphicsEngine {
 
     void Camera::switchMode(CameraControl mode) {
         m_controlMode = mode;
+        m_cameraPosition = glm::vec3(0);
+        if (mode == CameraControl::TURNTABLE)
+            m_cameraDirection = glm::vec3(0,0,-1);
+        else
+            m_cameraDirection = glm::vec3(0,0,1);
         updateProjectionMatrix();
     }
-
 }
