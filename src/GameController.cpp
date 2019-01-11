@@ -365,7 +365,7 @@ std::shared_ptr<GraphicsEngine::Object3D> GameController::createChunk() {
 
 
 void GameController::createMenu(){
-    m_menu.reset(new GraphicsEngine::Menu(std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/overlaytest.png"))));
+    m_menu.reset(new GraphicsEngine::Menu(std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/overlay-menu.png"))));
 }
 
 void GameController::toggleMenu(){
