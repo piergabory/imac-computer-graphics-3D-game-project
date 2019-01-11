@@ -23,7 +23,12 @@ namespace GraphicsEngine {
             newNum /= 10;
         }
 
-        std::reverse(m_digits.begin(),m_digits.end());
+        std::vector<int> buffer = m_digits;
+        std::vector<int>::iterator digitIttwo = m_digits.begin();
+        for (std::vector<int>::reverse_iterator digitIt = buffer.rbegin(); digitIt != buffer.rend(); ++digitIt) {
+            *digitIttwo = *digitIt;
+            digitIttwo ++;
+        }
         
         for (size_t i = m_digits.size() ; i < m_size; i++){
             m_digits.insert(m_digits.begin(),0);
@@ -38,7 +43,7 @@ namespace GraphicsEngine {
     }
     
     void Number::updateDigits(){
-        for (int i=0 ; i < m_digitsObjects.size(); i++){
+        for (unsigned int i=0 ; i < m_digitsObjects.size(); i++){
             if (m_digitsObjects[i]->current() != m_digits[i]){
                 m_digitsObjects[i]->update(m_digits[i]);
             }
@@ -48,7 +53,7 @@ namespace GraphicsEngine {
     void Number::initializeDigitsObjects(){
         m_digitsObjects.clear();
         
-        for (int i=0 ; i < m_digits.size(); i++){
+        for (unsigned int i=0 ; i < m_digits.size(); i++){
             double x = m_posx+(m_width/m_digits.size())*i;
             
             std::shared_ptr<Digit> currentDigit = std::make_shared<Digit>(glm::vec2(x,m_posy),glm::vec2(m_width/m_digits.size(),-m_height), m_digits[i]);

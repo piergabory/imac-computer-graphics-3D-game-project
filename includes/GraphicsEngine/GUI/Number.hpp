@@ -12,6 +12,7 @@
 
 #include "Digit.hpp"
 
+
 namespace GraphicsEngine {
     class Number {
         private:
