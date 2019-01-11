@@ -407,7 +407,8 @@ void GameController::createNumber(){
     GraphicsEngine::Digit::initializeDigit();
     m_digit = std::make_shared<GraphicsEngine::Digit>(glm::vec2(-1,1),glm::vec2(0.5,-0.5),std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/digit_0.png")));
  
-    
+    char number = 3;
+    m_digit->update(number);
     
 }
 

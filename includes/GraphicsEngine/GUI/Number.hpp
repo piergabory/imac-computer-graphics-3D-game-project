@@ -10,17 +10,19 @@
 #pragma once
 
 
-
+#include "Digit.hpp"
 
 namespace GraphicsEngine {
     class Number {
         private:
-            unsigned int m_number = 0;
-        
+            std::vector< std::shared_ptr<Digit> > m_digitsObjects;
+            unsigned int m_num;
+            std::vector<int> m_digits;
         
         public:
-            Number();
+            Number(unsigned int num);
             ~Number();
+            void update(unsigned int newNum);
         
     };
 }
