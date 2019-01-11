@@ -86,7 +86,7 @@ bool GameController::loop() {
     const float FRAMERATE = 60;
 
     // compute current chunk progress
-    if (m_menu == nullptr || m_framecount == 0) {
+    if ((m_menu == nullptr && !m_isPaused) || m_framecount == 0) {
         if(m_framecount % 100 == 0) loadNewChunks(100);
         std::set<std::shared_ptr<GraphicsEngine::Object3D>> newObjects = m_currentGame->update();
         for(std::shared_ptr<GraphicsEngine::Object3D> object : newObjects) {

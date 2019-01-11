@@ -75,7 +75,7 @@ namespace GraphicsEngine {
         Object2D::initialize2DShaderProgram(LocalFilePath("shaders/2D.vs.glsl"), LocalFilePath("shaders/2D.fs.glsl"));
         Button::initializeButtons(viewportPixelSize());
 
-        glClearColor(1.f, 1.f, 1.f, 1.f);
+        glClearColor(0.43f, 0.67f, 0.78f, 1.f);
     }
 
     void Controller::loadScene(std::unique_ptr<Scene> &newScene) {
