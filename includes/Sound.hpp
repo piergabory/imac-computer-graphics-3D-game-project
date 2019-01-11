@@ -4,6 +4,7 @@
 
 #include <SDL2/SDL.h>
 #include "EventManager.hpp"
+#include "CommonStructs.hpp"
 
 class Sound : Events::QuitEventObserver{
     private:
@@ -20,9 +21,9 @@ class Sound : Events::QuitEventObserver{
         SDL_CloseAudioDevice(m_deviceId);
         SDL_FreeWAV(m_wavBuffer);
     };
-    void playWAVfile(const char* path){
+    void playWAVfile(GraphicsEngine::LocalFilePath path){
         //loadFile
-        SDL_LoadWAV(path, &m_wavSpec, &m_wavBuffer, &m_wavLength);
+        SDL_LoadWAV(path.c_str(), &m_wavSpec, &m_wavBuffer, &m_wavLength);
         //open audio device
         m_deviceId = SDL_OpenAudioDevice(nullptr,0,&m_wavSpec,nullptr,0);
         //play audio

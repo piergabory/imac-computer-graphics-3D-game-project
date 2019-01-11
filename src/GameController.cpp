@@ -23,7 +23,7 @@ void GameController::initializeScene() {
 
     //Musique
     ///\todo file withe the rigth wav
-    m_soundManageur.playWAVfile("assets/Musiques/43mozarts15a.wav");
+    m_soundManageur.playWAVfile(GraphicsEngine::LocalFilePath("assets/Musiques/theme.wav"));
 
     // create objects
     m_skybox = createSkyBox();
