@@ -9,7 +9,7 @@ namespace GraphicsEngine {
     
     std::vector < std::shared_ptr<Texture> > m_digitTextures;
     
-    Digit::Digit(const glm::vec2 &position, const glm::vec2 &size, std::shared_ptr<Texture> image_main) : Object2D(position, size, image_main){
+    Digit::Digit(const glm::vec2 &position, const glm::vec2 &size, char digit) : Object2D(position, size, m_digitTextures[digit]){
         
     }
     
@@ -64,5 +64,9 @@ namespace GraphicsEngine {
     std::cout << "Nombre de chiffres chargées" << m_digitTextures.size() << std::endl;
     
     }
+    
+    char Digit::current(){
+        return m_digit;
+    };
     
 };

@@ -42,6 +42,8 @@ void GameController::initializeScene() {
     GraphicsEngine::Controller::instance()->activeScene()->add(m_skybox);
     GraphicsEngine::Controller::instance()->activeGUI()->add(m_digit);
     
+    GraphicsEngine::Controller::instance()->activeGUI()->add(m_number->elements());
+    
 }
 
 
@@ -405,14 +407,9 @@ GameController* GameController::instance() {
 
 void GameController::createNumber(){
     GraphicsEngine::Digit::initializeDigit();
-    m_digit = std::make_shared<GraphicsEngine::Digit>(glm::vec2(-1,1),glm::vec2(0.5,-0.5),std::make_shared<GraphicsEngine::Texture>(GraphicsEngine::LocalFilePath("assets/textures/digit_0.png")));
- 
-    char number = 3;
-    m_digit->update(number);
+    m_digit = std::make_shared<GraphicsEngine::Digit>(glm::vec2(-1,1),glm::vec2(0.5,-0.5),0);
     
     m_number =  std::make_shared<GraphicsEngine::Number>(187);
-    m_number->update(32);
-    
 }
 
 

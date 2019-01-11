@@ -22,12 +22,13 @@ namespace GraphicsEngine {
         
         
     public:
-        Digit(const glm::vec2 &position, const glm::vec2 &size, std::shared_ptr<Texture> image_main);
+        Digit(const glm::vec2 &position, const glm::vec2 &size, char digit);
         ~Digit();
         
         static void initializeDigit();
         
         void update(char newDigit);
+        char current();
         
     };
 }
