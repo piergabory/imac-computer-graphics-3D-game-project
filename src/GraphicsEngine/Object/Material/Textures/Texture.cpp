@@ -45,7 +45,11 @@ namespace GraphicsEngine {
         #if __APPLE__
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_image.width(), m_image.height(), 0, GL_BGRA, GL_UNSIGNED_BYTE, m_image.pixels());
         #else
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_image.width(), m_image.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, m_image.pixels());
+            const GLvoid* pixels = m_image.pixels();
+            const GLsizei w = m_image.width();
+            const GLsizei h = m_image.height();
+
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
         #endif
     }
 }

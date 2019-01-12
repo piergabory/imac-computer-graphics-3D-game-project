@@ -28,8 +28,8 @@ namespace GraphicsEngine {
         inline const GLuint width() const { return m_sdlImagePtr->w; }
         inline const GLuint height() const { return m_sdlImagePtr->h; }
         
-        inline void* pixels() { return m_sdlImagePtr->pixels; }
-        inline const void* pixels() const { return m_sdlImagePtr->pixels; }
+        inline GLvoid* pixels() { return m_sdlImagePtr->pixels; }
+        inline const GLvoid* pixels() const { return m_sdlImagePtr->pixels; }
         
         // constructor
         // takes the path of the image as a cstring

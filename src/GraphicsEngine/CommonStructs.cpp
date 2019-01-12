@@ -10,10 +10,10 @@
      void LocalFilePath::setLocation(std::string executablePath) {
          executablePath = executablePath.substr(0, executablePath.find_last_of("/"));
 
+         s_absolutePathToExecutable = "../";
          if (executablePath.size() > 4)
              s_absolutePathToExecutable = executablePath.substr(0, executablePath.find_last_of("/") + 1);
-
-         s_absolutePathToExecutable = "../";
+            
      }
 
  }
